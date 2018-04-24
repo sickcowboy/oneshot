@@ -143,6 +143,6 @@ class ChallengeController: UIViewController {
     }
     
     @objc fileprivate func challengePress() {
-        debugPrint("challengePress")
+        navigationController?.pushViewController(CameraController(), animated: true)
     }
 }
