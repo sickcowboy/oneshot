@@ -14,7 +14,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.backgroundColor = Colors.sharedInstance.primaryColor
         
-        navigationController?.navigationBar.barTintColor = Colors.sharedInstance.primaryTextColor
+        navigationController?.navigationBar.barTintColor = Colors.sharedInstance.darkColor
         navigationController?.navigationBar.tintColor = Colors.sharedInstance.darkColor
     }
 }
