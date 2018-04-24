@@ -47,6 +47,14 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
         return fs
     }()
     
+    lazy var saveButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("SAVE", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.tintColor = Colors.sharedInstance.primaryTextColor
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors.sharedInstance.primaryColor
@@ -55,19 +63,23 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
         imageView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil)
         imageView.squareByWidthAnchor()
         
-        setUpSliderStackView()
+        setUpUI()
         
         guard let photo = photo else { return }
         unEditedPhoto = CIImage(image: photo)
     }
     
-    fileprivate func setUpSliderStackView() {
+    fileprivate func setUpUI() {
+        view.addSubview(saveButton)
+        saveButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.centerXAnchor,
+                                    padding: .init(top: 0, left: 0, bottom: 8, right: 0))
+        
         let stackView = UIStackView(arrangedSubviews: [brightnessSlider, contrastSlider, saturationSlider])
         stackView.setUp(vertical: true, spacing: 8)
 
         
         view.addSubview(stackView)
-        stackView.constraintLayout(top: imageView.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
+        stackView.constraintLayout(top: imageView.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: saveButton.topAnchor,
                                    padding: .init(top: 16, left: 16, bottom: 16, right: 16))
     }
     
