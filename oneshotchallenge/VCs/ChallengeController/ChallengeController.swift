@@ -39,9 +39,9 @@ class ChallengeController: UIViewController {
     
     var minutes: Int = 0 {
         didSet{
-            if minutes < 1 {
+            if minutes < 0 {
                 hours -= 1
-                minutes = 60
+                minutes = 59
             }
             
             minuteLabel.attributedText = templateAttributedTitle(title: "minutes", value: minutes)
@@ -50,9 +50,9 @@ class ChallengeController: UIViewController {
     
     var seconds: Int = 0 {
         didSet{
-            if seconds < 1 {
+            if seconds < 0 {
                 minutes -= 1
-                seconds = 60
+                seconds = 59
             }
 
             secondsLabel.attributedText = templateAttributedTitle(title: "seconds", value: seconds)
@@ -81,15 +81,15 @@ class ChallengeController: UIViewController {
     fileprivate func setUpTimerViews() {
         view.addSubview(minuteLabel)
         minuteLabel.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.centerXAnchor,
-                                     padding: .init(top: 0, left: 0, bottom: 16, right: 0))
+                                     padding: .init(top: 0, left: 0, bottom: 16, right: 0), size: .init(width: 80, height: 0))
         
         view.addSubview(hourLabel)
         hourLabel.constraintLayout(top: nil, leading: nil, trailing: minuteLabel.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                                   padding: .init(top: 0, left: 0, bottom: 16, right: 16))
+                                   padding: .init(top: 0, left: 0, bottom: 16, right: 16), size: .init(width: 80, height: 0))
         
         view.addSubview(secondsLabel)
         secondsLabel.constraintLayout(top: nil, leading: minuteLabel.trailingAnchor, trailing: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                                      padding: .init(top: 0, left: 16, bottom: 16, right: 0))
+                                      padding: .init(top: 0, left: 16, bottom: 16, right: 0), size: .init(width: 80, height: 0))
     }
     
     fileprivate func templateTimeLabel() -> UILabel {
@@ -114,7 +114,7 @@ class ChallengeController: UIViewController {
                                                         attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),
                                                         NSAttributedStringKey.foregroundColor: Colors.sharedInstance.secondaryColor])
         attributedTitle.append(NSAttributedString(string: "\n\(valueString)",
-            attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 20),
+            attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 52),
                          NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
         
         return attributedTitle

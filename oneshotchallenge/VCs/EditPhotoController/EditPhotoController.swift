@@ -52,6 +52,23 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
         button.setTitle("SAVE", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         button.tintColor = Colors.sharedInstance.primaryTextColor
+        button.addTarget(self, action: #selector(saveClick), for: .touchUpInside)
+        return button
+    }()
+    
+    lazy var uploadButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("POST", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.tintColor = Colors.sharedInstance.primaryTextColor
+        return button
+    }()
+    
+    lazy var cancelButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("DELETE", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.tintColor = Colors.sharedInstance.primaryTextColor
         return button
     }()
     
@@ -60,7 +77,8 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
         view.addSubview(imageView)
-        imageView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil)
+        imageView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
+                                   padding: .init(top: 16, left: 32, bottom: 0, right: 32))
         imageView.squareByWidthAnchor()
         
         setUpUI()
@@ -69,12 +87,14 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
         unEditedPhoto = CIImage(image: photo)
     }
     
+    var stackView = UIStackView()
+    
     fileprivate func setUpUI() {
         view.addSubview(saveButton)
         saveButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.centerXAnchor,
-                                    padding: .init(top: 0, left: 0, bottom: 8, right: 0))
+                                    padding: .init(top: 0, left: 0, bottom: 16, right: 0))
         
-        let stackView = UIStackView(arrangedSubviews: [brightnessSlider, contrastSlider, saturationSlider])
+        stackView = UIStackView(arrangedSubviews: [brightnessSlider, contrastSlider, saturationSlider])
         stackView.setUp(vertical: true, spacing: 8)
 
         
@@ -100,5 +120,26 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
             guard let orientation = imageView.image?.imageOrientation else { return }
             photo = UIImage(cgImage: newCGImage, scale: scale, orientation: orientation)
         }
+    }
+    
+    @objc fileprivate func saveClick() {
+        saveButton.isUserInteractionEnabled = false
+        brightnessSlider.slider.isUserInteractionEnabled = false
+        contrastSlider.slider.isUserInteractionEnabled = false
+        saturationSlider.slider.isUserInteractionEnabled = false
+        
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//            self.saveButton.transform = CGAffineTransform(translationX: -30, y: 0)
+//            self.stackView.transform = CGAffineTransform(translationX: -30, y: 0)
+//        }, completion: { _ in
+//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//                self.saveButton.transform = CGAffineTransform(translationX: -30, y: -100)
+//                self.saveButton.alpha = 0
+//                self.stackView.transform = CGAffineTransform(translationX: -30, y: -100)
+//                self.stackView.alpha = 0
+//            }, completion: { (_) in
+//
+//            })
+//        })
     }
 }

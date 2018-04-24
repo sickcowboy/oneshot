@@ -14,6 +14,14 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     let output = AVCapturePhotoOutput()
     var previewLayer : AVCaptureVideoPreviewLayer?
     
+    let challengeLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Colors.sharedInstance.primaryTextColor
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.textAlignment = .center
+        return label
+    }()
+    
     lazy var captureButton: UIButton = {
         let button = UIButton(type: .system)
         button.clipsToBounds = true
@@ -34,9 +42,14 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
-        capturePreviewView.backgroundColor = .white
+        challengeLabel.text = "BIG RED"
+        view.addSubview(challengeLabel)
+        challengeLabel.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
+                                        padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        
         view.addSubview(capturePreviewView)
-        capturePreviewView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil)
+        capturePreviewView.constraintLayout(top: challengeLabel.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
+                                            padding: .init(top: 16, left: 0, bottom: 0, right: 0))
         capturePreviewView.squareByWidthAnchor()
         
         view.addSubview(captureButton)
@@ -116,6 +129,6 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         let controller = EditPhototController()
         controller.photo = image
         
-        navigationController?.pushViewController(controller, animated: false)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

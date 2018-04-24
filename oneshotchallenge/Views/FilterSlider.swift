@@ -18,7 +18,7 @@ class FilterSlider: UIView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = Colors.sharedInstance.primaryTextColor
         return label
