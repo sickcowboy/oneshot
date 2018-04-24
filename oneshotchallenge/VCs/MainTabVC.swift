@@ -19,9 +19,10 @@ class MainTabVC: UITabBarController {
     fileprivate func setUpControllers() {
         let challengeController = createController(image: nil, title: "Challenge", uiController: ChallengeController())
         let rateController = createController(image: nil, title: "Rate", collectionController: RateController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let topListController = createController(image: nil, title: "Toplist", collectionController: TopListController(collectionViewLayout: UICollectionViewFlowLayout()))
         let userController = createController(image: nil, title: "User", collectionController: UserController(collectionViewLayout: UICollectionViewFlowLayout()))
         
-        self.viewControllers = [challengeController, rateController, userController]
+        self.viewControllers = [challengeController, rateController, topListController, userController]
     }
     
     fileprivate func createController(image: UIImage?, title: String, collectionController: UICollectionViewController? = nil, uiController: UIViewController? = nil) -> UINavigationController {

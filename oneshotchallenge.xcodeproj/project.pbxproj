@@ -14,6 +14,7 @@
 		2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B13208F0EF700532815 /* ChallengeController.swift */; };
 		2B0B7B18208F0F5900532815 /* RateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B17208F0F5900532815 /* RateController.swift */; };
 		2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B1A208F0FB600532815 /* UserController.swift */; };
+		2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B1D208F11B300532815 /* TopListController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2B0B7B13208F0EF700532815 /* ChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeController.swift; sourceTree = "<group>"; };
 		2B0B7B17208F0F5900532815 /* RateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateController.swift; sourceTree = "<group>"; };
 		2B0B7B1A208F0FB600532815 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		2B0B7B1D208F11B300532815 /* TopListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				2B0B7B15208F0F2900532815 /* ChallengeController */,
 				2B0B7B16208F0F3900532815 /* RateController */,
 				2B0B7B19208F0F9B00532815 /* UserController */,
+				2B0B7B1C208F118F00532815 /* TopListController */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -100,6 +103,14 @@
 				2B0B7B1A208F0FB600532815 /* UserController.swift */,
 			);
 			path = UserController;
+			sourceTree = "<group>";
+		};
+		2B0B7B1C208F118F00532815 /* TopListController */ = {
+			isa = PBXGroup;
+			children = (
+				2B0B7B1D208F11B300532815 /* TopListController.swift */,
+			);
+			path = TopListController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
+				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
 				2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */,
 				2B0B7B01208F0D2900532815 /* AppDelegate.swift in Sources */,
