@@ -11,5 +11,10 @@ import UIKit
 class UserController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView?.backgroundColor = Colors.sharedInstance.primaryColor
+        
+        navigationController?.navigationBar.barTintColor = Colors.sharedInstance.primaryTextColor
+        navigationController?.navigationBar.tintColor = Colors.sharedInstance.darkColor
     }
 }

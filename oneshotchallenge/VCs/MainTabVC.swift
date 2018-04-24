@@ -13,7 +13,12 @@ class MainTabVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.tabBar.barTintColor = Colors.sharedInstance.darkColor
+        self.tabBar.tintColor = Colors.sharedInstance.primaryTextColor
+        
         setUpControllers()
+        
     }
     
     fileprivate func setUpControllers() {

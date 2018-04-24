@@ -12,5 +12,7 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        
+        collectionView?.backgroundColor = Colors.sharedInstance.primaryColor
     }
 }

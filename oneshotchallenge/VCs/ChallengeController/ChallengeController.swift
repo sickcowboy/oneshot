@@ -13,5 +13,6 @@ class ChallengeController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
+        view.backgroundColor = Colors.sharedInstance.primaryColor
     }
 }

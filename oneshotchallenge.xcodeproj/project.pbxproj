@@ -15,6 +15,9 @@
 		2B0B7B18208F0F5900532815 /* RateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B17208F0F5900532815 /* RateController.swift */; };
 		2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B1A208F0FB600532815 /* UserController.swift */; };
 		2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B1D208F11B300532815 /* TopListController.swift */; };
+		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
+		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
+		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		2B0B7B17208F0F5900532815 /* RateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateController.swift; sourceTree = "<group>"; };
 		2B0B7B1A208F0FB600532815 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		2B0B7B1D208F11B300532815 /* TopListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListController.swift; sourceTree = "<group>"; };
+		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 				2B0B7B07208F0D2B00532815 /* Assets.xcassets */,
 				2B0B7B09208F0D2B00532815 /* LaunchScreen.storyboard */,
 				2B0B7B0C208F0D2B00532815 /* Info.plist */,
+				2B52D235208F12D900090285 /* Utils */,
 				2B0B7B12208F0ED500532815 /* VCs */,
 			);
 			path = oneshotchallenge;
@@ -111,6 +118,16 @@
 				2B0B7B1D208F11B300532815 /* TopListController.swift */,
 			);
 			path = TopListController;
+			sourceTree = "<group>";
+		};
+		2B52D235208F12D900090285 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2B52D236208F12ED00090285 /* Colors.swift */,
+				2B52D238208F13EE00090285 /* UIViewExtension.swift */,
+				2B52D23A208F13F800090285 /* UIStackViewExtension.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,8 +203,11 @@
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
 				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
+				2B52D237208F12ED00090285 /* Colors.swift in Sources */,
 				2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */,
 				2B0B7B01208F0D2900532815 /* AppDelegate.swift in Sources */,
+				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,
+				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
 				2B0B7B18208F0F5900532815 /* RateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

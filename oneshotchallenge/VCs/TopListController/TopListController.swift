@@ -12,5 +12,7 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
+        
+        collectionView?.backgroundColor = Colors.sharedInstance.primaryColor
     }
 }
