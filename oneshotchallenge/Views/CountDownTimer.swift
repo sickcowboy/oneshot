@@ -50,6 +50,8 @@ class CountDownTimer: UIView {
         }
     }
     
+    var timer = Timer()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -99,9 +101,13 @@ class CountDownTimer: UIView {
         self.minutes = minutes
         self.seconds = seconds
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
             self.seconds -= 1
         }
+    }
+    
+    func stopCountDown() {
+        timer.invalidate()
     }
     
     required init?(coder aDecoder: NSCoder) {

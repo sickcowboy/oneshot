@@ -23,6 +23,8 @@
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
 		2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */; };
 		2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */; };
+		2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */; };
+		2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE42090758F00BE4050 /* PostController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
 		2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFunctions.swift; sourceTree = "<group>"; };
+		2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedPhotoView.swift; sourceTree = "<group>"; };
+		2BB5CEE42090758F00BE4050 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 				2B0B7B15208F0F2900532815 /* ChallengeController */,
 				2B2039E2208F2CA400C4CF43 /* CameraController */,
 				2B2039E5208F45A400C4CF43 /* EditPhotoController */,
+				2BB5CEE32090756900BE4050 /* PostController */,
 				2B0B7B16208F0F3900532815 /* RateController */,
 				2B0B7B19208F0F9B00532815 /* UserController */,
 				2B0B7B1C208F118F00532815 /* TopListController */,
@@ -155,6 +160,7 @@
 			children = (
 				2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */,
 				2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */,
+				2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +173,14 @@
 				2B52D23A208F13F800090285 /* UIStackViewExtension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2BB5CEE32090756900BE4050 /* PostController */ = {
+			isa = PBXGroup;
+			children = (
+				2BB5CEE42090758F00BE4050 /* PostController.swift */,
+			);
+			path = PostController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,10 +262,12 @@
 				2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */,
 				2B0B7B01208F0D2900532815 /* AppDelegate.swift in Sources */,
 				2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */,
+				2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */,
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
 				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,
 				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
 				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,
+				2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */,
 				2B0B7B18208F0F5900532815 /* RateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

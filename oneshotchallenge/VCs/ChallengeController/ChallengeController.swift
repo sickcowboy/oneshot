@@ -25,6 +25,7 @@ class ChallengeController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.navigationBar.isHidden = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
         setUp()

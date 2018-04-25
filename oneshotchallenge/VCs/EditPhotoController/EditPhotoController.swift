@@ -56,21 +56,7 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
         return button
     }()
     
-    lazy var uploadButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("POST", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        button.tintColor = Colors.sharedInstance.primaryTextColor
-        return button
-    }()
-    
-    lazy var cancelButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("DELETE", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        button.tintColor = Colors.sharedInstance.primaryTextColor
-        return button
-    }()
+    var countDownTimer = CountDownTimer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,8 +76,12 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
     var stackView = UIStackView()
     
     fileprivate func setUpUI() {
+        view.addSubview(countDownTimer)
+        countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                                        size: .init(width: 0, height: 80))
+        
         view.addSubview(saveButton)
-        saveButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.centerXAnchor,
+        saveButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: countDownTimer.topAnchor, centerX: view.centerXAnchor,
                                     padding: .init(top: 0, left: 0, bottom: 16, right: 0))
         
         stackView = UIStackView(arrangedSubviews: [brightnessSlider, contrastSlider, saturationSlider])
@@ -123,23 +113,16 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
     }
     
     @objc fileprivate func saveClick() {
+        countDownTimer.stopCountDown()
+        
         saveButton.isUserInteractionEnabled = false
         brightnessSlider.slider.isUserInteractionEnabled = false
         contrastSlider.slider.isUserInteractionEnabled = false
         saturationSlider.slider.isUserInteractionEnabled = false
         
-//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-//            self.saveButton.transform = CGAffineTransform(translationX: -30, y: 0)
-//            self.stackView.transform = CGAffineTransform(translationX: -30, y: 0)
-//        }, completion: { _ in
-//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-//                self.saveButton.transform = CGAffineTransform(translationX: -30, y: -100)
-//                self.saveButton.alpha = 0
-//                self.stackView.transform = CGAffineTransform(translationX: -30, y: -100)
-//                self.stackView.alpha = 0
-//            }, completion: { (_) in
-//
-//            })
-//        })
+        let controller = PostController()
+        controller.image = photo
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

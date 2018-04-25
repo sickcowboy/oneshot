@@ -76,6 +76,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     func goToEditPhotoController(image: UIImage) {
         let controller = EditPhototController()
         controller.photo = image
+        controller.countDownTimer = countDownTimer
         
         navigationController?.pushViewController(controller, animated: true)
     }
