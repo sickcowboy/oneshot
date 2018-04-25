@@ -33,7 +33,6 @@ class CalendarHeader: UICollectionReusableView {
         button.imageView?.contentMode = .scaleAspectFit
         button.tintColor = Colors.sharedInstance.primaryTextColor
         button.addTarget(self, action: #selector(plusPress), for: .touchUpInside)
-        button.isHidden = true
         return button
     }()
     
