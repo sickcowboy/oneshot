@@ -100,7 +100,7 @@ class CountDownTimer: UIView {
         self.seconds = seconds
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
-            self.minutes -= 1
+            self.seconds -= 1
         }
     }
     

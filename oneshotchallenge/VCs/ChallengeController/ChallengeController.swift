@@ -59,6 +59,7 @@ class ChallengeController: UIViewController {
     }
     
     @objc fileprivate func challengePress() {
+        tabBarController?.tabBar.isHidden = true
         navigationController?.pushViewController(CameraController(), animated: true)
     }
 }

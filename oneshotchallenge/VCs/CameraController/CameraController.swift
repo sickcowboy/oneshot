@@ -37,6 +37,8 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         return button
     }()
     
+    let countDownTimer = CountDownTimer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,11 +56,21 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         view.addSubview(captureButton)
         captureButton.constraintLayout(top: capturePreviewView.bottomAnchor, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor,
-                                       padding: .init(top: 26, left: 0, bottom: 0, right: 0), size: .init(width: 70, height: 70))
+                                       padding: .init(top: 16, left: 0, bottom: 0, right: 0), size: .init(width: 70, height: 70))
+        
+        view.addSubview(countDownTimer)
+        countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                                        size: .init(width: 0, height: 80))
+        
+        startCountDown()
         
         DispatchQueue.global(qos: .utility).async {
             self.setupCaptureSession()
         }
+    }
+    
+    fileprivate func startCountDown() {
+        countDownTimer.startCountDown(hours: 1, minutes: 0, seconds: 0)
     }
     
     func goToEditPhotoController(image: UIImage) {
