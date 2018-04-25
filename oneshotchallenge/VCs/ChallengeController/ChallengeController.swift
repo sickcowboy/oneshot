@@ -72,7 +72,7 @@ class ChallengeController: UIViewController {
     
     fileprivate func setUp() {
         view.addSubview(takeChallengeButton)
-        takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor, centerY: view.centerYAnchor,
+        takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.centerYAnchor,
                                              size: .init(width: 0, height: 100))
         
         setUpTimerViews()
