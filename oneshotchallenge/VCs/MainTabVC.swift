@@ -21,7 +21,6 @@ class MainTabVC: UITabBarController {
         
     }
 
-    
     fileprivate func setUpControllers() {
         let challengeController = createController(image: nil, title: "Challenge", uiController: ChallengeController())
         let rateController = createController(image: nil, title: "Rate", collectionController: RateController(collectionViewLayout: UICollectionViewFlowLayout()))
