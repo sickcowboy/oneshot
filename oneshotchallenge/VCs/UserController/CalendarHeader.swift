@@ -36,7 +36,7 @@ class CalendarHeader: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = Colors.sharedInstance.darkColor
+        backgroundColor = Colors.sharedInstance.primaryColor
         
         addSubview(minusButton)
         minusButton.constraintLayout(top: nil, leading: leadingAnchor, trailing: nil, bottom: nil, centerY: centerYAnchor,
