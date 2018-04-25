@@ -22,6 +22,7 @@
 		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
 		2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */; };
+		2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
+		2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				2B2039E3208F2CBC00C4CF43 /* CameraController.swift */,
+				2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */,
 			);
 			path = CameraController;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
 				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,
 				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
+				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,
 				2B0B7B18208F0F5900532815 /* RateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
