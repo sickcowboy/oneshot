@@ -32,7 +32,6 @@ class ChallengeController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        debugPrint("viewWillAppear")
         tabBarController?.tabBar.isHidden = false
         
         countDownTimer.removeFromSuperview()
