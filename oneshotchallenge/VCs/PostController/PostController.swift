@@ -12,16 +12,17 @@ class PostController: UIViewController {
     lazy var postButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("POST", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 52)
         button.tintColor = Colors.sharedInstance.darkColor
+        button.addTarget(self, action: #selector(postClicked), for: .touchUpInside)
         return button
     }()
     
     lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("DELETE", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
-        button.tintColor = Colors.sharedInstance.darkColor
+        button.setTitle("I'll skip this round", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        button.tintColor = Colors.sharedInstance.secondaryColor
         return button
     }()
     
@@ -43,7 +44,7 @@ class PostController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Colors.sharedInstance.secondaryColor
+        view.backgroundColor = Colors.sharedInstance.lightColor
         
         view.addSubview(frameView)
         frameView.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor,
@@ -52,5 +53,13 @@ class PostController: UIViewController {
         view.addSubview(postButton)
         postButton.constraintLayout(top: frameView.bottomAnchor, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor,
                                     padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+        
+        view.addSubview(cancelButton)
+        cancelButton.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil,
+                                      padding: .init(top: 8, left: 8, bottom: 0, right: 0))
+    }
+    
+    @objc fileprivate func postClicked() {
+        navigationController?.popToRootViewController(animated: true)
     }
 }

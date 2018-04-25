@@ -31,16 +31,23 @@ class ChallengeController: UIViewController {
         setUp()
     }
     
-    fileprivate func setUp() {
-        view.addSubview(takeChallengeButton)
-        takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.centerYAnchor,
-                                             size: .init(width: 0, height: 100))
+    override func viewWillAppear(_ animated: Bool) {
+        debugPrint("viewWillAppear")
+        tabBarController?.tabBar.isHidden = false
+        
+        countDownTimer.removeFromSuperview()
         
         view.addSubview(countDownTimer)
         countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                         size: .init(width: 0, height: 80))
         
         timeLeft()
+    }
+    
+    fileprivate func setUp() {
+        view.addSubview(takeChallengeButton)
+        takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.centerYAnchor,
+                                             size: .init(width: 0, height: 100))
     }
     
     fileprivate func timeLeft() {
@@ -60,6 +67,8 @@ class ChallengeController: UIViewController {
     }
     
     @objc fileprivate func challengePress() {
+        countDownTimer.stopCountDown()
+        
         tabBarController?.tabBar.isHidden = true
         navigationController?.pushViewController(CameraController(), animated: true)
     }

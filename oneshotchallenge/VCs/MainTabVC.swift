@@ -20,6 +20,7 @@ class MainTabVC: UITabBarController {
         setUpControllers()
         
     }
+
     
     fileprivate func setUpControllers() {
         let challengeController = createController(image: nil, title: "Challenge", uiController: ChallengeController())
