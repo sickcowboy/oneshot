@@ -86,7 +86,6 @@ class ChallengeController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        debugPrint("view will disappear")
         countDownTimer.stopCountDown()
     }
 }
