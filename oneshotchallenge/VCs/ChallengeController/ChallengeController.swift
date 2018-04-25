@@ -36,9 +36,9 @@ class ChallengeController: UIViewController {
     lazy var challengeLabel: UILabel = {
         let label = UILabel()
         label.textColor = Colors.sharedInstance.primaryTextColor
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         label.textAlignment = .center
-        label.sizeToFit()
+        label.adjustsFontSizeToFitWidth = true
         
         let attributedTitle = NSMutableAttributedString(string: "todays challenge",
                                                         attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20),
@@ -86,12 +86,12 @@ class ChallengeController: UIViewController {
     
     fileprivate func setUp() {
         view.addSubview(takeChallengeButton)
-        takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.centerYAnchor,
+        takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor,
                                              size: .init(width: 0, height: 0))
         
         view.addSubview(challengeLabel)
-        challengeLabel.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.centerYAnchor,
-                                             size: .init(width: 0, height: 0))
+        challengeLabel.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerY: view.safeAreaLayoutGuide.centerYAnchor,
+                                        padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 0))
         
         challengeLabel.isHidden = true
         challengeLabel.alpha = 0
