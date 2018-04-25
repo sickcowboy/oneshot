@@ -33,6 +33,28 @@ class ChallengeController: UIViewController {
         return button
     }()
     
+    lazy var challengeLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Colors.sharedInstance.primaryTextColor
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.sizeToFit()
+        
+        let attributedTitle = NSMutableAttributedString(string: "todays challenge",
+                                                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20),
+                                                                     NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
+        attributedTitle.append(NSAttributedString(string: "\nTAKE A PICTURE OF:",
+                                                  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 32),
+                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        attributedTitle.append(NSAttributedString(string: "\n\(randomChallenge())",
+                                                  attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 44),
+                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        
+        label.attributedText = attributedTitle
+        
+        return label
+    }()
+    
     let countDownTimer = CountDownTimer()
     
     override func viewDidLoad() {
@@ -57,10 +79,23 @@ class ChallengeController: UIViewController {
         timeLeft()
     }
     
+    fileprivate func randomChallenge() -> String {
+        let rndNr = arc4random_uniform(UInt32(TemplateChallenges.sharedInstance.challenges.count))
+        return TemplateChallenges.sharedInstance.challenges[Int(rndNr)]
+    }
+    
     fileprivate func setUp() {
         view.addSubview(takeChallengeButton)
         takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.centerYAnchor,
-                                             size: .init(width: 0, height: 100))
+                                             size: .init(width: 0, height: 0))
+        
+        view.addSubview(challengeLabel)
+        challengeLabel.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.centerYAnchor,
+                                             size: .init(width: 0, height: 0))
+        
+        challengeLabel.isHidden = true
+        challengeLabel.alpha = 0
+        challengeLabel.transform = CGAffineTransform(translationX: 200, y: 0)
     }
     
     fileprivate func timeLeft() {
@@ -80,8 +115,33 @@ class ChallengeController: UIViewController {
     }
     
     @objc fileprivate func challengePress() {
-        tabBarController?.tabBar.isHidden = true
-        navigationController?.pushViewController(CameraController(), animated: true)
+        takeChallengeButton.isUserInteractionEnabled = false
+        challengeLabel.isHidden = false
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+            self.takeChallengeButton.transform = CGAffineTransform(translationX: -30, y: 0)
+        }) { (_) in
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                self.takeChallengeButton.transform = CGAffineTransform(translationX: -30, y: -100)
+                self.takeChallengeButton.alpha = 0
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+                    self.challengeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+                    self.challengeLabel.alpha = 1
+                }, completion: {_ in
+                    self.segueToCamera()
+                })
+            })
+        }
+    }
+    
+    fileprivate func segueToCamera() {
+        countDownTimer.stopCountDown()
+        countDownTimer.startCountDown(hours: 0, minutes: 0, seconds: 3)
+        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+            self.tabBarController?.tabBar.isHidden = true
+            self.navigationController?.pushViewController(CameraController(), animated: true)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
