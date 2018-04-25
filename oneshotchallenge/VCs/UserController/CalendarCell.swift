@@ -17,13 +17,19 @@ class CalendarCell: UICollectionViewCell {
             
             guard let date = date else { return }
             dateLabel.text = dateFormatter.string(from: date)
+            
+            let today = Date()
+            if today.timeIntervalSince1970 < date.timeIntervalSince1970 {
+                dateLabel.textColor = Colors.sharedInstance.secondaryColor
+            } else {
+                dateLabel.textColor = Colors.sharedInstance.primaryTextColor
+            }
         }
     }
     
     let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
-        label.textColor = Colors.sharedInstance.primaryTextColor
         return label
     }()
     

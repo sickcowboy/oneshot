@@ -18,8 +18,9 @@ class CalendarHeader: UICollectionReusableView {
     
     lazy var minusButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("minus", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.setImage(#imageLiteral(resourceName: "BackArrrow"), for: .normal)
+        button.imageView?.clipsToBounds = true
+        button.imageView?.contentMode = .scaleAspectFit
         button.tintColor = Colors.sharedInstance.primaryTextColor
         button.addTarget(self, action: #selector(minusPress), for: .touchUpInside)
         return button
@@ -27,10 +28,12 @@ class CalendarHeader: UICollectionReusableView {
     
     lazy var plusButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("plus", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.setImage(#imageLiteral(resourceName: "ForwardArrow"), for: .normal)
+        button.imageView?.clipsToBounds = true
+        button.imageView?.contentMode = .scaleAspectFit
         button.tintColor = Colors.sharedInstance.primaryTextColor
         button.addTarget(self, action: #selector(plusPress), for: .touchUpInside)
+        button.isHidden = true
         return button
     }()
     
