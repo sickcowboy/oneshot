@@ -23,6 +23,7 @@
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
 		2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91D209086650028E0AC /* CalendarCell.swift */; };
 		2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */; };
+		2BA7F9222090964D0028E0AC /* CalendarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F9212090964D0028E0AC /* CalendarHeader.swift */; };
 		2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */; };
 		2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */; };
 		2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */; };
@@ -48,6 +49,7 @@
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		2BA7F91D209086650028E0AC /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
+		2BA7F9212090964D0028E0AC /* CalendarHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeader.swift; sourceTree = "<group>"; };
 		2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
 		2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFunctions.swift; sourceTree = "<group>"; };
 		2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedPhotoView.swift; sourceTree = "<group>"; };
@@ -130,8 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				2B0B7B1A208F0FB600532815 /* UserController.swift */,
-				2BA7F91D209086650028E0AC /* CalendarCell.swift */,
 				2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */,
+				2BA7F91D209086650028E0AC /* CalendarCell.swift */,
+				2BA7F9212090964D0028E0AC /* CalendarHeader.swift */,
 			);
 			path = UserController;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
 				2B52D237208F12ED00090285 /* Colors.swift in Sources */,
 				2B2039E4208F2CBC00C4CF43 /* CameraController.swift in Sources */,
+				2BA7F9222090964D0028E0AC /* CalendarHeader.swift in Sources */,
 				2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */,
 				2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */,
 				2B0B7B01208F0D2900532815 /* AppDelegate.swift in Sources */,

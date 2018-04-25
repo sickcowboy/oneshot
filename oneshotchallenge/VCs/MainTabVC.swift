@@ -44,6 +44,10 @@ class MainTabVC: UITabBarController {
         let tabBarItem = UITabBarItem(title: title, image: image, selectedImage: nil)
         navController!.tabBarItem = tabBarItem
         
+        navController?.navigationBar.barTintColor = Colors.sharedInstance.darkColor
+        navController?.navigationBar.isTranslucent = false
+        navController?.navigationBar.tintColor = Colors.sharedInstance.primaryTextColor
+        
         return navController!
     }
 
