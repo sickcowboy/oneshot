@@ -85,8 +85,4 @@ extension CameraController {
             self.output.capturePhoto(with: settings, delegate: self)
         }
     }
-    
-    @objc func flashToggle() {
-        flashToggleButton.changeFlashSetting()
-    }
 }

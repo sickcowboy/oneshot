@@ -37,11 +37,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         return button
     }()
     
-    lazy var flashToggleButton: FlashToggleButton = {
-        let button = FlashToggleButton(type: .system)
-        button.addTarget(self, action: #selector(flashToggle), for: .touchUpInside)
-        return button
-    }()
+    let flashToggleButton = FlashToggleButton(type: .system)
     
     let countDownTimer = CountDownTimer()
     

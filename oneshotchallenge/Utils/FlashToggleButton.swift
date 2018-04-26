@@ -23,9 +23,11 @@ class FlashToggleButton: UIButton {
         setImage(#imageLiteral(resourceName: "FlashOff"), for: .normal)
         imageView?.contentMode = .scaleAspectFit
         imageView?.clipsToBounds = true
+        
+        addTarget(self, action: #selector (changeFlashSetting), for: .touchUpInside)
     }
     
-    func changeFlashSetting() {
+    @objc func changeFlashSetting() {
         switch flashImage {
         case .on:
             setImage(#imageLiteral(resourceName: "FlashOff"), for: .normal)
