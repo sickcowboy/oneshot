@@ -37,6 +37,12 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         return button
     }()
     
+    lazy var flashToggleButton: FlashToggleButton = {
+        let button = FlashToggleButton(type: .system)
+        button.addTarget(self, action: #selector(flashToggle), for: .touchUpInside)
+        return button
+    }()
+    
     let countDownTimer = CountDownTimer()
     
     override func viewDidLoad() {
@@ -57,6 +63,10 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         view.addSubview(captureButton)
         captureButton.constraintLayout(top: capturePreviewView.bottomAnchor, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor,
                                        padding: .init(top: 16, left: 0, bottom: 0, right: 0), size: .init(width: 70, height: 70))
+        
+        view.addSubview(flashToggleButton)
+        flashToggleButton.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: nil, bottom: nil, centerY: captureButton.centerYAnchor,
+                                           padding: .init(top: 0, left: 16, bottom: 0, right: 0), size: .init(width: 35, height: 35))
         
         view.addSubview(countDownTimer)
         countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,

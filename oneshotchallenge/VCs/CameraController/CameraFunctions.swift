@@ -66,11 +66,27 @@ extension CameraController {
     
     @objc func capturePhoto() {
         let settings = AVCapturePhotoSettings()
-        
         guard let previewFormatType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
         settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewFormatType]
+        
+        switch flashToggleButton.flashImage {
+        case .on:
+            settings.flashMode = .on
+            break
+        case .auto:
+            settings.flashMode = .auto
+            break
+        case .off:
+            settings.flashMode = .off
+            break
+        }
+        
         DispatchQueue.global(qos: .default).async {
             self.output.capturePhoto(with: settings, delegate: self)
         }
+    }
+    
+    @objc func flashToggle() {
+        flashToggleButton.changeFlashSetting()
     }
 }
