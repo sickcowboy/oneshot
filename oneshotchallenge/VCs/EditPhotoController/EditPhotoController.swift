@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditPhototController: UIViewController, FilterSliderDelegate {
+class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollViewDelegate {
     let context = CIContext(options: nil)
     
     var photo: UIImage? {
@@ -24,6 +24,15 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
         iv.clipsToBounds = true
         iv.contentMode = .scaleAspectFill
         return iv
+    }()
+    
+    lazy var scrollView: UIScrollView = {
+        let sv = UIScrollView()
+        sv.delegate = self
+        sv.minimumZoomScale = 1
+        sv.maximumZoomScale = 2
+        sv.setZoomScale(1, animated: false)
+        return sv
     }()
     
     lazy var brightnessSlider: FilterSlider = {
@@ -62,11 +71,15 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
         super.viewDidLoad()
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
-        view.addSubview(imageView)
-        imageView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
+        view.addSubview(scrollView)
+        scrollView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
                                    padding: .init(top: 16, left: 32, bottom: 0, right: 32))
-        imageView.squareByWidthAnchor()
+        scrollView.squareByWidthAnchor()
         
+        let size = view.frame.width - 64
+        scrollView.addSubview(imageView)
+        imageView.constraintLayout(top: scrollView.topAnchor, leading: scrollView.leadingAnchor, trailing: nil, bottom: scrollView.bottomAnchor, size: .init(width: size, height: size))
+    
         setUpUI()
         
         guard let photo = photo else { return }
@@ -89,7 +102,7 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
 
         
         view.addSubview(stackView)
-        stackView.constraintLayout(top: imageView.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: saveButton.topAnchor,
+        stackView.constraintLayout(top: scrollView.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: saveButton.topAnchor,
                                    padding: .init(top: 16, left: 16, bottom: 16, right: 16))
     }
     
@@ -124,5 +137,9 @@ class EditPhototController: UIViewController, FilterSliderDelegate {
         controller.image = photo
         
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return imageView
     }
 }
