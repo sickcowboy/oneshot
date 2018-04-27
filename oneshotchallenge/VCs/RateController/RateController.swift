@@ -11,15 +11,7 @@ import UIKit
 class RateController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
-    let imageArray : [UIImage] = {
-       var iva = [UIImage]()
-        iva.append(#imageLiteral(resourceName: "FlashAuto"))
-        iva.append(#imageLiteral(resourceName: "FlashOn"))
-        iva.append(#imageLiteral(resourceName: "FlashOff"))
-        iva.append(#imageLiteral(resourceName: "ForwardArrow"))
-        iva.append(#imageLiteral(resourceName: "BackArrrow"))
-        return iva
-    }()
+    let stockImages = [#imageLiteral(resourceName: "StockImage1"),#imageLiteral(resourceName: "StockImage2"),#imageLiteral(resourceName: "StockImage3"),#imageLiteral(resourceName: "StockImage4"),#imageLiteral(resourceName: "StockImage5"),#imageLiteral(resourceName: "StockImage6"),#imageLiteral(resourceName: "StockImage7"),#imageLiteral(resourceName: "StockImage8"),#imageLiteral(resourceName: "StockImage9"),#imageLiteral(resourceName: "StockImage10"),#imageLiteral(resourceName: "StockImage11"),#imageLiteral(resourceName: "StockImage12"),#imageLiteral(resourceName: "StockImage13"),#imageLiteral(resourceName: "StockImage14")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,15 +19,15 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.constraintLayout(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
         
-        collectionView?.backgroundColor = Colors.sharedInstance.primaryColor
+        collectionView?.backgroundColor = Colors.sharedInstance.lightColor
         collectionView?.register(RateControllerCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.contentInsetAdjustmentBehavior = .never
     }
     
-    func randomNR () -> Int {
+    func randomImage () -> Int {
         
-        let nr = arc4random_uniform(5)
+        let nr = arc4random_uniform(14)
          let intNr = Int(nr)
         
         return intNr

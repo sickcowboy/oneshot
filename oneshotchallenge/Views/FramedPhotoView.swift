@@ -19,7 +19,7 @@ class FramedPhotoView: UIView {
     let photoImage: UIImageView = {
         let iv = UIImageView()
         iv.clipsToBounds = true
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         return iv
     }()
     
