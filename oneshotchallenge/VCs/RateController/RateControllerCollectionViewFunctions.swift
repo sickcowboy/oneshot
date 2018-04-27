@@ -18,7 +18,7 @@ extension RateController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! RateControllerCell
         
         cell.imageView.backgroundColor = .lightGray
-        cell.imageView.image = stockImages[randomImage()]
+        cell.imageView.image = generateRandomImage()
         
         return cell
     }
