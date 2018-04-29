@@ -10,7 +10,7 @@ import UIKit
 
 class RateController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let cellId = "cellId"
+    private let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.constraintLayout(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
         
-        collectionView?.backgroundColor = Colors.sharedInstance.lightColor
+        collectionView?.backgroundColor = Colors.sharedInstance.darkColor
         collectionView?.register(RateControllerCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.contentInsetAdjustmentBehavior = .never
