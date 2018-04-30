@@ -10,7 +10,7 @@ import UIKit
 
 class RateController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private let cellId = "cellId"
+    let cellId = "cellId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
