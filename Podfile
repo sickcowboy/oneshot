@@ -7,7 +7,8 @@ target 'oneshotchallenge' do
 
   # Pods for oneshotchallenge
     pod 'Firebase/Database'
-    pod 'Firebase/Crash'
+    pod 'Fabric'
+    pod 'Crashlytics'
     pod 'Firebase/Auth'
     pod 'Firebase/Storage'
 
