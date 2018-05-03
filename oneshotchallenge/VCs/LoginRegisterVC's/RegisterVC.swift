@@ -120,7 +120,23 @@ class RegisterVC: UIViewController, UITextFieldDelegate, UIImagePickerController
     }
 
     @objc private func registerAccount() {
+        guard let email = emailTF.text else { return }
+        guard let password = passwordTF.text else { return }
+        guard let username = userNameTF.text else { return }
         
+        let fbRegister = FireBaseRegister()
+        fbRegister.registerWithEmail(email: email, password: password, username: username) { (error) in
+            if let error = error {
+                let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)
+                alertController.oneAction()
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                return
+            }
+            
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc private func toLogin() {

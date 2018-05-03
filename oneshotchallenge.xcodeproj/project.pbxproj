@@ -15,6 +15,7 @@
 		2B0B7B18208F0F5900532815 /* RateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B17208F0F5900532815 /* RateController.swift */; };
 		2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B1A208F0FB600532815 /* UserController.swift */; };
 		2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B1D208F11B300532815 /* TopListController.swift */; };
+		2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E1B7F209B1C6200163C23 /* ReferenceEnums.swift */; };
 		2B2039E4208F2CBC00C4CF43 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E3208F2CBC00C4CF43 /* CameraController.swift */; };
 		2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E6208F45BC00C4CF43 /* EditPhotoController.swift */; };
 		2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */; };
@@ -54,6 +55,7 @@
 		2B0B7B17208F0F5900532815 /* RateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateController.swift; sourceTree = "<group>"; };
 		2B0B7B1A208F0FB600532815 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		2B0B7B1D208F11B300532815 /* TopListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListController.swift; sourceTree = "<group>"; };
+		2B0E1B7F209B1C6200163C23 /* ReferenceEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceEnums.swift; sourceTree = "<group>"; };
 		2B2039E3208F2CBC00C4CF43 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2B2039E6208F45BC00C4CF43 /* EditPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoController.swift; sourceTree = "<group>"; };
 		2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSlider.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				2BA7F9232090AB3C0028E0AC /* TemplateChallenges.swift */,
 				2B8CE3C8209B0DEE0045C028 /* UITextFieldExtension.swift */,
 				2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */,
+				2B0E1B7F209B1C6200163C23 /* ReferenceEnums.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 			files = (
 				2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */,
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
+				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
 				2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */,
 				2B8CE3CE209B165F0045C028 /* FireBaseRegister.swift in Sources */,
 				2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */,
