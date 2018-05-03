@@ -22,6 +22,9 @@
 		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
 		2B8CE3C1209B06F40045C028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */; };
+		2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C4209B0DC10045C028 /* LoginVC.swift */; };
+		2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */; };
+		2B8CE3C9209B0DEE0045C028 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C8209B0DEE0045C028 /* UITextFieldExtension.swift */; };
 		2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91D209086650028E0AC /* CalendarCell.swift */; };
 		2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */; };
 		2BA7F9222090964D0028E0AC /* CalendarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F9212090964D0028E0AC /* CalendarHeader.swift */; };
@@ -55,6 +58,9 @@
 		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2B8CE3C4209B0DC10045C028 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		2B8CE3C8209B0DEE0045C028 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		2BA7F91D209086650028E0AC /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		2BA7F9212090964D0028E0AC /* CalendarHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeader.swift; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				2B0B7B02208F0D2900532815 /* MainTabVC.swift */,
+				2B8CE3C3209B0D6E0045C028 /* LoginRegisterVC's */,
 				2B0B7B15208F0F2900532815 /* ChallengeController */,
 				2B2039E2208F2CA400C4CF43 /* CameraController */,
 				2B2039E5208F45A400C4CF43 /* EditPhotoController */,
@@ -187,6 +194,7 @@
 		2B2039E8208F5CB700C4CF43 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2B8CE3C8209B0DEE0045C028 /* UITextFieldExtension.swift */,
 				2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */,
 				2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */,
 				2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */,
@@ -204,6 +212,15 @@
 				2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2B8CE3C3209B0D6E0045C028 /* LoginRegisterVC's */ = {
+			isa = PBXGroup;
+			children = (
+				2B8CE3C4209B0DC10045C028 /* LoginVC.swift */,
+				2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */,
+			);
+			path = "LoginRegisterVC's";
 			sourceTree = "<group>";
 		};
 		2BB5CEE32090756900BE4050 /* PostController */ = {
@@ -365,10 +382,12 @@
 			files = (
 				2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */,
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
+				2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */,
 				2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */,
 				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
 				2B52D237208F12ED00090285 /* Colors.swift in Sources */,
+				2B8CE3C9209B0DEE0045C028 /* UITextFieldExtension.swift in Sources */,
 				2B2039E4208F2CBC00C4CF43 /* CameraController.swift in Sources */,
 				2BA7F9222090964D0028E0AC /* CalendarHeader.swift in Sources */,
 				2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */,
@@ -381,6 +400,7 @@
 				2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */,
 				A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */,
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
+				2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */,
 				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,
 				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
 				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,

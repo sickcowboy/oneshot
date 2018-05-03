@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MainTabVC: UITabBarController {
 
@@ -17,8 +18,13 @@ class MainTabVC: UITabBarController {
         self.tabBar.barTintColor = Colors.sharedInstance.darkColor
         self.tabBar.tintColor = Colors.sharedInstance.primaryTextColor
         
-        setUpControllers()
-        
+        Auth.auth().addStateDidChangeListener { (_, user) in
+            if user == nil {
+                self.toLogin()
+            } else {
+                self.setUpControllers()
+            }
+        }
     }
 
     fileprivate func setUpControllers() {
@@ -49,6 +55,15 @@ class MainTabVC: UITabBarController {
         navController?.navigationBar.tintColor = Colors.sharedInstance.primaryTextColor
         
         return navController!
+    }
+    
+    fileprivate func toLogin() {
+        self.viewControllers = nil
+        
+        let loginController = UINavigationController(rootViewController: LoginVC())
+        loginController.navigationBar.isHidden = true
+        
+        self.present(loginController, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
