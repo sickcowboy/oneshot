@@ -25,8 +25,8 @@ extension RateController {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let tabHeight = tabBarController?.tabBar.frame.height
-        let size = (collectionView.frame.height - tabHeight!) / 2
+        guard let tabHeight = tabBarController?.tabBar.frame.height else { return .zero}
+        let size = (collectionView.frame.height - tabHeight) / 2
         
         return CGSize(width: size, height: size)
     }
