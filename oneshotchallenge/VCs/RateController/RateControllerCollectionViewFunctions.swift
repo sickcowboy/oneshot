@@ -40,6 +40,8 @@ extension RateController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.reloadData()
+        for cell in collectionView.visibleCells {
+            (cell as! RateControllerCell).image = generateRandomImage()
+        }
     }
 }
