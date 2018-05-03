@@ -33,8 +33,8 @@ class RateControllerCell: UICollectionViewCell {
     
     fileprivate func animateDown(completion: @escaping () -> ()) {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            self.imageView.transform = CGAffineTransform(scaleX: 0, y: 0)
-            self.layoutIfNeeded()
+            self.imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            self.imageView.alpha = 0
         }, completion: { _ in
                 completion()
         })
@@ -42,6 +42,7 @@ class RateControllerCell: UICollectionViewCell {
     
     fileprivate func animateBack() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+            self.imageView.alpha = 1
             self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
     }
