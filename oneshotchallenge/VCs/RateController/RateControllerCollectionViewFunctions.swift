@@ -28,11 +28,15 @@ extension RateController {
         guard let tabHeight = tabBarController?.tabBar.frame.height else { return .zero}
         let size = (collectionView.frame.height - tabHeight) / 2
         
-        return CGSize(width: size, height: size)
+        return CGSize(width: size - 30, height: size - 30)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        return 8
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsetsMake(40, 0, 0, 0)
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

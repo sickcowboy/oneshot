@@ -16,9 +16,7 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
         
-        collectionView?.constraintLayout(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
-        
-        collectionView?.backgroundColor = Colors.sharedInstance.darkColor
+        collectionView?.backgroundColor = Colors.sharedInstance.primaryColor
         collectionView?.register(RateControllerCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.contentInsetAdjustmentBehavior = .never
