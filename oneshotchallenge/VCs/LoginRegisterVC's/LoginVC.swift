@@ -100,7 +100,22 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func logIn() {
+        guard let email = emailTF.text else { return }
+        guard let password = passwordTF.text else { return }
         
+        let fbLogin = FireBaseLogin()
+        fbLogin.login(email: email, password: password) { (error) in
+            if let error = error {
+                let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)
+                alertController.oneAction()
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+                return
+            }
+            
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func editChanged() {

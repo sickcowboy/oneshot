@@ -27,6 +27,7 @@
 		2B8CE3C9209B0DEE0045C028 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C8209B0DEE0045C028 /* UITextFieldExtension.swift */; };
 		2B8CE3CC209B15B00045C028 /* FireBaseLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3CB209B15B00045C028 /* FireBaseLogin.swift */; };
 		2B8CE3CE209B165F0045C028 /* FireBaseRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3CD209B165F0045C028 /* FireBaseRegister.swift */; };
+		2B8CE3D0209B18E30045C028 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */; };
 		2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91D209086650028E0AC /* CalendarCell.swift */; };
 		2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */; };
 		2BA7F9222090964D0028E0AC /* CalendarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F9212090964D0028E0AC /* CalendarHeader.swift */; };
@@ -65,6 +66,7 @@
 		2B8CE3C8209B0DEE0045C028 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		2B8CE3CB209B15B00045C028 /* FireBaseLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseLogin.swift; sourceTree = "<group>"; };
 		2B8CE3CD209B165F0045C028 /* FireBaseRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRegister.swift; sourceTree = "<group>"; };
+		2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		2BA7F91D209086650028E0AC /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		2BA7F9212090964D0028E0AC /* CalendarHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeader.swift; sourceTree = "<group>"; };
@@ -199,7 +201,7 @@
 		2B2039E8208F5CB700C4CF43 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2B8CE3C8209B0DEE0045C028 /* UITextFieldExtension.swift */,
+				2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */,
 				2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */,
 				2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */,
 				2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */,
@@ -214,7 +216,8 @@
 				2B52D238208F13EE00090285 /* UIViewExtension.swift */,
 				2B52D23A208F13F800090285 /* UIStackViewExtension.swift */,
 				2BA7F9232090AB3C0028E0AC /* TemplateChallenges.swift */,
-				2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */,
+				2B8CE3C8209B0DEE0045C028 /* UITextFieldExtension.swift */,
+				2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
 				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,
 				2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */,
+				2B8CE3D0209B18E30045C028 /* UIAlertControllerExtension.swift in Sources */,
 				2B0B7B18208F0F5900532815 /* RateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
