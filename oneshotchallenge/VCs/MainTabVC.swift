@@ -53,6 +53,7 @@ class MainTabVC: UITabBarController {
         navController?.navigationBar.barTintColor = Colors.sharedInstance.darkColor
         navController?.navigationBar.isTranslucent = false
         navController?.navigationBar.tintColor = Colors.sharedInstance.primaryTextColor
+        navController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.sharedInstance.primaryTextColor]
         
         return navController!
     }

@@ -16,6 +16,8 @@
 		2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B1A208F0FB600532815 /* UserController.swift */; };
 		2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0B7B1D208F11B300532815 /* TopListController.swift */; };
 		2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E1B7F209B1C6200163C23 /* ReferenceEnums.swift */; };
+		2B0E1B83209B203500163C23 /* FireBaseUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E1B82209B203500163C23 /* FireBaseUser.swift */; };
+		2B0E1B86209B20FA00163C23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0E1B85209B20FA00163C23 /* User.swift */; };
 		2B2039E4208F2CBC00C4CF43 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E3208F2CBC00C4CF43 /* CameraController.swift */; };
 		2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E6208F45BC00C4CF43 /* EditPhotoController.swift */; };
 		2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */; };
@@ -56,6 +58,8 @@
 		2B0B7B1A208F0FB600532815 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		2B0B7B1D208F11B300532815 /* TopListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListController.swift; sourceTree = "<group>"; };
 		2B0E1B7F209B1C6200163C23 /* ReferenceEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferenceEnums.swift; sourceTree = "<group>"; };
+		2B0E1B82209B203500163C23 /* FireBaseUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseUser.swift; sourceTree = "<group>"; };
+		2B0E1B85209B20FA00163C23 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2B2039E3208F2CBC00C4CF43 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2B2039E6208F45BC00C4CF43 /* EditPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoController.swift; sourceTree = "<group>"; };
 		2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSlider.swift; sourceTree = "<group>"; };
@@ -122,10 +126,12 @@
 				2B0B7B09208F0D2B00532815 /* LaunchScreen.storyboard */,
 				2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */,
 				2B0B7B0C208F0D2B00532815 /* Info.plist */,
+				2B0E1B84209B20EA00163C23 /* Classes */,
 				2B52D235208F12D900090285 /* Utils */,
 				2B2039E8208F5CB700C4CF43 /* Views */,
 				2B0B7B12208F0ED500532815 /* VCs */,
 				2B8CE3CA209B157C0045C028 /* FireBaseAuth */,
+				2B0E1B81209B201F00163C23 /* FireBaseUser */,
 			);
 			path = oneshotchallenge;
 			sourceTree = "<group>";
@@ -140,8 +146,8 @@
 				2B2039E5208F45A400C4CF43 /* EditPhotoController */,
 				2BB5CEE32090756900BE4050 /* PostController */,
 				2B0B7B16208F0F3900532815 /* RateController */,
-				2B0B7B19208F0F9B00532815 /* UserController */,
 				2B0B7B1C208F118F00532815 /* TopListController */,
+				2B0B7B19208F0F9B00532815 /* UserController */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -181,6 +187,22 @@
 				2B0B7B1D208F11B300532815 /* TopListController.swift */,
 			);
 			path = TopListController;
+			sourceTree = "<group>";
+		};
+		2B0E1B81209B201F00163C23 /* FireBaseUser */ = {
+			isa = PBXGroup;
+			children = (
+				2B0E1B82209B203500163C23 /* FireBaseUser.swift */,
+			);
+			path = FireBaseUser;
+			sourceTree = "<group>";
+		};
+		2B0E1B84209B20EA00163C23 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2B0E1B85209B20FA00163C23 /* User.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		2B2039E2208F2CA400C4CF43 /* CameraController */ = {
@@ -404,6 +426,7 @@
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
 				2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */,
+				2B0E1B86209B20FA00163C23 /* User.swift in Sources */,
 				2B8CE3CE209B165F0045C028 /* FireBaseRegister.swift in Sources */,
 				2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */,
 				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
@@ -425,6 +448,7 @@
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
 				2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */,
 				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,
+				2B0E1B83209B203500163C23 /* FireBaseUser.swift in Sources */,
 				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
 				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,
 				2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */,

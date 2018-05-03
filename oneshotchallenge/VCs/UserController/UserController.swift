@@ -9,6 +9,14 @@
 import UIKit
 
 class UserController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CalendarHeaderDelegate {
+    var user: LocalUser? {
+        didSet {
+            navigationController?.navigationBar.topItem?.title = user?.username
+        }
+    }
+    
+    var uid: String?
+    
     var daysInMonth: Int? {
         didSet{
             collectionView?.reloadData()
@@ -32,6 +40,17 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Settings"), style: .plain, target: self, action: #selector(toSettings))
         
         setCalendar()
+        
+        fetchUser()
+    }
+    
+    fileprivate func fetchUser() {
+        let fbUser = FireBaseUser()
+        fbUser.fetchUser(uid: uid) { (user) in
+            DispatchQueue.main.async {
+                self.user = user
+            }
+        }
     }
     
     fileprivate func setCalendar(monthToSet: Int = 0) {
