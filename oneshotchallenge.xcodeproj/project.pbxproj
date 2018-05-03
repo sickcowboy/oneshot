@@ -21,6 +21,7 @@
 		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
 		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
+		2B8CE3C1209B06F40045C028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */; };
 		2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91D209086650028E0AC /* CalendarCell.swift */; };
 		2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */; };
 		2BA7F9222090964D0028E0AC /* CalendarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F9212090964D0028E0AC /* CalendarHeader.swift */; };
@@ -32,9 +33,11 @@
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
+		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_oneshotchallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B0B7AFD208F0D2900532815 /* oneshotchallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oneshotchallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B0B7B00208F0D2900532815 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B0B7B02208F0D2900532815 /* MainTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabVC.swift; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2BA7F91D209086650028E0AC /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		2BA7F9212090964D0028E0AC /* CalendarHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeader.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 		2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedPhotoView.swift; sourceTree = "<group>"; };
 		2BB5CEE42090758F00BE4050 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
+		67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.debug.xcconfig"; sourceTree = "<group>"; };
+		8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.release.xcconfig"; sourceTree = "<group>"; };
 		A40A999420930FEF00176D96 /* RateControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCell.swift; sourceTree = "<group>"; };
 		A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +87,8 @@
 			children = (
 				2B0B7AFF208F0D2900532815 /* oneshotchallenge */,
 				2B0B7AFE208F0D2900532815 /* Products */,
+				C71B1655732AC7F8F1711454 /* Pods */,
+				6E5AEB11235C2DD18D1E9497 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +106,7 @@
 				2B0B7B00208F0D2900532815 /* AppDelegate.swift */,
 				2B0B7B07208F0D2B00532815 /* Assets.xcassets */,
 				2B0B7B09208F0D2B00532815 /* LaunchScreen.storyboard */,
+				2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */,
 				2B0B7B0C208F0D2B00532815 /* Info.plist */,
 				2B52D235208F12D900090285 /* Utils */,
 				2B2039E8208F5CB700C4CF43 /* Views */,
@@ -204,6 +214,23 @@
 			path = PostController;
 			sourceTree = "<group>";
 		};
+		6E5AEB11235C2DD18D1E9497 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C71B1655732AC7F8F1711454 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */,
+				8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,9 +238,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B0B7B0F208F0D2B00532815 /* Build configuration list for PBXNativeTarget "oneshotchallenge" */;
 			buildPhases = (
+				47BB765C7BFF6BFC5F20C4BC /* [CP] Check Pods Manifest.lock */,
 				2B0B7AF9208F0D2900532815 /* Sources */,
 				2B0B7AFA208F0D2900532815 /* Frameworks */,
 				2B0B7AFB208F0D2900532815 /* Resources */,
+				546386FE8DEA48EFFD8133E4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -264,10 +293,58 @@
 			files = (
 				2B0B7B0B208F0D2B00532815 /* LaunchScreen.storyboard in Resources */,
 				2B0B7B08208F0D2B00532815 /* Assets.xcassets in Resources */,
+				2B8CE3C1209B06F40045C028 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		47BB765C7BFF6BFC5F20C4BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-oneshotchallenge-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		546386FE8DEA48EFFD8133E4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2B0B7AF9208F0D2900532815 /* Sources */ = {
@@ -430,16 +507,14 @@
 		};
 		2B0B7B10208F0D2B00532815 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HY8485T775;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -449,16 +524,14 @@
 		};
 		2B0B7B11208F0D2B00532815 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HY8485T775;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
