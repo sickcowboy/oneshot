@@ -16,7 +16,8 @@ class FireBaseUser {
     func fetchUser(uid: String? = nil, completion: @escaping(LocalUser?) -> ()) {
         guard let uid = uid ?? Auth.auth().currentUser?.uid else {
             completion(nil)
-            return }
+            return
+        }
         
         dataBaseRef.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else {
