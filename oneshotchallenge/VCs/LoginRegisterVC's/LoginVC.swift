@@ -103,8 +103,12 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         guard let email = emailTF.text else { return }
         guard let password = passwordTF.text else { return }
         
+        activityIndication(loading: true)
+        
         let fbLogin = FireBaseAuth()
         fbLogin.login(email: email, password: password) { (error) in
+            self.activityIndication(loading: false)
+            
             if let error = error {
                 let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)
                 alertController.oneAction()
@@ -139,6 +143,17 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             break
         }
         return true
+    }
+    
+    fileprivate let loadingScreen = LoadingScreen()
+    
+    fileprivate func activityIndication(loading: Bool) {
+        if loading {
+            view.addSubview(loadingScreen)
+            loadingScreen.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        } else {
+            loadingScreen.removeFromSuperview()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

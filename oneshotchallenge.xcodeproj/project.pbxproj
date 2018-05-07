@@ -40,6 +40,7 @@
 		2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */; };
 		2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */; };
 		2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE42090758F00BE4050 /* PostController.swift */; };
+		2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */; };
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
@@ -83,6 +84,7 @@
 		2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFunctions.swift; sourceTree = "<group>"; };
 		2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedPhotoView.swift; sourceTree = "<group>"; };
 		2BB5CEE42090758F00BE4050 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
 		67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */,
 				2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */,
 				2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */,
+				2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */,
 				2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */,
 				2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */,
+				2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */,
 				A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */,
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
 				2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */,

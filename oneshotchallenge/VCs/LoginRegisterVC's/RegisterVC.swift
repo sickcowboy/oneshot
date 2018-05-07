@@ -148,6 +148,8 @@ class RegisterVC: UIViewController, UITextFieldDelegate, UIImagePickerController
         guard let username = userNameTF.text else { return }
         
         fbRegister.registerWithEmail(email: email, password: password, username: username) { (error) in
+            self.activityIndication(loading: false)
+            
             if let error = error {
                 self.alert(message: error.localizedDescription)
                 
@@ -161,8 +163,12 @@ class RegisterVC: UIViewController, UITextFieldDelegate, UIImagePickerController
     fileprivate func checkUserName() {
         guard let username = userNameTF.text else { return }
         
+        activityIndication(loading: true)
+        
         fbRegister.checkIfUserNameExists(username: username) { (exists) in
             if exists {
+                self.activityIndication(loading: false)
+                
                 self.userNameTF.text = ""
                 
                 self.alert(message: "Username already taken. Please try another one.")
@@ -177,6 +183,17 @@ class RegisterVC: UIViewController, UITextFieldDelegate, UIImagePickerController
         alertController.oneAction()
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    fileprivate let loadingScreen = LoadingScreen()
+    
+    fileprivate func activityIndication(loading: Bool) {
+        if loading {
+            view.addSubview(loadingScreen)
+            loadingScreen.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        } else {
+            loadingScreen.removeFromSuperview()
+        }
     }
     
     @objc private func toLogin() {
