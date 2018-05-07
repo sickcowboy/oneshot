@@ -32,14 +32,7 @@ class PostController: UIViewController {
         }
     }
     
-    let frameView : FramedPhotoView = {
-        let fpv = FramedPhotoView()
-//        fpv.layer.shadowColor = UIColor.lightGray.cgColor
-//        fpv.layer.shadowOpacity = 0.5
-//        fpv.layer.shadowOffset = CGSize(width: -10, height: 10)
-//        fpv.layer.shadowRadius = 1
-        return fpv
-    }()
+    let frameView = FramedPhotoView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +53,42 @@ class PostController: UIViewController {
     }
     
     @objc fileprivate func postClicked() {
-        navigationController?.popToRootViewController(animated: true)
+        guard let image = image else { return }
+        postButton.isEnabled = false
+        
+        activityIndication(loading: true)
+        
+        let fbStorage = FireBaseStorage()
+        fbStorage.uploadPost(image: image, completion: { error in
+            self.activityIndication(loading: false)
+            
+            if let error = error {
+                self.alert(message: error.localizedDescription)
+                self.postButton.isEnabled = true
+                return
+            }
+            
+            //TODO : display to user that upload is succesful
+            
+            self.navigationController?.popToRootViewController(animated: true)
+        })
+    }
+    
+    fileprivate let loadingScreen = LoadingScreen()
+    
+    fileprivate func activityIndication(loading: Bool) {
+        if loading {
+            view.addSubview(loadingScreen)
+            loadingScreen.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        } else {
+            loadingScreen.removeFromSuperview()
+        }
+    }
+    
+    fileprivate func alert(message: String)  {
+        let alertController = UIAlertController(title: "Ops!", message: message, preferredStyle: .actionSheet)
+        alertController.oneAction()
+        
+        self.present(alertController, animated: true, completion: nil)
     }
 }

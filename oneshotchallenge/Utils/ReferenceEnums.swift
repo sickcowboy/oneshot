@@ -12,4 +12,7 @@ enum DatabaseReference: String {
     case users = "users"
     case username = "username"
     case memberSince = "meberSince"
+    case posts = "posts"
+    case imageUrl = "imageUrl"
+    case date = "date"
 }
