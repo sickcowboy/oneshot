@@ -63,7 +63,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate, UIImagePickerController
         button.alpha = 0.4
         button.layer.cornerRadius = 5
         button.isEnabled = false
-        button.addTarget(self, action: #selector(registerAccount), for: .touchUpInside)
+        button.addTarget(self, action: #selector(registerButtonClicked), for: .touchUpInside)
         return button
     }()
     
@@ -118,50 +118,6 @@ class RegisterVC: UIViewController, UITextFieldDelegate, UIImagePickerController
             submitButton.alpha = 1
         }
     }
-
-    @objc private func registerAccount() {
-        guard let email = emailTF.text else { return }
-        guard let password = passwordTF.text else { return }
-        guard let username = userNameTF.text else { return }
-        
-        let fbRegister = FireBaseRegister()
-        fbRegister.registerWithEmail(email: email, password: password, username: username) { (error, done) in
-            if let error = error {
-                let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)
-                alertController.oneAction()
-                
-                self.present(alertController, animated: true, completion: nil)
-                
-                return
-            }
-            
-            if let done = done {
-                if done {
-                    self.presentingViewController?.dismiss(animated: true, completion: nil)
-                } else {
-                    self.changeUserName()
-                }
-            }
-        }
-    }
-    
-    fileprivate func changeUserName() {
-        userNameTF.text = ""
-        userNameTF.placeholder = "username taken"
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            self.emailTF.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            self.passwordTF.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            self.emailTF.alpha = 0
-            self.passwordTF.alpha = 0
-        }) { (_) in
-            
-        }
-    }
-    
-    @objc private func toLogin() {
-        navigationController?.popViewController(animated: true)
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
@@ -178,6 +134,53 @@ class RegisterVC: UIViewController, UITextFieldDelegate, UIImagePickerController
             break
         }
         return true
+    }
+    
+    @objc fileprivate func registerButtonClicked() {
+        checkUserName()
+    }
+
+    fileprivate let fbRegister = FireBaseRegister()
+    
+    fileprivate func registerAccount() {
+        guard let email = emailTF.text else { return }
+        guard let password = passwordTF.text else { return }
+        guard let username = userNameTF.text else { return }
+        
+        fbRegister.registerWithEmail(email: email, password: password, username: username) { (error) in
+            if let error = error {
+                self.alert(message: error.localizedDescription)
+                
+                return
+            }
+            
+            self.presentingViewController?.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    fileprivate func checkUserName() {
+        guard let username = userNameTF.text else { return }
+        
+        fbRegister.checkIfUserNameExists(username: username) { (exists) in
+            if exists {
+                self.userNameTF.text = ""
+                
+                self.alert(message: "Username already taken. Please try another one.")
+            } else {
+                self.registerAccount()
+            }
+        }
+    }
+    
+    fileprivate func alert(message: String)  {
+        let alertController = UIAlertController(title: "Ops!", message: message, preferredStyle: .actionSheet)
+        alertController.oneAction()
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc private func toLogin() {
+        navigationController?.popViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {
