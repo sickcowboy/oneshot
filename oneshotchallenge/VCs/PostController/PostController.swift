@@ -60,17 +60,19 @@ class PostController: UIViewController {
         
         let fbStorage = FireBaseStorage()
         fbStorage.uploadPost(image: image, completion: { error in
-            self.activityIndication(loading: false)
-            
-            if let error = error {
-                self.alert(message: error.localizedDescription)
-                self.postButton.isEnabled = true
-                return
+            DispatchQueue.main.async {
+                self.activityIndication(loading: false)
+                
+                if let error = error {
+                    self.alert(message: error.localizedDescription)
+                    self.postButton.isEnabled = true
+                    return
+                }
+                
+                //TODO : display to user that upload is succesful
+                
+                self.navigationController?.popToRootViewController(animated: true)
             }
-            
-            //TODO : display to user that upload is succesful
-            
-            self.navigationController?.popToRootViewController(animated: true)
         })
     }
     
