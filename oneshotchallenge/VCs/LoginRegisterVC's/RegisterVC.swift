@@ -125,7 +125,7 @@ class RegisterVC: UIViewController, UITextFieldDelegate, UIImagePickerController
         guard let username = userNameTF.text else { return }
         
         let fbRegister = FireBaseRegister()
-        fbRegister.registerWithEmail(email: email, password: password, username: username) { (error) in
+        fbRegister.registerWithEmail(email: email, password: password, username: username) { (error, done) in
             if let error = error {
                 let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)
                 alertController.oneAction()
@@ -135,7 +135,27 @@ class RegisterVC: UIViewController, UITextFieldDelegate, UIImagePickerController
                 return
             }
             
-            self.presentingViewController?.dismiss(animated: true, completion: nil)
+            if let done = done {
+                if done {
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
+                } else {
+                    self.changeUserName()
+                }
+            }
+        }
+    }
+    
+    fileprivate func changeUserName() {
+        userNameTF.text = ""
+        userNameTF.placeholder = "username taken"
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+            self.emailTF.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            self.passwordTF.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            self.emailTF.alpha = 0
+            self.passwordTF.alpha = 0
+        }) { (_) in
+            
         }
     }
     

@@ -9,11 +9,20 @@
 import Foundation
 import FirebaseAuth
 
-class FireBaseLogin {    
+class FireBaseAuth {    
     fileprivate let auth = Auth.auth()
     
     func login(email: String, password: String, completion: @escaping (Error?) -> ()) {
         auth.signIn(withEmail: email, password: password) { (_, error) in
+            completion(error)
+        }
+    }
+    
+    func logOut(completion: @escaping(Error?) -> ()) {
+        do {
+            try auth.signOut()
+            completion(nil)
+        } catch {
             completion(error)
         }
     }

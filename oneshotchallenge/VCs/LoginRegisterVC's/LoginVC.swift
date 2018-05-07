@@ -103,7 +103,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         guard let email = emailTF.text else { return }
         guard let password = passwordTF.text else { return }
         
-        let fbLogin = FireBaseLogin()
+        let fbLogin = FireBaseAuth()
         fbLogin.login(email: email, password: password) { (error) in
             if let error = error {
                 let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)

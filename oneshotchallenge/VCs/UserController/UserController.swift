@@ -44,6 +44,12 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         fetchUser()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     fileprivate func fetchUser() {
         let fbUser = FireBaseUser()
         fbUser.fetchUser(uid: uid) { (user) in
@@ -74,6 +80,7 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     @objc fileprivate func toSettings() {
-        
+        tabBarController?.tabBar.isHidden = true
+        navigationController?.pushViewController(SettingsController(), animated: true)
     }
 }
