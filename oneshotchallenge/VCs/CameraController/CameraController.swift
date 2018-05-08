@@ -58,7 +58,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
                     self.setUpViews()
                 }
             } else {
-                // TODO : Display error message
+                // TODO: Display error message
             }
         }
     }
