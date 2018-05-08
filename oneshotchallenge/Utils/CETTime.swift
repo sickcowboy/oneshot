@@ -40,4 +40,19 @@ class CETTime {
         
         return calendar.startOfDay(for: cetTomorrow)
     }
+    
+    func calendarChallengeDate(date: Date) -> Date? {
+        guard let timeZone = TimeZone(abbreviation: "CET") else { return nil }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = timeZone
+        dateFormatter.timeStyle = .full
+        dateFormatter.dateStyle = .full
+        
+        let dateString = dateFormatter.string(from: date)
+        guard let cetTime = dateFormatter.date(from: dateString) else { return nil }
+        
+        let calendar = Calendar.current
+        return calendar.startOfDay(for: cetTime)
+    }
 }

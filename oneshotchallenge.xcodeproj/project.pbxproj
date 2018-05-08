@@ -33,6 +33,9 @@
 		2B8CE3D0209B18E30045C028 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */; };
 		2B8CE53320A1914200C8EC3D /* CETTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE53220A1914200C8EC3D /* CETTime.swift */; };
 		2B8CE53620A193AD00C8EC3D /* FireBaseChallenges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE53520A193AD00C8EC3D /* FireBaseChallenges.swift */; };
+		2B8CE53920A19BEA00C8EC3D /* FireBasePosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE53820A19BEA00C8EC3D /* FireBasePosts.swift */; };
+		2B8CE53B20A19CC400C8EC3D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE53A20A19CC400C8EC3D /* Post.swift */; };
+		2B8CE53D20A1A19B00C8EC3D /* UrlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE53C20A1A19B00C8EC3D /* UrlImageView.swift */; };
 		2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3A8D020A0569400E37A33 /* SettingsController.swift */; };
 		2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91D209086650028E0AC /* CalendarCell.swift */; };
 		2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */; };
@@ -80,6 +83,9 @@
 		2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		2B8CE53220A1914200C8EC3D /* CETTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CETTime.swift; sourceTree = "<group>"; };
 		2B8CE53520A193AD00C8EC3D /* FireBaseChallenges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseChallenges.swift; sourceTree = "<group>"; };
+		2B8CE53820A19BEA00C8EC3D /* FireBasePosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePosts.swift; sourceTree = "<group>"; };
+		2B8CE53A20A19CC400C8EC3D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		2B8CE53C20A1A19B00C8EC3D /* UrlImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlImageView.swift; sourceTree = "<group>"; };
 		2BA3A8D020A0569400E37A33 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		2BA7F91D209086650028E0AC /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 				2B52D235208F12D900090285 /* Utils */,
 				2B2039E8208F5CB700C4CF43 /* Views */,
 				2B0B7B12208F0ED500532815 /* VCs */,
+				2B8CE53720A19BC600C8EC3D /* FireBasePosts */,
 				2B8CE53420A1938A00C8EC3D /* FireBaseChallenges */,
 				2BDA0AD220A07D15007D1EF1 /* FireBaseStorage */,
 				2B8CE3CA209B157C0045C028 /* FireBaseAuth */,
@@ -214,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				2B0E1B85209B20FA00163C23 /* User.swift */,
+				2B8CE53A20A19CC400C8EC3D /* Post.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -238,6 +246,7 @@
 		2B2039E8208F5CB700C4CF43 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2B8CE53C20A1A19B00C8EC3D /* UrlImageView.swift */,
 				2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */,
 				2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */,
 				2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */,
@@ -286,6 +295,14 @@
 				2B8CE53520A193AD00C8EC3D /* FireBaseChallenges.swift */,
 			);
 			path = FireBaseChallenges;
+			sourceTree = "<group>";
+		};
+		2B8CE53720A19BC600C8EC3D /* FireBasePosts */ = {
+			isa = PBXGroup;
+			children = (
+				2B8CE53820A19BEA00C8EC3D /* FireBasePosts.swift */,
+			);
+			path = FireBasePosts;
 			sourceTree = "<group>";
 		};
 		2BA3A8CF20A0567200E37A33 /* SettingsController */ = {
@@ -475,12 +492,14 @@
 				2B2039E4208F2CBC00C4CF43 /* CameraController.swift in Sources */,
 				2BA7F9222090964D0028E0AC /* CalendarHeader.swift in Sources */,
 				2B8CE3CC209B15B00045C028 /* FireBaseAuth.swift in Sources */,
+				2B8CE53D20A1A19B00C8EC3D /* UrlImageView.swift in Sources */,
 				2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */,
 				A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */,
 				2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */,
 				2BA7F9242090AB3C0028E0AC /* TemplateChallenges.swift in Sources */,
 				2B0B7B01208F0D2900532815 /* AppDelegate.swift in Sources */,
 				2B8CE53320A1914200C8EC3D /* CETTime.swift in Sources */,
+				2B8CE53920A19BEA00C8EC3D /* FireBasePosts.swift in Sources */,
 				2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */,
 				2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */,
 				2BDA0AD420A07D30007D1EF1 /* FireBaseStorage.swift in Sources */,
@@ -490,6 +509,7 @@
 				A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */,
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
 				2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */,
+				2B8CE53B20A19CC400C8EC3D /* Post.swift in Sources */,
 				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,
 				2B0E1B83209B203500163C23 /* FireBaseUser.swift in Sources */,
 				2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */,
