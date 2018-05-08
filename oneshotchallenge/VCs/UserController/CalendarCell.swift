@@ -46,7 +46,7 @@ class CalendarCell: UICollectionViewCell {
         }
     }
     
-    fileprivate var post: Post? {
+    var post: Post? {
         didSet {
             urlImageView.loadImage(urlString: post?.imageUrl)
         }

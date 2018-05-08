@@ -45,6 +45,18 @@ extension UserController {
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CalendarCell
+        guard let post = cell.post else { return }
+        
+        let controller = DetailPostController()
+        controller.post = post
+        
+        navigationController?.pushViewController(controller, animated: true)
+        
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     fileprivate func cellDate(day: Int?) -> Date? {
         guard let year = year else { return nil }
         guard let month = month else { return nil }

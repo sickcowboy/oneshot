@@ -45,6 +45,7 @@
 		2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */; };
 		2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */; };
 		2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE42090758F00BE4050 /* PostController.swift */; };
+		2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */; };
 		2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */; };
 		2BDA0AD420A07D30007D1EF1 /* FireBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD320A07D30007D1EF1 /* FireBaseStorage.swift */; };
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
@@ -95,6 +96,7 @@
 		2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFunctions.swift; sourceTree = "<group>"; };
 		2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedPhotoView.swift; sourceTree = "<group>"; };
 		2BB5CEE42090758F00BE4050 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostController.swift; sourceTree = "<group>"; };
 		2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		2BDA0AD320A07D30007D1EF1 /* FireBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorage.swift; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				2B0B7B16208F0F3900532815 /* RateController */,
 				2B0B7B1C208F118F00532815 /* TopListController */,
 				2B0B7B19208F0F9B00532815 /* UserController */,
+				2BBD4C7320A1BA2F0034DD47 /* DetailedPostVC */,
 				2BA3A8CF20A0567200E37A33 /* SettingsController */,
 			);
 			path = VCs;
@@ -319,6 +322,14 @@
 				2BB5CEE42090758F00BE4050 /* PostController.swift */,
 			);
 			path = PostController;
+			sourceTree = "<group>";
+		};
+		2BBD4C7320A1BA2F0034DD47 /* DetailedPostVC */ = {
+			isa = PBXGroup;
+			children = (
+				2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */,
+			);
+			path = DetailedPostVC;
 			sourceTree = "<group>";
 		};
 		2BDA0AD220A07D15007D1EF1 /* FireBaseStorage */ = {
@@ -510,6 +521,7 @@
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
 				2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */,
 				2B8CE53B20A19CC400C8EC3D /* Post.swift in Sources */,
+				2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */,
 				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,
 				2B0E1B83209B203500163C23 /* FireBaseUser.swift in Sources */,
 				2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */,
