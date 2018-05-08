@@ -101,24 +101,15 @@ class ChallengeController: UIViewController {
     }
     
     
+    fileprivate let cetTime = CETTime()
+    
     fileprivate func timeLeft() {
-        let localTime = Date()
-        guard let timeZone = TimeZone(abbreviation: "CET") else { return }
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = timeZone
-        dateFormatter.timeStyle = .full
-        dateFormatter.dateStyle = .full
-        
-        let dateString = dateFormatter.string(from: localTime)
-        guard let cetTime = dateFormatter.date(from: dateString) else { return }
+        guard let cetTimeNow = cetTime.timeNow() else { return }
+        guard let cetExpireTime = cetTime.challengeTimeTomorrow() else { return }
         
         let calendar = Calendar.current
         
-        guard let cetTomorrow = calendar.date(byAdding: .day, value: 1, to: cetTime) else { return }
-        let cetExpireTime = calendar.startOfDay(for: cetTomorrow)
-        
-        let components = calendar.dateComponents([.hour, .minute, .second], from: cetTime, to: cetExpireTime)
+        let components = calendar.dateComponents([.hour, .minute, .second], from: cetTimeNow, to: cetExpireTime)
         
         let hours = components.hour ?? 0
         let minutes = components.minute ?? 0

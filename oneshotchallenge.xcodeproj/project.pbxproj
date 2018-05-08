@@ -31,6 +31,7 @@
 		2B8CE3CC209B15B00045C028 /* FireBaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3CB209B15B00045C028 /* FireBaseAuth.swift */; };
 		2B8CE3CE209B165F0045C028 /* FireBaseRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3CD209B165F0045C028 /* FireBaseRegister.swift */; };
 		2B8CE3D0209B18E30045C028 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */; };
+		2B8CE53320A1914200C8EC3D /* CETTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE53220A1914200C8EC3D /* CETTime.swift */; };
 		2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3A8D020A0569400E37A33 /* SettingsController.swift */; };
 		2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91D209086650028E0AC /* CalendarCell.swift */; };
 		2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */; };
@@ -76,6 +77,7 @@
 		2B8CE3CB209B15B00045C028 /* FireBaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseAuth.swift; sourceTree = "<group>"; };
 		2B8CE3CD209B165F0045C028 /* FireBaseRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRegister.swift; sourceTree = "<group>"; };
 		2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		2B8CE53220A1914200C8EC3D /* CETTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CETTime.swift; sourceTree = "<group>"; };
 		2BA3A8D020A0569400E37A33 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		2BA7F91D209086650028E0AC /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				2B8CE3C8209B0DEE0045C028 /* UITextFieldExtension.swift */,
 				2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */,
 				2B0E1B7F209B1C6200163C23 /* ReferenceEnums.swift */,
+				2B8CE53220A1914200C8EC3D /* CETTime.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -466,6 +469,7 @@
 				2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */,
 				2BA7F9242090AB3C0028E0AC /* TemplateChallenges.swift in Sources */,
 				2B0B7B01208F0D2900532815 /* AppDelegate.swift in Sources */,
+				2B8CE53320A1914200C8EC3D /* CETTime.swift in Sources */,
 				2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */,
 				2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */,
 				2BDA0AD420A07D30007D1EF1 /* FireBaseStorage.swift in Sources */,
