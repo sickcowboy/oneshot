@@ -65,6 +65,8 @@ class ChallengeController: UIViewController {
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
         setUp()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,14 +100,25 @@ class ChallengeController: UIViewController {
         challengeLabel.transform = CGAffineTransform(translationX: 200, y: 0)
     }
     
+    
     fileprivate func timeLeft() {
-        let timeNow = Date()
+        let localTime = Date()
+        guard let timeZone = TimeZone(abbreviation: "CET") else { return }
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = timeZone
+        dateFormatter.timeStyle = .full
+        dateFormatter.dateStyle = .full
+        
+        let dateString = dateFormatter.string(from: localTime)
+        guard let cetTime = dateFormatter.date(from: dateString) else { return }
+        
         let calendar = Calendar.current
         
-        guard let tomorrow = calendar.date(byAdding: .day, value: 1, to: timeNow) else { return }
-        let expireDate = calendar.startOfDay(for: tomorrow)
+        guard let cetTomorrow = calendar.date(byAdding: .day, value: 1, to: cetTime) else { return }
+        let cetExpireTime = calendar.startOfDay(for: cetTomorrow)
         
-        let components = calendar.dateComponents([.hour, .minute, .second], from: timeNow, to: expireDate)
+        let components = calendar.dateComponents([.hour, .minute, .second], from: cetTime, to: cetExpireTime)
         
         let hours = components.hour ?? 0
         let minutes = components.minute ?? 0
