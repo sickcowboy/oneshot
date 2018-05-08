@@ -53,7 +53,7 @@ class SettingsController: UIViewController {
     
     fileprivate func addAdminTools() {
         view.addSubview(addChallenge)
-        addChallenge.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil, padding: .init(top: 8, left: 8, bottom: 0, right: 0))
+        addChallenge.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: logOffButton.topAnchor, padding: .init(top: 0, left: 8, bottom: 4, right: 8))
     }
     
     @objc fileprivate func presentLogOut() {

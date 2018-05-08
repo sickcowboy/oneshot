@@ -46,7 +46,24 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
-        challengeLabel.text = "BIG RED"
+        fetchChallenge()
+    }
+    
+    fileprivate func fetchChallenge() {
+        let fbChallenges = FireBaseChallenges()
+        fbChallenges.fetchChallenge { (challenge) in
+            if let challenge = challenge {
+                DispatchQueue.main.async {
+                    self.challengeLabel.text = challenge
+                    self.setUpViews()
+                }
+            } else {
+                // TODO : Display error message
+            }
+        }
+    }
+    
+    fileprivate func setUpViews() {
         view.addSubview(challengeLabel)
         challengeLabel.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
                                         padding: .init(top: 16, left: 0, bottom: 0, right: 0))

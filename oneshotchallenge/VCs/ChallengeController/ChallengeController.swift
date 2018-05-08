@@ -40,17 +40,7 @@ class ChallengeController: UIViewController {
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
         
-        let attributedTitle = NSMutableAttributedString(string: "todays challenge",
-                                                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20),
-                                                                     NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
-        attributedTitle.append(NSAttributedString(string: "\nTAKE A PICTURE OF:",
-                                                  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 32),
-                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
-        attributedTitle.append(NSAttributedString(string: "\n\(randomChallenge())",
-                                                  attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 44),
-                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
         
-        label.attributedText = attributedTitle
         
         return label
     }()
@@ -132,7 +122,7 @@ class ChallengeController: UIViewController {
             if completed {
                 self.setUpChallengeDone()
             } else {
-                self.setUpChallenge()
+                self.fetchChallenge()
             }
             
             self.timeLeft()
@@ -154,6 +144,33 @@ class ChallengeController: UIViewController {
         let seconds = components.second ?? 0
         
         countDownTimer.startCountDown(hours: hours, minutes: minutes, seconds: seconds)
+    }
+    
+    fileprivate func fetchChallenge() {
+        fbChallenges.fetchChallenge { (challenge) in
+            DispatchQueue.main.async {
+                if let challenge = challenge {
+                    self.setChallengeLabelText(text: challenge)
+                    self.setUpChallenge()
+                } else {
+                    // TODO : Display error message
+                }
+            }
+        }
+    }
+    
+    fileprivate func setChallengeLabelText(text: String) {
+        let attributedTitle = NSMutableAttributedString(string: "todays challenge",
+                                                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20),
+                                                                     NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
+        attributedTitle.append(NSAttributedString(string: "\nTAKE A PICTURE OF:",
+                                                  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 32),
+                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        attributedTitle.append(NSAttributedString(string: "\n\(text)",
+            attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 44),
+                         NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        
+        challengeLabel.attributedText = attributedTitle
     }
     
     @objc fileprivate func challengePress() {
