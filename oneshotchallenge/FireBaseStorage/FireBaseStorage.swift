@@ -43,8 +43,11 @@ class FireBaseStorage {
     }
     
     fileprivate func uploadImageUrl(uid: String, url: String) {
+        let cetTime = CETTime()
+        guard let challengeTime = cetTime.challengeTimeToday() else { return }
         let value: [String: Any] = [DatabaseReference.imageUrl.rawValue: url,
-                                    DatabaseReference.date.rawValue: Date().timeIntervalSince1970]
+                                    DatabaseReference.date.rawValue: Date().timeIntervalSince1970,
+                                    DatabaseReference.challengeDate.rawValue: challengeTime.timeIntervalSince1970]
         
         databaseRef.child(uid).childByAutoId().setValue(value)
     }

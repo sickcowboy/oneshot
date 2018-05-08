@@ -55,6 +55,25 @@ class ChallengeController: UIViewController {
         return label
     }()
     
+    let lockedLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Colors.sharedInstance.primaryTextColor
+        label.numberOfLines = 3
+        label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
+        
+        let attributedTitle = NSMutableAttributedString(string: "Challenge done,",
+                                                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 32),
+                                                                     NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
+        attributedTitle.append(NSAttributedString(string: "\nnext challenge unlocks in:",
+                                                  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 44),
+                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        
+        label.attributedText = attributedTitle
+        
+        return label
+    }()
+    
     let countDownTimer = CountDownTimer()
     
     override func viewDidLoad() {
@@ -63,10 +82,6 @@ class ChallengeController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         view.backgroundColor = Colors.sharedInstance.primaryColor
-        
-        setUp()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +93,7 @@ class ChallengeController: UIViewController {
         countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                         size: .init(width: 0, height: 80))
         
-        timeLeft()
+        checkChallengeStatus()
     }
     
     fileprivate func randomChallenge() -> String {
@@ -86,7 +101,7 @@ class ChallengeController: UIViewController {
         return TemplateChallenges.sharedInstance.challenges[Int(rndNr)]
     }
     
-    fileprivate func setUp() {
+    fileprivate func setUpChallenge() {
         view.addSubview(takeChallengeButton)
         takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor,
                                              size: .init(width: 0, height: 0))
@@ -100,6 +115,29 @@ class ChallengeController: UIViewController {
         challengeLabel.transform = CGAffineTransform(translationX: 200, y: 0)
     }
     
+    fileprivate func setUpChallengeDone() {
+        view.addSubview(lockedLabel)
+        lockedLabel.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerY: view.safeAreaLayoutGuide.centerYAnchor,
+                                        padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 0))
+    }
+    
+    fileprivate let fbChallenges = FireBaseChallenges()
+    
+    fileprivate func checkChallengeStatus() {
+        takeChallengeButton.removeFromSuperview()
+        challengeLabel.removeFromSuperview()
+        lockedLabel.removeFromSuperview()
+        
+        fbChallenges.checkIfChallengeIsDone { (completed) in
+            if completed {
+                self.setUpChallengeDone()
+            } else {
+                self.setUpChallenge()
+            }
+            
+            self.timeLeft()
+        }
+    }
     
     fileprivate let cetTime = CETTime()
     
