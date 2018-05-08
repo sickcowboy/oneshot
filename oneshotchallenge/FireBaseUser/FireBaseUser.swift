@@ -29,4 +29,12 @@ class FireBaseUser {
             completion(user)
         }
     }
+    
+    func checkIfAdmin(completion: @escaping (Bool) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        dataBaseRef.child(uid).child(DatabaseReference.admin.rawValue).observeSingleEvent(of: .value) { (snapshot) in
+            completion(snapshot.exists())
+        }
+    }
 }

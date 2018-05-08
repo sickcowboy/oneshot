@@ -16,4 +16,5 @@ enum DatabaseReference: String {
     case imageUrl = "imageUrl"
     case date = "date"
     case challengeDate = "challengeDate"
+    case admin = "admin"
 }

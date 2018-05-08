@@ -18,6 +18,15 @@ class SettingsController: UIViewController {
         return button
     }()
     
+    private let addChallenge: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Admin:  ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Add challenge", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(toAddChallenge), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +34,26 @@ class SettingsController: UIViewController {
         
         view.addSubview(logOffButton)
         logOffButton.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, padding: .init(top: 0, left: 8, bottom: 4, right: 8))
+        
+        checkIfUserIsAdmin()
+    }
+    
+    fileprivate func checkIfUserIsAdmin() {
+        let fbUser = FireBaseUser()
+        fbUser.checkIfAdmin { (admin) in
+            DispatchQueue.main.async {
+                if admin {
+                    self.addAdminTools()
+                } else {
+                   self.addChallenge.removeFromSuperview()
+                }
+            }
+        }
+    }
+    
+    fileprivate func addAdminTools() {
+        view.addSubview(addChallenge)
+        addChallenge.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil, padding: .init(top: 8, left: 8, bottom: 0, right: 0))
     }
     
     @objc fileprivate func presentLogOut() {
@@ -47,5 +76,10 @@ class SettingsController: UIViewController {
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc fileprivate func toAddChallenge() {
+        let controller = AddChallengeController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

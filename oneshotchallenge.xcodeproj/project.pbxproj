@@ -46,6 +46,7 @@
 		2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */; };
 		2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE42090758F00BE4050 /* PostController.swift */; };
 		2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */; };
+		2BBD4C7720A1C2630034DD47 /* AddChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */; };
 		2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */; };
 		2BDA0AD420A07D30007D1EF1 /* FireBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD320A07D30007D1EF1 /* FireBaseStorage.swift */; };
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
@@ -97,6 +98,7 @@
 		2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FramedPhotoView.swift; sourceTree = "<group>"; };
 		2BB5CEE42090758F00BE4050 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostController.swift; sourceTree = "<group>"; };
+		2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChallengeController.swift; sourceTree = "<group>"; };
 		2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		2BDA0AD320A07D30007D1EF1 /* FireBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorage.swift; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				2B0B7B19208F0F9B00532815 /* UserController */,
 				2BBD4C7320A1BA2F0034DD47 /* DetailedPostVC */,
 				2BA3A8CF20A0567200E37A33 /* SettingsController */,
+				2BBD4C7820A1C26A0034DD47 /* AddChallengeVC */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -330,6 +333,14 @@
 				2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */,
 			);
 			path = DetailedPostVC;
+			sourceTree = "<group>";
+		};
+		2BBD4C7820A1C26A0034DD47 /* AddChallengeVC */ = {
+			isa = PBXGroup;
+			children = (
+				2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */,
+			);
+			path = AddChallengeVC;
 			sourceTree = "<group>";
 		};
 		2BDA0AD220A07D15007D1EF1 /* FireBaseStorage */ = {
@@ -508,6 +519,7 @@
 				A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */,
 				2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */,
 				2BA7F9242090AB3C0028E0AC /* TemplateChallenges.swift in Sources */,
+				2BBD4C7720A1C2630034DD47 /* AddChallengeController.swift in Sources */,
 				2B0B7B01208F0D2900532815 /* AppDelegate.swift in Sources */,
 				2B8CE53320A1914200C8EC3D /* CETTime.swift in Sources */,
 				2B8CE53920A19BEA00C8EC3D /* FireBasePosts.swift in Sources */,
