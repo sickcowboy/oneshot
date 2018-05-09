@@ -11,14 +11,24 @@ import UIKit
 extension RateController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if posts == nil {
+            return 0
+        }
+        
         return 2
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! RateControllerCell
+
+        let noPostsLeft = posts?.isEmpty ?? true
         
-        cell.imageView.backgroundColor = .lightGray
-        cell.imageView.image = generateRandomImage()
+        if !noPostsLeft {
+            cell.imageUrl = posts?.first?.imageUrl
+            posts?.removeFirst()
+        } else {
+            cell.imageUrl = ""
+        }
         
         return cell
     }
@@ -40,8 +50,6 @@ extension RateController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        for cell in collectionView.visibleCells {
-            (cell as! RateControllerCell).image = generateRandomImage()
-        }
+        collectionView.reloadData()
     }
 }

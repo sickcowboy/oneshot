@@ -190,8 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				2B0B7B17208F0F5900532815 /* RateController.swift */,
-				A40A999420930FEF00176D96 /* RateControllerCell.swift */,
 				A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */,
+				A40A999420930FEF00176D96 /* RateControllerCell.swift */,
 			);
 			path = RateController;
 			sourceTree = "<group>";

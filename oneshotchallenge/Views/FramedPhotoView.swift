@@ -19,8 +19,7 @@ class FramedPhotoView: UIView {
     let photoImageView: UrlImageView = {
         let iv = UrlImageView()
         iv.clipsToBounds = true
-        // TODO: ändra tillbaka till scaleAspectFit
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleAspectFit
         iv.isUserInteractionEnabled = true
         return iv
     }()

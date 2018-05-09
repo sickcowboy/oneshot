@@ -10,12 +10,17 @@ import UIKit
 
 class RateControllerCell: UICollectionViewCell {
     
+    var imageUrl: String? {
+        didSet{
+            self.animateDown()
+            fetchImage()
+        }
+    }
+    
     var image: UIImage? {
         didSet{
-            animateDown {
-                self.imageView.image = self.image
-                self.animateBack()
-            }
+            self.imageView.image = self.image
+            self.animateBack()
         }
     }
     
@@ -31,13 +36,11 @@ class RateControllerCell: UICollectionViewCell {
         imageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, centerX: safeAreaLayoutGuide.centerXAnchor, centerY: safeAreaLayoutGuide.centerYAnchor)
     }
     
-    fileprivate func animateDown(completion: @escaping () -> ()) {
+    func animateDown() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
             self.imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             self.imageView.alpha = 0
-        }, completion: { _ in
-                completion()
-        })
+        }, completion: nil)
     }
     
     fileprivate func animateBack() {
@@ -45,6 +48,24 @@ class RateControllerCell: UICollectionViewCell {
             self.imageView.alpha = 1
             self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
+    }
+    
+    fileprivate func fetchImage() {
+        guard let urlString = imageUrl else { return }
+        guard let url = URL(string: urlString) else { return }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                return
+            }
+            
+            guard let imageData = data else { return }
+            let image = UIImage(data: imageData)
+            
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }.resume()
     }
     
     required init?(coder aDecoder: NSCoder) {
