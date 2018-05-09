@@ -47,6 +47,7 @@
 		2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB5CEE42090758F00BE4050 /* PostController.swift */; };
 		2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */; };
 		2BBD4C7720A1C2630034DD47 /* AddChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */; };
+		2BC2C74820A2F75A007DF0A9 /* FireBaseRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */; };
 		2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */; };
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
@@ -98,6 +99,7 @@
 		2BB5CEE42090758F00BE4050 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostController.swift; sourceTree = "<group>"; };
 		2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChallengeController.swift; sourceTree = "<group>"; };
+		2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRating.swift; sourceTree = "<group>"; };
 		2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
 		67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				2B2039E8208F5CB700C4CF43 /* Views */,
 				2B0B7B12208F0ED500532815 /* VCs */,
 				2B8CE53720A19BC600C8EC3D /* FireBasePosts */,
+				2BC2C74620A2F73F007DF0A9 /* FireBaseRating */,
 				2B8CE53420A1938A00C8EC3D /* FireBaseChallenges */,
 				2B8CE3CA209B157C0045C028 /* FireBaseAuth */,
 				2B0E1B81209B201F00163C23 /* FireBaseUser */,
@@ -340,6 +343,14 @@
 			path = AddChallengeVC;
 			sourceTree = "<group>";
 		};
+		2BC2C74620A2F73F007DF0A9 /* FireBaseRating */ = {
+			isa = PBXGroup;
+			children = (
+				2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */,
+			);
+			path = FireBaseRating;
+			sourceTree = "<group>";
+		};
 		6E5AEB11235C2DD18D1E9497 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +537,7 @@
 				2B0E1B83209B203500163C23 /* FireBaseUser.swift in Sources */,
 				2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */,
 				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
+				2BC2C74820A2F75A007DF0A9 /* FireBaseRating.swift in Sources */,
 				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,
 				2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */,
 				2B8CE3D0209B18E30045C028 /* UIAlertControllerExtension.swift in Sources */,
