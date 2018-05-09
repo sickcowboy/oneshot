@@ -35,6 +35,7 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        initialFetch = true
         fetchPosts()
     }
     
@@ -56,6 +57,5 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         posts = nil
-        collectionView?.reloadData()
     }
 }
