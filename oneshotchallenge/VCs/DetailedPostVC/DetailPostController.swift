@@ -13,8 +13,18 @@ class DetailPostController: UIViewController {
         didSet{
             frameView.photoImageView.loadImage(urlString: post?.imageUrl)
             setDateLabelText()
+            
+            fetchChallengeTitle()
         }
     }
+    
+    let challengeLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Colors.sharedInstance.darkColor
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.textAlignment = .center
+        return label
+    }()
     
     fileprivate let frameView = FramedPhotoView()
     
@@ -34,6 +44,9 @@ class DetailPostController: UIViewController {
         frameView.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor,
                                    size: .init(width: view.frame.width - 50, height: view.frame.width - 50))
         
+        view.addSubview(challengeLabel)
+        challengeLabel.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: frameView.topAnchor, padding: .init(top: 0, left: 8, bottom: 4, right: 8))
+        
         view.addSubview(dateLabel)
         dateLabel.constraintLayout(top: frameView.bottomAnchor, leading: frameView.leadingAnchor, trailing: frameView.trailingAnchor, bottom: nil, padding: .init(top: 4, left: 4, bottom: 0, right: 4))
     }
@@ -47,5 +60,16 @@ class DetailPostController: UIViewController {
         let date = Date(timeIntervalSince1970: timeInterval)
         
         dateLabel.text = dateFormatter.string(from: date)
+    }
+    
+    fileprivate func fetchChallengeTitle() {
+        guard let challengeDate = post?.challengeDate else { return }
+        
+        let fbChallenges = FireBaseChallenges()
+        fbChallenges.fetchChallenge(challengeDate: challengeDate) { (challenge) in
+            DispatchQueue.main.async {
+                self.challengeLabel.text = challenge
+            }
+        }
     }
 }

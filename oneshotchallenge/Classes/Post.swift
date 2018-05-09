@@ -11,11 +11,13 @@ import Foundation
 struct Post {
     var date: TimeInterval
     var startDate: TimeInterval
+    var challengeDate: TimeInterval
     var imageUrl: String
     
     init(dictionary: [String: Any]) {
         self.date = dictionary[DatabaseReference.date.rawValue] as? TimeInterval ?? Date().timeIntervalSince1970
         self.imageUrl = dictionary[DatabaseReference.imageUrl.rawValue] as? String ?? ""
         self.startDate = dictionary[DatabaseReference.startDate.rawValue] as? TimeInterval ?? Date().timeIntervalSince1970
+        self.challengeDate = dictionary[DatabaseReference.challengeDate.rawValue] as? TimeInterval ?? Date().timeIntervalSince1970
     }
 }

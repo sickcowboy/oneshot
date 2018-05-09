@@ -32,10 +32,10 @@ class FireBaseChallenges {
         challengeRef.childByAutoId().setValue(value)
     }
     
-    func fetchChallenge(completion: @escaping (String?) -> ()) {
-        guard let challengeTime = cetTime.challengeTimeToday() else { return }
+    func fetchChallenge(challengeDate: TimeInterval? = nil, completion: @escaping (String?) -> ()) {
+        guard let challengeTime = challengeDate ?? cetTime.challengeTimeToday()?.timeIntervalSince1970 else { return }
         
-        challengeRef.queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeTime.timeIntervalSince1970).observeSingleEvent(of: .value) { (snapshot) in
+        challengeRef.queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeTime).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
                 completion(nil)
                 return
