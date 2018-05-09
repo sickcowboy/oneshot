@@ -37,6 +37,21 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         return button
     }()
     
+    var post: Post? {
+        didSet{
+            guard let post = post else { return }
+            let calendar = Calendar.current
+            
+            let startDate = Date(timeIntervalSince1970: post.startDate)
+            guard let endDate = calendar.date(byAdding: .hour, value: 1, to: startDate) else { return }
+            let nowDate = Date()
+            
+            let components = calendar.dateComponents([.hour, .minute, .second], from: nowDate, to: endDate)
+            
+            startCountDown(hour: components.hour, minute: components.minute, second: components.second)
+        }
+    }
+    
     let flashToggleButton = FlashToggleButton(type: .system)
     
     let countDownTimer = CountDownTimer()
@@ -85,15 +100,21 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                         size: .init(width: 0, height: 80))
         
-        startCountDown()
+        if post == nil {
+           startCountDown()
+        }
         
         DispatchQueue.global(qos: .utility).async {
             self.setupCaptureSession()
         }
     }
     
-    fileprivate func startCountDown() {
-        countDownTimer.startCountDown(hours: 1, minutes: 0, seconds: 0)
+    fileprivate func startCountDown(hour: Int? = nil, minute: Int? = nil, second: Int? = nil) {
+        let hour = hour ?? 1
+        let minute = minute ?? 0
+        let second = second ?? 0
+        
+        countDownTimer.startCountDown(hours: hour, minutes: minute, seconds: second)
     }
     
     func goToEditPhotoController(image: UIImage) {

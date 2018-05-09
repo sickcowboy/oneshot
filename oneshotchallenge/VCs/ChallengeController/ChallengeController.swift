@@ -39,9 +39,6 @@ class ChallengeController: UIViewController {
         label.numberOfLines = 3
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
-        
-        
-        
         return label
     }()
     
@@ -65,6 +62,9 @@ class ChallengeController: UIViewController {
     }()
     
     let countDownTimer = CountDownTimer()
+    
+    fileprivate let fbChallenges = FireBaseChallenges()
+    fileprivate let fbPosts = FireBasePosts()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,16 +111,18 @@ class ChallengeController: UIViewController {
                                         padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 0))
     }
     
-    fileprivate let fbChallenges = FireBaseChallenges()
-    
     fileprivate func checkChallengeStatus() {
         takeChallengeButton.removeFromSuperview()
         challengeLabel.removeFromSuperview()
         lockedLabel.removeFromSuperview()
         
-        fbChallenges.checkIfChallengeIsDone { (completed) in
-            if completed {
-                self.setUpChallengeDone()
+        fbPosts.fetchPost { (post) in
+            if let post = post {
+                if post.imageUrl.isEmpty {
+                    self.segueToCamera(post: post)
+                } else {
+                    self.setUpChallengeDone()
+                }
             } else {
                 self.fetchChallenge()
             }
@@ -188,18 +190,29 @@ class ChallengeController: UIViewController {
                     self.challengeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
                     self.challengeLabel.alpha = 1
                 }, completion: {_ in
+                    let fbPosts = FireBasePosts()
+                    fbPosts.startPost()
+                    
                     self.segueToCamera()
                 })
             })
         }
     }
     
-    fileprivate func segueToCamera() {
-        countDownTimer.stopCountDown()
-        countDownTimer.startCountDown(hours: 0, minutes: 0, seconds: 3)
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+    fileprivate func segueToCamera(post: Post? = nil) {
+        if post == nil {
+            countDownTimer.stopCountDown()
+            countDownTimer.startCountDown(hours: 0, minutes: 0, seconds: 3)
+            Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
+                self.tabBarController?.tabBar.isHidden = true
+                self.navigationController?.pushViewController(CameraController(), animated: true)
+            }
+        } else {
+            let controller = CameraController()
+            controller.post = post
+            
             self.tabBarController?.tabBar.isHidden = true
-            self.navigationController?.pushViewController(CameraController(), animated: true)
+            self.navigationController?.pushViewController(controller, animated: false)
         }
     }
     

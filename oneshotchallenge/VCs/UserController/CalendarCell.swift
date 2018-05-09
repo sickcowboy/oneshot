@@ -27,18 +27,9 @@ class CalendarCell: UICollectionViewCell {
                 dateLabel.textColor = Colors.sharedInstance.primaryTextColor
             }
             
-            let cetTime = CETTime()
-            
-            challengeDate = cetTime.calendarChallengeDate(date: date)
-        }
-    }
-    
-    fileprivate var challengeDate: Date? {
-        didSet{
-            guard let challengeDate = challengeDate else { return }
             let fbPosts = FireBasePosts()
             
-            fbPosts.fetchCalendarPost(date: challengeDate, completion: { (post) in
+            fbPosts.fetchPost(date: date, completion: { (post) in
                 DispatchQueue.main.async {
                     self.post = post
                 }

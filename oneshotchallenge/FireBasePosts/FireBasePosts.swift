@@ -15,10 +15,14 @@ class FireBasePosts {
     fileprivate let databaseRef = Database.database().reference(withPath: DatabaseReference.posts.rawValue)
     fileprivate let storageRef = Storage.storage().reference(withPath: DatabaseReference.posts.rawValue)
     
-    func fetchCalendarPost(date: Date, completion: @escaping (Post?) -> ()) {
+    func fetchPost(date: Date? = nil, completion: @escaping (Post?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        databaseRef.child(uid).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: date.timeIntervalSince1970).observeSingleEvent(of: .value) { (snapshot) in
+        let cetTime = CETTime()
+        let date = date ?? Date()
+        guard let challengeDate = cetTime.calendarChallengeDate(date: date) else { return }
+        
+        databaseRef.child(uid).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate.timeIntervalSince1970).observeSingleEvent(of: .value) { (snapshot) in
             if snapshot.exists() {
                 guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
                     completion(nil)
@@ -107,6 +111,6 @@ class FireBasePosts {
         let value: [String: Any] = [DatabaseReference.imageUrl.rawValue: url,
                                     DatabaseReference.date.rawValue: Date().timeIntervalSince1970]
         
-        databaseRef.child(uid).child(challengeKey).setValue(value)
+        databaseRef.child(uid).child(challengeKey).updateChildValues(value)
     }
 }
