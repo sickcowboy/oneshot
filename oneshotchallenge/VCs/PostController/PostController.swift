@@ -58,8 +58,8 @@ class PostController: UIViewController {
         
         activityIndication(loading: true)
         
-        let fbStorage = FireBaseStorage()
-        fbStorage.uploadPost(image: image, completion: { error in
+        let fbPosts = FireBasePosts()
+        fbPosts.uploadPost(image: image, completion: { error in
             DispatchQueue.main.async {
                 self.activityIndication(loading: false)
                 

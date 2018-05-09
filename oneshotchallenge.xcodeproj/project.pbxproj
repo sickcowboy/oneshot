@@ -48,7 +48,6 @@
 		2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */; };
 		2BBD4C7720A1C2630034DD47 /* AddChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */; };
 		2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */; };
-		2BDA0AD420A07D30007D1EF1 /* FireBaseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD320A07D30007D1EF1 /* FireBaseStorage.swift */; };
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
@@ -100,7 +99,6 @@
 		2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostController.swift; sourceTree = "<group>"; };
 		2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChallengeController.swift; sourceTree = "<group>"; };
 		2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
-		2BDA0AD320A07D30007D1EF1 /* FireBaseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseStorage.swift; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
 		67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 				2B0B7B12208F0ED500532815 /* VCs */,
 				2B8CE53720A19BC600C8EC3D /* FireBasePosts */,
 				2B8CE53420A1938A00C8EC3D /* FireBaseChallenges */,
-				2BDA0AD220A07D15007D1EF1 /* FireBaseStorage */,
 				2B8CE3CA209B157C0045C028 /* FireBaseAuth */,
 				2B0E1B81209B201F00163C23 /* FireBaseUser */,
 			);
@@ -343,14 +340,6 @@
 			path = AddChallengeVC;
 			sourceTree = "<group>";
 		};
-		2BDA0AD220A07D15007D1EF1 /* FireBaseStorage */ = {
-			isa = PBXGroup;
-			children = (
-				2BDA0AD320A07D30007D1EF1 /* FireBaseStorage.swift */,
-			);
-			path = FireBaseStorage;
-			sourceTree = "<group>";
-		};
 		6E5AEB11235C2DD18D1E9497 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,7 +514,6 @@
 				2B8CE53920A19BEA00C8EC3D /* FireBasePosts.swift in Sources */,
 				2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */,
 				2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */,
-				2BDA0AD420A07D30007D1EF1 /* FireBaseStorage.swift in Sources */,
 				2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */,
 				2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */,
 				2B8CE53620A193AD00C8EC3D /* FireBaseChallenges.swift in Sources */,
