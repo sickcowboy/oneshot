@@ -28,10 +28,11 @@ class MainTabVC: UITabBarController {
     }
 
     fileprivate func setUpControllers() {
-        let challengeController = createController(image: nil, title: "Challenge", uiController: ChallengeController())
-        let rateController = createController(image: nil, title: "Rate", collectionController: RateController(collectionViewLayout: UICollectionViewFlowLayout()))
-        let topListController = createController(image: nil, title: "Toplist", collectionController: TopListController(collectionViewLayout: UICollectionViewFlowLayout()))
-        let userController = createController(image: nil, title: "User", collectionController: UserController(collectionViewLayout: UICollectionViewFlowLayout()))
+        // TODO : Replace placeholder icons
+        let challengeController = createController(image: #imageLiteral(resourceName: "Challenge"), title: "Challenge", uiController: ChallengeController())
+        let rateController = createController(image: #imageLiteral(resourceName: "Rate"), title: "Rate", collectionController: RateController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let topListController = createController(image: #imageLiteral(resourceName: "Toplist"), title: "Toplist", collectionController: TopListController(collectionViewLayout: UICollectionViewFlowLayout()))
+        let userController = createController(image: #imageLiteral(resourceName: "User"), title: "User", collectionController: UserController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         self.viewControllers = [challengeController, rateController, topListController, userController]
     }
