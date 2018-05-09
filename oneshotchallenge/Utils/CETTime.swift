@@ -41,6 +41,16 @@ class CETTime {
         return calendar.startOfDay(for: cetTomorrow)
     }
     
+    func challengeTimeYesterday() -> Date? {
+        let calendar = Calendar.current
+        
+        guard let cetTime = timeNow() else { return nil }
+        
+        guard let cetTomorrow = calendar.date(byAdding: .day, value: -1, to: cetTime) else { return nil }
+        
+        return calendar.startOfDay(for: cetTomorrow)
+    }
+    
     func calendarChallengeDate(date: Date) -> Date? {
         guard let timeZone = TimeZone(abbreviation: "CET") else { return nil }
         

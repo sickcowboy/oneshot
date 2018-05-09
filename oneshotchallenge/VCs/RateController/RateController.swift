@@ -20,6 +20,10 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(RateControllerCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.contentInsetAdjustmentBehavior = .never
+        
+        let cetTime = CETTime()
+        
+        debugPrint(cetTime.challengeTimeYesterday() as Any)
     }
     
     func generateRandomImage () -> UIImage {
