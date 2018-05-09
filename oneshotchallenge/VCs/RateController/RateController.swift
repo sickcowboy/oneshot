@@ -21,6 +21,8 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
+    var initialFetch = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = true
@@ -29,17 +31,31 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView?.register(RateControllerCell.self, forCellWithReuseIdentifier: cellId)
         
         collectionView?.contentInsetAdjustmentBehavior = .never
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchPosts()
+    }
+    
+    fileprivate func fetchPosts() {
         let fbRatings = FireBaseRating()
         fbRatings.fetchPosts { (posts) in
             DispatchQueue.main.async {
                 if let posts = posts {
                     self.posts = posts
                     self.collectionView?.reloadData()
+                    self.initialFetch = false
                 } else {
                     // TODO : Something went wrong
                 }
             }
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        posts = nil
+        collectionView?.reloadData()
     }
 }

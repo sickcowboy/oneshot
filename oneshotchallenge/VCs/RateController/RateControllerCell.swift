@@ -29,11 +29,18 @@ class RateControllerCell: UICollectionViewCell {
         return iv
     }()
     
+    var initialFetch = true
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(imageView)
         imageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, centerX: safeAreaLayoutGuide.centerXAnchor, centerY: safeAreaLayoutGuide.centerYAnchor)
+        
+        if initialFetch {
+            imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+            imageView.alpha = 0
+        }
     }
     
     func animateDown() {

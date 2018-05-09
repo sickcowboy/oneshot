@@ -30,6 +30,8 @@ extension RateController {
             cell.imageUrl = ""
         }
         
+        cell.initialFetch = initialFetch
+        
         return cell
     }
     
