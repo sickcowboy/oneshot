@@ -18,8 +18,10 @@ class FireBaseRating {
     fileprivate let ratingRef = Database.database().reference(withPath: DatabaseReference.ratings.rawValue)
     
     func fetchPosts(completion: @escaping ([Post]?) -> ()) {
+        debugPrint("fetching posts")
         let cetTime = CETTime()
-        guard let challengeDate = cetTime.challengeTimeToday()?.timeIntervalSince1970 else {
+        // TODO : change 'challenge time double yesterday' to 'challenge time yesterday'
+        guard let challengeDate = cetTime.challengeTimeDoubleYesterday()?.timeIntervalSince1970 else {
             completion(nil)
             return
         }
@@ -71,7 +73,8 @@ class FireBaseRating {
         let cetTime = CETTime()
         
         if let partisipants = partisipants {
-            guard let challengeDate = cetTime.challengeTimeToday()?.timeIntervalSince1970 else {
+            // TODO : change 'challenge time double yesterday' to 'challenge time yesterday'
+            guard let challengeDate = cetTime.challengeTimeDoubleYesterday()?.timeIntervalSince1970 else {
                 completion(nil)
                 return
             }
