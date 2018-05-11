@@ -79,12 +79,7 @@ class ChallengeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         checkChallengeStatus()
     }
-    
-    fileprivate func randomChallenge() -> String {
-        let rndNr = arc4random_uniform(UInt32(TemplateChallenges.sharedInstance.challenges.count))
-        return TemplateChallenges.sharedInstance.challenges[Int(rndNr)]
-    }
-    
+       
     fileprivate func setUpChallenge() {
         self.tabBarController?.tabBar.isHidden = false
         
