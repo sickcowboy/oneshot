@@ -72,17 +72,11 @@ class ChallengeController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         view.backgroundColor = Colors.sharedInstance.primaryColor
+        
+        tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tabBarController?.tabBar.isHidden = false
-        
-        countDownTimer.removeFromSuperview()
-        
-        view.addSubview(countDownTimer)
-        countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                                        size: .init(width: 0, height: 80))
-        
         checkChallengeStatus()
     }
     
@@ -92,6 +86,13 @@ class ChallengeController: UIViewController {
     }
     
     fileprivate func setUpChallenge() {
+        self.tabBarController?.tabBar.isHidden = false
+        
+        guard let bottomAnchor = tabBarController?.tabBar.topAnchor else { return }
+        view.addSubview(countDownTimer)
+        countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: bottomAnchor,
+                                        size: .init(width: 0, height: 80))
+        
         view.addSubview(takeChallengeButton)
         takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor,
                                              size: .init(width: 0, height: 0))
@@ -106,12 +107,20 @@ class ChallengeController: UIViewController {
     }
     
     fileprivate func setUpChallengeDone() {
+        self.tabBarController?.tabBar.isHidden = false
+        
+        guard let bottomAnchor = tabBarController?.tabBar.topAnchor else { return }
+        view.addSubview(countDownTimer)
+        countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: bottomAnchor,
+                                        size: .init(width: 0, height: 80))
+        
         view.addSubview(lockedLabel)
         lockedLabel.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerY: view.safeAreaLayoutGuide.centerYAnchor,
                                         padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 0))
     }
     
     fileprivate func checkChallengeStatus() {
+        countDownTimer.removeFromSuperview()
         takeChallengeButton.removeFromSuperview()
         challengeLabel.removeFromSuperview()
         lockedLabel.removeFromSuperview()
