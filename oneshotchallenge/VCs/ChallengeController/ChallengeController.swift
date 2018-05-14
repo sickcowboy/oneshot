@@ -176,11 +176,9 @@ class ChallengeController: UIViewController {
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 if let challenge = challenge {
-                    debugPrint("Challenge found")
                     self.setChallengeLabelText(text: challenge)
                     self.setUpChallenge()
                 } else {
-                    debugPrint("Challenge not found")
                     self.setUpChallengeDone()
                 }
             }
