@@ -28,6 +28,7 @@ class TopListControllerCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = Colors.sharedInstance.primaryTextColor
+        label.text = Names.sharedInstance.rndName()
         return label
     }()
     
@@ -48,7 +49,6 @@ class TopListControllerCell: UICollectionViewCell {
     fileprivate func setStarColor() {
         guard let placement = placement else { return }
         
-        nameLabel.text = String(placement)
         imageView.isHidden = false
         
         switch placement {

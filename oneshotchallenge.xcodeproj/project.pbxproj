@@ -28,6 +28,7 @@
 		2B73389A20A99D2A00AB59E0 /* TopListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */; };
 		2B73389C20A9A4FE00AB59E0 /* TopListControllerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389B20A9A4FE00AB59E0 /* TopListControllerHeader.swift */; };
 		2B73389E20A9A85800AB59E0 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389D20A9A85800AB59E0 /* StatusBar.swift */; };
+		2B7338A120A9AF8800AB59E0 /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7338A020A9AF8800AB59E0 /* Names.swift */; };
 		2B8CE3C1209B06F40045C028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */; };
 		2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C4209B0DC10045C028 /* LoginVC.swift */; };
 		2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */; };
@@ -83,6 +84,7 @@
 		2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B73389B20A9A4FE00AB59E0 /* TopListControllerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListControllerHeader.swift; sourceTree = "<group>"; };
 		2B73389D20A9A85800AB59E0 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
+		2B7338A020A9AF8800AB59E0 /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
 		2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B8CE3C4209B0DC10045C028 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				2B0B7B09208F0D2B00532815 /* LaunchScreen.storyboard */,
 				2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */,
 				2B0B7B0C208F0D2B00532815 /* Info.plist */,
+				2B73389F20A9AF6F00AB59E0 /* DebugClasses */,
 				2B0E1B84209B20EA00163C23 /* Classes */,
 				2B52D235208F12D900090285 /* Utils */,
 				2B2039E8208F5CB700C4CF43 /* Views */,
@@ -284,6 +287,14 @@
 				2B73389D20A9A85800AB59E0 /* StatusBar.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2B73389F20A9AF6F00AB59E0 /* DebugClasses */ = {
+			isa = PBXGroup;
+			children = (
+				2B7338A020A9AF8800AB59E0 /* Names.swift */,
+			);
+			path = DebugClasses;
 			sourceTree = "<group>";
 		};
 		2B8CE3C3209B0D6E0045C028 /* LoginRegisterVC's */ = {
@@ -537,6 +548,7 @@
 				2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */,
 				2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */,
 				2B8CE53620A193AD00C8EC3D /* FireBaseChallenges.swift in Sources */,
+				2B7338A120A9AF8800AB59E0 /* Names.swift in Sources */,
 				A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */,
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
 				2B73389E20A9A85800AB59E0 /* StatusBar.swift in Sources */,
