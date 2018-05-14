@@ -153,13 +153,16 @@ class ChallengeController: UIViewController {
     }
     
     fileprivate func fetchChallenge() {
+        debugPrint("fetchChallenge")
         fbChallenges.fetchChallenge { (challenge) in
             DispatchQueue.main.async {
                 if let challenge = challenge {
+                    debugPrint("Challenge found")
                     self.setChallengeLabelText(text: challenge)
                     self.setUpChallenge()
                 } else {
-                    // TODO : Display error message
+                    debugPrint("Challenge not found")
+                    self.setUpChallengeDone()
                 }
             }
         }
