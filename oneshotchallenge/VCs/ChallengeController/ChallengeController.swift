@@ -171,7 +171,6 @@ class ChallengeController: UIViewController {
     }
     
     fileprivate func fetchChallenge() {
-        debugPrint("fetchChallenge")
         fbChallenges.fetchChallenge { (challenge) in
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
