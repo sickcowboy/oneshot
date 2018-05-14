@@ -34,27 +34,23 @@ class FireBaseChallenges {
     
     func fetchChallenge(challengeDate: TimeInterval? = nil, completion: @escaping (String?) -> ()) {
         guard let challengeTime = challengeDate ?? cetTime.challengeTimeToday()?.timeIntervalSince1970 else {
-            debugPrint("no date")
             completion(nil)
             return
         }
         
         challengeRef.queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeTime).observeSingleEvent(of: .value) { (snapshot) in
             if !snapshot.exists() {
-                debugPrint("no snapshot")
                 completion(nil)
                 return
             }
             
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
-                debugPrint("no data")
                 completion(nil)
                 return
             }
             
             for item in data {
                 guard let dictionary = item.value as? [String: Any] else {
-                    debugPrint("no data")
                     completion(nil)
                     return
                 }
