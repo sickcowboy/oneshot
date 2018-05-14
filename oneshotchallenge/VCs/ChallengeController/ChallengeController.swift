@@ -76,6 +76,8 @@ class ChallengeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        StausBar.sharedInstance.changeColor(view: view)
+        
         navigationController?.navigationBar.isHidden = true
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         view.backgroundColor = Colors.sharedInstance.primaryColor

@@ -98,7 +98,7 @@ class FireBaseRating {
                     for item in data {
                         guard let dictionary = item.value as? [String: Any] else { break }
                         
-                        let post = Post(dictionary: dictionary)
+                        let post = Post(dictionary: dictionary, userId: partisipant)
                         posts.append(post)
                     }
                     

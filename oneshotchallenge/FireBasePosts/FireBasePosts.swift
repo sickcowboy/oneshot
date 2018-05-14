@@ -35,7 +35,7 @@ class FireBasePosts {
                         return
                     }
                     
-                    let post = Post(dictionary: dictionary)
+                    let post = Post(dictionary: dictionary, userId: uid)
                     completion(post)
                 }
             } else {

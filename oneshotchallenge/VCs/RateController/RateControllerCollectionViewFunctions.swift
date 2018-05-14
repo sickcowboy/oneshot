@@ -52,6 +52,7 @@ extension RateController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        debugPrint(posts?[indexPath.item].userId as Any)
         collectionView.reloadData()
     }
 }

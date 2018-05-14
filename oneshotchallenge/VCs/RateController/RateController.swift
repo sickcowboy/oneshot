@@ -25,6 +25,8 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        StausBar.sharedInstance.changeColor(view: view)
+        
         navigationController?.navigationBar.isHidden = true
         
         collectionView?.backgroundColor = Colors.sharedInstance.primaryColor

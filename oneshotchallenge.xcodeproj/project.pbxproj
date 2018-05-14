@@ -24,6 +24,10 @@
 		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
 		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
+		2B73389820A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389720A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift */; };
+		2B73389A20A99D2A00AB59E0 /* TopListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */; };
+		2B73389C20A9A4FE00AB59E0 /* TopListControllerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389B20A9A4FE00AB59E0 /* TopListControllerHeader.swift */; };
+		2B73389E20A9A85800AB59E0 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389D20A9A85800AB59E0 /* StatusBar.swift */; };
 		2B8CE3C1209B06F40045C028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */; };
 		2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C4209B0DC10045C028 /* LoginVC.swift */; };
 		2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */; };
@@ -75,6 +79,10 @@
 		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		2B73389720A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListCollectionViewFunctions.swift; sourceTree = "<group>"; };
+		2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B73389B20A9A4FE00AB59E0 /* TopListControllerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListControllerHeader.swift; sourceTree = "<group>"; };
+		2B73389D20A9A85800AB59E0 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B8CE3C4209B0DC10045C028 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -209,6 +217,9 @@
 			isa = PBXGroup;
 			children = (
 				2B0B7B1D208F11B300532815 /* TopListController.swift */,
+				2B73389720A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift */,
+				2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */,
+				2B73389B20A9A4FE00AB59E0 /* TopListControllerHeader.swift */,
 			);
 			path = TopListController;
 			sourceTree = "<group>";
@@ -270,6 +281,7 @@
 				2B8CE3CF209B18E30045C028 /* UIAlertControllerExtension.swift */,
 				2B0E1B7F209B1C6200163C23 /* ReferenceEnums.swift */,
 				2B8CE53220A1914200C8EC3D /* CETTime.swift */,
+				2B73389D20A9A85800AB59E0 /* StatusBar.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -504,6 +516,7 @@
 				2B0E1B86209B20FA00163C23 /* User.swift in Sources */,
 				2B8CE3CE209B165F0045C028 /* FireBaseRegister.swift in Sources */,
 				2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */,
+				2B73389A20A99D2A00AB59E0 /* TopListCollectionViewCell.swift in Sources */,
 				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
 				2B52D237208F12ED00090285 /* Colors.swift in Sources */,
@@ -526,6 +539,7 @@
 				2B8CE53620A193AD00C8EC3D /* FireBaseChallenges.swift in Sources */,
 				A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */,
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
+				2B73389E20A9A85800AB59E0 /* StatusBar.swift in Sources */,
 				2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */,
 				2B8CE53B20A19CC400C8EC3D /* Post.swift in Sources */,
 				2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */,
@@ -535,6 +549,8 @@
 				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
 				2BC2C74820A2F75A007DF0A9 /* FireBaseRating.swift in Sources */,
 				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,
+				2B73389820A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift in Sources */,
+				2B73389C20A9A4FE00AB59E0 /* TopListControllerHeader.swift in Sources */,
 				2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */,
 				2B8CE3D0209B18E30045C028 /* UIAlertControllerExtension.swift in Sources */,
 				2B0B7B18208F0F5900532815 /* RateController.swift in Sources */,

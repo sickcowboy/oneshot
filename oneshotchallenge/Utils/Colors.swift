@@ -17,4 +17,8 @@ class Colors {
     let darkColor = UIColor.black
     
     let primaryTextColor = UIColor.white
+    
+    let goldColor = UIColor(displayP3Red: 1, green: 0.84, blue: 0, alpha: 1)
+    let silverColor = UIColor(displayP3Red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
+    let bronzeColor = UIColor(displayP3Red: 0.8, green: 0.5, blue: 0.2, alpha: 1)
 }

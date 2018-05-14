@@ -56,7 +56,7 @@ class CETTime {
         
         guard let cetTime = timeNow() else { return nil }
         
-        guard let cetTomorrow = calendar.date(byAdding: .day, value: -2, to: cetTime) else { return nil }
+        guard let cetTomorrow = calendar.date(byAdding: .day, value: -5, to: cetTime) else { return nil }
         
         return calendar.startOfDay(for: cetTomorrow)
     }
