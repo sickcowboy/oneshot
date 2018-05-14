@@ -33,6 +33,13 @@ class ChallengeController: UIViewController {
         return button
     }()
     
+    let activityIndicator: UIActivityIndicatorView = {
+        let aI = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        aI.tintColor = Colors.sharedInstance.primaryTextColor
+        aI.hidesWhenStopped = true
+        return aI
+    }()
+    
     lazy var challengeLabel: UILabel = {
         let label = UILabel()
         label.textColor = Colors.sharedInstance.primaryTextColor
@@ -74,6 +81,12 @@ class ChallengeController: UIViewController {
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
         tabBarController?.tabBar.isHidden = true
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil,
+                                           centerX: view.safeAreaLayoutGuide.centerXAnchor,
+                                           centerY: view.safeAreaLayoutGuide.centerYAnchor)
+        activityIndicator.stopAnimating()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +115,8 @@ class ChallengeController: UIViewController {
     }
     
     fileprivate func setUpChallengeDone() {
+        activityIndicator.stopAnimating()
+        
         self.tabBarController?.tabBar.isHidden = false
         
         guard let bottomAnchor = tabBarController?.tabBar.topAnchor else { return }
@@ -120,9 +135,12 @@ class ChallengeController: UIViewController {
         challengeLabel.removeFromSuperview()
         lockedLabel.removeFromSuperview()
         
+        activityIndicator.startAnimating()
+        
         fbPosts.fetchPost { (post) in
             if let post = post {
                 if post.imageUrl.isEmpty {
+                    self.activityIndicator.stopAnimating()
                     self.segueToCamera(post: post)
                 } else {
                     self.setUpChallengeDone()
@@ -156,6 +174,7 @@ class ChallengeController: UIViewController {
         debugPrint("fetchChallenge")
         fbChallenges.fetchChallenge { (challenge) in
             DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
                 if let challenge = challenge {
                     debugPrint("Challenge found")
                     self.setChallengeLabelText(text: challenge)

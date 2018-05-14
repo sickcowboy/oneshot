@@ -32,13 +32,18 @@ class FireBaseRating {
                 return
             }
             
-            var key = ""
+            var key : String? = nil
             
             for item in data {
                 key = item.key
             }
             
-            self.fetchPartisipants(key: key, completion: { (partisipants) in
+            guard let fetchedKey = key else {
+                completion(nil)
+                return
+            }
+            
+            self.fetchPartisipants(key: fetchedKey, completion: { (partisipants) in
                 self.fetchUserPosts(partisipants: partisipants, completion: { (posts) in
                     completion(posts)
                 })
@@ -51,6 +56,8 @@ class FireBaseRating {
             completion(nil)
             return
         }
+        
+        debugPrint(key)
         
         partisipantsRef.child(key).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
