@@ -702,9 +702,10 @@
 			baseConfigurationReference = 67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = HY8485T775;
+				DEVELOPMENT_TEAM = 28YWBMR6P7;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -713,6 +714,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -723,8 +726,9 @@
 			baseConfigurationReference = 8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HY8485T775;
+				DEVELOPMENT_TEAM = 28YWBMR6P7;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -733,6 +737,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
