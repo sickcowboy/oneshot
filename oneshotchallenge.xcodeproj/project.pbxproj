@@ -23,6 +23,8 @@
 		2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */; };
 		2B2AE49920B2E80500151091 /* FireBaseVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49820B2E80500151091 /* FireBaseVote.swift */; };
 		2B2AE49B20B2F1AE00151091 /* MonthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49A20B2F1AE00151091 /* MonthKey.swift */; };
+		2B2AE49E20B2F63300151091 /* FireBaseTopLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */; };
+		2B2AE4A020B2F6E200151091 /* TopListScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49F20B2F6E200151091 /* TopListScore.swift */; };
 		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
 		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
@@ -81,6 +83,8 @@
 		2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSlider.swift; sourceTree = "<group>"; };
 		2B2AE49820B2E80500151091 /* FireBaseVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseVote.swift; sourceTree = "<group>"; };
 		2B2AE49A20B2F1AE00151091 /* MonthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthKey.swift; sourceTree = "<group>"; };
+		2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseTopLists.swift; sourceTree = "<group>"; };
+		2B2AE49F20B2F6E200151091 /* TopListScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListScore.swift; sourceTree = "<group>"; };
 		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				2B8CE3CA209B157C0045C028 /* FireBaseAuth */,
 				2B0E1B81209B201F00163C23 /* FireBaseUser */,
 				2B2AE49720B2E7EB00151091 /* FireBaseVote */,
+				2B2AE49C20B2F61600151091 /* FireBaseTopLists */,
 			);
 			path = oneshotchallenge;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 			children = (
 				2B0E1B85209B20FA00163C23 /* User.swift */,
 				2B8CE53A20A19CC400C8EC3D /* Post.swift */,
+				2B2AE49F20B2F6E200151091 /* TopListScore.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -285,6 +291,14 @@
 				2B2AE49820B2E80500151091 /* FireBaseVote.swift */,
 			);
 			path = FireBaseVote;
+			sourceTree = "<group>";
+		};
+		2B2AE49C20B2F61600151091 /* FireBaseTopLists */ = {
+			isa = PBXGroup;
+			children = (
+				2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */,
+			);
+			path = FireBaseTopLists;
 			sourceTree = "<group>";
 		};
 		2B52D235208F12D900090285 /* Utils */ = {
@@ -537,6 +551,7 @@
 				2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */,
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
+				2B2AE49E20B2F63300151091 /* FireBaseTopLists.swift in Sources */,
 				2B2AE49920B2E80500151091 /* FireBaseVote.swift in Sources */,
 				2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */,
 				2B0E1B86209B20FA00163C23 /* User.swift in Sources */,
@@ -563,6 +578,7 @@
 				2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */,
 				2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */,
 				2B8CE53620A193AD00C8EC3D /* FireBaseChallenges.swift in Sources */,
+				2B2AE4A020B2F6E200151091 /* TopListScore.swift in Sources */,
 				2B7338A120A9AF8800AB59E0 /* Names.swift in Sources */,
 				A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */,
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,

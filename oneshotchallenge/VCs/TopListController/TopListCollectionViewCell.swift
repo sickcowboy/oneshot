@@ -16,6 +16,23 @@ class TopListControllerCell: UICollectionViewCell {
         }
     }
     
+    var topListScore: TopListScore? {
+        didSet{
+            nameLabel.text = ""
+            voteLabel.text = ""
+            
+            guard let tLS = topListScore else { return }
+            let fbUser = FireBaseUser()
+            
+            fbUser.fetchUser(uid: tLS.uid) { (user) in
+                DispatchQueue.main.async {
+                    self.nameLabel.text = user?.username
+                    self.voteLabel.text = "\(tLS.score) votes"
+                }
+            }
+        }
+    }
+    
     fileprivate let imageView: UIImageView = {
         let image = #imageLiteral(resourceName: "Star")
         let iV = UIImageView(image: image.withRenderingMode(.alwaysTemplate))
@@ -28,7 +45,13 @@ class TopListControllerCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 18)
         label.textColor = Colors.sharedInstance.primaryTextColor
-        label.text = Names.sharedInstance.rndName()
+        return label
+    }()
+    
+    fileprivate let voteLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .lightGray
         return label
     }()
     
@@ -37,13 +60,17 @@ class TopListControllerCell: UICollectionViewCell {
         backgroundColor = Colors.sharedInstance.primaryColor
         
         addSubview(imageView)
-        imageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: nil, bottom: bottomAnchor,
-                                   padding: .init(top: 0, left: 8, bottom: 0, right: 0))
+        imageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: nil, bottom: nil,
+                                   padding: .init(top: 0, left: 8, bottom: 0, right: 0), size: .init(width: 0, height: 25))
         imageView.squareByHeightAnchor()
         
         addSubview(nameLabel)
         nameLabel.constraintLayout(top: nil, leading: imageView.trailingAnchor, trailing: trailingAnchor, bottom: nil,
                                    centerY: imageView.centerYAnchor, padding: .init(top: 0, left: 8, bottom: 0, right: 8))
+        
+        addSubview(voteLabel)
+        voteLabel.constraintLayout(top: nameLabel.bottomAnchor, leading: nameLabel.leadingAnchor, trailing: trailingAnchor, bottom: nil,
+                                   padding: .init(top: 2, left: 0, bottom: 0, right: 0))
     }
     
     fileprivate func setStarColor() {
