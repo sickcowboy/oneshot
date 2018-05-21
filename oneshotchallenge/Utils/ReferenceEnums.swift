@@ -22,4 +22,7 @@ enum DatabaseReference: String {
     case startDate = "startDate"
     case ratings = "ratings"
     case participants = "participants"
+    case allTimeVotes = "allTimeVotes"
+    case monthVotes = "monthVotes"
+    case votes = "votes"
 }

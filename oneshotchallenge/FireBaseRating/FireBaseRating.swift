@@ -17,17 +17,17 @@ class FireBaseRating {
     fileprivate let partisipantsRef = Database.database().reference(withPath: DatabaseReference.participants.rawValue)
     fileprivate let ratingRef = Database.database().reference(withPath: DatabaseReference.ratings.rawValue)
     
-    func fetchPosts(completion: @escaping ([Post]?) -> ()) {
+    func fetchPosts(completion: @escaping ([Post]?, String?) -> ()) {
         let cetTime = CETTime()
         // TODO : change 'challenge time double yesterday' to 'challenge time yesterday'
-        guard let challengeDate = cetTime.challengeTimeDoubleYesterday()?.timeIntervalSince1970 else {
-            completion(nil)
+        guard let challengeDate = cetTime.debugTime() else {
+            completion(nil, nil)
             return
         }
         
         challengeRef.queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
-                completion(nil)
+                completion(nil, nil)
                 return
             }
             
@@ -38,13 +38,13 @@ class FireBaseRating {
             }
             
             guard let fetchedKey = key else {
-                completion(nil)
+                completion(nil, nil)
                 return
             }
             
             self.fetchPartisipants(key: fetchedKey, completion: { (partisipants) in
                 self.fetchUserPosts(partisipants: partisipants, completion: { (posts) in
-                    completion(posts)
+                    completion(posts, fetchedKey)
                 })
             })
         }
@@ -80,7 +80,7 @@ class FireBaseRating {
         
         if let partisipants = partisipants {
             // TODO : change 'challenge time double yesterday' to 'challenge time yesterday'
-            guard let challengeDate = cetTime.challengeTimeDoubleYesterday()?.timeIntervalSince1970 else {
+            guard let challengeDate = cetTime.debugTime() else {
                 completion(nil)
                 return
             }

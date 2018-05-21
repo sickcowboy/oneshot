@@ -52,7 +52,14 @@ extension RateController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        debugPrint(posts?[indexPath.item].userId as Any)
+        let post = posts?[indexPath.item]
+        
+        let uid = post?.userId
+        let challengeDate = post?.challengeDate
+        let month = MonthKey.sharedInstance.monthKey(timeInterval: challengeDate)
+        
+        FBVote.sharedInstance.vote(uid: uid, id: key, month: month)
+        
         collectionView.reloadData()
     }
 }

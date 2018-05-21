@@ -51,14 +51,14 @@ class CETTime {
         return calendar.startOfDay(for: cetTomorrow)
     }
     
-    func challengeTimeDoubleYesterday() -> Date? {
-        let calendar = Calendar.current
+    func debugTime() -> TimeInterval? {
+//        let calendar = Calendar.current
+//
+//        guard let cetTime = timeNow() else { return nil }
+//
+//        guard let cetTomorrow = calendar.date(byAdding: .day, value: -5, to: cetTime) else { return nil }
         
-        guard let cetTime = timeNow() else { return nil }
-        
-        guard let cetTomorrow = calendar.date(byAdding: .day, value: -5, to: cetTime) else { return nil }
-        
-        return calendar.startOfDay(for: cetTomorrow)
+        return 1525816800
     }
     
     func calendarChallengeDate(date: Date) -> Date? {

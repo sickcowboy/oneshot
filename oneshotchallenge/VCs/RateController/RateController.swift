@@ -21,6 +21,8 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
+    var key = ""
+    
     var initialFetch = true
     
     override func viewDidLoad() {
@@ -43,10 +45,11 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     fileprivate func fetchPosts() {
         let fbRatings = FireBaseRating()
-        fbRatings.fetchPosts { (posts) in
+        fbRatings.fetchPosts { (posts, key) in
             DispatchQueue.main.async {
-                if let posts = posts {
+                if let posts = posts, let key = key {
                     self.posts = posts
+                    self.key = key
                     self.collectionView?.reloadData()
                     self.initialFetch = false
                 } else {

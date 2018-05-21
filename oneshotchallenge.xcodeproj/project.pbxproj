@@ -21,6 +21,8 @@
 		2B2039E4208F2CBC00C4CF43 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E3208F2CBC00C4CF43 /* CameraController.swift */; };
 		2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E6208F45BC00C4CF43 /* EditPhotoController.swift */; };
 		2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */; };
+		2B2AE49920B2E80500151091 /* FireBaseVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49820B2E80500151091 /* FireBaseVote.swift */; };
+		2B2AE49B20B2F1AE00151091 /* MonthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49A20B2F1AE00151091 /* MonthKey.swift */; };
 		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
 		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
@@ -77,6 +79,8 @@
 		2B2039E3208F2CBC00C4CF43 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2B2039E6208F45BC00C4CF43 /* EditPhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPhotoController.swift; sourceTree = "<group>"; };
 		2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSlider.swift; sourceTree = "<group>"; };
+		2B2AE49820B2E80500151091 /* FireBaseVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseVote.swift; sourceTree = "<group>"; };
+		2B2AE49A20B2F1AE00151091 /* MonthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthKey.swift; sourceTree = "<group>"; };
 		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				2B8CE53420A1938A00C8EC3D /* FireBaseChallenges */,
 				2B8CE3CA209B157C0045C028 /* FireBaseAuth */,
 				2B0E1B81209B201F00163C23 /* FireBaseUser */,
+				2B2AE49720B2E7EB00151091 /* FireBaseVote */,
 			);
 			path = oneshotchallenge;
 			sourceTree = "<group>";
@@ -274,6 +279,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		2B2AE49720B2E7EB00151091 /* FireBaseVote */ = {
+			isa = PBXGroup;
+			children = (
+				2B2AE49820B2E80500151091 /* FireBaseVote.swift */,
+			);
+			path = FireBaseVote;
+			sourceTree = "<group>";
+		};
 		2B52D235208F12D900090285 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +298,7 @@
 				2B0E1B7F209B1C6200163C23 /* ReferenceEnums.swift */,
 				2B8CE53220A1914200C8EC3D /* CETTime.swift */,
 				2B73389D20A9A85800AB59E0 /* StatusBar.swift */,
+				2B2AE49A20B2F1AE00151091 /* MonthKey.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -523,6 +537,7 @@
 				2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */,
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
+				2B2AE49920B2E80500151091 /* FireBaseVote.swift in Sources */,
 				2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */,
 				2B0E1B86209B20FA00163C23 /* User.swift in Sources */,
 				2B8CE3CE209B165F0045C028 /* FireBaseRegister.swift in Sources */,
@@ -559,6 +574,7 @@
 				2B0E1B83209B203500163C23 /* FireBaseUser.swift in Sources */,
 				2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */,
 				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
+				2B2AE49B20B2F1AE00151091 /* MonthKey.swift in Sources */,
 				2BC2C74820A2F75A007DF0A9 /* FireBaseRating.swift in Sources */,
 				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,
 				2B73389820A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift in Sources */,
