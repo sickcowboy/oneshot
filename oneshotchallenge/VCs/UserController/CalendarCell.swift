@@ -15,6 +15,7 @@ class CalendarCell: UICollectionViewCell {
             goldImage.image = nil
             silverImage.image = nil
             bronzeImage.image = nil
+            challengeLabel.text = nil
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
@@ -53,6 +54,21 @@ class CalendarCell: UICollectionViewCell {
                     }
                 }
             }
+            
+            let fbChallenges = FireBaseChallenges()
+            let cetTime = CETTime()
+            
+            let challengeDate = cetTime.calendarChallengeDate(date: date)
+            
+            fbChallenges.fetchChallenge(challengeDate: challengeDate?.timeIntervalSince1970) { (challenge) in
+                DispatchQueue.main.async {
+                    if let challenge = challenge {
+                        self.challengeLabel.text = challenge
+                    } else {
+                        self.challengeLabel.text = "no challenge found..."
+                    }
+                }
+            }
         }
     }
     
@@ -81,63 +97,85 @@ class CalendarCell: UICollectionViewCell {
     fileprivate let userImageView: UrlImageView = {
         let imageView = UrlImageView()
         imageView.backgroundColor = Colors.sharedInstance.primaryTextColor
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     fileprivate let goldImage: UrlImageView = {
-    let imageView = UrlImageView()
-    imageView.backgroundColor = Colors.sharedInstance.goldColor
-    imageView.clipsToBounds = true
-    imageView.contentMode = .scaleAspectFit
-    return imageView
+        let imageView = UrlImageView()
+        imageView.backgroundColor = Colors.sharedInstance.goldColor
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
     fileprivate let silverImage: UrlImageView = {
         let imageView = UrlImageView()
         imageView.backgroundColor = Colors.sharedInstance.silverColor
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     fileprivate let bronzeImage: UrlImageView = {
         let imageView = UrlImageView()
         imageView.backgroundColor = Colors.sharedInstance.bronzeColor
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = Colors.sharedInstance.primaryTextColor
+        label.text = "Date"
+        return label
+    }()
+    
+    let challengeLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+//        label.layer.borderWidth = 1
+//        label.layer.borderColor = Colors.sharedInstance.primaryTextColor.cgColor
+        label.text = "Challenge"
+        label.textAlignment = .center
+        label.textColor = Colors.sharedInstance.primaryTextColor
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(dateLabel)
-        dateLabel.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: nil, bottom: nil,
-                                   padding: .init(top: 4, left: 4, bottom: 0, right: 0))
+        layoutViews()
         
-        let size = frame.height - 15
+        let divider = UIView()
+        divider.backgroundColor = Colors.sharedInstance.primaryTextColor
         
-        addSubview(userImageView)
-        userImageView.constraintLayout(top: dateLabel.bottomAnchor, leading: leadingAnchor, trailing: nil, bottom: nil,
-                                      padding: .init(top: 4, left: 4, bottom: 0, right: 0), size: .init(width: size, height: size))
-        
-        addStackView(height: size)
+        addSubview(divider)
+        divider.constraintLayout(top: nil, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor,
+                                 padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 1))
     }
     
-    fileprivate func addStackView(height: CGFloat) {
+    fileprivate func layoutViews() {
+        addSubview(dateLabel)
+        dateLabel.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: nil,
+                                   padding: .init(top: 4, left: 4, bottom: 0, right: 4), size: .init(width: 0, height: 15))
+        
         let stackView = UIStackView(arrangedSubviews: [goldImage, silverImage, bronzeImage])
-        stackView.setUp(vertical: false, spacing: 2)
+        stackView.setUp(vertical: true, spacing: 2)
         
         addSubview(stackView)
-        stackView.constraintLayout(top: userImageView.topAnchor, leading: userImageView.trailingAnchor, trailing: trailingAnchor, bottom: nil,
-                                   padding: .init(top: 0, left: 16, bottom: 0, right: 4), size: .init(width: 0, height: height))
+        stackView.constraintLayout(top: dateLabel.bottomAnchor, leading: nil, trailing: trailingAnchor, bottom: bottomAnchor,
+                                   padding: .init(top: 4, left: 8, bottom: 4, right: 4), size: .init(width: (frame.size.width/3) - 8, height: 0))
+        
+        addSubview(challengeLabel)
+        challengeLabel.constraintLayout(top: bronzeImage.topAnchor, leading: leadingAnchor, trailing: stackView.leadingAnchor, bottom: bronzeImage.bottomAnchor,
+                                        padding: .init(top: 0, left: 4, bottom: 0, right: 4))
+        
+        addSubview(userImageView)
+        userImageView.constraintLayout(top: stackView.topAnchor, leading: dateLabel.leadingAnchor, trailing: stackView.leadingAnchor, bottom: silverImage.bottomAnchor,
+                                       padding: .init(top: 0, left: 0, bottom: 0, right: 4))
     }
     
     required init?(coder aDecoder: NSCoder) {

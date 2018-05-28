@@ -31,7 +31,7 @@ extension UserController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = (collectionView.frame.width/3)
+        let height: CGFloat = collectionView.frame.width + 8
         return CGSize(width: collectionView.frame.width, height: height)
     }
     
