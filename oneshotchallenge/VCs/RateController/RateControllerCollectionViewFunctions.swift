@@ -24,7 +24,7 @@ extension RateController {
         let noPostsLeft = posts?.isEmpty ?? true
         
         if !noPostsLeft {
-            cell.imageUrl = posts?.first?.imageUrl
+            cell.post = posts?[0]
             posts?.removeFirst()
         } else {
             cell.imageUrl = ""
@@ -52,7 +52,7 @@ extension RateController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let post = posts?[indexPath.item]
+        let post = (collectionView.cellForItem(at: indexPath) as! RateControllerCell).post
         
         let uid = post?.userId
         let challengeDate = post?.challengeDate

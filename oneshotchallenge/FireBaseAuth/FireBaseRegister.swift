@@ -22,7 +22,7 @@ class FireBaseRegister {
                 return
             }
             
-            self.setUserName(uid: user?.uid, username: username)
+            self.setUserName(uid: user?.user.uid, username: username)
             completion(nil)
         }
     }

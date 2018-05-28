@@ -17,6 +17,12 @@ class RateControllerCell: UICollectionViewCell {
         }
     }
     
+    var post: Post? {
+        didSet{
+            self.imageUrl = post?.imageUrl
+        }
+    }
+    
     var image: UIImage? {
         didSet{
             self.imageView.image = self.image

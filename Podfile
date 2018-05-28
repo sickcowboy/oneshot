@@ -11,5 +11,5 @@ target 'oneshotchallenge' do
     pod 'Crashlytics'
     pod 'Firebase/Auth'
     pod 'Firebase/Storage'
-
+    pod 'Firebase/Core'
 end
