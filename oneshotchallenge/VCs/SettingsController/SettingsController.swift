@@ -27,10 +27,26 @@ class SettingsController: UIViewController {
         return button
     }()
     
+    private lazy var buildLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = Colors.sharedInstance.primaryTextColor
+        label.textAlignment = .center
+        if let releaseVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            if let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String {
+                label.text = "build: \(releaseVersion) (\(buildVersion))"
+            }
+        }
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = Colors.sharedInstance.primaryColor
+        
+        view.addSubview(buildLabel)
+        buildLabel.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
+                                    padding: .init(top: 4, left: 4, bottom: 0, right: 4))
         
         view.addSubview(logOffButton)
         logOffButton.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, padding: .init(top: 0, left: 8, bottom: 4, right: 8))
