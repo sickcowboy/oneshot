@@ -14,13 +14,22 @@ import FirebaseStorage
 class FireBasePosts {
     fileprivate let databaseRef = Database.database().reference(withPath: DatabaseReference.posts.rawValue)
     fileprivate let storageRef = Storage.storage().reference(withPath: DatabaseReference.posts.rawValue)
+    fileprivate let challengeRef = Database.database().reference(withPath: DatabaseReference.challenges.rawValue)
+    fileprivate let voteRef = Database.database().reference(withPath: DatabaseReference.votes.rawValue)
     
-    func fetchPost(date: Date? = nil, completion: @escaping (Post?) -> ()) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+    fileprivate let cetTime = CETTime()
+    
+    func fetchPost(uid: String? = nil, date: Date? = nil, completion: @escaping (Post?) -> ()) {
+        guard let uid = uid ?? Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
         
-        let cetTime = CETTime()
         let date = date ?? Date()
-        guard let challengeDate = cetTime.calendarChallengeDate(date: date) else { return }
+        guard let challengeDate = cetTime.calendarChallengeDate(date: date) else {
+            completion(nil)
+            return
+        }
         
         databaseRef.child(uid).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate.timeIntervalSince1970).observeSingleEvent(of: .value) { (snapshot) in
             if snapshot.exists() {
@@ -104,6 +113,55 @@ class FireBasePosts {
                 for item in data {
                     completion(item.key)
                 }
+        }
+    }
+    
+    func fetchTopThree(date: Date?, completion: @escaping([String]?) -> ()) {
+        guard let date = date else {
+            completion(nil)
+            return
+        }
+        
+        guard let challengeDate = cetTime.calendarChallengeDate(date: date) else {
+            completion(nil)
+            return
+        }
+        
+        challengeRef.queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate.timeIntervalSince1970).observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                guard let data = snapshot.children.allObjects as? [DataSnapshot] else { return }
+                
+                for item in data {
+                    self.fetchTopThreeUid(key: item.key, completion: { (keys) in
+                        guard let keys = keys else {
+                            completion(nil)
+                            return
+                        }
+                        
+                        completion(keys)
+                    })
+                }
+            }
+        }
+    }
+    
+    fileprivate func fetchTopThreeUid(key: String, completion: @escaping([String]?) -> ()) {
+        voteRef.child(key).queryOrderedByValue().queryLimited(toLast: 3).observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
+                    completion(nil)
+                    return
+                }
+                
+                var keys = [String]()
+                for item in data {
+                    keys.append(item.key)
+                }
+                
+                completion(keys)
+            } else {
+                completion(nil)
+            }
         }
     }
     
