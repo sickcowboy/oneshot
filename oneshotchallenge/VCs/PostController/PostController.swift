@@ -69,8 +69,10 @@ class PostController: UIViewController {
                     return
                 }
                 
-                //TODO : display to user that upload is succesful
+                //TODO : display to user that upload is successful
                 
+                self.tabBarController?.selectedIndex = 1
+                self.tabBarController?.tabBar.isHidden = false
                 self.navigationController?.popToRootViewController(animated: true)
             }
         })
