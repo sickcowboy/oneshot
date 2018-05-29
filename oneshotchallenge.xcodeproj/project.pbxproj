@@ -61,7 +61,6 @@
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
-		A4105CDC20BD7CCC00966C17 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4105CDB20BD7CCC00966C17 /* Sharing.swift */; };
 		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,7 +124,6 @@
 		8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.release.xcconfig"; sourceTree = "<group>"; };
 		A40A999420930FEF00176D96 /* RateControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCell.swift; sourceTree = "<group>"; };
 		A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
-		A4105CDB20BD7CCC00966C17 /* Sharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sharing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +159,6 @@
 		2B0B7AFF208F0D2900532815 /* oneshotchallenge */ = {
 			isa = PBXGroup;
 			children = (
-				A4105CDA20BD7CB900966C17 /* Sharing */,
 				2B0B7B00208F0D2900532815 /* AppDelegate.swift */,
 				2B0B7B07208F0D2B00532815 /* Assets.xcassets */,
 				2B0B7B09208F0D2B00532815 /* LaunchScreen.storyboard */,
@@ -413,14 +410,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A4105CDA20BD7CB900966C17 /* Sharing */ = {
-			isa = PBXGroup;
-			children = (
-				A4105CDB20BD7CCC00966C17 /* Sharing.swift */,
-			);
-			path = Sharing;
-			sourceTree = "<group>";
-		};
 		C71B1655732AC7F8F1711454 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,7 +599,6 @@
 				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,
 				2B73389820A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift in Sources */,
 				2B73389C20A9A4FE00AB59E0 /* TopListControllerHeader.swift in Sources */,
-				A4105CDC20BD7CCC00966C17 /* Sharing.swift in Sources */,
 				2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */,
 				2B8CE3D0209B18E30045C028 /* UIAlertControllerExtension.swift in Sources */,
 				2B0B7B18208F0F5900532815 /* RateController.swift in Sources */,
@@ -753,7 +741,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 28YWBMR6P7;
+				DEVELOPMENT_TEAM = BRSUFVEUQY;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -776,7 +764,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28YWBMR6P7;
+				DEVELOPMENT_TEAM = BRSUFVEUQY;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

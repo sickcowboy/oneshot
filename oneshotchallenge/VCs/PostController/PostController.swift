@@ -68,12 +68,29 @@ class PostController: UIViewController {
                     self.postButton.isEnabled = true
                     return
                 }
-                
                 //TODO : display to user that upload is succesful
                 
                 self.navigationController?.popToRootViewController(animated: true)
             }
         })
+    }
+    
+    fileprivate func shareWithSocialMedia(image: UIImage) {
+        
+        let imageText = "#OneShotChallenge"
+        
+        let activityController = UIActivityViewController(activityItems: [image, imageText], applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceRect = view.bounds
+        
+        activityController.completionWithItemsHandler = { activity, success, items, error in
+            print("activity: \(String(describing: activity)), success: \(success), items: \(String(describing: items)), error: \(String(describing: error))")
+            
+            if let error = error {
+                debugPrint(error)
+                return
+            }
+        }
+        present(activityController, animated: true, completion: nil)
     }
     
     fileprivate let loadingScreen = LoadingScreen()
