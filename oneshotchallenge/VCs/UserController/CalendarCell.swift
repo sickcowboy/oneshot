@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol CalendarCellDelegate: class {
+    func didTapPicture(_ sender: Post)
+}
+
 class CalendarCell: UICollectionViewCell {
+    
+    weak var delegate: CalendarCellDelegate?
     
     var challenge: Challenge? {
         didSet{
@@ -70,35 +76,63 @@ class CalendarCell: UICollectionViewCell {
         }
     }
     
-    fileprivate let userImageView: UrlImageView = {
+    fileprivate lazy var userImageView: UrlImageView = {
         let imageView = UrlImageView()
         imageView.backgroundColor = Colors.sharedInstance.primaryTextColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.tag = 0
+        imageView.isUserInteractionEnabled = true
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(pictureTap(_:)))
+        gesture.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(gesture)
+        
         return imageView
     }()
     
-    fileprivate let goldImage: UrlImageView = {
+    fileprivate lazy var goldImage: UrlImageView = {
         let imageView = UrlImageView()
         imageView.backgroundColor = Colors.sharedInstance.goldColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.tag = 1
+        imageView.isUserInteractionEnabled = true
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(pictureTap(_:)))
+        gesture.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(gesture)
+        
         return imageView
     }()
     
-    fileprivate let silverImage: UrlImageView = {
+    fileprivate lazy var silverImage: UrlImageView = {
         let imageView = UrlImageView()
         imageView.backgroundColor = Colors.sharedInstance.silverColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.tag = 2
+        imageView.isUserInteractionEnabled = true
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(pictureTap(_:)))
+        gesture.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(gesture)
+        
         return imageView
     }()
     
-    fileprivate let bronzeImage: UrlImageView = {
+    fileprivate lazy var bronzeImage: UrlImageView = {
         let imageView = UrlImageView()
         imageView.backgroundColor = Colors.sharedInstance.bronzeColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.tag = 3
+        imageView.isUserInteractionEnabled = true
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(pictureTap(_:)))
+        gesture.numberOfTapsRequired = 1
+        imageView.addGestureRecognizer(gesture)
+        
         return imageView
     }()
     
@@ -162,6 +196,41 @@ class CalendarCell: UICollectionViewCell {
         goldImage.image = nil
         silverImage.image = nil
         bronzeImage.image = nil
+    }
+    
+    @objc fileprivate func pictureTap(_ sender: UITapGestureRecognizer) {
+        guard let tag = sender.view?.tag else { return }
+        
+        switch tag {
+        case 0:
+            guard let post = post else { return }
+            delegate?.didTapPicture(post)
+            return
+        case 1:
+            guard let goldPost = checkTopThree(placement: 0) else { return }
+            delegate?.didTapPicture(goldPost)
+            return
+        case 2:
+            guard let silverPost = checkTopThree(placement: 1) else { return }
+            delegate?.didTapPicture(silverPost)
+            return
+        case 3:
+            guard let bronzePost = checkTopThree(placement: 2) else { return }
+            delegate?.didTapPicture(bronzePost)
+            return
+        default:
+            return
+        }
+    }
+    
+    fileprivate func checkTopThree(placement: Int) -> Post? {
+        guard let topThree = topThree else { return nil}
+        
+        if topThree.count >= 3 {
+            return topThree[placement]
+        }
+        
+        return nil
     }
     
     required init?(coder aDecoder: NSCoder) {

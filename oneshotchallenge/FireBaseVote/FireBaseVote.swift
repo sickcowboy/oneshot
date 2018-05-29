@@ -82,4 +82,20 @@ class FBVote {
             }
         }
     }
+    
+    func fetchNumberOfVotes(key: String, uid: String? = nil, completion: @escaping (Int?) -> ()) {
+        guard let uid = uid ?? Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+        
+        voteRef.child(key).child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let votes = snapshot.value as? Int else {
+                completion(nil)
+                return
+            }
+            
+            completion(votes)
+        }
+    }
 }

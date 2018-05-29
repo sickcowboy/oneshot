@@ -177,7 +177,7 @@ class ChallengeController: UIViewController {
             DispatchQueue.main.async {
                 self.activityIndicator.stopAnimating()
                 if let challenge = challenge {
-                    self.setChallengeLabelText(text: challenge)
+                    self.setChallengeLabelText(text: challenge.description)
                     self.setUpChallenge()
                 } else {
                     self.setUpChallengeDone()

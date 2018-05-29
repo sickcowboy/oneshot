@@ -32,7 +32,7 @@ class FireBaseChallenges {
         challengeRef.childByAutoId().setValue(value)
     }
     
-    func fetchChallenge(challengeDate: TimeInterval? = nil, completion: @escaping (String?) -> ()) {
+    func fetchChallenge(challengeDate: TimeInterval? = nil, completion: @escaping (Challenge?) -> ()) {
         guard let challengeTime = challengeDate ?? cetTime.challengeTimeToday()?.timeIntervalSince1970 else {
             completion(nil)
             return
@@ -55,7 +55,8 @@ class FireBaseChallenges {
                     return
                 }
                 
-                completion(dictionary[DatabaseReference.challengeDescription.rawValue] as? String)
+                let challenge = Challenge(dictionary: dictionary, key: item.key)
+                completion(challenge)
             }
         }
     }

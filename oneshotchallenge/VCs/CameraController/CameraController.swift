@@ -69,7 +69,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         fbChallenges.fetchChallenge { (challenge) in
             if let challenge = challenge {
                 DispatchQueue.main.async {
-                    self.challengeLabel.text = challenge
+                    self.challengeLabel.text = challenge.description
                     self.setUpViews()
                 }
             } else {

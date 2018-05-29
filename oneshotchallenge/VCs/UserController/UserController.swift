@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CalendarHeaderDelegate {
+class UserController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CalendarHeaderDelegate, CalendarCellDelegate {
     var user: LocalUser? {
         didSet {
             navigationController?.navigationBar.topItem?.title = user?.username
@@ -95,6 +95,15 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func didChangeMonth(to month: Int) {
         setCalendar(monthToSet: month)
+    }
+    
+    func didTapPicture(_ sender: Post) {
+        let controller = DetailPostController()
+        controller.post = sender
+        
+        navigationController?.pushViewController(controller, animated: true)
+        
+        tabBarController?.tabBar.isHidden = true
     }
     
     @objc fileprivate func toSettings() {

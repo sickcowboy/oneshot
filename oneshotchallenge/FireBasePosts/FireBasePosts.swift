@@ -193,7 +193,7 @@ class FireBasePosts {
                             return
                         }
                         
-                        completion(keys)
+                        completion(keys.reversed())
                     })
                 }
             }
