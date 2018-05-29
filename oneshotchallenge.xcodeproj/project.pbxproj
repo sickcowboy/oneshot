@@ -169,13 +169,7 @@
 				2B52D235208F12D900090285 /* Utils */,
 				2B2039E8208F5CB700C4CF43 /* Views */,
 				2B0B7B12208F0ED500532815 /* VCs */,
-				2B8CE53720A19BC600C8EC3D /* FireBasePosts */,
-				2BC2C74620A2F73F007DF0A9 /* FireBaseRating */,
-				2B8CE53420A1938A00C8EC3D /* FireBaseChallenges */,
-				2B8CE3CA209B157C0045C028 /* FireBaseAuth */,
-				2B0E1B81209B201F00163C23 /* FireBaseUser */,
-				2B2AE49720B2E7EB00151091 /* FireBaseVote */,
-				2B2AE49C20B2F61600151091 /* FireBaseTopLists */,
+				2B174C3C20BD7D29001F77C8 /* Firebase */,
 			);
 			path = oneshotchallenge;
 			sourceTree = "<group>";
@@ -256,6 +250,20 @@
 				2B0462C320BD496800CC7C3E /* Challenge.swift */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		2B174C3C20BD7D29001F77C8 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				2B8CE53720A19BC600C8EC3D /* FireBasePosts */,
+				2BC2C74620A2F73F007DF0A9 /* FireBaseRating */,
+				2B8CE53420A1938A00C8EC3D /* FireBaseChallenges */,
+				2B8CE3CA209B157C0045C028 /* FireBaseAuth */,
+				2B0E1B81209B201F00163C23 /* FireBaseUser */,
+				2B2AE49720B2E7EB00151091 /* FireBaseVote */,
+				2B2AE49C20B2F61600151091 /* FireBaseTopLists */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 		2B2039E2208F2CA400C4CF43 /* CameraController */ = {
