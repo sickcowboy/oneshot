@@ -9,63 +9,39 @@
 import UIKit
 
 class CalendarCell: UICollectionViewCell {
-    var date: Date? {
+    
+    var challenge: Challenge? {
         didSet{
-            userImageView.image = nil
-            goldImage.image = nil
-            silverImage.image = nil
-            bronzeImage.image = nil
-            challengeLabel.text = nil
+            reset()
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .medium
-            dateFormatter.timeStyle = .none
+            guard let challenge = challenge else { return }
+            let formatter = DateFormatter()
+            formatter.timeStyle = .none
+            formatter.dateStyle = .medium
             
-            guard let date = date else { return }
-            dateLabel.text = dateFormatter.string(from: date)
+            let date = Date(timeIntervalSince1970: challenge.challengeDate)
+            let dateString = formatter.string(from: date)
             
-            let today = Date()
-            if today.timeIntervalSince1970 < date.timeIntervalSince1970 {
-                dateLabel.textColor = Colors.sharedInstance.secondaryColor
-            } else {
-                dateLabel.textColor = Colors.sharedInstance.primaryTextColor
-            }
+            dateLabel.text = dateString
+            
+            challengeLabel.text = challenge.description
             
             let fbPosts = FireBasePosts()
-            
-            fbPosts.fetchPost(date: date, completion: { (post) in
+            fbPosts.fetchPost(date: date) { (post) in
                 DispatchQueue.main.async {
                     self.post = post
                 }
-            })
-            
-            topThree = [Post]()
-            
-            fbPosts.fetchTopThree(date: date) { (keys) in
-                if let keys = keys {
-                    for key in keys {
-                        fbPosts.fetchPost(uid: key, date: date, completion: { (post) in
-                            DispatchQueue.main.async {
-                                if let post = post {
-                                    self.topThree?.append(post)
-                                }
-                            }
-                        })
-                    }
-                }
             }
             
-            let fbChallenges = FireBaseChallenges()
-            let cetTime = CETTime()
-            
-            let challengeDate = cetTime.calendarChallengeDate(date: date)
-            
-            fbChallenges.fetchChallenge(challengeDate: challengeDate?.timeIntervalSince1970) { (challenge) in
-                DispatchQueue.main.async {
-                    if let challenge = challenge {
-                        self.challengeLabel.text = challenge
-                    } else {
-                        self.challengeLabel.text = "no challenge found..."
+            fbPosts.fetchTopThree(date: date) { (uids) in
+                if let uids = uids {
+                    for uid in uids {
+                        fbPosts.fetchPost(uid: uid, date: date, completion: { (post) in
+                            DispatchQueue.main.async {
+                                guard let post = post else { return }
+                                self.topThree?.append(post)
+                            }
+                        })
                     }
                 }
             }
@@ -137,8 +113,6 @@ class CalendarCell: UICollectionViewCell {
     let challengeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 18)
-//        label.layer.borderWidth = 1
-//        label.layer.borderColor = Colors.sharedInstance.primaryTextColor.cgColor
         label.text = "Challenge"
         label.textAlignment = .center
         label.textColor = Colors.sharedInstance.primaryTextColor
@@ -176,6 +150,18 @@ class CalendarCell: UICollectionViewCell {
         addSubview(userImageView)
         userImageView.constraintLayout(top: stackView.topAnchor, leading: dateLabel.leadingAnchor, trailing: stackView.leadingAnchor, bottom: silverImage.bottomAnchor,
                                        padding: .init(top: 0, left: 0, bottom: 0, right: 4))
+    }
+    
+    fileprivate func reset() {
+        topThree = [Post]()
+        
+        dateLabel.text = nil
+        challengeLabel.text = nil
+        
+        userImageView.image = nil
+        goldImage.image = nil
+        silverImage.image = nil
+        bronzeImage.image = nil
     }
     
     required init?(coder aDecoder: NSCoder) {

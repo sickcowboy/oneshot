@@ -23,6 +23,12 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
+    var challenges: [Challenge]? {
+        didSet {
+            collectionView?.reloadData()
+        }
+    }
+    
     var currentDate: Date?
     var month: Int?
     var year: Int?
@@ -42,6 +48,8 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         setCalendar()
         
         fetchUser()
+        
+        fetchPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,6 +63,16 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         fbUser.fetchUser(uid: uid) { (user) in
             DispatchQueue.main.async {
                 self.user = user
+            }
+        }
+    }
+    
+    fileprivate func fetchPosts() {
+        let fbPosts = FireBasePosts()
+        
+        fbPosts.fetchUserFeed { (challenges) in
+            DispatchQueue.main.async {
+                self.challenges = challenges?.reversed()
             }
         }
     }

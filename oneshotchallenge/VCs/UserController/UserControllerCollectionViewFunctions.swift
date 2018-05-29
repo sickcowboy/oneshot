@@ -27,7 +27,7 @@ extension UserController {
     
     //cell functions
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return daysInMonth ?? 0
+        return challenges?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -38,9 +38,7 @@ extension UserController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CalendarCell
         
-        if let date = cellDate(day: indexPath.row + 1) {
-            cell.date = date
-        }
+        cell.challenge = challenges?[indexPath.item]
         
         return cell
     }

@@ -12,7 +12,7 @@ import FirebaseDatabase
 import FirebaseStorage
 
 class FireBasePosts {
-    fileprivate let databaseRef = Database.database().reference(withPath: DatabaseReference.posts.rawValue)
+    fileprivate let postRef = Database.database().reference(withPath: DatabaseReference.posts.rawValue)
     fileprivate let storageRef = Storage.storage().reference(withPath: DatabaseReference.posts.rawValue)
     fileprivate let challengeRef = Database.database().reference(withPath: DatabaseReference.challenges.rawValue)
     fileprivate let voteRef = Database.database().reference(withPath: DatabaseReference.votes.rawValue)
@@ -31,7 +31,7 @@ class FireBasePosts {
             return
         }
         
-        databaseRef.child(uid).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate.timeIntervalSince1970).observeSingleEvent(of: .value) { (snapshot) in
+        postRef.child(uid).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate.timeIntervalSince1970).observeSingleEvent(of: .value) { (snapshot) in
             if snapshot.exists() {
                 guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
                     completion(nil)
@@ -53,6 +53,61 @@ class FireBasePosts {
         }
     }
     
+    func fetchUserPosts(completion: @escaping ([Post]?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+        
+        postRef.child(uid).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snapshot) in
+            guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
+                completion(nil)
+                return
+            }
+            
+            var posts = [Post]()
+            for item in data {
+                guard let dictionary = item.value as? [String: Any] else {
+                    completion(nil)
+                    return
+                }
+                
+                let post = Post(dictionary: dictionary, userId: uid)
+                posts.append(post)
+            }
+            
+            completion(posts)
+        }
+    }
+    
+    func fetchUserFeed(completion: @escaping ([Challenge]?) -> ()) {
+        guard let today = cetTime.challengeTimeYesterday() else {
+            completion(nil)
+            return
+        }
+        
+        challengeRef.queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEnding(atValue: today.timeIntervalSince1970).observeSingleEvent(of: .value) { (snapshot) in
+            guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
+                completion(nil)
+                return
+            }
+            
+            var challenges = [Challenge]()
+            for item in data {
+                guard let dictionary = item.value as? [String: Any] else {
+                    completion(nil)
+                    return
+                }
+                
+                let challenge = Challenge(dictionary: dictionary, key: item.key)
+                
+                challenges.append(challenge)
+            }
+            
+            completion(challenges)
+        }
+    }
+    
     func startPost() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let cetTime = CETTime()
@@ -61,7 +116,7 @@ class FireBasePosts {
         let value : [String: Any] = [DatabaseReference.challengeDate.rawValue: challengeTime.timeIntervalSince1970,
                                      DatabaseReference.startDate.rawValue: Date().timeIntervalSince1970]
         
-        databaseRef.child(uid).childByAutoId().setValue(value)
+        postRef.child(uid).childByAutoId().setValue(value)
     }
     
     func uploadPost(image: UIImage, completion: @escaping(Error?) -> ()) {
@@ -103,7 +158,7 @@ class FireBasePosts {
         let cetTime = CETTime()
         guard let challengeTime = cetTime.challengeTimeToday() else { return }
         
-        databaseRef.child(uid).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeTime.timeIntervalSince1970)
+        postRef.child(uid).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeTime.timeIntervalSince1970)
             .observeSingleEvent(of: .value) { (snapshot) in
                 guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
                     completion(nil)
@@ -169,6 +224,6 @@ class FireBasePosts {
         let value: [String: Any] = [DatabaseReference.imageUrl.rawValue: url,
                                     DatabaseReference.date.rawValue: Date().timeIntervalSince1970]
         
-        databaseRef.child(uid).child(challengeKey).updateChildValues(value)
+        postRef.child(uid).child(challengeKey).updateChildValues(value)
     }
 }
