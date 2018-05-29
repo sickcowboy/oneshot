@@ -204,24 +204,40 @@ class ChallengeController: UIViewController {
         takeChallengeButton.isUserInteractionEnabled = false
         challengeLabel.isHidden = false
         
+        // --- OLD Animation ---
+//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//            self.takeChallengeButton.transform = CGAffineTransform(translationX: -30, y: 0)
+//        }) { (_) in
+//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//                self.takeChallengeButton.transform = CGAffineTransform(translationX: -30, y: -100)
+//                self.takeChallengeButton.alpha = 0
+//            }, completion: { _ in
+//                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+//                    self.challengeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+//                    self.challengeLabel.alpha = 1
+//                }, completion: {_ in
+//                    let fbPosts = FireBasePosts()
+//                    fbPosts.startPost()
+//
+//                    self.segueToCamera()
+//                })
+//            })
+//        }
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            self.takeChallengeButton.transform = CGAffineTransform(translationX: -30, y: 0)
-        }) { (_) in
+            self.takeChallengeButton.transform = CGAffineTransform(translationX: 0, y: -100)
+            self.takeChallengeButton.alpha = 0
+        }, completion: { _ in
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-                self.takeChallengeButton.transform = CGAffineTransform(translationX: -30, y: -100)
-                self.takeChallengeButton.alpha = 0
-            }, completion: { _ in
-                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-                    self.challengeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
-                    self.challengeLabel.alpha = 1
-                }, completion: {_ in
-                    let fbPosts = FireBasePosts()
-                    fbPosts.startPost()
-                    
-                    self.segueToCamera()
-                })
+                self.challengeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+                self.challengeLabel.alpha = 1
+            }, completion: {_ in
+                let fbPosts = FireBasePosts()
+                fbPosts.startPost()
+
+                self.segueToCamera()
             })
-        }
+        })
     }
     
     fileprivate func segueToCamera(post: Post? = nil) {
