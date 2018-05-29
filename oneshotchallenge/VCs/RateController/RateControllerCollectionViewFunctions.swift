@@ -60,6 +60,10 @@ extension RateController {
         
         FBVote.sharedInstance.vote(uid: uid, id: key, month: month)
         
-        collectionView.reloadData()
+        voteCount! += 1
+        
+        if voteCount! < 10 {
+            collectionView.reloadData()
+        }
     }
 }

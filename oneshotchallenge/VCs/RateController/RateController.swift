@@ -34,6 +34,16 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
+    var voteCount: UInt? {
+        didSet{
+            guard let voteCount = voteCount else { return }
+            if voteCount == 10 {
+                setUpVotingDone()
+                return
+            }
+        }
+    }
+    
     let lockedLabel: UILabel = {
         let label = UILabel()
         label.textColor = Colors.sharedInstance.primaryTextColor
@@ -70,13 +80,6 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         lockedLabel.removeFromSuperview()
         
-        collectionView?.visibleCells.forEach({ (cell) in
-            if let cell = cell as? RateControllerCell {
-                cell.imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-                cell.imageView.alpha = 0
-            }
-        })
-        
         initialFetch = true
         fetchKey()
     }
@@ -101,14 +104,15 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     fileprivate func checkIfDone(key: String) {
         activityIndication(loading: true)
-        fbRatings.checkIfVoteIsDone(key: key) { (done) in
-            if let done = done {
-                if done {
+        fbRatings.checkIfVoteIsDone(key: key) { (count) in
+            if let count = count {
+                if count == 10 {
                     DispatchQueue.main.async {
                         self.activityIndication(loading: false)
                         self.setUpVotingDone()
                     }
                 } else {
+                    self.voteCount = count
                     self.fetchPartisipants()
                 }
             } else {
@@ -135,6 +139,8 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     fileprivate func fetchPosts(partisipants: [String]) {
+        activityIndication(loading: true)
+        
         posts = [Post]()
         
         guard let timeInterval = cetTime.debugTime() else { return }
@@ -148,6 +154,7 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
                     
                     if self.posts!.count == partisipants.count {
                         DispatchQueue.main.async {
+                            self.activityIndication(loading: false)
                             self.collectionView?.reloadData()
                             return
                         }
@@ -170,6 +177,13 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        collectionView?.visibleCells.forEach({ (cell) in
+            if let cell = cell as? RateControllerCell {
+                cell.imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+                cell.imageView.alpha = 0
+            }
+        })
+        
         partisipants = nil
         
         self.activityIndication(loading: false)
