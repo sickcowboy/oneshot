@@ -12,52 +12,50 @@ import FirebaseStorage
 import FirebaseAuth
 
 class FireBaseRating {
-    fileprivate let postRef = Database.database().reference(withPath: DatabaseReference.posts.rawValue)
     fileprivate let challengeRef = Database.database().reference(withPath: DatabaseReference.challenges.rawValue)
     fileprivate let partisipantsRef = Database.database().reference(withPath: DatabaseReference.participants.rawValue)
     fileprivate let ratingRef = Database.database().reference(withPath: DatabaseReference.ratings.rawValue)
+    fileprivate let userVotesRef = Database.database().reference(withPath: DatabaseReference.userVotes.rawValue)
     
-    func fetchPosts(completion: @escaping ([Post]?, String?) -> ()) {
-        let cetTime = CETTime()
-        // TODO : change 'challenge time double yesterday' to 'challenge time yesterday'
-        guard let challengeDate = cetTime.debugTime() else {
-            completion(nil, nil)
-            return
-        }
-        
-        challengeRef.queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate).observeSingleEvent(of: .value) { (snapshot) in
-            guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
-                completion(nil, nil)
-                return
-            }
+    fileprivate let fbPosts = FireBasePosts()
+    
+    var userVotes : [String]? {
+        didSet{
             
-            var key : String? = nil
-            
-            for item in data {
-                key = item.key
-            }
-            
-            guard let fetchedKey = key else {
-                completion(nil, nil)
-                return
-            }
-            
-            self.fetchPartisipants(key: fetchedKey, completion: { (partisipants) in
-                self.fetchUserPosts(partisipants: partisipants, completion: { (posts) in
-                    completion(posts, fetchedKey)
-                })
-            })
         }
     }
     
-    fileprivate func fetchPartisipants(key: String, completion: @escaping ([String]?) -> ()) {
+    func fetchPartisipants(key: String?, completion: @escaping ([String]?) -> ()) {
+        guard let key = key else {
+            completion(nil)
+            return
+        }
+        
+        self.fetchUserVotes(key: key, completion: { (userVotes) in
+            self.fetchPartisipants(key: key, userVotes: userVotes, completion: { (partisipants) in
+                completion(partisipants)
+            })
+        })
+    }
+    
+    fileprivate func fetchUserVotes(key: String, completion: @escaping([String: Any]?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else {
             completion(nil)
             return
         }
         
-        debugPrint(key)
-        
+        userVotesRef.child(uid).child(key).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else {
+                completion(nil)
+                return
+            }
+            
+            completion(dictionary)
+        }
+    }
+    
+    fileprivate func fetchPartisipants(key: String, userVotes: [String: Any]?, completion: @escaping ([String]?) -> ()) {
+        let userVotes = userVotes ?? [String: Any]()
         partisipantsRef.child(key).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
                 completion(nil)
@@ -66,8 +64,15 @@ class FireBaseRating {
             
             var partisipants = [String]()
             for item in data {
-                if item.key != uid {
+                if let _ = userVotes[item.key] as? Int {
+                    
+                } else {
                     partisipants.append(item.key)
+                }
+                
+                if 20 - userVotes.count == partisipants.count {
+                    completion(partisipants)
+                    return
                 }
             }
             
@@ -75,40 +80,18 @@ class FireBaseRating {
         }
     }
     
-    fileprivate func fetchUserPosts(partisipants: [String]?, completion: @escaping ([Post]?) -> ()) {
-        let cetTime = CETTime()
+    func checkIfVoteIsDone(key: String, completion: @escaping (Bool?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
         
-        if let partisipants = partisipants {
-            // TODO : change 'challenge time double yesterday' to 'challenge time yesterday'
-            guard let challengeDate = cetTime.debugTime() else {
-                completion(nil)
-                return
+        userVotesRef.child(uid).child(key).observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                completion(snapshot.childrenCount == 10)
+            } else {
+                completion(false)
             }
-            
-            var posts = [Post]()
-            
-            for partisipant in partisipants {
-                postRef.child(partisipant).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate).observeSingleEvent(of: .value) { (snapshot) in
-                    guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
-                        completion(nil)
-                        return
-                    }
-                    
-                    
-                    for item in data {
-                        guard let dictionary = item.value as? [String: Any] else { break }
-                        
-                        let post = Post(dictionary: dictionary, userId: partisipant)
-                        posts.append(post)
-                    }
-                    
-                    if posts.count == partisipants.count {
-                        completion(posts)
-                    }
-                }
-            }
-        } else {
-            // TODO : something went wrong
         }
     }
 }
