@@ -89,6 +89,8 @@ class PostController: UIViewController {
                 debugPrint(error)
                 return
             }
+            
+            //TODO : code for when ActivityController closes
         }
         present(activityController, animated: true, completion: nil)
     }
