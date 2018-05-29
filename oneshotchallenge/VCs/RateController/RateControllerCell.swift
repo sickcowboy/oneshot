@@ -12,7 +12,8 @@ class RateControllerCell: UICollectionViewCell {
     
     var imageUrl: String? {
         didSet{
-            self.animateDown()
+            imageView.reset()
+            animateDown()
             fetchImage()
         }
     }
