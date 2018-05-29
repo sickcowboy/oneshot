@@ -78,7 +78,6 @@ class CalendarCell: UICollectionViewCell {
     
     fileprivate lazy var userImageView: UrlImageView = {
         let imageView = UrlImageView()
-        imageView.backgroundColor = Colors.sharedInstance.primaryTextColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.tag = 0
