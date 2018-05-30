@@ -85,6 +85,9 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     fileprivate func setUpVotingDone() {
+        posts = nil
+        collectionView?.reloadData()
+        
         view.addSubview(lockedLabel)
         lockedLabel.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor)
     }
