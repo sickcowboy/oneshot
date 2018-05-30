@@ -72,6 +72,19 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         return button
     }()
     
+    let retrievePasswordButton: UIButton = {
+       let button = UIButton(type: .system)
+        
+        let attributedTitle = NSMutableAttributedString(string: "Forgot password? ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Retrieve", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        button.setTitleColor(Colors.sharedInstance.primaryColor, for: .normal)
+        button.tintColor = Colors.sharedInstance.primaryColor
+        button.addTarget(self, action: #selector(retrievePassword), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,7 +103,7 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         emailTF.delegate = self
         passwordTF.delegate = self
         
-        let views = [emailTF, passwordTF, submitButton]
+        let views = [emailTF, passwordTF, submitButton, retrievePasswordButton]
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.setUp(vertical: true, spacing: 8)
         
@@ -131,6 +144,11 @@ class LoginVC: UIViewController, UITextFieldDelegate {
             submitButton.isEnabled = true
             submitButton.alpha = 1
         }
+    }
+    
+    @objc func retrievePassword() {
+        
+        debugPrint("Handle retrive password")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
