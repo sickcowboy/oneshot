@@ -20,9 +20,22 @@ class PostController: UIViewController {
     
     lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("I'll skip this round", for: .normal)
+
+        let attributedTitle = NSMutableAttributedString(string: "I'll ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.secondaryColor])
+        attributedTitle.append(NSAttributedString(string: "skip ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 17), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.darkColor]))
+        attributedTitle.append(NSAttributedString(string: "this round", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.secondaryColor]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        return button
+    }()
+    
+    lazy var backButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Back to edit", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         button.tintColor = Colors.sharedInstance.secondaryColor
+        
+        button.addTarget(self, action: #selector(backClick), for: .touchUpInside)
         return button
     }()
     
@@ -39,17 +52,24 @@ class PostController: UIViewController {
         
         view.backgroundColor = Colors.sharedInstance.lightColor
         
+        view.addSubview(backButton)
+        backButton.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil,
+                                    padding: .init(top: 8, left: 8, bottom: 0, right: 0))
+        
         view.addSubview(frameView)
-        frameView.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor,
+        frameView.constraintLayout(top: backButton.bottomAnchor, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor,
+                                   padding: .init(top: 16, left: 0, bottom: 0, right: 0),
                                    size: .init(width: view.frame.width - 50, height: view.frame.width - 50))
         
         view.addSubview(postButton)
         postButton.constraintLayout(top: frameView.bottomAnchor, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor,
-                                    padding: .init(top: 16, left: 0, bottom: 0, right: 0))
+                                    padding: .init(top: 4, left: 0, bottom: 0, right: 0))
         
         view.addSubview(cancelButton)
-        cancelButton.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil,
-                                      padding: .init(top: 8, left: 8, bottom: 0, right: 0))
+        cancelButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.safeAreaLayoutGuide.centerXAnchor,
+                                      padding: .init(top: 16, left: 0, bottom: 4, right: 0))
+        
+        
     }
     
     @objc fileprivate func postClicked() {
@@ -76,6 +96,10 @@ class PostController: UIViewController {
                 self.navigationController?.popToRootViewController(animated: true)
             }
         })
+    }
+    
+    @objc func backClick() {
+        navigationController?.popViewController(animated: true)
     }
     
     fileprivate let loadingScreen = LoadingScreen()
