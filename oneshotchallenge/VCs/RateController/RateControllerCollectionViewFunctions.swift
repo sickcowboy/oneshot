@@ -28,9 +28,8 @@ extension RateController {
             posts?.removeFirst()
         } else {
             cell.imageUrl = ""
+            setUpRefresh()
         }
-        
-        cell.initialFetch = initialFetch
         
         return cell
     }

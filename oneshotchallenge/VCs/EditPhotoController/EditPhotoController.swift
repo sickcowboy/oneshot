@@ -86,6 +86,15 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
         unEditedPhoto = CIImage(image: photo)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+//        saveButton.isUserInteractionEnabled = true
+//        brightnessSlider.slider.isUserInteractionEnabled = true
+//        contrastSlider.slider.isUserInteractionEnabled = true
+//        saturationSlider.slider.isUserInteractionEnabled = true
+    }
+    
     var stackView = UIStackView()
     
     fileprivate func setUpUI() {
@@ -126,12 +135,12 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
     }
     
     @objc fileprivate func saveClick() {
-        countDownTimer.stopCountDown()
-        
-        saveButton.isUserInteractionEnabled = false
-        brightnessSlider.slider.isUserInteractionEnabled = false
-        contrastSlider.slider.isUserInteractionEnabled = false
-        saturationSlider.slider.isUserInteractionEnabled = false
+//        countDownTimer.stopCountDown()
+//
+//        saveButton.isUserInteractionEnabled = false
+//        brightnessSlider.slider.isUserInteractionEnabled = false
+//        contrastSlider.slider.isUserInteractionEnabled = false
+//        saturationSlider.slider.isUserInteractionEnabled = false
         
         let controller = PostController()
         controller.image = photo

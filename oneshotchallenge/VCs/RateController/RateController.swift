@@ -11,11 +11,13 @@ import UIKit
 class RateController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
+    let cetTime = CETTime()
+    let fbRatings = FireBaseRating()
     
     var partisipants: [String]? {
         didSet {
-            posts = nil
-            collectionView?.reloadData()
+//            posts = nil
+//            collectionView?.reloadData()
             
             guard let partispants = partisipants else { return }
             
@@ -23,14 +25,12 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    var posts: [Post]?
-    
-    var initialFetch = true
+    var posts: [Post]? 
     
     var key: String? {
         didSet{
             guard let key = key else { return }
-            checkIfDone(key: key)
+            checkIfUserHasPosted(key: key)
         }
     }
     
@@ -38,7 +38,8 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         didSet{
             guard let voteCount = voteCount else { return }
             if voteCount == 10 {
-                setUpVotingDone()
+                addPartisipant()
+                setUpLockedLabel(done: true)
                 return
             }
         }
@@ -50,17 +51,20 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         label.numberOfLines = 3
         label.textAlignment = .center
         label.adjustsFontSizeToFitWidth = true
-        
-        let attributedTitle = NSMutableAttributedString(string: "No more votes until",
-                                                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 32),
-                                                                     NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
-        attributedTitle.append(NSAttributedString(string: "\nTOMORROW",
-                                                  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 44),
-                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
-        
-        label.attributedText = attributedTitle
-        
         return label
+    }()
+    
+    lazy var refreshButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.tintColor = Colors.sharedInstance.primaryTextColor
+        button.setImage(#imageLiteral(resourceName: "Refresh"), for: .normal)
+        button.setTitle("No posts found. Refresh?", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        button.alignTextBelow(spacing: 2)
+        
+        button.addTarget(self, action: #selector(refresh), for: .touchUpInside)
+        return button
     }()
     
     override func viewDidLoad() {
@@ -80,102 +84,80 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         lockedLabel.removeFromSuperview()
         
-        initialFetch = true
         fetchKey()
     }
     
-    fileprivate func setUpVotingDone() {
-        posts = nil
-        collectionView?.reloadData()
+    func setUpLockedLabel(done: Bool) {
+        collectionView?.visibleCells.forEach({ (cell) in
+            if let cell = cell as? RateControllerCell {
+                cell.animateDown()
+            }
+        })
+        
+        if done {
+            lockedLabel.attributedText = attTitle(text: "Voting complete for current")
+        } else {
+            lockedLabel.attributedText = attTitle(text: "No post for current")
+        }
         
         view.addSubview(lockedLabel)
         lockedLabel.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor)
-    }
-    
-    fileprivate let cetTime = CETTime()
-    fileprivate let fbRatings = FireBaseRating()
-    
-    fileprivate func fetchKey() {
-        let fbChallenges = FireBaseChallenges()
         
-        fbChallenges.fetchChallenge(challengeDate: cetTime.debugTime()) { (challenge) in
-            if let challenge = challenge {
-                self.key = challenge.key
-            }
-        }
+        animateView(view: lockedLabel)
     }
     
-    fileprivate func checkIfDone(key: String) {
-        activityIndication(loading: true)
-        fbRatings.checkIfVoteIsDone(key: key) { (count) in
-            if let count = count {
-                if count == 10 {
-                    DispatchQueue.main.async {
-                        self.activityIndication(loading: false)
-                        self.setUpVotingDone()
-                    }
-                } else {
-                    self.voteCount = count
-                    self.fetchPartisipants()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    self.activityIndication(loading: false)
-                }
-                // TODO : Something went wrong
+    func setUpRefresh() {
+        collectionView?.visibleCells.forEach({ (cell) in
+            if let cell = cell as? RateControllerCell {
+                cell.animateDown()
             }
-        }
+        })
+        
+        refreshButton.removeFromSuperview()
+        
+        view.addSubview(refreshButton)
+        refreshButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.safeAreaLayoutGuide.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor)
+        
+        animateView(view: refreshButton)
     }
     
-    fileprivate func fetchPartisipants() {
-        fbRatings.fetchPartisipants(key: key) { (partisipants) in
-            DispatchQueue.main.async {
-                self.activityIndication(loading: false)
+    @objc func refresh() {
+        fetchKey()
+        
+        refreshButton.removeFromSuperview()
+    }
 
-                if let partisipants = partisipants {
-                    self.partisipants = partisipants
-                } else {
-                    // TODO : Something went wrong
-                }
-            }
-        }
-    }
-    
-    fileprivate func fetchPosts(partisipants: [String]) {
-        activityIndication(loading: true)
-        
-        posts = [Post]()
-        
-        guard let timeInterval = cetTime.debugTime() else { return }
-        let date = Date(timeIntervalSince1970: timeInterval)
-        
-        let fbPosts = FireBasePosts()
-        for partisipant in partisipants {
-            fbPosts.fetchPost(uid: partisipant, date: date) { (post) in
-                if let post = post {
-                    self.posts?.append(post)
-                    
-                    if self.posts!.count == partisipants.count {
-                        DispatchQueue.main.async {
-                            self.activityIndication(loading: false)
-                            self.collectionView?.reloadData()
-                            return
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
     fileprivate let loadingScreen = LoadingScreen()
     
-    fileprivate func activityIndication(loading: Bool) {
+    func activityIndication(loading: Bool) {
         if loading {
             view.addSubview(loadingScreen)
             loadingScreen.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         } else {
             loadingScreen.removeFromSuperview()
         }
+    }
+    
+    fileprivate func attTitle(text: String) -> NSMutableAttributedString {
+        let attributedTitle = NSMutableAttributedString(string: text,
+                                                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20),
+                                                                     NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
+        
+        attributedTitle.append(NSAttributedString(string: "\nCHALLENGE",
+                                                  attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 44),
+                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        
+        return attributedTitle
+    }
+    
+    fileprivate func animateView(view: UIView) {
+        view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        view.alpha = 0
+        
+        UIView.animate(withDuration: 0.5, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            view.transform = CGAffineTransform(scaleX: 1, y: 1)
+            view.alpha = 1
+        }, completion: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

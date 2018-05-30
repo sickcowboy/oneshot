@@ -26,6 +26,8 @@
 		2B2AE49B20B2F1AE00151091 /* MonthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49A20B2F1AE00151091 /* MonthKey.swift */; };
 		2B2AE49E20B2F63300151091 /* FireBaseTopLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */; };
 		2B2AE4A020B2F6E200151091 /* TopListScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49F20B2F6E200151091 /* TopListScore.swift */; };
+		2B47D88920BE97470003095B /* RateControllerDatabaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */; };
+		2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B47D88A20BE9B1C0003095B /* UIButtonExtension.swift */; };
 		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
 		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
@@ -88,6 +90,8 @@
 		2B2AE49A20B2F1AE00151091 /* MonthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthKey.swift; sourceTree = "<group>"; };
 		2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseTopLists.swift; sourceTree = "<group>"; };
 		2B2AE49F20B2F6E200151091 /* TopListScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListScore.swift; sourceTree = "<group>"; };
+		2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerDatabaseFunctions.swift; sourceTree = "<group>"; };
+		2B47D88A20BE9B1C0003095B /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				2B0B7B17208F0F5900532815 /* RateController.swift */,
 				A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */,
 				A40A999420930FEF00176D96 /* RateControllerCell.swift */,
+				2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */,
 			);
 			path = RateController;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				2B8CE53220A1914200C8EC3D /* CETTime.swift */,
 				2B73389D20A9A85800AB59E0 /* StatusBar.swift */,
 				2B2AE49A20B2F1AE00151091 /* MonthKey.swift */,
+				2B47D88A20BE9B1C0003095B /* UIButtonExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -572,6 +578,7 @@
 			files = (
 				2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */,
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
+				2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
 				A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */,
 				2B2AE49E20B2F63300151091 /* FireBaseTopLists.swift in Sources */,
@@ -585,6 +592,7 @@
 				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
 				2B52D237208F12ED00090285 /* Colors.swift in Sources */,
+				2B47D88920BE97470003095B /* RateControllerDatabaseFunctions.swift in Sources */,
 				2B8CE3C9209B0DEE0045C028 /* UITextFieldExtension.swift in Sources */,
 				2B2039E4208F2CBC00C4CF43 /* CameraController.swift in Sources */,
 				2BA7F9222090964D0028E0AC /* CalendarHeader.swift in Sources */,

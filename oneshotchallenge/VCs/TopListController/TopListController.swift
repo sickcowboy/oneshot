@@ -13,9 +13,30 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     let cellId = "cellId"
     let headerId = "headerId"
     
-    var todayScore: [TopListScore]?
-    var monthScore: [TopListScore]?
-    var allTimeScore: [TopListScore]?
+    var todayScore: [TopListScore]? {
+        didSet {
+            stopRefresh()
+        }
+    }
+    
+    var monthScore: [TopListScore]? {
+        didSet {
+            stopRefresh()
+        }
+    }
+    
+    var allTimeScore: [TopListScore]? {
+        didSet{
+            stopRefresh()
+        }
+    }
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.tintColor = Colors.sharedInstance.primaryTextColor
+        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refresher
+    }()
     
     lazy var segmentedView : UISegmentedControl = {
         let sV = UISegmentedControl(items: ["Today", "Month", "All Time"])
@@ -38,6 +59,8 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.register(TopListControllerHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                  withReuseIdentifier: headerId)
         
+        collectionView?.addSubview(refreshControl)
+        
         (collectionViewLayout as! UICollectionViewFlowLayout).sectionHeadersPinToVisibleBounds = true
     }
     
@@ -48,6 +71,10 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     
     fileprivate func fetchTopLists() {
         let fbTopLists = FBTopLists()
+        
+        todayScore = nil
+        monthScore = nil
+        allTimeScore = nil
         
         fbTopLists.fetchToday { (topList) in
             DispatchQueue.main.async {
@@ -80,6 +107,20 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
                 self.collectionView?.transform = CGAffineTransform(translationX: 0, y: 0)
             }, completion: nil)
+        }
+    }
+    
+    @objc func refresh() {
+        fetchTopLists()
+    }
+    
+    fileprivate func stopRefresh() {
+        guard let todayScore = todayScore else { return }
+        guard let monthScore = monthScore else { return }
+        guard let allTimeScore = allTimeScore else { return }
+        
+        if !todayScore.isEmpty && !monthScore.isEmpty && !allTimeScore.isEmpty {
+            refreshControl.endRefreshing()
         }
     }
 }

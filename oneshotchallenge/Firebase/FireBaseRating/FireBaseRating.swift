@@ -55,7 +55,14 @@ class FireBaseRating {
     }
     
     fileprivate func fetchPartisipants(key: String, userVotes: [String: Any]?, completion: @escaping ([String]?) -> ()) {
-        let userVotes = userVotes ?? [String: Any]()
+        guard let uid = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+        
+        var userVotes = userVotes ?? [String: Any]()
+        userVotes[uid] = 1
+        
         partisipantsRef.child(key).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
                 completion(nil)
@@ -93,5 +100,12 @@ class FireBaseRating {
                 completion(0)
             }
         }
+    }
+    
+    func addPartisipant(key: String?) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let key = key else { return }
+        
+        partisipantsRef.child(key).child(uid).setValue(1)
     }
 }
