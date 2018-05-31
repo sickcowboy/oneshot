@@ -81,10 +81,11 @@ class InfoView: UIView {
                                    padding: .init(top: 8, left: 8, bottom: 0, right: 8))
         
         let stackView = UIStackView(arrangedSubviews: [shareButton, okButton])
-        stackView.setUp(vertical: false, spacing: 0)
+        stackView.setUp(vertical: false, spacing: 4)
         
         contentView.addSubview(stackView)
         stackView.constraintLayout(top: nil, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, bottom: contentView.bottomAnchor,
+                                   padding: .init(top: 0, left: 4, bottom: 0, right: 4),
                                    size: .init(width: 0, height: 50))
         
     }
