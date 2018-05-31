@@ -48,6 +48,14 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
             
             let components = calendar.dateComponents([.hour, .minute, .second], from: nowDate, to: endDate)
             
+            guard let hour = components.hour else { return }
+            guard let minute = components.minute else { return }
+            guard let seconds = components.second else { return }
+            
+            if hour <= 0 && minute <= 0 && seconds <= 0 {
+                debugPrint("Times up")
+            }
+            
             startCountDown(hour: components.hour, minute: components.minute, second: components.second)
         }
     }

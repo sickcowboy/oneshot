@@ -84,12 +84,16 @@ extension RateController {
         let date = Date(timeIntervalSince1970: timeInterval)
         
         let fbPosts = FireBasePosts()
-        for (index, partisipant) in partisipants.enumerated() {
+        var index = 0
+        
+        for partisipant in partisipants {
             fbPosts.fetchPost(uid: partisipant, date: date) { (post) in
                 if let post = post {
                     self.posts?.append(post)
                     
-                    if self.posts!.count == partisipants.count {
+                    guard let posts = self.posts else { return }
+                    
+                    if posts.count == partisipants.count {
                         DispatchQueue.main.async {
                             self.activityIndication(loading: false)
                             self.collectionView?.reloadData()
@@ -98,8 +102,10 @@ extension RateController {
                     }
                 } else {
                     partisipants.remove(at: index)
+                    index -= 1
                     return
                 }
+                index += 1
             }
         }
     }
