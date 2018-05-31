@@ -95,9 +95,9 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         })
         
         if done {
-            lockedLabel.attributedText = attTitle(text: "Voting complete for current")
+            lockedLabel.attributedText = attTitle(text: "Voting complete for current", bigText: "CHALLENGE")
         } else {
-            lockedLabel.attributedText = attTitle(text: "No post for current")
+            lockedLabel.attributedText = attTitle(text: "You need to take a picture before", bigText: "VOTING")
         }
         
         view.addSubview(lockedLabel)
@@ -138,12 +138,12 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    fileprivate func attTitle(text: String) -> NSMutableAttributedString {
+    fileprivate func attTitle(text: String, bigText: String) -> NSMutableAttributedString {
         let attributedTitle = NSMutableAttributedString(string: text,
                                                         attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 20),
                                                                      NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
         
-        attributedTitle.append(NSAttributedString(string: "\nCHALLENGE",
+        attributedTitle.append(NSAttributedString(string: "\n\(bigText)",
                                                   attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 44),
                                                                NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
         
