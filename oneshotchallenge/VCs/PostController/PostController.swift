@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostController: UIViewController {
+class PostController: UIViewController, InfoViewDelegate {
     lazy var postButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("POST", for: .normal)
@@ -71,35 +71,30 @@ class PostController: UIViewController {
         cancelButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.safeAreaLayoutGuide.centerXAnchor,
                                       padding: .init(top: 16, left: 0, bottom: 4, right: 0))
         
-        
+        infoView.delegate = self
     }
     
     @objc fileprivate func postClicked() {
-//        guard let image = image else { return }
-//        postButton.isEnabled = false
-//
-//        activityIndication(loading: true)
-//
-//        let fbPosts = FireBasePosts()
-//        fbPosts.uploadPost(image: image, completion: { error in
-//            DispatchQueue.main.async {
-//                self.activityIndication(loading: false)
-//
-//                if let error = error {
-//                    self.alert(message: error.localizedDescription)
-//                    self.postButton.isEnabled = true
-//                    return
-//                }
-//
-//                //TODO : display to user that upload is successful
-//
-//                self.tabBarController?.selectedIndex = 1
-//                self.tabBarController?.tabBar.isHidden = false
-//                self.navigationController?.popToRootViewController(animated: true)
-//            }
-//        })
-        
-        showInfoWindow()
+        guard let image = image else { return }
+
+        activityIndication(loading: true)
+
+        let fbPosts = FireBasePosts()
+        fbPosts.uploadPost(image: image, completion: { error in
+            DispatchQueue.main.async {
+                self.activityIndication(loading: false)
+
+                if let error = error {
+                    self.alert(message: error.localizedDescription)
+                    self.cancelButton.isHidden = false
+                    self.backButton.isHidden = false
+                    self.postButton.isHidden = false
+                    return
+                }
+                
+                self.showInfoWindow()
+            }
+        })
     }
     
     fileprivate func showInfoWindow() {
@@ -117,9 +112,6 @@ class PostController: UIViewController {
         infoView.transform = CGAffineTransform(translationX: 300, y: 0)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-            self.backButton.transform = CGAffineTransform(translationX: -300, y: 0)
-            self.postButton.transform = CGAffineTransform(translationX: -300, y: 0)
-            self.cancelButton.transform = CGAffineTransform(translationX: -300, y: 0)
             self.infoView.transform = CGAffineTransform(translationX: 0, y: 0)
         }, completion: nil)
     }
@@ -128,14 +120,24 @@ class PostController: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    fileprivate let loadingScreen = LoadingScreen()
+
+    fileprivate let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
     
     fileprivate func activityIndication(loading: Bool) {
+        activityIndicator.color = Colors.sharedInstance.darkColor
+        
+        activityIndicator.removeFromSuperview()
+        
+        cancelButton.isHidden = true
+        backButton.isHidden = true
+        postButton.isHidden = true
+        
         if loading {
-            view.addSubview(loadingScreen)
-            loadingScreen.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
-        } else {
-            loadingScreen.removeFromSuperview()
+            view.addSubview(activityIndicator)
+            activityIndicator.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: postButton.centerXAnchor, centerY: postButton.centerYAnchor)
+            activityIndicator.squareByHeightAnchor()
+            
+            activityIndicator.startAnimating()
         }
     }
     
@@ -144,5 +146,15 @@ class PostController: UIViewController {
         alertController.oneAction()
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func okClick() {
+        self.tabBarController?.selectedIndex = 1
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func shareClick() {
+        debugPrint("Share click")
     }
 }

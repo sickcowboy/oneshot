@@ -453,14 +453,6 @@
 			path = FireBaseRetrievePassword;
 			sourceTree = "<group>";
 		};
-		A4841ED620BFFAD300430C24 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		C71B1655732AC7F8F1711454 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,7 +649,6 @@
 				2B73389C20A9A4FE00AB59E0 /* TopListControllerHeader.swift in Sources */,
 				2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */,
 				2B8CE3D0209B18E30045C028 /* UIAlertControllerExtension.swift in Sources */,
-				A4841EDA20BFFB5E00430C24 /* RetrievePasswordView.swift in Sources */,
 				2B0B7B18208F0F5900532815 /* RateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

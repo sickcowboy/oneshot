@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol InfoViewDelegate: class {
+    func okClick()
+    func shareClick()
+}
+
 class InfoView: UIView {
+    
+    weak var delegate: InfoViewDelegate?
 
     let contentView: UIView = {
         let view = UIView()
@@ -26,14 +33,14 @@ class InfoView: UIView {
     
     lazy var okButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = Colors.sharedInstance.primaryTextColor
-        button.backgroundColor = Colors.sharedInstance.primaryColor
-        
-        button.layer.borderWidth = 1
-        button.layer.borderColor = Colors.sharedInstance.primaryTextColor.cgColor
+        button.tintColor = Colors.sharedInstance.darkColor
         
         button.setTitle("OK", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.setImage(#imageLiteral(resourceName: "Ok"), for: .normal)
+        button.alignTextBelow(spacing: 0)
+        
+        button.sizeToFit()
         
         button.addTarget(self, action: #selector(okClick), for: .touchUpInside)
         return button
@@ -41,16 +48,16 @@ class InfoView: UIView {
     
     lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
-        button.tintColor = Colors.sharedInstance.primaryTextColor
-        button.backgroundColor = Colors.sharedInstance.primaryColor
-        
-        button.layer.borderWidth = 1
-        button.layer.borderColor = Colors.sharedInstance.primaryTextColor.cgColor
+        button.tintColor = Colors.sharedInstance.darkColor
         
         button.setTitle("Share", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.setImage(#imageLiteral(resourceName: "Share"), for: .normal)
+        button.alignTextBelow(spacing: 0)
         
-        button.addTarget(self, action: #selector(okClick), for: .touchUpInside)
+        button.sizeToFit()
+        
+        button.addTarget(self, action: #selector(shareClick), for: .touchUpInside)
         return button
     }()
     
@@ -86,12 +93,17 @@ class InfoView: UIView {
         contentView.addSubview(stackView)
         stackView.constraintLayout(top: nil, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, bottom: contentView.bottomAnchor,
                                    padding: .init(top: 0, left: 4, bottom: 0, right: 4),
-                                   size: .init(width: 0, height: 50))
+                                   size: .init(width: 0, height: 80))
         
     }
     
     
     @objc fileprivate func okClick() {
+        delegate?.okClick()
+    }
+    
+    @objc fileprivate func shareClick() {
+        delegate?.shareClick()
     }
     
     required init?(coder aDecoder: NSCoder) {
