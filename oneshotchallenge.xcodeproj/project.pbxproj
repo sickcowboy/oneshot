@@ -64,6 +64,7 @@
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
 		A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */; };
+		A4A0081C20BFCD4C00E8C9DA /* RetrievePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */; };
 		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +131,7 @@
 		A40A999420930FEF00176D96 /* RateControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCell.swift; sourceTree = "<group>"; };
 		A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRetrievePassword.swift; sourceTree = "<group>"; };
+		A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +302,7 @@
 				2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */,
 				2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */,
 				2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */,
+				A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				2B8CE3CC209B15B00045C028 /* FireBaseAuth.swift in Sources */,
 				2B8CE53D20A1A19B00C8EC3D /* UrlImageView.swift in Sources */,
 				2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */,
+				A4A0081C20BFCD4C00E8C9DA /* RetrievePasswordView.swift in Sources */,
 				A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */,
 				2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */,
 				2BBD4C7720A1C2630034DD47 /* AddChallengeController.swift in Sources */,

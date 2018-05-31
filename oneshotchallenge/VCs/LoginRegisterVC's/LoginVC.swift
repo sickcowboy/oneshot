@@ -147,8 +147,14 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func retrievePassword() {
+        guard let email = emailTF.text else { return }
         
-        debugPrint("Handle retrive password")
+        let retrievePasswordView = RetrievePasswordView()
+        
+        retrievePasswordView.setEmail(email: email)
+        
+        view.addSubview(retrievePasswordView)
+        retrievePasswordView.constraintLayout(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

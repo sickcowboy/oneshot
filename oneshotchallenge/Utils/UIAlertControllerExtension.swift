@@ -16,12 +16,13 @@ extension UIAlertController {
         addAction(action)
     }
     
-    func twoAction() {
-        
-        let actionOne = UIAlertAction(title: "Ok", style: .default, handler: nil)
-        let actionTwo = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        addAction(actionOne)
-        addAction(actionTwo)
+    func show() {
+        let win = UIWindow(frame: UIScreen.main.bounds)
+        let vc = UIViewController()
+        vc.view.backgroundColor = .clear
+        win.rootViewController = vc
+        win.windowLevel = UIWindowLevelAlert + 1
+        win.makeKeyAndVisible()
+        vc.present(self, animated: true, completion: nil)
     }
 }
