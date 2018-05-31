@@ -65,6 +65,7 @@
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
 		A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */; };
+		A4841EDA20BFFB5E00430C24 /* RetrievePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4841ED920BFFB5E00430C24 /* RetrievePasswordView.swift */; };
 		A4A0081C20BFCD4C00E8C9DA /* RetrievePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */; };
 		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
@@ -133,6 +134,7 @@
 		A40A999420930FEF00176D96 /* RateControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCell.swift; sourceTree = "<group>"; };
 		A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRetrievePassword.swift; sourceTree = "<group>"; };
+		A4841ED920BFFB5E00430C24 /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 		A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +157,7 @@
 				2B0B7AFE208F0D2900532815 /* Products */,
 				C71B1655732AC7F8F1711454 /* Pods */,
 				6E5AEB11235C2DD18D1E9497 /* Frameworks */,
+				A4841ED620BFFAD300430C24 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -305,6 +308,7 @@
 				2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */,
 				2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */,
 				2B8E910E20BFD91B005ED148 /* InfoView.swift */,
+				A4841ED920BFFB5E00430C24 /* RetrievePasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -438,6 +442,14 @@
 				A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */,
 			);
 			path = FireBaseRetrievePassword;
+			sourceTree = "<group>";
+		};
+		A4841ED620BFFAD300430C24 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		C71B1655732AC7F8F1711454 /* Pods */ = {
@@ -636,6 +648,7 @@
 				2B73389C20A9A4FE00AB59E0 /* TopListControllerHeader.swift in Sources */,
 				2BB5CEE22090737F00BE4050 /* FramedPhotoView.swift in Sources */,
 				2B8CE3D0209B18E30045C028 /* UIAlertControllerExtension.swift in Sources */,
+				A4841EDA20BFFB5E00430C24 /* RetrievePasswordView.swift in Sources */,
 				2B0B7B18208F0F5900532815 /* RateController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
