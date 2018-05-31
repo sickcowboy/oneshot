@@ -155,6 +155,7 @@ class PostController: UIViewController, InfoViewDelegate {
     }
     
     func shareClick() {
-        debugPrint("Share click")
+        let shareActivity = ShareActivity()
+        shareActivity.share(image: image, viewController: self, view: view)
     }
 }
