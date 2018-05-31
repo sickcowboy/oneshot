@@ -48,6 +48,7 @@
 		2B8CE53920A19BEA00C8EC3D /* FireBasePosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE53820A19BEA00C8EC3D /* FireBasePosts.swift */; };
 		2B8CE53B20A19CC400C8EC3D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE53A20A19CC400C8EC3D /* Post.swift */; };
 		2B8CE53D20A1A19B00C8EC3D /* UrlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE53C20A1A19B00C8EC3D /* UrlImageView.swift */; };
+		2B8E910F20BFD91B005ED148 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8E910E20BFD91B005ED148 /* InfoView.swift */; };
 		2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA3A8D020A0569400E37A33 /* SettingsController.swift */; };
 		2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91D209086650028E0AC /* CalendarCell.swift */; };
 		2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */; };
@@ -111,6 +112,7 @@
 		2B8CE53820A19BEA00C8EC3D /* FireBasePosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBasePosts.swift; sourceTree = "<group>"; };
 		2B8CE53A20A19CC400C8EC3D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		2B8CE53C20A1A19B00C8EC3D /* UrlImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlImageView.swift; sourceTree = "<group>"; };
+		2B8E910E20BFD91B005ED148 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		2BA3A8D020A0569400E37A33 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		2BA7F91D209086650028E0AC /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		2BA7F91F2090870A0028E0AC /* UserControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				2BB5CEDD209065A400BE4050 /* CountDownTimer.swift */,
 				2BB5CEE12090737F00BE4050 /* FramedPhotoView.swift */,
 				2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */,
+				2B8E910E20BFD91B005ED148 /* InfoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -599,6 +602,7 @@
 				2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */,
 				2B8CE53620A193AD00C8EC3D /* FireBaseChallenges.swift in Sources */,
 				2B2AE4A020B2F6E200151091 /* TopListScore.swift in Sources */,
+				2B8E910F20BFD91B005ED148 /* InfoView.swift in Sources */,
 				2B7338A120A9AF8800AB59E0 /* Names.swift in Sources */,
 				A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */,
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
