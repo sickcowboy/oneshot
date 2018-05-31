@@ -1,5 +1,5 @@
 //
-//  RetrievePasswordView.swift
+//  File.swift
 //  oneshotchallenge
 //
 //  Created by Olle Ekberg on 2018-05-31.
@@ -18,14 +18,14 @@ class RetrievePasswordView: UIView {
     let blur = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
     
     let contentView : UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = Colors.sharedInstance.lightColor
         view.layer.cornerRadius = 8
         return view
     }()
     
     let emailTF : UITextField = {
-       let tf = UITextField()
+        let tf = UITextField()
         tf.backgroundColor = Colors.sharedInstance.secondaryColor
         tf.keyboardType = .emailAddress
         tf.autocapitalizationType = .none
@@ -64,7 +64,7 @@ class RetrievePasswordView: UIView {
     }()
     
     let titleLabel : UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.textColor = Colors.sharedInstance.darkColor
         label.backgroundColor = Colors.sharedInstance.lightColor
         label.text = "Retrieve Password"
@@ -138,7 +138,7 @@ class RetrievePasswordView: UIView {
             okButton.alpha = 1
         }
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
