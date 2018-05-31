@@ -39,6 +39,8 @@ class PostController: UIViewController {
         return button
     }()
     
+    fileprivate let infoView = InfoView()
+    
     var image: UIImage? {
         didSet{
            frameView.image = image
@@ -73,29 +75,53 @@ class PostController: UIViewController {
     }
     
     @objc fileprivate func postClicked() {
-        guard let image = image else { return }
-        postButton.isEnabled = false
+//        guard let image = image else { return }
+//        postButton.isEnabled = false
+//
+//        activityIndication(loading: true)
+//
+//        let fbPosts = FireBasePosts()
+//        fbPosts.uploadPost(image: image, completion: { error in
+//            DispatchQueue.main.async {
+//                self.activityIndication(loading: false)
+//
+//                if let error = error {
+//                    self.alert(message: error.localizedDescription)
+//                    self.postButton.isEnabled = true
+//                    return
+//                }
+//
+//                //TODO : display to user that upload is successful
+//
+//                self.tabBarController?.selectedIndex = 1
+//                self.tabBarController?.tabBar.isHidden = false
+//                self.navigationController?.popToRootViewController(animated: true)
+//            }
+//        })
         
-        activityIndication(loading: true)
+        showInfoWindow()
+    }
+    
+    fileprivate func showInfoWindow() {
+        infoView.removeFromSuperview()
         
-        let fbPosts = FireBasePosts()
-        fbPosts.uploadPost(image: image, completion: { error in
-            DispatchQueue.main.async {
-                self.activityIndication(loading: false)
-                
-                if let error = error {
-                    self.alert(message: error.localizedDescription)
-                    self.postButton.isEnabled = true
-                    return
-                }
-                
-                //TODO : display to user that upload is successful
-                
-                self.tabBarController?.selectedIndex = 1
-                self.tabBarController?.tabBar.isHidden = false
-                self.navigationController?.popToRootViewController(animated: true)
-            }
-        })
+        view.addSubview(infoView)
+        infoView.constraintLayout(top: postButton.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        infoView.setText(text: "Let's head over and vote on some posts.")
+        
+        animateDone()
+    }
+    
+    fileprivate func animateDone() {
+        infoView.transform = CGAffineTransform(translationX: 300, y: 0)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+            self.backButton.transform = CGAffineTransform(translationX: -300, y: 0)
+            self.postButton.transform = CGAffineTransform(translationX: -300, y: 0)
+            self.cancelButton.transform = CGAffineTransform(translationX: -300, y: 0)
+            self.infoView.transform = CGAffineTransform(translationX: 0, y: 0)
+        }, completion: nil)
     }
     
     @objc func backClick() {
