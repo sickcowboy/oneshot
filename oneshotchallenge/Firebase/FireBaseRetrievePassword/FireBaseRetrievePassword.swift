@@ -13,7 +13,11 @@ class FireBaseRetrievePassword {
     func retrieveFBPassword(email: String, completion: @escaping (Error?) -> ()) {
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
             
-            completion(error)
+            if let error = error {
+                completion(error)
+                return
+            }
+            completion(nil)
         }
     }
 }
