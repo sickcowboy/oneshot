@@ -15,4 +15,13 @@ extension UIAlertController {
         
         addAction(action)
     }
+    
+    func twoAction() {
+        
+        let actionOne = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let actionTwo = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        addAction(actionOne)
+        addAction(actionTwo)
+    }
 }
