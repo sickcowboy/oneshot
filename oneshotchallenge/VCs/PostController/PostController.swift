@@ -155,7 +155,8 @@ class PostController: UIViewController, InfoViewDelegate {
     }
     
     func shareClick() {
+        let mergedImage = frameView.mergedImage()
         let shareActivity = ShareActivity()
-        shareActivity.share(image: image, viewController: self, view: view)
+        shareActivity.share(image: mergedImage, viewController: self, view: view)
     }
 }

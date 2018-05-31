@@ -72,6 +72,27 @@ class FramedPhotoView: UIView {
        photoImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
     }
     
+    func mergedImage() -> UIImage?{
+        guard let image = image else { return nil }
+        let frame = #imageLiteral(resourceName: "frame")
+        let size = frameView.frame.size
+        debugPrint(size)
+        UIGraphicsBeginImageContext(size)
+        
+        let frameArea = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        
+        let x = (frameView.frame.size.width/2) - (photoImageView.frame.size.width/2)
+        let y = (frameView.frame.size.height/2) - (photoImageView.frame.size.height/2)
+        let imageArea = CGRect(x: x, y: y, width: photoImageView.frame.size.width, height: photoImageView.frame.size.width)
+        frame.draw(in: frameArea)
+        image.draw(in: imageArea, blendMode: .normal, alpha: 0.8)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
