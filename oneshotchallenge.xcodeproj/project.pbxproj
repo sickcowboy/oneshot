@@ -36,6 +36,7 @@
 		2B73389C20A9A4FE00AB59E0 /* TopListControllerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389B20A9A4FE00AB59E0 /* TopListControllerHeader.swift */; };
 		2B73389E20A9A85800AB59E0 /* StatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389D20A9A85800AB59E0 /* StatusBar.swift */; };
 		2B7338A120A9AF8800AB59E0 /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7338A020A9AF8800AB59E0 /* Names.swift */; };
+		2B73FDC220BFFBA9007B865F /* RetrievePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73FDC120BFFBA9007B865F /* RetrievePasswordView.swift */; };
 		2B8CE3C1209B06F40045C028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */; };
 		2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C4209B0DC10045C028 /* LoginVC.swift */; };
 		2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */; };
@@ -66,8 +67,6 @@
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
 		A40AFA8E20C00098007E45DE /* FireBaseDeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40AFA8D20C00098007E45DE /* FireBaseDeleteUser.swift */; };
 		A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */; };
-		A4841EDA20BFFB5E00430C24 /* RetrievePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4841ED920BFFB5E00430C24 /* RetrievePasswordView.swift */; };
-		A4A0081C20BFCD4C00E8C9DA /* RetrievePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */; };
 		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +103,7 @@
 		2B73389B20A9A4FE00AB59E0 /* TopListControllerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListControllerHeader.swift; sourceTree = "<group>"; };
 		2B73389D20A9A85800AB59E0 /* StatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBar.swift; sourceTree = "<group>"; };
 		2B7338A020A9AF8800AB59E0 /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
+		2B73FDC120BFFBA9007B865F /* RetrievePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 		2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B8CE3C4209B0DC10045C028 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 				2B0B7AFE208F0D2900532815 /* Products */,
 				C71B1655732AC7F8F1711454 /* Pods */,
 				6E5AEB11235C2DD18D1E9497 /* Frameworks */,
-				A4841ED620BFFAD300430C24 /* Recovered References */,
+				2B73FDC020BFFB86007B865F /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -304,6 +304,7 @@
 		2B2039E8208F5CB700C4CF43 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2B73FDC120BFFBA9007B865F /* RetrievePasswordView.swift */,
 				2B8CE53C20A1A19B00C8EC3D /* UrlImageView.swift */,
 				2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */,
 				2B2039E9208F5CC700C4CF43 /* FilterSlider.swift */,
@@ -355,6 +356,14 @@
 				2B7338A020A9AF8800AB59E0 /* Names.swift */,
 			);
 			path = DebugClasses;
+			sourceTree = "<group>";
+		};
+		2B73FDC020BFFB86007B865F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		2B8CE3C3209B0D6E0045C028 /* LoginRegisterVC's */ = {
@@ -605,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */,
+				2B73FDC220BFFBA9007B865F /* RetrievePasswordView.swift in Sources */,
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
 				2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
@@ -627,7 +637,6 @@
 				2B8CE3CC209B15B00045C028 /* FireBaseAuth.swift in Sources */,
 				2B8CE53D20A1A19B00C8EC3D /* UrlImageView.swift in Sources */,
 				2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */,
-				A4A0081C20BFCD4C00E8C9DA /* RetrievePasswordView.swift in Sources */,
 				A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */,
 				2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */,
 				2BBD4C7720A1C2630034DD47 /* AddChallengeController.swift in Sources */,
