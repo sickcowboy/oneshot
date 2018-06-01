@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol CountDownTimerDelegate: class {
+    func timesUp()
+}
+
 class CountDownTimer: UIView {
+    
+    weak var delegate: CountDownTimerDelegate?
     
     lazy var hourLabel: UILabel = {
         return templateTimeLabel()
@@ -103,11 +109,18 @@ class CountDownTimer: UIView {
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { (_) in
             self.seconds -= 1
+            self.checkIfTimesUp()
         }
     }
     
     func stopCountDown() {
         timer.invalidate()
+    }
+    
+    func checkIfTimesUp() {
+        if hours <= 0 && minutes <= 0 && seconds <= 0 {
+            delegate?.timesUp()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

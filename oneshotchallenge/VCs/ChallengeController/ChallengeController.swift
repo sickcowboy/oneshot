@@ -116,7 +116,7 @@ class ChallengeController: UIViewController {
         challengeLabel.transform = CGAffineTransform(translationX: 200, y: 0)
     }
     
-    fileprivate func setUpChallengeDone() {
+    fileprivate func setUpChallengeDone(timesUp: Bool = false) {
         activityIndicator.stopAnimating()
         
         self.tabBarController?.tabBar.isHidden = false
@@ -129,6 +129,24 @@ class ChallengeController: UIViewController {
         view.addSubview(lockedLabel)
         lockedLabel.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerY: view.safeAreaLayoutGuide.centerYAnchor,
                                         padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 0))
+        
+        if timesUp {
+            lockedLabel.attributedText = setLockedLabelText(text: "The train has left the station,", bigText: "another one will arrive in:")
+            return
+        }
+        
+        lockedLabel.attributedText = setLockedLabelText(text: "Challenge done,", bigText: "next challenge unlocks in:")
+    }
+    
+    fileprivate func setLockedLabelText(text: String, bigText: String) -> NSMutableAttributedString {
+        let attributedTitle = NSMutableAttributedString(string: "\(text)",
+                                                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 32),
+                                                                     NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
+        attributedTitle.append(NSAttributedString(string: "\n\(bigText)",
+                                                  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 44),
+                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        
+        return attributedTitle
     }
     
     fileprivate func checkChallengeStatus() {
@@ -204,26 +222,6 @@ class ChallengeController: UIViewController {
         takeChallengeButton.isUserInteractionEnabled = false
         challengeLabel.isHidden = false
         
-        // --- OLD Animation ---
-//        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-//            self.takeChallengeButton.transform = CGAffineTransform(translationX: -30, y: 0)
-//        }) { (_) in
-//            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-//                self.takeChallengeButton.transform = CGAffineTransform(translationX: -30, y: -100)
-//                self.takeChallengeButton.alpha = 0
-//            }, completion: { _ in
-//                UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
-//                    self.challengeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
-//                    self.challengeLabel.alpha = 1
-//                }, completion: {_ in
-//                    let fbPosts = FireBasePosts()
-//                    fbPosts.startPost()
-//
-//                    self.segueToCamera()
-//                })
-//            })
-//        }
-        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
             self.takeChallengeButton.transform = CGAffineTransform(translationX: 0, y: -100)
             self.takeChallengeButton.alpha = 0
@@ -248,6 +246,31 @@ class ChallengeController: UIViewController {
                 self.tabBarController?.tabBar.isHidden = true
                 self.navigationController?.pushViewController(CameraController(), animated: true)
             }
+        } else {
+            checkIfTimesLeft(post: post)
+        }
+    }
+    
+    fileprivate func checkIfTimesLeft(post: Post?) {
+        guard let post = post else { return }
+        
+        let postDate = Date(timeIntervalSince1970: post.startDate)
+        
+        let calendar = Calendar.current
+        
+        guard let endDate = calendar.date(byAdding: .hour, value: 1, to: postDate) else { return }
+        let difference = calendar.dateComponents([.hour, .minute, .second], from: Date(), to: endDate)
+        
+        guard let hour = difference.hour else { return }
+        guard let minute = difference.minute else { return }
+        guard let second = difference.second else { return }
+        
+        debugPrint(hour)
+        debugPrint(minute)
+        debugPrint(second)
+        
+        if hour <= 0 && minute <= 0 && second <= 0 {
+            setUpChallengeDone(timesUp: true)
         } else {
             let controller = CameraController()
             controller.post = post

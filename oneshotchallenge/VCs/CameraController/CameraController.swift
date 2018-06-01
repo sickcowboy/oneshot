@@ -9,7 +9,7 @@
 import UIKit
 import AVKit
 
-class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
+class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDownTimerDelegate {
     let capturePreviewView = UIView()
     let output = AVCapturePhotoOutput()
     var previewLayer : AVCaptureVideoPreviewLayer?
@@ -37,28 +37,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         return button
     }()
     
-    var post: Post? {
-        didSet{
-            guard let post = post else { return }
-            let calendar = Calendar.current
-            
-            let startDate = Date(timeIntervalSince1970: post.startDate)
-            guard let endDate = calendar.date(byAdding: .hour, value: 1, to: startDate) else { return }
-            let nowDate = Date()
-            
-            let components = calendar.dateComponents([.hour, .minute, .second], from: nowDate, to: endDate)
-            
-            guard let hour = components.hour else { return }
-            guard let minute = components.minute else { return }
-            guard let seconds = components.second else { return }
-            
-            if hour <= 0 && minute <= 0 && seconds <= 0 {
-                debugPrint("Times up")
-            }
-            
-            startCountDown(hour: components.hour, minute: components.minute, second: components.second)
-        }
-    }
+    var post: Post?
     
     let flashToggleButton = FlashToggleButton(type: .system)
     
@@ -69,7 +48,46 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
+        NotificationCenter.default.addObserver(self, selector: #selector(startCountDown),
+                                               name: .UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopCountDown),
+                                               name: .UIApplicationWillResignActive, object: nil)
+        
         fetchChallenge()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startCountDown()
+    }
+    
+    @objc fileprivate func startCountDown() {
+        if countDownTimer.timer.isValid {
+            return
+        }
+        
+        if post == nil {
+            startCountDown()
+            return
+        }
+        
+        let calendar = Calendar.current
+        
+        let startDate = Date(timeIntervalSince1970: post!.startDate)
+        guard let endDate = calendar.date(byAdding: .hour, value: 1, to: startDate) else { return }
+        let nowDate = Date()
+        
+        let components = calendar.dateComponents([.hour, .minute, .second], from: nowDate, to: endDate)
+        
+        guard let hour = components.hour else { return }
+        guard let minute = components.minute else { return }
+        guard let second = components.second else { return }
+        
+        startCountDown(hour: hour, minute: minute, second: second)
+    }
+    
+    @objc fileprivate func stopCountDown() {
+        countDownTimer.stopCountDown()
     }
     
     fileprivate func fetchChallenge() {
@@ -108,16 +126,14 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
                                         size: .init(width: 0, height: 80))
         
-        if post == nil {
-           startCountDown()
-        }
-        
         DispatchQueue.global(qos: .utility).async {
             self.setupCaptureSession()
         }
     }
     
     fileprivate func startCountDown(hour: Int? = nil, minute: Int? = nil, second: Int? = nil) {
+        countDownTimer.delegate = self
+        
         let hour = hour ?? 1
         let minute = minute ?? 0
         let second = second ?? 0
@@ -131,5 +147,9 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         controller.countDownTimer = countDownTimer
         
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func timesUp() {
+        navigationController?.popViewController(animated: true)
     }
 }
