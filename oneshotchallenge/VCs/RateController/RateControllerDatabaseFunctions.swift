@@ -15,6 +15,12 @@ extension RateController {
         fbChallenges.fetchChallenge(challengeDate: cetTime.debugTime()) { (challenge) in
             if let challenge = challenge {
                 self.key = challenge.key
+            } else {
+                // TODO : Something went wrong
+                DispatchQueue.main.async {
+                    self.activityIndication(loading: false)
+                    self.setUpRefresh()
+                }
             }
         }
     }
@@ -53,6 +59,7 @@ extension RateController {
             } else {
                 DispatchQueue.main.async {
                     self.activityIndication(loading: false)
+                    self.setUpRefresh()
                 }
                 // TODO : Something went wrong
             }
@@ -68,6 +75,8 @@ extension RateController {
                     self.partisipants = partisipants
                 } else {
                     // TODO : Something went wrong
+                    self.activityIndication(loading: false)
+                    self.setUpRefresh()
                 }
             }
         }
