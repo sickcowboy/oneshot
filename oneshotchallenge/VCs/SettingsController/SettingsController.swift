@@ -40,12 +40,25 @@ class SettingsController: UIViewController {
         return label
     }()
     
+    private let deleteUserButton: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Want to stop playing? ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Delete User", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(deleteUser), for: .touchUpInside)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
         view.addSubview(buildLabel)
         buildLabel.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
+                                    padding: .init(top: 4, left: 4, bottom: 0, right: 4))
+        
+        view.addSubview(deleteUserButton)
+        deleteUserButton.constraintLayout(top: buildLabel.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
                                     padding: .init(top: 4, left: 4, bottom: 0, right: 4))
         
         view.addSubview(logOffButton)
@@ -92,6 +105,14 @@ class SettingsController: UIViewController {
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc fileprivate func deleteUser() {
+        
+        let reAuthUser = ReAuthenticateUserView()
+        
+        view.addSubview(reAuthUser)
+        reAuthUser.constraintLayout(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor)
     }
     
     @objc fileprivate func toAddChallenge() {
