@@ -9,10 +9,16 @@
 import UIKit
 import FirebaseAuth
 
+
 class ReAuthenticateUserView: UIView {
     
     let currentUser = Auth.auth().currentUser
     let blur = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+    var naviController: UINavigationController?
+    
+    func getNavController(navi: UINavigationController) {
+        naviController = navi
+    }
     
     let contentView : UIView = {
         let view = UIView()
@@ -26,6 +32,7 @@ class ReAuthenticateUserView: UIView {
         label.textColor = Colors.sharedInstance.darkColor
         label.backgroundColor = Colors.sharedInstance.lightColor
         label.text = "Authenticate User:"
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -103,7 +110,7 @@ class ReAuthenticateUserView: UIView {
     }
     
     @objc fileprivate func handleOk() {
-        
+        reAuthUser()
     }
     
     @objc fileprivate func handleCancel() {
@@ -122,16 +129,58 @@ class ReAuthenticateUserView: UIView {
     
     fileprivate func reAuthUser() {
         
-      /*  let eMail = EmailAuthProvider.credential(withEmail: "some@email.com", password: "somepassword")
-        let fb = FacebookAuthProvider.credential(withAccessToken: "xxx")
-        let g = GoogleAuthProvider.credential(withIDToken: "xxx", accessToken: "xxx")
-            ...
+        guard let userPassword = passwordTF.text else { return }
+        guard let userEmail = currentUser?.email else { return }
+        
+        let userProfile = EmailAuthProvider.credential(withEmail: userEmail, password: userPassword)
+        
+        Auth.auth().currentUser?.reauthenticateAndRetrieveData(with: userProfile, completion: { (result, error) in
             
-            Auth.auth().currentUser?.reauthenticate(with: eMail, completion: {
-                [weak self]
-                (error) in
-                ...
-            })*/
+            if let error = error {
+                let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)
+                alertController.oneAction()
+                
+                alertController.show()
+                return
+            }
+            
+            self.displayAlert()
+            self.removeFromSuperview()
+        })
+    }
+    
+    fileprivate func displayAlert() {
+        let alertController = UIAlertController(title: "Warning", message: "You are about to delete your profile. Continue?", preferredStyle: .actionSheet)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            
+            self.deleteCurrentUser()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        
+        alertController.show()
+    }
+    
+    fileprivate func deleteCurrentUser() {
+        
+        currentUser?.delete { error in
+            if let error = error {
+                let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)
+                alertController.oneAction()
+                
+                alertController.show()
+                return
+            } else {
+                let alertController = UIAlertController(title: "Success", message: "Your account is now deleted", preferredStyle: .alert)
+                alertController.oneAction()
+                
+                alertController.show()
+                self.naviController?.popViewController(animated: true)
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

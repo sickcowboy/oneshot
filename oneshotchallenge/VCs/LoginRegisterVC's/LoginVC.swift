@@ -147,10 +147,10 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     }
     
     @objc func retrievePassword() {
+        
         guard let email = emailTF.text else { return }
         
         let retrievePasswordView = RetrievePasswordView()
-        
         retrievePasswordView.setEmail(email: email)
         
         view.addSubview(retrievePasswordView)

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SettingsController: UIViewController {
+    
     private let logOffButton: UIButton = {
         let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Tired of this? ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
@@ -45,7 +47,7 @@ class SettingsController: UIViewController {
         let attributedTitle = NSMutableAttributedString(string: "Want to stop playing? ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         attributedTitle.append(NSAttributedString(string: "Delete User", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
         button.setAttributedTitle(attributedTitle, for: .normal)
-        button.addTarget(self, action: #selector(deleteUser), for: .touchUpInside)
+        button.addTarget(self, action: #selector(ReAuthenticateUser), for: .touchUpInside)
         return button
     }()
     
@@ -107,9 +109,12 @@ class SettingsController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    @objc fileprivate func deleteUser() {
+    @objc func ReAuthenticateUser() {
         
         let reAuthUser = ReAuthenticateUserView()
+        
+        guard let navController = self.navigationController else { return }
+        reAuthUser.getNavController(navi: navController)
         
         view.addSubview(reAuthUser)
         reAuthUser.constraintLayout(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor)
