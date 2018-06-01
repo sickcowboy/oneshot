@@ -64,10 +64,11 @@
 		2BC2C74820A2F75A007DF0A9 /* FireBaseRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */; };
 		2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */; };
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
+		A4040B8520C1BDDA004CB6C0 /* FireBaseDeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4040B8420C1BDDA004CB6C0 /* FireBaseDeleteUser.swift */; };
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
 		A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */; };
-		A48E3C3020C1AA2000B1A31B /* ReAuthenticateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E3C2F20C1AA2000B1A31B /* ReAuthenticateUserView.swift */; };
+		A48E3C3020C1AA2000B1A31B /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */; };
 		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,11 +136,12 @@
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
 		67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.release.xcconfig"; sourceTree = "<group>"; };
+		A4040B8420C1BDDA004CB6C0 /* FireBaseDeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseDeleteUser.swift; sourceTree = "<group>"; };
 		A40A999420930FEF00176D96 /* RateControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCell.swift; sourceTree = "<group>"; };
 		A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRetrievePassword.swift; sourceTree = "<group>"; };
 		A4841ED920BFFB5E00430C24 /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
-		A48E3C2F20C1AA2000B1A31B /* ReAuthenticateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReAuthenticateUserView.swift; sourceTree = "<group>"; };
+		A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
 		A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -276,6 +278,7 @@
 		2B174C3C20BD7D29001F77C8 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				A4040B8320C1BDC6004CB6C0 /* FireBaseDeleteUser */,
 				A43F2BC620BE975F0010AB4C /* FireBaseRetrievePassword */,
 				2B8CE53720A19BC600C8EC3D /* FireBasePosts */,
 				2BC2C74620A2F73F007DF0A9 /* FireBaseRating */,
@@ -317,7 +320,7 @@
 				2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */,
 				2B8E910E20BFD91B005ED148 /* InfoView.swift */,
 				A4841ED920BFFB5E00430C24 /* RetrievePasswordView.swift */,
-				A48E3C2F20C1AA2000B1A31B /* ReAuthenticateUserView.swift */,
+				A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -459,6 +462,14 @@
 				178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A4040B8320C1BDC6004CB6C0 /* FireBaseDeleteUser */ = {
+			isa = PBXGroup;
+			children = (
+				A4040B8420C1BDDA004CB6C0 /* FireBaseDeleteUser.swift */,
+			);
+			path = FireBaseDeleteUser;
 			sourceTree = "<group>";
 		};
 		A43F2BC620BE975F0010AB4C /* FireBaseRetrievePassword */ = {
@@ -620,7 +631,7 @@
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
 				2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
-				A48E3C3020C1AA2000B1A31B /* ReAuthenticateUserView.swift in Sources */,
+				A48E3C3020C1AA2000B1A31B /* DeleteUserView.swift in Sources */,
 				A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */,
 				2B2AE49E20B2F63300151091 /* FireBaseTopLists.swift in Sources */,
 				2B0462C420BD496800CC7C3E /* Challenge.swift in Sources */,
@@ -635,6 +646,7 @@
 				2B52D237208F12ED00090285 /* Colors.swift in Sources */,
 				2B47D88920BE97470003095B /* RateControllerDatabaseFunctions.swift in Sources */,
 				2B8CE3C9209B0DEE0045C028 /* UITextFieldExtension.swift in Sources */,
+				A4040B8520C1BDDA004CB6C0 /* FireBaseDeleteUser.swift in Sources */,
 				2B2039E4208F2CBC00C4CF43 /* CameraController.swift in Sources */,
 				2BA7F9222090964D0028E0AC /* CalendarHeader.swift in Sources */,
 				2B8CE3CC209B15B00045C028 /* FireBaseAuth.swift in Sources */,

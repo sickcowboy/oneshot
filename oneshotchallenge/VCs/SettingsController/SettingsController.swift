@@ -111,7 +111,7 @@ class SettingsController: UIViewController {
     
     @objc func ReAuthenticateUser() {
         
-        let reAuthUser = ReAuthenticateUserView()
+        let reAuthUser = DeleteUserView()
         
         guard let navController = self.navigationController else { return }
         reAuthUser.getNavController(navi: navController)

@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 
 
-class ReAuthenticateUserView: UIView {
+class DeleteUserView: UIView {
     
     let currentUser = Auth.auth().currentUser
     let blur = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
@@ -133,7 +133,7 @@ class ReAuthenticateUserView: UIView {
         guard let userEmail = currentUser?.email else { return }
         
         let userProfile = EmailAuthProvider.credential(withEmail: userEmail, password: userPassword)
-        
+    
         Auth.auth().currentUser?.reauthenticateAndRetrieveData(with: userProfile, completion: { (result, error) in
             
             if let error = error {
@@ -166,7 +166,11 @@ class ReAuthenticateUserView: UIView {
     
     fileprivate func deleteCurrentUser() {
         
-        currentUser?.delete { error in
+        let fbDeleteUser = FireBaseDeleteUser()
+        
+        guard let user = currentUser else { return }
+        
+        fbDeleteUser.deleteCurrentUser(user: user) { (error) in
             if let error = error {
                 let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)
                 alertController.oneAction()
