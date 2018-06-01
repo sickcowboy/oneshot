@@ -62,10 +62,7 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.addSubview(refreshControl)
         
         (collectionViewLayout as! UICollectionViewFlowLayout).sectionHeadersPinToVisibleBounds = true
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        
         fetchTopLists()
     }
     
