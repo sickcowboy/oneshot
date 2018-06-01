@@ -130,6 +130,7 @@
 		2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChallengeController.swift; sourceTree = "<group>"; };
 		2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRating.swift; sourceTree = "<group>"; };
 		2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
+		2BE4DF1C20C19B9100FB26D3 /* oneshotchallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = oneshotchallenge.entitlements; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
 		67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +175,7 @@
 		2B0B7AFF208F0D2900532815 /* oneshotchallenge */ = {
 			isa = PBXGroup;
 			children = (
+				2BE4DF1C20C19B9100FB26D3 /* oneshotchallenge.entitlements */,
 				2B0B7B00208F0D2900532815 /* AppDelegate.swift */,
 				2B0B7B07208F0D2B00532815 /* Assets.xcassets */,
 				2B0B7B09208F0D2B00532815 /* LaunchScreen.storyboard */,
@@ -508,6 +510,11 @@
 				TargetAttributes = {
 					2B0B7AFC208F0D2900532815 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -798,6 +805,7 @@
 			baseConfigurationReference = 67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = oneshotchallenge/oneshotchallenge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -822,6 +830,7 @@
 			baseConfigurationReference = 8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = oneshotchallenge/oneshotchallenge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 28YWBMR6P7;
