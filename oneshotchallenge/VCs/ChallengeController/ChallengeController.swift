@@ -244,7 +244,14 @@ class ChallengeController: UIViewController {
             countDownTimer.startCountDown(hours: 0, minutes: 0, seconds: 3)
             Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
                 self.tabBarController?.tabBar.isHidden = true
-                self.navigationController?.pushViewController(CameraController(), animated: true)
+                
+                let postDictionary: [String: Any] = [DatabaseReference.startDate.rawValue: Date().timeIntervalSince1970]
+                let newPost = Post(dictionary: postDictionary, userId: "")
+                
+                let controller = CameraController()
+                controller.post = newPost
+                
+                self.navigationController?.pushViewController(controller, animated: true)
             }
         } else {
             checkIfTimesLeft(post: post)

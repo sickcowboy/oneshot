@@ -48,23 +48,16 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
         
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
-        NotificationCenter.default.addObserver(self, selector: #selector(startCountDown),
+        NotificationCenter.default.addObserver(self, selector: #selector(checkTimeAndStartCountDown),
                                                name: .UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(stopCountDown),
-                                               name: .UIApplicationWillResignActive, object: nil)
         
         fetchChallenge()
+        
+        checkTimeAndStartCountDown()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        startCountDown()
-    }
-    
-    @objc fileprivate func startCountDown() {
-        if countDownTimer.timer.isValid {
-            return
-        }
+    @objc fileprivate func checkTimeAndStartCountDown() {
+        countDownTimer.stopCountDown()
         
         if post == nil {
             startCountDown()
@@ -84,10 +77,6 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
         guard let second = components.second else { return }
         
         startCountDown(hour: hour, minute: minute, second: second)
-    }
-    
-    @objc fileprivate func stopCountDown() {
-        countDownTimer.stopCountDown()
     }
     
     fileprivate func fetchChallenge() {

@@ -108,7 +108,7 @@ class FireBasePosts {
         }
     }
     
-    func startPost() {
+    func startPost()  {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let cetTime = CETTime()
         guard let challengeTime = cetTime.challengeTimeToday() else { return }
