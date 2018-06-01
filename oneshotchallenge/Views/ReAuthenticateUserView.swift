@@ -120,6 +120,20 @@ class ReAuthenticateUserView: UIView {
         }
     }
     
+    fileprivate func reAuthUser() {
+        
+      /*  let eMail = EmailAuthProvider.credential(withEmail: "some@email.com", password: "somepassword")
+        let fb = FacebookAuthProvider.credential(withAccessToken: "xxx")
+        let g = GoogleAuthProvider.credential(withIDToken: "xxx", accessToken: "xxx")
+            ...
+            
+            Auth.auth().currentUser?.reauthenticate(with: eMail, completion: {
+                [weak self]
+                (error) in
+                ...
+            })*/
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
