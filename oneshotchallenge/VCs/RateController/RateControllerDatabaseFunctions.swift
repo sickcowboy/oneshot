@@ -93,29 +93,31 @@ extension RateController {
         let date = Date(timeIntervalSince1970: timeInterval)
         
         let fbPosts = FireBasePosts()
+        
         var index = 0
         
-        for partisipant in partisipants {
+        for (partisipant) in partisipants {
             fbPosts.fetchPost(uid: partisipant, date: date) { (post) in
                 if let post = post {
                     self.posts?.append(post)
-                    
-                    guard let posts = self.posts else { return }
-                    
-                    if posts.count == partisipants.count {
-                        DispatchQueue.main.async {
-                            self.activityIndication(loading: false)
-                            self.collectionView?.reloadData()
-                            return
-                        }
-                    }
                 } else {
                     partisipants.remove(at: index)
                     index -= 1
-                    return
                 }
                 index += 1
+                
+                if self.posts?.count == partisipants.count {
+                    self.doneFetching()
+                }
             }
+        }
+    }
+    
+    fileprivate func doneFetching() {
+        DispatchQueue.main.async {
+            self.activityIndication(loading: false)
+            self.collectionView?.reloadData()
+            return
         }
     }
     
