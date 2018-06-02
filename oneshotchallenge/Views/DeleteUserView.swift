@@ -182,7 +182,6 @@ class DeleteUserView: UIView {
                 alertController.oneAction()
                 
                 alertController.show()
-                self.naviController?.popViewController(animated: true)
             }
         }
     }
