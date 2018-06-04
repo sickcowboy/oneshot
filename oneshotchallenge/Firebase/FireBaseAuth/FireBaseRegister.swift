@@ -31,8 +31,8 @@ class FireBaseRegister {
         guard let uid = uid else { return }
         
         checkIfUserNameExists(username: username) { (exists) in
-            let value: [String: Any] = [DatabaseReference.username.rawValue: username,
-                                            DatabaseReference.memberSince.rawValue: Date().timeIntervalSince1970]
+            let value: [String: Any?] = [DatabaseReference.username.rawValue: username,
+                                        DatabaseReference.memberSince.rawValue: Date().timeIntervalSince1970, DatabaseReference.profileDeleteDate.rawValue: nil]
                 
             self.databaseRef.child(uid).setValue(value)
         }

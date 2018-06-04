@@ -11,9 +11,11 @@ import Foundation
 struct LocalUser {
     var username: String
     var memberSince: Double?
+    var profileDeleteDate: TimeInterval?
     
     init(dictionary: [String: Any]) {
         self.username = dictionary[DatabaseReference.username.rawValue] as? String ?? ""
         self.memberSince = dictionary[DatabaseReference.memberSince.rawValue] as? Double
+        self.profileDeleteDate = dictionary[DatabaseReference.profileDeleteDate.rawValue] as? TimeInterval ?? Date().timeIntervalSince1970
     }
 }

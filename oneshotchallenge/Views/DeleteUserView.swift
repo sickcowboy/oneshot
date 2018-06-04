@@ -8,7 +8,7 @@
 
 import UIKit
 import FirebaseAuth
-
+import FirebaseDatabase
 
 class DeleteUserView: UIView {
     
@@ -153,11 +153,24 @@ class DeleteUserView: UIView {
         let alertController = UIAlertController(title: "Warning", message: "You are about to delete your profile. Continue?", preferredStyle: .actionSheet)
         let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
             
-            self.deleteCurrentUser()
+            guard let user = self.currentUser else { return }
+            let userRef = Database.database().reference(withPath: DatabaseReference.users.rawValue)
+            let uid = user.uid
+            
+            let value: [String: Any] = [DatabaseReference.username.rawValue: "DeletedUser", DatabaseReference.profileDeleteDate.rawValue: Date().timeIntervalSince1970]
+            
+            userRef.child(uid).updateChildValues(value, withCompletionBlock: { (error, _) in
+                
+                if let error = error {
+                    debugPrint("ERROR:  \(error)")
+                } else {
+                    debugPrint("delete user data completed")
+                    self.deleteCurrentUser()
+                }
+            })
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         
@@ -166,21 +179,22 @@ class DeleteUserView: UIView {
     
     fileprivate func deleteCurrentUser() {
         
-        let fbDeleteUser = FireBaseDeleteUser()
-        
         guard let user = currentUser else { return }
+        
+        let fbDeleteUser = FireBaseDeleteUser()
         
         fbDeleteUser.deleteCurrentUser(user: user) { (error) in
             if let error = error {
                 let alertController = UIAlertController(title: "Ops!", message: error.localizedDescription, preferredStyle: .alert)
-                alertController.oneAction()
                 
+                alertController.oneAction()
                 alertController.show()
                 return
             } else {
-                let alertController = UIAlertController(title: "Success", message: "Your account is now deleted", preferredStyle: .alert)
-                alertController.oneAction()
                 
+                let alertController = UIAlertController(title: "Success", message: "Your account is now deleted", preferredStyle: .alert)
+                
+                alertController.oneAction()
                 alertController.show()
             }
         }
