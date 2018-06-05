@@ -164,7 +164,6 @@ class DeleteUserView: UIView {
                 if let error = error {
                     debugPrint("ERROR:  \(error)")
                 } else {
-                    debugPrint("delete user data completed")
                     self.deleteCurrentUser()
                 }
             })

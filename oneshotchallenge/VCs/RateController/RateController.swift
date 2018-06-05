@@ -97,7 +97,7 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         if done {
             lockedLabel.attributedText = attTitle(text: "Voting complete for current", bigText: "CHALLENGE")
         } else {
-            lockedLabel.attributedText = attTitle(text: "You need to take a picture before", bigText: "VOTING")
+            lockedLabel.attributedText = attTitle(text: "You need to enter a challenge before", bigText: "VOTING")
         }
         
         view.addSubview(lockedLabel)
