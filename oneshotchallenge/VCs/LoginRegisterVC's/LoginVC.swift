@@ -75,8 +75,8 @@ class LoginVC: UIViewController, UITextFieldDelegate {
     let retrievePasswordButton: UIButton = {
        let button = UIButton(type: .system)
         
-        let attributedTitle = NSMutableAttributedString(string: "Forgot password? ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-        attributedTitle.append(NSAttributedString(string: "Retrieve", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        let attributedTitle = NSMutableAttributedString(string: "Forgot password? ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 11), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Retrieve", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 11), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
         button.setAttributedTitle(attributedTitle, for: .normal)
         
         button.setTitleColor(Colors.sharedInstance.primaryColor, for: .normal)
@@ -103,13 +103,16 @@ class LoginVC: UIViewController, UITextFieldDelegate {
         emailTF.delegate = self
         passwordTF.delegate = self
         
-        let views = [emailTF, passwordTF, submitButton, retrievePasswordButton]
+        let views = [emailTF, passwordTF, submitButton]
         let stackView = UIStackView(arrangedSubviews: views)
         stackView.setUp(vertical: true, spacing: 8)
         
         view.addSubview(stackView)
         
         stackView.constraintLayout(top: topView.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerX: nil, centerY: nil, padding: .init(top: 10, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 136))
+        
+        view.addSubview(retrievePasswordButton)
+        retrievePasswordButton.constraintLayout(top: stackView.bottomAnchor, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor, padding: .init(top: 8, left: 0, bottom: 0, right: 0))
     }
     
     @objc private func logIn() {
