@@ -70,6 +70,7 @@
 		A4236AFD20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4236AFC20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift */; };
 		A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */; };
 		A48E3C3020C1AA2000B1A31B /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */; };
+		A48F902F20D1940800BF15E7 /* RateControllerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */; };
 		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRetrievePassword.swift; sourceTree = "<group>"; };
 		A4841ED920BFFB5E00430C24 /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 		A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
+		A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerHeader.swift; sourceTree = "<group>"; };
 		A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +234,7 @@
 				A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */,
 				A40A999420930FEF00176D96 /* RateControllerCell.swift */,
 				2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */,
+				A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */,
 			);
 			path = RateController;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 			files = (
 				2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */,
 				2B73FDC220BFFBA9007B865F /* RetrievePasswordView.swift in Sources */,
+				A48F902F20D1940800BF15E7 /* RateControllerHeader.swift in Sources */,
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
 				2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
@@ -853,7 +857,7 @@
 				CODE_SIGN_ENTITLEMENTS = oneshotchallenge/oneshotchallenge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28YWBMR6P7;
+				DEVELOPMENT_TEAM = BRSUFVEUQY;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

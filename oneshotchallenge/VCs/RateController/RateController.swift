@@ -11,6 +11,7 @@ import UIKit
 class RateController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
+    let headerId = "headerId"
     let cetTime = CETTime()
     let fbRatings = FireBaseRating()
     
@@ -75,6 +76,7 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         collectionView?.backgroundColor = Colors.sharedInstance.primaryColor
         collectionView?.register(RateControllerCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(RateControllerHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
         collectionView?.contentInsetAdjustmentBehavior = .never
     }
