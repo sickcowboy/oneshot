@@ -56,6 +56,11 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
         checkTimeAndStartCountDown()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        debugPrint("viewWillAppear")
+    }
+    
     @objc fileprivate func checkTimeAndStartCountDown() {
         countDownTimer.stopCountDown()
         

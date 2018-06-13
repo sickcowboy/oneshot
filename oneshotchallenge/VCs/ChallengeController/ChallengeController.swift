@@ -239,6 +239,7 @@ class ChallengeController: UIViewController {
     }
     
     fileprivate func segueToCamera(post: Post? = nil) {
+        debugPrint("seguetocamera")
         if post == nil {
             countDownTimer.stopCountDown()
             countDownTimer.startCountDown(hours: 0, minutes: 0, seconds: 3)

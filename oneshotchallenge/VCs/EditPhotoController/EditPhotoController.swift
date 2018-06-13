@@ -135,17 +135,52 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
     }
     
     @objc fileprivate func saveClick() {
-//        countDownTimer.stopCountDown()
-//
-//        saveButton.isUserInteractionEnabled = false
-//        brightnessSlider.slider.isUserInteractionEnabled = false
-//        contrastSlider.slider.isUserInteractionEnabled = false
-//        saturationSlider.slider.isUserInteractionEnabled = false
+        countDownTimer.stopCountDown()
+
+        saveButton.isUserInteractionEnabled = false
+        brightnessSlider.slider.isUserInteractionEnabled = false
+        contrastSlider.slider.isUserInteractionEnabled = false
+        saturationSlider.slider.isUserInteractionEnabled = false
         
         let controller = PostController()
-        controller.image = photo
-        
+        controller.image = cropImage()
+
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    fileprivate func cropImage() -> UIImage? {
+        guard let image = photo else { return nil }
+//        let size = scrollView.bounds.size
+//
+//        let x = scrollView.contentOffset.x
+//        let y = scrollView.contentOffset.y
+//
+//        let frameArea = CGRect(x: x, y: y, width: size.width, height: size.height)
+//
+//        guard let cgImage = image.cgImage?.cropping(to: frameArea) else { return nil }
+//
+//        let newImage = UIImage(cgImage: cgImage, scale: image.scale, orientation: image.imageOrientation)
+        
+        
+//        CGRect visibleRect;
+//        visibleRect.origin.x = scrollView.contentOffset.x * scale;
+//        visibleRect.origin.y = scrollView.contentOffset.y * scale;
+//        visibleRect.size.width = scrollView.bounds.size.width * scale;
+//        visibleRect.size.height = scrollView.bounds.size.height * scale;
+        
+        let scale = 1/scrollView.zoomScale
+        let x = scrollView.contentOffset.x * scale
+        let y = scrollView.contentOffset.y * scale
+        let width = scrollView.frame.size.width * scale
+        let height = scrollView.frame.size.height * scale
+
+        let rect = CGRect(x: x, y: y, width: width, height: height)
+
+        guard let cgImage = image.cgImage?.cropping(to: rect) else { return nil }
+
+        let newImage = UIImage(cgImage: cgImage)
+        
+        return newImage
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
