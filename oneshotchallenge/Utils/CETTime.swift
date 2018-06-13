@@ -11,20 +11,22 @@ import Foundation
 class CETTime {
     func timeNow() -> Date? {
         let localTime = Date()
-        guard let timeZone = TimeZone(abbreviation: "CET") else { return nil }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = timeZone
+        dateFormatter.timeZone = getTimeZone()
         dateFormatter.timeStyle = .full
         dateFormatter.dateStyle = .full
         
         let dateString = dateFormatter.string(from: localTime)
+        
         guard let cetTime = dateFormatter.date(from: dateString) else { return nil }
+        
         return cetTime
     }
     
     func challengeTimeToday() -> Date? {
-        let calendar = Calendar.current
+        var calendar = Calendar.current
+        calendar.timeZone = getTimeZone()
         
         guard let cetTime = timeNow() else { return nil }
         
@@ -32,7 +34,8 @@ class CETTime {
     }
     
     func challengeTimeTomorrow() -> Date? {
-        let calendar = Calendar.current
+        var calendar = Calendar.current
+        calendar.timeZone = getTimeZone()
         
         guard let cetTime = timeNow() else { return nil }
         
@@ -42,7 +45,8 @@ class CETTime {
     }
     
     func challengeTimeYesterday() -> Date? {
-        let calendar = Calendar.current
+        var calendar = Calendar.current
+        calendar.timeZone = getTimeZone()
         
         guard let cetTime = timeNow() else { return nil }
         
@@ -62,10 +66,9 @@ class CETTime {
     }
     
     func calendarChallengeDate(date: Date) -> Date? {
-        guard let timeZone = TimeZone(abbreviation: "CET") else { return nil }
         
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = timeZone
+        dateFormatter.timeZone = getTimeZone()
         dateFormatter.timeStyle = .full
         dateFormatter.dateStyle = .full
         
@@ -74,5 +77,12 @@ class CETTime {
         
         let calendar = Calendar.current
         return calendar.startOfDay(for: cetTime)
+    }
+    
+    func getTimeZone() -> TimeZone {
+        
+        let timeZone = TimeZone(abbreviation: "CET")
+        
+        return timeZone!
     }
 }
