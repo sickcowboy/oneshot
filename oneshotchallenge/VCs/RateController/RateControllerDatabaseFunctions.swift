@@ -14,7 +14,7 @@ extension RateController {
         
         fbChallenges.fetchChallenge(challengeDate: cetTime.debugTime()) { (challenge) in
             if let challenge = challenge {
-                self.key = challenge.key
+                self.challenge = challenge
             } else {
                 // TODO : Something went wrong
                 DispatchQueue.main.async {
@@ -67,7 +67,7 @@ extension RateController {
     }
     
     func fetchPartisipants() {
-        fbRatings.fetchPartisipants(key: key) { (partisipants) in
+        fbRatings.fetchPartisipants(key: challenge?.key) { (partisipants) in
             DispatchQueue.main.async {
                 self.activityIndication(loading: false)
                 
@@ -122,6 +122,6 @@ extension RateController {
     }
     
     func addPartisipant() {
-        fbRatings.addPartisipant(key: key)
+        fbRatings.addPartisipant(key: challenge?.key)
     }
 }

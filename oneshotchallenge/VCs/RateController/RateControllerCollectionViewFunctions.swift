@@ -39,16 +39,18 @@ extension RateController {
         guard let tabHeight = tabBarController?.tabBar.frame.height else { return .zero}
         let size = (collectionView.frame.height - tabHeight) / 2
         
-        return CGSize(width: size - 30, height: size - 30)
+        return CGSize(width: size - 4, height: size - 4)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 8
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(40, 0, 0, 0)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        guard let tabHeight = tabBarController?.tabBar.frame.height else { return .zero}
+//        let top = (collectionView.frame.height - tabHeight) / 2
+//        return UIEdgeInsetsMake(10, 0, 0, 0)
+//    }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let post = (collectionView.cellForItem(at: indexPath) as! RateControllerCell).post
@@ -57,7 +59,7 @@ extension RateController {
         let challengeDate = post?.challengeDate
         let month = MonthKey.sharedInstance.monthKey(timeInterval: challengeDate)
         
-        FBVote.sharedInstance.vote(uid: uid, id: key, month: month)
+        FBVote.sharedInstance.vote(uid: uid, id: challenge?.key, month: month)
         
         voteCount! += 1
         
@@ -67,16 +69,16 @@ extension RateController {
     }
     
     //Header functions
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! RateControllerHeader
-        
-        return header
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-        let width = view.frame.width
-        
-        return CGSize(width: width, height: 60)
-    }
+//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! RateControllerHeader
+//        
+//        return header
+//    }
+//    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        
+//        let width = view.frame.width
+//        
+//        return CGSize(width: width, height: 60)
+//    }
 }

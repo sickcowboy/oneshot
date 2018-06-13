@@ -28,10 +28,18 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var posts: [Post]? 
     
-    var key: String? {
+//    var key: String? {
+//        didSet{
+//            guard let key = key else { return }
+//            checkIfUserHasPosted(key: key)
+//        }
+//    }
+    
+    var challenge: Challenge? {
         didSet{
-            guard let key = key else { return }
-            checkIfUserHasPosted(key: key)
+            guard let challenge = challenge else { return }
+            checkIfUserHasPosted(key: challenge.key)
+            navigationItem.title = challenge.description
         }
     }
     
@@ -70,13 +78,13 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        StausBar.sharedInstance.changeColor(view: view)
+//        StausBar.sharedInstance.changeColor(view: view)
         
-        navigationController?.navigationBar.isHidden = true
+//        navigationController?.navigationBar.isHidden = false
         
         collectionView?.backgroundColor = Colors.sharedInstance.primaryColor
         collectionView?.register(RateControllerCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView?.register(RateControllerHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+//        collectionView?.register(RateControllerHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
         collectionView?.contentInsetAdjustmentBehavior = .never
     }
