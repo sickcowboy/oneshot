@@ -338,6 +338,8 @@
 				2B8E910E20BFD91B005ED148 /* InfoView.swift */,
 				A4841ED920BFFB5E00430C24 /* RetrievePasswordView.swift */,
 				A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */,
+				2BFD162820D53D4500316DFC /* RateFrameImageView.swift */,
+				2B805D9520D5896F0013EBB5 /* CountLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -487,8 +489,6 @@
 			children = (
 				2BD16A1220D5387700CA0413 /* RateControllerDeux.swift */,
 				2BFD162A20D53DEB00316DFC /* RCDFirebaseExtension.swift */,
-				2BFD162820D53D4500316DFC /* RateFrameImageView.swift */,
-				2B805D9520D5896F0013EBB5 /* CountLabel.swift */,
 			);
 			path = RateControllerDeux;
 			sourceTree = "<group>";
