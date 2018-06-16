@@ -33,7 +33,7 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         }
     }
     
-    var voteCount: UInt? {
+    var voteCount: Int? {
         didSet{
             guard let voteCount = voteCount else { return }
             if voteCount == 10 {
@@ -174,8 +174,24 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         }
     }
     
+    //MARK: - Rate view delegate functions
     func didVote(sender: RateFrameImageView) {
         guard let senderId = sender.positionIndex else { return }
+        guard let posts = posts else { return }
+        
+        //Vote block
+        let post = sender.post
+        let month = MonthKey.sharedInstance.monthKey(timeInterval: post?.challengeDate)
+        FBVote.sharedInstance.vote(uid: post?.userId, id: challenge?.key, month: month)
+        
+        if posts.count >= 2 {
+            self.rateViewBottom?.post = self.posts?.first
+            self.posts?.removeFirst()
+            self.rateViewTop?.post = self.posts?.first
+            self.posts?.removeFirst()
+        } else {
+            setUpRefresh()
+        }
         
         if senderId == 0 {
             rateViewBottom?.animateDown()
@@ -185,6 +201,7 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         rateViewTop?.animateDown()
     }
     
+    //checks if both views are done fetching images
     var done = [Int?]()
     func doneWithDownLoad(sender: RateFrameImageView) {
         done.append(sender.positionIndex)

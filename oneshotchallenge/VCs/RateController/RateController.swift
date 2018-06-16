@@ -37,7 +37,7 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    var voteCount: UInt? {
+    var voteCount: Int? {
         didSet{
             guard let voteCount = voteCount else { return }
             if voteCount == 10 {
@@ -46,10 +46,10 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 return
             }
             
-            let indexPath = IndexPath(item: 0, section: 0)
-            if let header = collectionView?.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: indexPath) as? RateControllerHeader {
-                header.numberOfVotes = voteCount
-            }
+//            let indexPath = IndexPath(item: 0, section: 0)
+//            if let header = collectionView?.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: indexPath) as? RateControllerHeader {
+////                header.numberOfVotes = voteCount
+//            }
         }
     }
     

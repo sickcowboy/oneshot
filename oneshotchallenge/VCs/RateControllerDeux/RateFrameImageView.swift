@@ -18,8 +18,8 @@ class RateFrameImageView: UIView {
     
     var imageUrl: String? {
         didSet{
-            imageView.reset()
-            animateDown()
+//            imageView.reset()
+//            animateDown()
             fetchImage()
         }
     }
@@ -32,7 +32,6 @@ class RateFrameImageView: UIView {
     
     var image: UIImage? {
         didSet{
-            self.imageView.image = self.image
             self.doneFetching()
         }
     }
@@ -75,16 +74,21 @@ class RateFrameImageView: UIView {
                                        size: .init(width: 10, height: 10))
     }
     
+    let fbVote = FBVote()
     @objc func voteTap(sender: UITapGestureRecognizer) {
         animateVote()
         delegate?.didVote(sender: self)
     }
     
+    var animationDownDone = false
     func animateDown() {
+        animationDownDone = false
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
             self.imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             self.imageView.alpha = 0
-        }, completion: nil)
+        }, completion: { _ in
+            self.animationDownDone = true
+        })
     }
     
     func animateBack() {
@@ -123,11 +127,27 @@ class RateFrameImageView: UIView {
             DispatchQueue.main.async {
                 self.image = image
             }
-            }.resume()
+        }.resume()
     }
     
+    var initialFetch = true
     fileprivate func doneFetching() {
-        delegate?.doneWithDownLoad(sender: self)
+        debugPrint("\(positionIndex as Any): Done downloading")
+        if initialFetch {
+            self.imageView.image = self.image
+            delegate?.doneWithDownLoad(sender: self)
+            initialFetch = false
+            return
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (timer) in
+            if self.animationDownDone {
+                self.animationDownDone = false
+                self.imageView.image = self.image
+                self.delegate?.doneWithDownLoad(sender: self)
+                timer.invalidate()
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

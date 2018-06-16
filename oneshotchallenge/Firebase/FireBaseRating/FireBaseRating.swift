@@ -97,7 +97,7 @@ class FireBaseRating {
         }
     }
     
-    func checkIfVoteIsDone(key: String, completion: @escaping (UInt?) -> ()) {
+    func checkIfVoteIsDone(key: String, completion: @escaping (Int?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else {
             completion(nil)
             return
@@ -105,7 +105,7 @@ class FireBaseRating {
         
         userVotesRef.child(uid).child(key).observeSingleEvent(of: .value) { (snapshot) in
             if snapshot.exists() {
-                completion(snapshot.childrenCount)
+                completion(Int(snapshot.childrenCount))
             } else {
                 completion(0)
             }

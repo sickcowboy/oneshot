@@ -73,7 +73,7 @@ extension RateController {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! RateControllerHeader
         
         header.headerLabel.text = challenge?.description
-        header.numberOfVotes = voteCount
+//        header.numberOfVotes = voteCount
         
         return header
     }
