@@ -11,6 +11,7 @@ import UIKit
 protocol RateFrameImageViewDelegate: class {
     func didVote(sender: RateFrameImageView)
     func doneWithDownLoad(sender: RateFrameImageView)
+    func doneWithAnimationAndNothingToShow(sender: RateFrameImageView)
 }
 
 class RateFrameImageView: UIView {
@@ -74,12 +75,14 @@ class RateFrameImageView: UIView {
                                        size: .init(width: 10, height: 10))
     }
     
+    //MARK: - actions
     let fbVote = FBVote()
     @objc func voteTap(sender: UITapGestureRecognizer) {
         animateVote()
         delegate?.didVote(sender: self)
     }
     
+    //MARK: - animations
     var animationDownDone = false
     func animateDown() {
         animationDownDone = false
@@ -88,6 +91,9 @@ class RateFrameImageView: UIView {
             self.imageView.alpha = 0
         }, completion: { _ in
             self.animationDownDone = true
+            if self.post == nil {
+                self.animationDone()
+            }
         })
     }
     
@@ -112,6 +118,7 @@ class RateFrameImageView: UIView {
         })
     }
     
+    //MARK: - fetching function and handling
     fileprivate func fetchImage() {
         guard let urlString = imageUrl else { return }
         guard let url = URL(string: urlString) else { return }
@@ -148,6 +155,10 @@ class RateFrameImageView: UIView {
                 timer.invalidate()
             }
         }
+    }
+    
+    fileprivate func animationDone() {
+        delegate?.doneWithAnimationAndNothingToShow(sender: self)
     }
     
     required init?(coder aDecoder: NSCoder) {

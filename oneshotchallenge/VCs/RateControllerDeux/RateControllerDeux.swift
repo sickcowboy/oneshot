@@ -38,7 +38,6 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
             guard let voteCount = voteCount else { return }
             if voteCount == 10 {
                 addPartisipant()
-                setUpLockedLabel(done: true)
                 return
             }
         }
@@ -193,20 +192,14 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
             rateViewTop?.animateDown()
         }
         
-        if voteCount! == 10 {
-            debugPrint("voting done")
-            rateViewTop?.removeFromSuperview()
-            rateViewBottom?.removeFromSuperview()
-            return
-        }
-        
-        if posts.count >= 2 {
+        if posts.count >= 2 && voteCount! <= 8 {
             self.rateViewBottom?.post = self.posts?.first
             self.posts?.removeFirst()
             self.rateViewTop?.post = self.posts?.first
             self.posts?.removeFirst()
         } else {
-            setUpRefresh()
+            self.rateViewBottom?.post = nil
+            self.rateViewTop?.post = nil
         }
     }
     
@@ -219,6 +212,23 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
             rateViewTop?.animateBack()
             rateViewBottom?.animateBack()
             done.removeAll()
+        }
+    }
+    
+    var doneWithNothing = [Int?]()
+    func doneWithAnimationAndNothingToShow(sender: RateFrameImageView) {
+        doneWithNothing.append(sender.positionIndex)
+        
+        if doneWithNothing.count == 2 {
+            doneWithNothing.removeAll()
+            if voteCount! == 10 {
+                rateViewTop?.removeFromSuperview()
+                rateViewBottom?.removeFromSuperview()
+                setUpLockedLabel(done: true)
+                return
+            }
+            
+            setUpRefresh()
         }
     }
 }
