@@ -29,6 +29,15 @@ class SettingsController: UIViewController {
         return button
     }()
     
+    private let debugDeleteVotes: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Debug:  ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Delete votes", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(deleteUserVotes), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var buildLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
@@ -59,10 +68,10 @@ class SettingsController: UIViewController {
         buildLabel.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
                                     padding: .init(top: 4, left: 4, bottom: 0, right: 4))
         
-        view.addSubview(deleteUserButton)
-        deleteUserButton.constraintLayout(top: buildLabel.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
-                                    padding: .init(top: 4, left: 4, bottom: 0, right: 4))
-        
+        view.addSubview(debugDeleteVotes)
+        debugDeleteVotes.constraintLayout(top: buildLabel.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor,
+                                          bottom: nil, padding: .init(top: 4, left: 4, bottom: 0, right: 4))
+
         view.addSubview(logOffButton)
         logOffButton.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, padding: .init(top: 0, left: 8, bottom: 4, right: 8))
         
@@ -123,5 +132,10 @@ class SettingsController: UIViewController {
     @objc fileprivate func toAddChallenge() {
         let controller = AddChallengeController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    // MARK: - Debug options
+    @objc fileprivate func deleteUserVotes() {
+        FBDebug.sharedInstance.deleteUserVotes()
     }
 }

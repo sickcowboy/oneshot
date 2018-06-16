@@ -31,6 +31,7 @@
 		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
 		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
+		2B668C5820D51A7100801296 /* FirebaseDebugOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B668C5720D51A7100801296 /* FirebaseDebugOptions.swift */; };
 		2B73389820A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389720A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift */; };
 		2B73389A20A99D2A00AB59E0 /* TopListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */; };
 		2B73389C20A9A4FE00AB59E0 /* TopListControllerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389B20A9A4FE00AB59E0 /* TopListControllerHeader.swift */; };
@@ -62,6 +63,7 @@
 		2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */; };
 		2BBD4C7720A1C2630034DD47 /* AddChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */; };
 		2BC2C74820A2F75A007DF0A9 /* FireBaseRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */; };
+		2BD16A1320D5387700CA0413 /* RateControllerDeux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD16A1220D5387700CA0413 /* RateControllerDeux.swift */; };
 		2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */; };
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
 		A4040B8520C1BDDA004CB6C0 /* FireBaseDeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4040B8420C1BDDA004CB6C0 /* FireBaseDeleteUser.swift */; };
@@ -102,6 +104,7 @@
 		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		2B668C5720D51A7100801296 /* FirebaseDebugOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDebugOptions.swift; sourceTree = "<group>"; };
 		2B73389720A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B73389B20A9A4FE00AB59E0 /* TopListControllerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListControllerHeader.swift; sourceTree = "<group>"; };
@@ -133,6 +136,7 @@
 		2BBD4C7420A1BA4E0034DD47 /* DetailPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostController.swift; sourceTree = "<group>"; };
 		2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChallengeController.swift; sourceTree = "<group>"; };
 		2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRating.swift; sourceTree = "<group>"; };
+		2BD16A1220D5387700CA0413 /* RateControllerDeux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerDeux.swift; sourceTree = "<group>"; };
 		2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		2BE4DF1C20C19B9100FB26D3 /* oneshotchallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = oneshotchallenge.entitlements; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 				2B2039E5208F45A400C4CF43 /* EditPhotoController */,
 				2BB5CEE32090756900BE4050 /* PostController */,
 				2B0B7B16208F0F3900532815 /* RateController */,
+				2BD16A1120D5385900CA0413 /* RateControllerDeux */,
 				2B0B7B1C208F118F00532815 /* TopListController */,
 				2B0B7B19208F0F9B00532815 /* UserController */,
 				2BBD4C7320A1BA2F0034DD47 /* DetailedPostVC */,
@@ -283,6 +288,7 @@
 		2B174C3C20BD7D29001F77C8 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				2B668C5620D51A5900801296 /* FirebaseDebug */,
 				A4040B8320C1BDC6004CB6C0 /* FireBaseDeleteUser */,
 				A43F2BC620BE975F0010AB4C /* FireBaseRetrievePassword */,
 				2B8CE53720A19BC600C8EC3D /* FireBasePosts */,
@@ -361,6 +367,14 @@
 				2B47D88A20BE9B1C0003095B /* UIButtonExtension.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		2B668C5620D51A5900801296 /* FirebaseDebug */ = {
+			isa = PBXGroup;
+			children = (
+				2B668C5720D51A7100801296 /* FirebaseDebugOptions.swift */,
+			);
+			path = FirebaseDebug;
 			sourceTree = "<group>";
 		};
 		2B73389F20A9AF6F00AB59E0 /* DebugClasses */ = {
@@ -460,6 +474,14 @@
 				2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */,
 			);
 			path = FireBaseRating;
+			sourceTree = "<group>";
+		};
+		2BD16A1120D5385900CA0413 /* RateControllerDeux */ = {
+			isa = PBXGroup;
+			children = (
+				2BD16A1220D5387700CA0413 /* RateControllerDeux.swift */,
+			);
+			path = RateControllerDeux;
 			sourceTree = "<group>";
 		};
 		6E5AEB11235C2DD18D1E9497 /* Frameworks */ = {
@@ -639,6 +661,7 @@
 				2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
 				A48E3C3020C1AA2000B1A31B /* DeleteUserView.swift in Sources */,
+				2B668C5820D51A7100801296 /* FirebaseDebugOptions.swift in Sources */,
 				A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */,
 				2B2AE49E20B2F63300151091 /* FireBaseTopLists.swift in Sources */,
 				2B0462C420BD496800CC7C3E /* Challenge.swift in Sources */,
@@ -666,6 +689,7 @@
 				2B8CE53320A1914200C8EC3D /* CETTime.swift in Sources */,
 				2B8CE53920A19BEA00C8EC3D /* FireBasePosts.swift in Sources */,
 				2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */,
+				2BD16A1320D5387700CA0413 /* RateControllerDeux.swift in Sources */,
 				2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */,
 				2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */,
 				2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */,

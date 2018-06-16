@@ -12,22 +12,43 @@ class RateControllerHeader: UICollectionViewCell {
     
     let headerLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "You're voting on Yesterdays challenge:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-        attributedText.append(NSAttributedString(string: "\nA Challenge", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
-        label.attributedText = attributedText
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = Colors.sharedInstance.primaryTextColor
         label.textAlignment = .center
-        label.numberOfLines = 2
         return label
     }()
     
-    /**let attributedTitle = NSMutableAttributedString(string: "Admin:  ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-     attributedTitle.append(NSAttributedString(string: "Add challenge", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))*/
+    let voteLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = Colors.sharedInstance.primaryTextColor
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    var numberOfVotes: UInt? {
+        didSet{
+            guard let votes = numberOfVotes else { return }
+            debugPrint(votes)
+            let attributedTitle = NSMutableAttributedString(string: "Votes: ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+            attributedTitle.append(NSAttributedString(string: "\n\(votes)", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 16), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+            
+            debugPrint(attributedTitle)
+            voteLabel.attributedText = attributedTitle
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubview(headerLabel)
-        headerLabel.constraintLayout(top: safeAreaLayoutGuide.topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
+        headerLabel.constraintLayout(top: safeAreaLayoutGuide.topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: nil,
+                                     padding: .init(top: 4, left: 0, bottom: 0, right: 0))
+        
+        addSubview(voteLabel)
+        voteLabel.constraintLayout(top: headerLabel.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: nil,
+                                   padding: .init(top: 4, left: 0, bottom: 0, right: 0))
     }
     
     required init?(coder aDecoder: NSCoder) {

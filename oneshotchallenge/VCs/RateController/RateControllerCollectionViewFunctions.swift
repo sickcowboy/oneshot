@@ -37,9 +37,9 @@ extension RateController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         guard let tabHeight = tabBarController?.tabBar.frame.height else { return .zero}
-        let size = (collectionView.frame.height - tabHeight) / 2
+        let size = (collectionView.frame.height - tabHeight - 100) / 2
         
-        return CGSize(width: size - 4, height: size - 4)
+        return CGSize(width: collectionView.frame.width, height: size - 4)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -69,16 +69,25 @@ extension RateController {
     }
     
     //Header functions
-//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! RateControllerHeader
-//        
-//        return header
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        
-//        let width = view.frame.width
-//        
-//        return CGSize(width: width, height: 60)
-//    }
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! RateControllerHeader
+        
+        header.headerLabel.text = challenge?.description
+        header.numberOfVotes = voteCount
+        
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        if let votes = voteCount {
+            if votes > 9 {
+                return .zero
+            }
+        }
+        
+        let width = view.frame.width
+        
+        return CGSize(width: width, height: 100)
+    }
 }

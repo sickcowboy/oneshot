@@ -17,9 +17,6 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     var partisipants: [String]? {
         didSet {
-//            posts = nil
-//            collectionView?.reloadData()
-            
             guard let partispants = partisipants else { return }
             debugPrint(partispants.count)
             fetchPosts(partisipants: partispants)
@@ -31,13 +28,6 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
             debugPrint(posts?.count as Any)
         }
     }
-    
-//    var key: String? {
-//        didSet{
-//            guard let key = key else { return }
-//            checkIfUserHasPosted(key: key)
-//        }
-//    }
     
     var challenge: Challenge? {
         didSet{
@@ -54,6 +44,11 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 addPartisipant()
                 setUpLockedLabel(done: true)
                 return
+            }
+            
+            let indexPath = IndexPath(item: 0, section: 0)
+            if let header = collectionView?.supplementaryView(forElementKind: UICollectionElementKindSectionHeader, at: indexPath) as? RateControllerHeader {
+                header.numberOfVotes = voteCount
             }
         }
     }
@@ -82,13 +77,13 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        StausBar.sharedInstance.changeColor(view: view)
+        StausBar.sharedInstance.changeColor(view: view)
         
-//        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = true
         
         collectionView?.backgroundColor = Colors.sharedInstance.primaryColor
         collectionView?.register(RateControllerCell.self, forCellWithReuseIdentifier: cellId)
-//        collectionView?.register(RateControllerHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(RateControllerHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
         collectionView?.contentInsetAdjustmentBehavior = .never
     }
@@ -101,7 +96,7 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
         fetchKey()
     }
     
-    func setUpLockedLabel(done: Bool) {
+    func setUpLockedLabel(done: Bool) {        
         collectionView?.visibleCells.forEach({ (cell) in
             if let cell = cell as? RateControllerCell {
                 cell.animateDown()

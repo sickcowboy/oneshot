@@ -32,7 +32,16 @@ class RateControllerCell: UICollectionViewCell {
     }
     
     let imageView : FramedPhotoView = {
-       let iv = FramedPhotoView()
+        let iv = FramedPhotoView()
+        return iv
+    }()
+    
+    let starImageView : UIImageView = {
+        let image = #imageLiteral(resourceName: "Star")
+        let iv = UIImageView(image: image.withRenderingMode(.alwaysTemplate))
+        iv.contentMode = .scaleAspectFit
+        iv.clipsToBounds = true
+        iv.tintColor = Colors.sharedInstance.primaryTextColor
         return iv
     }()
     
@@ -42,7 +51,8 @@ class RateControllerCell: UICollectionViewCell {
         super.init(frame: frame)
         
         addSubview(imageView)
-        imageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor, centerX: safeAreaLayoutGuide.centerXAnchor, centerY: safeAreaLayoutGuide.centerYAnchor)
+        imageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
+        
         
         if initialFetch {
             imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)

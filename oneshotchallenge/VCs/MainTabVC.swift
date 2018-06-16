@@ -30,14 +30,16 @@ class MainTabVC: UITabBarController {
     fileprivate func setUpControllers() {
         // TODO : Replace placeholder icons
         let challengeController = createController(image: #imageLiteral(resourceName: "Challenge"), title: "Challenge", uiController: ChallengeController())
-        let rateController = createController(image: #imageLiteral(resourceName: "Rate"), title: "Vote", collectionController: RateController(collectionViewLayout: UICollectionViewFlowLayout()))
+//        let rateController = createController(image: #imageLiteral(resourceName: "Rate"), title: "Vote", collectionController: RateController(collectionViewLayout: UICollectionViewFlowLayout()))
+        
+        let rateControllerDeux = createController(image: #imageLiteral(resourceName: "Rate"), title: "Vote", uiController: RateControllerDeux())
         
 //        let topListController = createController(image: #imageLiteral(resourceName: "Toplist"), title: "Toplist", collectionController: TopListController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         let userController = createController(image: #imageLiteral(resourceName: "User"), title: "User", collectionController: UserController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         // TODO : Insert toop list controller back into app
-        self.viewControllers = [challengeController, rateController, userController]
+        self.viewControllers = [challengeController, rateControllerDeux, userController]
     }
     
     fileprivate func createController(image: UIImage?, title: String, collectionController: UICollectionViewController? = nil, uiController: UIViewController? = nil) -> UINavigationController {
