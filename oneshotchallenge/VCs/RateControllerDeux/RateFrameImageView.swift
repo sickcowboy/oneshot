@@ -8,7 +8,14 @@
 
 import UIKit
 
+protocol RateFrameImageViewDelegate: class {
+    func didVote(sender: RateFrameImageView)
+    func doneWithDownLoad(sender: RateFrameImageView)
+}
+
 class RateFrameImageView: UIView {
+    weak var delegate : RateFrameImageViewDelegate?
+    
     var imageUrl: String? {
         didSet{
             imageView.reset()
@@ -26,7 +33,7 @@ class RateFrameImageView: UIView {
     var image: UIImage? {
         didSet{
             self.imageView.image = self.image
-            self.animateBack()
+            self.doneFetching()
         }
     }
     
@@ -38,13 +45,18 @@ class RateFrameImageView: UIView {
     let starImageView : UIImageView = {
         let image = #imageLiteral(resourceName: "Star")
         let iv = UIImageView(image: image.withRenderingMode(.alwaysTemplate))
-        iv.contentMode = .scaleAspectFit
-        iv.clipsToBounds = true
         iv.tintColor = Colors.sharedInstance.primaryTextColor
+        iv.alpha = 0
         return iv
     }()
     
-    var initialFetch = true
+    lazy var tapRecognizer: UITapGestureRecognizer = {
+        let tR = UITapGestureRecognizer(target: self, action: #selector(voteTap(sender:)))
+        tR.numberOfTapsRequired = 1
+        return tR
+    }()
+    
+    var positionIndex: Int?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,11 +64,20 @@ class RateFrameImageView: UIView {
         addSubview(imageView)
         imageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
         
+        addGestureRecognizer(tapRecognizer)
         
-        if initialFetch {
-            imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-            imageView.alpha = 0
-        }
+        self.imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        self.imageView.alpha = 0
+        
+        addSubview(starImageView)
+        starImageView.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil,
+                                       centerX: centerXAnchor, centerY: centerYAnchor,
+                                       size: .init(width: 10, height: 10))
+    }
+    
+    @objc func voteTap(sender: UITapGestureRecognizer) {
+        animateVote()
+        delegate?.didVote(sender: self)
     }
     
     func animateDown() {
@@ -66,11 +87,25 @@ class RateFrameImageView: UIView {
         }, completion: nil)
     }
     
-    fileprivate func animateBack() {
+    func animateBack() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
             self.imageView.alpha = 1
             self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
+    }
+    
+    fileprivate func animateVote() {
+        starImageView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
+            self.starImageView.transform = CGAffineTransform(scaleX: 10, y: 10)
+            self.starImageView.alpha = 1
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.2, animations: {
+                self.starImageView.alpha = 0
+            }, completion: { (_) in
+                self.animateDown()
+            })
+        })
     }
     
     fileprivate func fetchImage() {
@@ -89,6 +124,10 @@ class RateFrameImageView: UIView {
                 self.image = image
             }
             }.resume()
+    }
+    
+    fileprivate func doneFetching() {
+        delegate?.doneWithDownLoad(sender: self)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -41,7 +41,7 @@ class FramedPhotoView: UIView {
         addSubview(frameView)
         frameView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
         
-        photoImageView.addGestureRecognizer(tapRecognizer)
+//        photoImageView.addGestureRecognizer(tapRecognizer)
         
         let padding: CGFloat = 58
         addSubview(photoImageView)

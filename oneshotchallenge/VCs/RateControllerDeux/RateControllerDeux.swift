@@ -8,9 +8,9 @@
 
 import UIKit
 
-class RateControllerDeux: UIViewController {
-    let rateViewTop = RateFrameImageView()
-    let rateViewBottom = RateFrameImageView()
+class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
+    var rateViewTop : RateFrameImageView?
+    var rateViewBottom : RateFrameImageView?
     
     let cetTime = CETTime()
     let fbRatings = FireBaseRating()
@@ -77,6 +77,8 @@ class RateControllerDeux: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         lockedLabel.removeFromSuperview()
+        rateViewTop?.removeFromSuperview()
+        rateViewBottom?.removeFromSuperview()
         
         fetchKey()
     }
@@ -84,9 +86,22 @@ class RateControllerDeux: UIViewController {
     //MARK: - Setup views
     
     func setUpVoteView() {
-        guard let posts = posts else { return }
-        rateViewTop.post = posts[0]
-        rateViewBottom.post = posts[1]
+        rateViewTop = RateFrameImageView()
+        rateViewBottom = RateFrameImageView()
+        
+        rateViewTop?.post = posts?.first
+        posts?.removeFirst()
+        rateViewBottom?.post = posts?.first
+        posts?.removeFirst()
+        
+        rateViewTop?.delegate = self
+        rateViewBottom?.delegate = self
+        
+        rateViewTop?.positionIndex = 0
+        rateViewBottom?.positionIndex = 1
+        
+        guard let rateViewTop = rateViewTop else { return }
+        guard let rateViewBottom = rateViewBottom else { return }
         
         let stackView = UIStackView(arrangedSubviews: [rateViewTop, rateViewBottom])
         stackView.setUp(vertical: true, spacing: 4)
@@ -156,6 +171,27 @@ class RateControllerDeux: UIViewController {
             loadingScreen.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         } else {
             loadingScreen.removeFromSuperview()
+        }
+    }
+    
+    func didVote(sender: RateFrameImageView) {
+        guard let senderId = sender.positionIndex else { return }
+        
+        if senderId == 0 {
+            rateViewBottom?.animateDown()
+            return
+        }
+        
+        rateViewTop?.animateDown()
+    }
+    
+    func doneWithDownLoad(sender: RateFrameImageView) {
+        var done = [Int?]()
+        done.append(sender.positionIndex)
+        
+        if done.count == 2 {
+//            rateViewTop?.animateBack()
+//            rateViewBottom?.animateBack()
         }
     }
 }
