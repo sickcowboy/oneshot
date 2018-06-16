@@ -9,9 +9,7 @@
 import UIKit
 
 class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
-    var rateViewTop : RateFrameImageView?
-    var rateViewBottom : RateFrameImageView?
-    
+    //MARK: - properties
     let cetTime = CETTime()
     let fbRatings = FireBaseRating()
     
@@ -29,19 +27,37 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         didSet{
             guard let challenge = challenge else { return }
             checkIfUserHasPosted(key: challenge.key)
-            navigationItem.title = challenge.description
+            titleLabel.text = challenge.description
         }
     }
     
     var voteCount: Int? {
         didSet{
             guard let voteCount = voteCount else { return }
+            voteCountLabel.countTo(number: 10 - voteCount)
             if voteCount == 10 {
                 addPartisipant()
                 return
             }
         }
     }
+    
+    //MARK: - views
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = Colors.sharedInstance.primaryTextColor
+        return label
+    }()
+    
+    var voteCountLabel = CountLabel()
+    
+    var rateViewTop : RateFrameImageView?
+    var rateViewBottom : RateFrameImageView?
+    
+    var imageStackView : UIStackView?
+    var labelStackView : UIStackView?
     
     let lockedLabel: UILabel = {
         let label = UILabel()
@@ -76,15 +92,21 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         lockedLabel.removeFromSuperview()
-        rateViewTop?.removeFromSuperview()
-        rateViewBottom?.removeFromSuperview()
+        imageStackView?.removeFromSuperview()
+        labelStackView?.removeFromSuperview()
         
         fetchKey()
     }
     
     //MARK: - Setup views
-    
     func setUpVoteView() {
+        labelStackView = UIStackView(arrangedSubviews: [titleLabel, voteCountLabel])
+        labelStackView?.setUp(vertical: false, spacing: 8)
+        
+        guard let labelStackView = labelStackView else { return }
+        view.addSubview(labelStackView)
+        labelStackView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, size: .init(width: 0, height: 44))
+        
         rateViewTop = RateFrameImageView()
         rateViewBottom = RateFrameImageView()
         
@@ -102,11 +124,12 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         guard let rateViewTop = rateViewTop else { return }
         guard let rateViewBottom = rateViewBottom else { return }
         
-        let stackView = UIStackView(arrangedSubviews: [rateViewTop, rateViewBottom])
-        stackView.setUp(vertical: true, spacing: 4)
+        imageStackView = UIStackView(arrangedSubviews: [rateViewTop, rateViewBottom])
+        imageStackView?.setUp(vertical: true, spacing: 4)
         
-        view.addSubview(stackView)
-        stackView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        guard let imageStackView = imageStackView else { return }
+        view.addSubview(imageStackView)
+        imageStackView.constraintLayout(top: labelStackView.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
     }
     
     func setUpLockedLabel(done: Bool) {
@@ -222,8 +245,8 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         if doneWithNothing.count == 2 {
             doneWithNothing.removeAll()
             if voteCount! == 10 {
-                rateViewTop?.removeFromSuperview()
-                rateViewBottom?.removeFromSuperview()
+                labelStackView?.removeFromSuperview()
+                imageStackView?.removeFromSuperview()
                 setUpLockedLabel(done: true)
                 return
             }

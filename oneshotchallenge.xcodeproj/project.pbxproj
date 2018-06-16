@@ -39,6 +39,7 @@
 		2B7338A120A9AF8800AB59E0 /* Names.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7338A020A9AF8800AB59E0 /* Names.swift */; };
 		2B73FDC220BFFBA9007B865F /* RetrievePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73FDC120BFFBA9007B865F /* RetrievePasswordView.swift */; };
 		2B73FDC520C00AFA007B865F /* ShareActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73FDC420C00AFA007B865F /* ShareActivity.swift */; };
+		2B805D9620D5896F0013EBB5 /* CountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B805D9520D5896F0013EBB5 /* CountLabel.swift */; };
 		2B8CE3C1209B06F40045C028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */; };
 		2B8CE3C6209B0DC20045C028 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C4209B0DC10045C028 /* LoginVC.swift */; };
 		2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */; };
@@ -114,6 +115,7 @@
 		2B7338A020A9AF8800AB59E0 /* Names.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Names.swift; sourceTree = "<group>"; };
 		2B73FDC120BFFBA9007B865F /* RetrievePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 		2B73FDC420C00AFA007B865F /* ShareActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareActivity.swift; sourceTree = "<group>"; };
+		2B805D9520D5896F0013EBB5 /* CountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountLabel.swift; sourceTree = "<group>"; };
 		2B8CE3C0209B06F40045C028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2B8CE3C4209B0DC10045C028 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		2B8CE3C5209B0DC20045C028 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -486,6 +488,7 @@
 				2BD16A1220D5387700CA0413 /* RateControllerDeux.swift */,
 				2BFD162A20D53DEB00316DFC /* RCDFirebaseExtension.swift */,
 				2BFD162820D53D4500316DFC /* RateFrameImageView.swift */,
+				2B805D9520D5896F0013EBB5 /* CountLabel.swift */,
 			);
 			path = RateControllerDeux;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				2BFD162B20D53DEB00316DFC /* RCDFirebaseExtension.swift in Sources */,
 				2B8CE53620A193AD00C8EC3D /* FireBaseChallenges.swift in Sources */,
 				2BFD162920D53D4500316DFC /* RateFrameImageView.swift in Sources */,
+				2B805D9620D5896F0013EBB5 /* CountLabel.swift in Sources */,
 				A4236AFD20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift in Sources */,
 				2B2AE4A020B2F6E200151091 /* TopListScore.swift in Sources */,
 				2B8E910F20BFD91B005ED148 /* InfoView.swift in Sources */,

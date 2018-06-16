@@ -19,8 +19,6 @@ class RateFrameImageView: UIView {
     
     var imageUrl: String? {
         didSet{
-//            imageView.reset()
-//            animateDown()
             fetchImage()
         }
     }
@@ -60,11 +58,11 @@ class RateFrameImageView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        debugPrint("init")
         addSubview(imageView)
         imageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
         
-        addGestureRecognizer(tapRecognizer)
+        self.addGestureRecognizer(tapRecognizer)
         
         self.imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         self.imageView.alpha = 0
@@ -78,6 +76,7 @@ class RateFrameImageView: UIView {
     //MARK: - actions
     let fbVote = FBVote()
     @objc func voteTap(sender: UITapGestureRecognizer) {
+        if post == nil { return }
         animateVote()
         delegate?.didVote(sender: self)
     }
@@ -160,7 +159,7 @@ class RateFrameImageView: UIView {
     fileprivate func animationDone() {
         delegate?.doneWithAnimationAndNothingToShow(sender: self)
     }
-    
+        
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

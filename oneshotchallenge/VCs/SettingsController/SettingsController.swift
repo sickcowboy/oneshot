@@ -32,7 +32,7 @@ class SettingsController: UIViewController {
     private let debugDeleteVotes: UIButton = {
         let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Debug:  ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-        attributedTitle.append(NSAttributedString(string: "Delete votes", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        attributedTitle.append(NSAttributedString(string: "Reset votes", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(deleteUserVotes), for: .touchUpInside)
         return button
