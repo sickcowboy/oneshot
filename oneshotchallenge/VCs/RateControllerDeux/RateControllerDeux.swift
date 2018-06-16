@@ -185,13 +185,14 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         rateViewTop?.animateDown()
     }
     
+    var done = [Int?]()
     func doneWithDownLoad(sender: RateFrameImageView) {
-        var done = [Int?]()
         done.append(sender.positionIndex)
-        
+
         if done.count == 2 {
-//            rateViewTop?.animateBack()
-//            rateViewBottom?.animateBack()
+            rateViewTop?.animateBack()
+            rateViewBottom?.animateBack()
+            done.removeAll()
         }
     }
 }
