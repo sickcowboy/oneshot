@@ -12,11 +12,11 @@ class StausBar {
     static let sharedInstance = StausBar()
     
     func changeColor(view: UIView) {
+        let frame = UIApplication.shared.statusBarFrame
         let statusView = UIView()
         statusView.backgroundColor = Colors.sharedInstance.darkColor
-        
+        statusView.frame = frame
         view.addSubview(statusView)
-        statusView.constraintLayout(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil,
-                                    size: .init(width: 0, height: 20))
+//        statusView.constraintLayout(top: view.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil)
     }
 }

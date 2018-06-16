@@ -66,6 +66,8 @@
 		2BD16A1320D5387700CA0413 /* RateControllerDeux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD16A1220D5387700CA0413 /* RateControllerDeux.swift */; };
 		2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */; };
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
+		2BFD162920D53D4500316DFC /* RateFrameImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD162820D53D4500316DFC /* RateFrameImageView.swift */; };
+		2BFD162B20D53DEB00316DFC /* RCDFirebaseExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD162A20D53DEB00316DFC /* RCDFirebaseExtension.swift */; };
 		A4040B8520C1BDDA004CB6C0 /* FireBaseDeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4040B8420C1BDDA004CB6C0 /* FireBaseDeleteUser.swift */; };
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
@@ -140,6 +142,8 @@
 		2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		2BE4DF1C20C19B9100FB26D3 /* oneshotchallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = oneshotchallenge.entitlements; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
+		2BFD162820D53D4500316DFC /* RateFrameImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateFrameImageView.swift; sourceTree = "<group>"; };
+		2BFD162A20D53DEB00316DFC /* RCDFirebaseExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RCDFirebaseExtension.swift; sourceTree = "<group>"; };
 		67D84EF8DE2A95CDAF741B0B /* Pods-oneshotchallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		8815B5D1707E46F1F140AD8E /* Pods-oneshotchallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-oneshotchallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-oneshotchallenge/Pods-oneshotchallenge.release.xcconfig"; sourceTree = "<group>"; };
 		A4040B8420C1BDDA004CB6C0 /* FireBaseDeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseDeleteUser.swift; sourceTree = "<group>"; };
@@ -480,6 +484,8 @@
 			isa = PBXGroup;
 			children = (
 				2BD16A1220D5387700CA0413 /* RateControllerDeux.swift */,
+				2BFD162A20D53DEB00316DFC /* RCDFirebaseExtension.swift */,
+				2BFD162820D53D4500316DFC /* RateFrameImageView.swift */,
 			);
 			path = RateControllerDeux;
 			sourceTree = "<group>";
@@ -693,7 +699,9 @@
 				2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */,
 				2BA7F9202090870A0028E0AC /* UserControllerCollectionViewFunctions.swift in Sources */,
 				2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */,
+				2BFD162B20D53DEB00316DFC /* RCDFirebaseExtension.swift in Sources */,
 				2B8CE53620A193AD00C8EC3D /* FireBaseChallenges.swift in Sources */,
+				2BFD162920D53D4500316DFC /* RateFrameImageView.swift in Sources */,
 				A4236AFD20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift in Sources */,
 				2B2AE4A020B2F6E200151091 /* TopListScore.swift in Sources */,
 				2B8E910F20BFD91B005ED148 /* InfoView.swift in Sources */,
