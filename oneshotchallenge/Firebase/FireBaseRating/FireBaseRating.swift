@@ -71,18 +71,28 @@ class FireBaseRating {
             
             var partisipants = [String]()
             for item in data {
-                if let _ = userVotes[item.key] as? Int {
-                    
-                } else {
+                if userVotes[item.key] as? Int == nil {
                     partisipants.append(item.key)
                 }
                 
-                if 20 - userVotes.count == partisipants.count {
-                    completion(partisipants)
-                    return
-                }
+//                debugPrint("Partisipants: \(partisipants.count)")
+//                debugPrint("user votes: \(userVotes.count)")
+//                
+//                if 20 - userVotes.count == partisipants.count {
+//                    if partisipants.count % 2 != 0 {
+//                        debugPrint("removing last")
+//                        partisipants.removeLast()
+//                    }
+//                    
+//                    completion(partisipants)
+//                    return
+//                }
             }
             
+            if partisipants.count % 2 != 0 {
+                debugPrint("removing last")
+                partisipants.removeLast()
+            }
             completion(partisipants)
         }
     }

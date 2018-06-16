@@ -21,12 +21,16 @@ class RateController: UICollectionViewController, UICollectionViewDelegateFlowLa
 //            collectionView?.reloadData()
             
             guard let partispants = partisipants else { return }
-            
+            debugPrint(partispants.count)
             fetchPosts(partisipants: partispants)
         }
     }
     
-    var posts: [Post]? 
+    var posts: [Post]? {
+        didSet{
+            debugPrint(posts?.count as Any)
+        }
+    }
     
 //    var key: String? {
 //        didSet{
