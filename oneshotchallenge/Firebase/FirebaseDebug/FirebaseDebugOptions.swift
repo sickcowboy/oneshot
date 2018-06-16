@@ -12,9 +12,24 @@ import FirebaseAuth
 class FBDebug {
     static let sharedInstance = FBDebug()
     let userVotesRef = Database.database().reference(withPath: DatabaseReference.userVotes.rawValue)
+    let userPosts = Database.database().reference(withPath: DatabaseReference.posts.rawValue)
     
     func deleteUserVotes() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         userVotesRef.child(uid).removeValue()
+    }
+    
+    func deletePost() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let cetTime = CETTime()
+        guard let challengeTime = cetTime.challengeTimeToday() else { return }
+        
+        userPosts.child(uid).queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeTime.timeIntervalSince1970).observeSingleEvent(of: .value) { (snapshot) in
+            guard let data = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            for item in data {
+                self.userPosts.child(uid).child(item.key).removeValue()
+            }
+        }
     }
 }
