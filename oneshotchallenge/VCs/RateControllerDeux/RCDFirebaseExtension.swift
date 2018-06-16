@@ -116,7 +116,6 @@ extension RateControllerDeux {
     fileprivate func doneFetching() {
         DispatchQueue.main.async {
             if (self.posts?.count ?? 0) % 2 != 0 {
-                debugPrint("removing last")
                 self.posts?.removeLast()
             }
             

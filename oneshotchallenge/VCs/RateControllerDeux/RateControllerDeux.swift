@@ -183,6 +183,22 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         let post = sender.post
         let month = MonthKey.sharedInstance.monthKey(timeInterval: post?.challengeDate)
         FBVote.sharedInstance.vote(uid: post?.userId, id: challenge?.key, month: month)
+        voteCount! += 1
+        debugPrint(voteCount as Any)
+        
+        if senderId == 0 {
+            rateViewBottom?.animateDown()
+            
+        } else {
+            rateViewTop?.animateDown()
+        }
+        
+        if voteCount! == 10 {
+            debugPrint("voting done")
+            rateViewTop?.removeFromSuperview()
+            rateViewBottom?.removeFromSuperview()
+            return
+        }
         
         if posts.count >= 2 {
             self.rateViewBottom?.post = self.posts?.first
@@ -192,13 +208,6 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         } else {
             setUpRefresh()
         }
-        
-        if senderId == 0 {
-            rateViewBottom?.animateDown()
-            return
-        }
-        
-        rateViewTop?.animateDown()
     }
     
     //checks if both views are done fetching images
