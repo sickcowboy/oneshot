@@ -31,6 +31,8 @@
 		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
 		2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D238208F13EE00090285 /* UIViewExtension.swift */; };
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
+		2B5B03A720D670360040A4CD /* CelerationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B03A620D670360040A4CD /* CelerationController.swift */; };
+		2B5B03A920D67CF70040A4CD /* CelebrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B03A820D67CF70040A4CD /* CelebrationView.swift */; };
 		2B668C5820D51A7100801296 /* FirebaseDebugOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B668C5720D51A7100801296 /* FirebaseDebugOptions.swift */; };
 		2B73389820A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389720A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift */; };
 		2B73389A20A99D2A00AB59E0 /* TopListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */; };
@@ -107,6 +109,8 @@
 		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2B52D238208F13EE00090285 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
+		2B5B03A620D670360040A4CD /* CelerationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelerationController.swift; sourceTree = "<group>"; };
+		2B5B03A820D67CF70040A4CD /* CelebrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationView.swift; sourceTree = "<group>"; };
 		2B668C5720D51A7100801296 /* FirebaseDebugOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDebugOptions.swift; sourceTree = "<group>"; };
 		2B73389720A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -381,6 +385,8 @@
 		2B5B03A520D66FF00040A4CD /* CelebrationController */ = {
 			isa = PBXGroup;
 			children = (
+				2B5B03A620D670360040A4CD /* CelerationController.swift */,
+				2B5B03A820D67CF70040A4CD /* CelebrationView.swift */,
 			);
 			path = CelebrationController;
 			sourceTree = "<group>";
@@ -674,6 +680,7 @@
 				2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */,
 				2B73FDC220BFFBA9007B865F /* RetrievePasswordView.swift in Sources */,
 				A48F902F20D1940800BF15E7 /* RateControllerHeader.swift in Sources */,
+				2B5B03A720D670360040A4CD /* CelerationController.swift in Sources */,
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
 				2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
@@ -705,6 +712,7 @@
 				2B0B7B01208F0D2900532815 /* AppDelegate.swift in Sources */,
 				2B8CE53320A1914200C8EC3D /* CETTime.swift in Sources */,
 				2B8CE53920A19BEA00C8EC3D /* FireBasePosts.swift in Sources */,
+				2B5B03A920D67CF70040A4CD /* CelebrationView.swift in Sources */,
 				2BB5CEDE209065A400BE4050 /* CountDownTimer.swift in Sources */,
 				2BD16A1320D5387700CA0413 /* RateControllerDeux.swift in Sources */,
 				2BB5CEE52090758F00BE4050 /* PostController.swift in Sources */,

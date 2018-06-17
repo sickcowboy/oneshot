@@ -40,7 +40,7 @@ class MainTabVC: UITabBarController {
         
         // TODO : Insert toop list controller back into app
         self.viewControllers = [challengeController, rateControllerDeux, userController]
-    }
+    }    
     
     fileprivate func createController(image: UIImage?, title: String, collectionController: UICollectionViewController? = nil, uiController: UIViewController? = nil) -> UINavigationController {
         var navController : UINavigationController?

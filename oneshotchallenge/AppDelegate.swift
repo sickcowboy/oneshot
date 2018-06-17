@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainTabVC()
+//        window?.rootViewController = MainTabVC()
+        window?.rootViewController = CelebrationController()
         window?.makeKeyAndVisible()
         
         return true
