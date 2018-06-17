@@ -26,6 +26,7 @@
 		2B2AE49B20B2F1AE00151091 /* MonthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49A20B2F1AE00151091 /* MonthKey.swift */; };
 		2B2AE49E20B2F63300151091 /* FireBaseTopLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */; };
 		2B2AE4A020B2F6E200151091 /* TopListScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49F20B2F6E200151091 /* TopListScore.swift */; };
+		2B394D0220D69E6500AD2CA1 /* FireWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394D0120D69E6500AD2CA1 /* FireWork.swift */; };
 		2B47D88920BE97470003095B /* RateControllerDatabaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */; };
 		2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B47D88A20BE9B1C0003095B /* UIButtonExtension.swift */; };
 		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
@@ -104,6 +105,7 @@
 		2B2AE49A20B2F1AE00151091 /* MonthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthKey.swift; sourceTree = "<group>"; };
 		2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseTopLists.swift; sourceTree = "<group>"; };
 		2B2AE49F20B2F6E200151091 /* TopListScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListScore.swift; sourceTree = "<group>"; };
+		2B394D0120D69E6500AD2CA1 /* FireWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWork.swift; sourceTree = "<group>"; };
 		2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerDatabaseFunctions.swift; sourceTree = "<group>"; };
 		2B47D88A20BE9B1C0003095B /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 			children = (
 				2B5B03A620D670360040A4CD /* CelerationController.swift */,
 				2B5B03A820D67CF70040A4CD /* CelebrationView.swift */,
+				2B394D0120D69E6500AD2CA1 /* FireWork.swift */,
 			);
 			path = CelebrationController;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				2B5B03A720D670360040A4CD /* CelerationController.swift in Sources */,
 				2B0B7B03208F0D2900532815 /* MainTabVC.swift in Sources */,
 				2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */,
+				2B394D0220D69E6500AD2CA1 /* FireWork.swift in Sources */,
 				2B0E1B80209B1C6200163C23 /* ReferenceEnums.swift in Sources */,
 				A48E3C3020C1AA2000B1A31B /* DeleteUserView.swift in Sources */,
 				2B668C5820D51A7100801296 /* FirebaseDebugOptions.swift in Sources */,

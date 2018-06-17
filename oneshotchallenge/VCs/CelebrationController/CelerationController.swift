@@ -36,8 +36,6 @@ class CelebrationController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Colors.sharedInstance.primaryColor
         StausBar.sharedInstance.changeColor(view: view)
-        
-        addCelebrationView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,13 +49,12 @@ class CelebrationController: UIViewController {
         guard let celebrationView = celebrationView else { return }
         
         view.addSubview(celebrationView)
-        celebrationView.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil,
-                                          centerX: view.safeAreaLayoutGuide.centerXAnchor,
-                                          centerY: view.safeAreaLayoutGuide.centerYAnchor,
-                                          size: .init(width: view.frame.width - 16, height: view.frame.width - 16))
+        celebrationView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor,
+                                         trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        celebrationView.animate()
     }
     
-    var touched = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         celebrationView?.animate()
     }
