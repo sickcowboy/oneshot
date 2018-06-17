@@ -11,8 +11,17 @@ import UIKit
 class PostController: UIViewController, InfoViewDelegate {
     lazy var postButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("POST", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 52)
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
+        
+        let attributedTitle = NSMutableAttributedString(string: "POST",
+                                                       attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 52),
+                                                                    NSAttributedStringKey.foregroundColor: Colors.sharedInstance.darkColor])
+        attributedTitle.append(NSAttributedString(string: "\npicture to enter challenge",
+                                                  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16),
+                                                               NSAttributedStringKey.foregroundColor: Colors.sharedInstance.secondaryColor]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
         button.tintColor = Colors.sharedInstance.darkColor
         button.addTarget(self, action: #selector(postClicked), for: .touchUpInside)
         return button
