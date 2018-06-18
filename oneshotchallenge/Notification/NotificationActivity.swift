@@ -88,6 +88,10 @@ class NotificationActivity {
         })
     }
     
+    func deleteNotifications() {
+        center.removeAllPendingNotificationRequests()
+    }
+    
     func requestNotificationAuth() {
         
         center.requestAuthorization(options: options) { (granted, error) in
