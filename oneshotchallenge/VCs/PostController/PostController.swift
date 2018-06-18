@@ -103,7 +103,7 @@ class PostController: UIViewController, InfoViewDelegate {
         view.addSubview(infoView)
         infoView.constraintLayout(top: postButton.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
-        infoView.setText(text: "Let's head over and vote on some posts.")
+        infoView.setText(text: "Please remember, to complete the challenge you also need to vote.")
         
         animateDone()
     }

@@ -76,6 +76,7 @@
 		A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */; };
 		A48E3C3020C1AA2000B1A31B /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */; };
 		A48F902F20D1940800BF15E7 /* RateControllerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */; };
+		A4A0891720D7FC1300034EB2 /* NotificationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0891620D7FC1300034EB2 /* NotificationActivity.swift */; };
 		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +158,7 @@
 		A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
 		A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerHeader.swift; sourceTree = "<group>"; };
 		A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
+		A4A0891620D7FC1300034EB2 /* NotificationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +208,7 @@
 				2B0B7B12208F0ED500532815 /* VCs */,
 				2B174C3C20BD7D29001F77C8 /* Firebase */,
 				2B73FDC320C00AE3007B865F /* Sharing */,
+				A4A0891520D7FBEA00034EB2 /* Notification */,
 			);
 			path = oneshotchallenge;
 			sourceTree = "<group>";
@@ -517,6 +520,14 @@
 			path = FireBaseRetrievePassword;
 			sourceTree = "<group>";
 		};
+		A4A0891520D7FBEA00034EB2 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				A4A0891620D7FC1300034EB2 /* NotificationActivity.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		C71B1655732AC7F8F1711454 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,6 +690,7 @@
 				2B0E1B86209B20FA00163C23 /* User.swift in Sources */,
 				2B8CE3CE209B165F0045C028 /* FireBaseRegister.swift in Sources */,
 				2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */,
+				A4A0891720D7FC1300034EB2 /* NotificationActivity.swift in Sources */,
 				2B73389A20A99D2A00AB59E0 /* TopListCollectionViewCell.swift in Sources */,
 				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
