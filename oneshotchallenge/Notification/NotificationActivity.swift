@@ -53,8 +53,8 @@ class NotificationActivity {
             }
     
             let content = UNMutableNotificationContent()
-            content.title = "Title"
-            content.body = "Body"
+            content.title = "Reminder"
+            content.body = "You have not voted on 10 pictures yet. \nYou need to do this to compete in the challenge"
             content.sound = UNNotificationSound.default()
             
             let snoozeAction = UNNotificationAction(identifier: "Snooze",
