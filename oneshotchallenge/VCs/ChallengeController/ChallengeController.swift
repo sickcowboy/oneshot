@@ -10,6 +10,17 @@ import UIKit
 
 class ChallengeController: UIViewController {
     
+    var isOnBoarding: Bool? {
+        didSet {
+            guard let isOnBoarding = isOnBoarding else { return }
+            
+            if isOnBoarding {
+                setChallengeLabelText(text: "Take a Selfie")
+                setUpChallengeDone(timesUp: false)
+            }
+        }
+    }
+    
     lazy var takeChallengeButton: UIButton = {
         let button = UIButton(type: .system)
         button.titleLabel?.numberOfLines = 0
