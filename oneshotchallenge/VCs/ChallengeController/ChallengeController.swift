@@ -12,10 +12,16 @@ class ChallengeController: UIViewController {
     
     var isOnBoarding: Bool? {
         didSet {
+            
+            
             guard let isOnBoarding = isOnBoarding else { return }
             
             if isOnBoarding {
-                // OnBoarding
+                DispatchQueue.main.async {
+                    
+                    self.setChallengeLabelText(text: ("Selfie"))
+                    self.setUpChallenge()
+                }
             }
         }
     }

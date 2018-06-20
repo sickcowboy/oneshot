@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainTabVC()
+        //window?.rootViewController = MainTabVC()
         
         //Onboarding test
         let onBoardingController = MainOnBoardingController()
-        //window?.rootViewController = onBoardingController
+        window?.rootViewController = onBoardingController
         
         window?.makeKeyAndVisible()
         
