@@ -13,6 +13,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
     let capturePreviewView = UIView()
     let output = AVCapturePhotoOutput()
     var previewLayer : AVCaptureVideoPreviewLayer?
+    var isOnBoarding = false
     
     let challengeLabel: UILabel = {
         let label = UILabel()
@@ -51,7 +52,13 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
         NotificationCenter.default.addObserver(self, selector: #selector(checkTimeAndStartCountDown),
                                                name: .UIApplicationWillEnterForeground, object: nil)
         
-        fetchChallenge()
+        if isOnBoarding {
+            challengeLabel.text = "Take a Selfie"
+            setUpViews()
+        } else {
+            fetchChallenge()
+        }
+        
         
         checkTimeAndStartCountDown()
     }

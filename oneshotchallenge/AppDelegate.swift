@@ -13,16 +13,21 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let notificationActivity = NotificationActivity()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = MainTabVC()
+        //window?.rootViewController = MainTabVC()
+        
+        //Onboarding test
+        let welcomeController = OBWelcomeController()
+        window?.rootViewController = welcomeController
+        
         window?.makeKeyAndVisible()
         
-        let notificationActivity = NotificationActivity()
+        
         
         notificationActivity.requestNotificationAuth()
 

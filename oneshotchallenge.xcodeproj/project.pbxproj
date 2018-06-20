@@ -77,6 +77,7 @@
 		A48E3C3020C1AA2000B1A31B /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */; };
 		A48F902F20D1940800BF15E7 /* RateControllerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */; };
 		A4A0891720D7FC1300034EB2 /* NotificationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0891620D7FC1300034EB2 /* NotificationActivity.swift */; };
+		A4D4941420D8EE3900613803 /* OBWelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D4941320D8EE3900613803 /* OBWelcomeController.swift */; };
 		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +160,7 @@
 		A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerHeader.swift; sourceTree = "<group>"; };
 		A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 		A4A0891620D7FC1300034EB2 /* NotificationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationActivity.swift; sourceTree = "<group>"; };
+		A4D4941320D8EE3900613803 /* OBWelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBWelcomeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 		2B0B7B12208F0ED500532815 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				A4D4941220D8ECFC00613803 /* OnBoardingVC */,
 				2B0B7B02208F0D2900532815 /* MainTabVC.swift */,
 				2B8CE3C3209B0D6E0045C028 /* LoginRegisterVC's */,
 				2B0B7B15208F0F2900532815 /* ChallengeController */,
@@ -528,6 +531,14 @@
 			path = Notification;
 			sourceTree = "<group>";
 		};
+		A4D4941220D8ECFC00613803 /* OnBoardingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4D4941320D8EE3900613803 /* OBWelcomeController.swift */,
+			);
+			path = OnBoardingVC;
+			sourceTree = "<group>";
+		};
 		C71B1655732AC7F8F1711454 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +739,7 @@
 				2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */,
 				2B8CE53B20A19CC400C8EC3D /* Post.swift in Sources */,
 				2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */,
+				A4D4941420D8EE3900613803 /* OBWelcomeController.swift in Sources */,
 				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,
 				2B0E1B83209B203500163C23 /* FireBaseUser.swift in Sources */,
 				2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */,
