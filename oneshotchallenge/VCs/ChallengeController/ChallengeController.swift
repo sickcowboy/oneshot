@@ -15,8 +15,7 @@ class ChallengeController: UIViewController {
             guard let isOnBoarding = isOnBoarding else { return }
             
             if isOnBoarding {
-                setChallengeLabelText(text: "Take a Selfie")
-                setUpChallengeDone(timesUp: false)
+                // OnBoarding
             }
         }
     }
