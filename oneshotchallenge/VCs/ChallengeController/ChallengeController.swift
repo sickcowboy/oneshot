@@ -18,7 +18,7 @@ class ChallengeController: UIViewController {
             
             if isOnBoarding {
                 DispatchQueue.main.async {
-                    
+                    self.activityIndicator.stopAnimating()
                     self.setChallengeLabelText(text: ("Selfie"))
                     self.setUpChallenge()
                 }
