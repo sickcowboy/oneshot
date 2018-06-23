@@ -14,6 +14,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
     let output = AVCapturePhotoOutput()
     var previewLayer : AVCaptureVideoPreviewLayer?
     var isOnBoarding = false
+    var captureDevice: AVCaptureDevice?
     
     let challengeLabel: UILabel = {
         let label = UILabel()
@@ -54,13 +55,12 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
         
         if isOnBoarding {
             challengeLabel.text = "Take a Selfie"
-            setUpViews()
+            setUpOnBoarding()
         } else {
+            setUpViews()
             fetchChallenge()
+            checkTimeAndStartCountDown()
         }
-        
-        
-        checkTimeAndStartCountDown()
     }
     
     override func viewWillAppear(_ animated: Bool) {

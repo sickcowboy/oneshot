@@ -77,8 +77,6 @@ class OBWelcomeController: UIViewController {
         challengeController.isOnBoarding = true
         let challengeNavController = UINavigationController(rootViewController: challengeController)
         
-        self.dismiss(animated: false, completion: nil)
-        
         present(challengeNavController, animated: true, completion: nil)
     }
 }

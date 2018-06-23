@@ -33,7 +33,7 @@ class MainTabVC: UITabBarController {
                         if profileExists {
                             self.setUpControllers()
                         } else {
-                            
+                            self.toOnBoarding()
                         }
                     }
                 })
