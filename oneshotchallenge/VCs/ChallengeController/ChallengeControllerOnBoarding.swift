@@ -30,7 +30,7 @@ extension ChallengeController {
     func segueToCameraOnBoarding(post: Post? = nil) {
         debugPrint("seguetocameraOnBoarding")
         let controller = CameraController()
-        controller.isOnBoarding = true
+        controller.isOnBoarding = isOnBoarding
         Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { (_) in
             self.tabBarController?.tabBar.isHidden = true
             

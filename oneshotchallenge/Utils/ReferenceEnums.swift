@@ -28,4 +28,5 @@ enum DatabaseReference: String {
     case userVotes = "userVotes"
     case profileDeleteDate = "profileDeleteDate"
     case profilePicURL = "profilePicURL"
+    case profilePics = "profilePics"
 }

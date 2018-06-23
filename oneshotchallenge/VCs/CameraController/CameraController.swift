@@ -145,6 +145,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
     func goToEditPhotoController(image: UIImage) {
         let controller = EditPhototController()
         controller.photo = image
+        controller.isOnBoarding = isOnBoarding
         controller.countDownTimer = countDownTimer
         
         navigationController?.pushViewController(controller, animated: true)

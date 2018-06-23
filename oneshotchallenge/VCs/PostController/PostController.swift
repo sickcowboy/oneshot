@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class PostController: UIViewController, InfoViewDelegate {
+    
+    var isOnBoarding = false
+    
     lazy var postButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("POST", for: .normal)
@@ -79,22 +83,26 @@ class PostController: UIViewController, InfoViewDelegate {
 
         activityIndication(loading: true)
 
-        let fbPosts = FireBasePosts()
-        fbPosts.uploadPost(image: image, completion: { error in
-            DispatchQueue.main.async {
-                self.activityIndication(loading: false)
-
-                if let error = error {
-                    self.alert(message: error.localizedDescription)
-                    self.cancelButton.isHidden = false
-                    self.backButton.isHidden = false
-                    self.postButton.isHidden = false
-                    return
+        if !isOnBoarding {
+            let fbPosts = FireBasePosts()
+            fbPosts.uploadPost(image: image, completion: { error in
+                DispatchQueue.main.async {
+                    self.activityIndication(loading: false)
+                    
+                    if let error = error {
+                        self.alert(message: error.localizedDescription)
+                        self.cancelButton.isHidden = false
+                        self.backButton.isHidden = false
+                        self.postButton.isHidden = false
+                        return
+                    }
+                    
+                    self.showInfoWindow()
                 }
-                
-                self.showInfoWindow()
-            }
-        })
+            })
+        } else {
+            
+        }
     }
     
     fileprivate func showInfoWindow() {

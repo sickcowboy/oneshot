@@ -10,6 +10,7 @@ import UIKit
 
 class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollViewDelegate {
     let context = CIContext(options: nil)
+    var isOnBoarding = false
     
     var photo: UIImage? {
         didSet{
@@ -144,6 +145,7 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
         
         let controller = PostController()
         controller.image = cropImage()
+        controller.isOnBoarding = isOnBoarding
 
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -155,7 +157,7 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
         scrollView.layer.render(in: context)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage;
+        return newImage
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {

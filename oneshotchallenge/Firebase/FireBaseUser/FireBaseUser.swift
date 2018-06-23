@@ -9,9 +9,11 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class FireBaseUser {
     fileprivate let dataBaseRef = Database.database().reference(withPath: DatabaseReference.users.rawValue)
+    fileprivate let storageRef = Storage.storage().reference(withPath: DatabaseReference.profilePics.rawValue)
     
     func fetchUser(uid: String? = nil, completion: @escaping(LocalUser?) -> ()) {
         guard let uid = uid ?? Auth.auth().currentUser?.uid else {
@@ -46,6 +48,38 @@ class FireBaseUser {
         
         dataBaseRef.child(uid).child(DatabaseReference.profilePicURL.rawValue).observeSingleEvent(of: .value) { (snapshot) in
             completion(snapshot.exists())
+        }
+    }
+    
+    func uploadProfilePic(image: UIImage, completion: @escaping (Error?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        guard let imageData = UIImageJPEGRepresentation(image, 0.5) else { return }
+        
+        let refrence = storageRef.child(uid)
+        
+        refrence.putData(imageData, metadata: nil) { (metadata, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+                return
+            }
+            
+            refrence.downloadURL(completion: { (url, error) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                    return
+                }
+                guard let url = url?.absoluteString else { return }
+                
+                self.uploadProfileImage(uid: uid, url: url, completion: error)
+            })
+            
+        }
+    }
+    
+    fileprivate func uploadProfileImage(uid: String, url: String, completion: @escaping (Error?) -> ()) {
+        dataBaseRef.child(uid).child(DatabaseReference.profilePicURL.rawValue).setValue(url) { (error, _) in
+            completion(error)
         }
     }
 }
