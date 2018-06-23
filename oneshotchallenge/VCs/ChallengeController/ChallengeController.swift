@@ -93,7 +93,7 @@ class ChallengeController: UIViewController {
         activityIndicator.stopAnimating()
         
         if isOnBoarding {
-            self.setChallengeLabelText(text: ("Selfie"))
+            self.setChallengeLabelText(text: ("Yourself"))
             self.setUpOnBoarding()
         }
     }
@@ -243,12 +243,12 @@ class ChallengeController: UIViewController {
                 self.challengeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
                 self.challengeLabel.alpha = 1
             }, completion: {_ in
-                let fbPosts = FireBasePosts()
-                fbPosts.startPost()
                 
                 if self.isOnBoarding {
                     self.segueToCameraOnBoarding()
                 } else {
+                    let fbPosts = FireBasePosts()
+                    fbPosts.startPost()
                     self.segueToCamera()
                 }
             })

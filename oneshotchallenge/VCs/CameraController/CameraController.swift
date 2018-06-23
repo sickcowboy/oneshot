@@ -50,14 +50,12 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
         
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
-        NotificationCenter.default.addObserver(self, selector: #selector(checkTimeAndStartCountDown),
-                                               name: .UIApplicationWillEnterForeground, object: nil)
-        
         if isOnBoarding {
             challengeLabel.text = "Take a Selfie"
             setUpOnBoarding()
         } else {
-            setUpViews()
+            NotificationCenter.default.addObserver(self, selector: #selector(checkTimeAndStartCountDown),
+                                                   name: .UIApplicationWillEnterForeground, object: nil)
             fetchChallenge()
             checkTimeAndStartCountDown()
         }

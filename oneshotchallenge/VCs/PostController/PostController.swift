@@ -90,10 +90,7 @@ class PostController: UIViewController, InfoViewDelegate {
                     self.activityIndication(loading: false)
                     
                     if let error = error {
-                        self.alert(message: error.localizedDescription)
-                        self.cancelButton.isHidden = false
-                        self.backButton.isHidden = false
-                        self.postButton.isHidden = false
+                        self.showError(description: error.localizedDescription)
                         return
                     }
                     
@@ -101,8 +98,27 @@ class PostController: UIViewController, InfoViewDelegate {
                 }
             })
         } else {
+            let fbUser = FireBaseUser()
             
+            DispatchQueue.main.async {
+                self.activityIndication(loading: false)
+                
+                fbUser.uploadProfilePic(image: image) { (error) in
+                    if let error = error {
+                        self.showError(description: error.localizedDescription)
+                        return
+                    }
+                    // TODO Show user that it worked
+                }
+            }
         }
+    }
+    
+    fileprivate func showError(description: String) {
+    self.alert(message: description)
+    self.cancelButton.isHidden = false
+    self.backButton.isHidden = false
+    self.postButton.isHidden = false
     }
     
     fileprivate func showInfoWindow() {

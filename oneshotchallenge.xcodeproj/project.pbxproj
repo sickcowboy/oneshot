@@ -73,7 +73,6 @@
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
 		A4236AFD20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4236AFC20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift */; };
-		A432315920DA53D300C70EF4 /* MainOnBoardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A432315820DA53D300C70EF4 /* MainOnBoardingController.swift */; };
 		A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */; };
 		A450DE8720DE5254007588A1 /* ChallengeControllerOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450DE8620DE5254007588A1 /* ChallengeControllerOnBoarding.swift */; };
 		A450DE8920DE5487007588A1 /* CameraControllerOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450DE8820DE5487007588A1 /* CameraControllerOnBoarding.swift */; };
@@ -157,7 +156,6 @@
 		A40A999420930FEF00176D96 /* RateControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCell.swift; sourceTree = "<group>"; };
 		A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		A4236AFC20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseSMSRegister.swift; sourceTree = "<group>"; };
-		A432315820DA53D300C70EF4 /* MainOnBoardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnBoardingController.swift; sourceTree = "<group>"; };
 		A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRetrievePassword.swift; sourceTree = "<group>"; };
 		A450DE8620DE5254007588A1 /* ChallengeControllerOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeControllerOnBoarding.swift; sourceTree = "<group>"; };
 		A450DE8820DE5487007588A1 /* CameraControllerOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControllerOnBoarding.swift; sourceTree = "<group>"; };
@@ -543,7 +541,6 @@
 			isa = PBXGroup;
 			children = (
 				A4D4941320D8EE3900613803 /* OBWelcomeController.swift */,
-				A432315820DA53D300C70EF4 /* MainOnBoardingController.swift */,
 			);
 			path = OnBoardingVC;
 			sourceTree = "<group>";
@@ -726,7 +723,6 @@
 				2B0B7B1B208F0FB600532815 /* UserController.swift in Sources */,
 				A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */,
 				2B2039EA208F5CC700C4CF43 /* FilterSlider.swift in Sources */,
-				A432315920DA53D300C70EF4 /* MainOnBoardingController.swift in Sources */,
 				2BBD4C7720A1C2630034DD47 /* AddChallengeController.swift in Sources */,
 				2B0B7B01208F0D2900532815 /* AppDelegate.swift in Sources */,
 				2B8CE53320A1914200C8EC3D /* CETTime.swift in Sources */,

@@ -71,7 +71,9 @@ class FireBaseUser {
                 }
                 guard let url = url?.absoluteString else { return }
                 
-                self.uploadProfileImage(uid: uid, url: url, completion: error)
+                self.uploadProfileImage(uid: uid, url: url, completion: { (error) in
+                    completion(error)
+                })
             })
             
         }
