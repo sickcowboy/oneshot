@@ -12,15 +12,13 @@ class ChallengeController: UIViewController {
     
     var isOnBoarding: Bool? {
         didSet {
-            
-            
             guard let isOnBoarding = isOnBoarding else { return }
             
             if isOnBoarding {
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     self.setChallengeLabelText(text: ("Selfie"))
-                    self.setUpChallenge()
+                    self.setUpOnBoarding()
                 }
             }
         }
@@ -108,13 +106,41 @@ class ChallengeController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        checkChallengeStatus()
+        guard let isOnBoarding = isOnBoarding else { return }
+        if !isOnBoarding {
+            checkChallengeStatus()
+        }
+    }
+    
+    fileprivate func setUpOnBoarding() {
+        //self.tabBarController?.tabBar.isHidden = true
+        
+        //guard let bottomAnchor = tabBarController?.tabBar.topAnchor else { return }
+        view.addSubview(countDownTimer)
+        countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor,
+                                        size: .init(width: 0, height: 80))
+        
+        view.addSubview(takeChallengeButton)
+        takeChallengeButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: view.centerXAnchor, centerY: view.safeAreaLayoutGuide.centerYAnchor,
+                                             size: .init(width: 0, height: 0))
+        
+        view.addSubview(challengeLabel)
+        challengeLabel.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerY: view.safeAreaLayoutGuide.centerYAnchor,
+                                        padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 0))
+        
+        challengeLabel.isHidden = true
+        challengeLabel.alpha = 0
+        challengeLabel.transform = CGAffineTransform(translationX: 200, y: 0)
     }
        
     fileprivate func setUpChallenge() {
-        self.tabBarController?.tabBar.isHidden = false
         
+        guard let isOnBoarding = isOnBoarding else { return }
+        
+        self.tabBarController?.tabBar.isHidden = false
         guard let bottomAnchor = tabBarController?.tabBar.topAnchor else { return }
+        
+        
         view.addSubview(countDownTimer)
         countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: bottomAnchor,
                                         size: .init(width: 0, height: 80))

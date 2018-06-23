@@ -37,4 +37,15 @@ class FireBaseUser {
             completion(snapshot.exists())
         }
     }
+    
+    func checkIfOnBoarding(completion: @escaping (Bool?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+        
+        dataBaseRef.child(uid).child(DatabaseReference.profilePicURL.rawValue).observeSingleEvent(of: .value) { (snapshot) in
+            completion(snapshot.exists())
+        }
+    }
 }
