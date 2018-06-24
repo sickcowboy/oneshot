@@ -58,11 +58,10 @@ class RateFrameImageView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        debugPrint("init")
         addSubview(imageView)
         imageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
         
-        self.addGestureRecognizer(tapRecognizer)
+        addGestureRecognizer(tapRecognizer)
         
         self.imageView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         self.imageView.alpha = 0
@@ -77,6 +76,9 @@ class RateFrameImageView: UIView {
     let fbVote = FBVote()
     @objc func voteTap(sender: UITapGestureRecognizer) {
         if post == nil { return }
+        
+        isUserInteractionEnabled = false
+        
         animateVote()
         delegate?.didVote(sender: self)
     }
@@ -100,7 +102,9 @@ class RateFrameImageView: UIView {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
             self.imageView.alpha = 1
             self.imageView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: nil)
+        }, completion: { _ in
+            self.isUserInteractionEnabled = true
+        })
     }
     
     fileprivate func animateVote() {

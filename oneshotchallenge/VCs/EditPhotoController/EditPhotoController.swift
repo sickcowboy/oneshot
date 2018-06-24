@@ -155,7 +155,7 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
         scrollView.layer.render(in: context)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage;
+        return newImage
     }
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
