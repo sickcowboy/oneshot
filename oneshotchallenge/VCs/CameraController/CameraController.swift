@@ -81,6 +81,11 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
         guard let minute = components.minute else { return }
         guard let second = components.second else { return }
         
+        if (hour <= 0 && minute <= 0 && second <= 0) {
+            timesUp()
+            return
+        }
+        
         startCountDown(hour: hour, minute: minute, second: second)
     }
     
