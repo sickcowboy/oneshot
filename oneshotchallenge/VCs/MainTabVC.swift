@@ -26,9 +26,8 @@ class MainTabVC: UITabBarController {
                 self.toLogin()
             } else {
                 self.fbUser.checkIfOnBoarding(completion: { (profileExists) in
-                    
                     guard let profileExists = profileExists else { return }
-                    
+
                     DispatchQueue.main.async {
                         if profileExists {
                             self.setUpControllers()
@@ -37,7 +36,7 @@ class MainTabVC: UITabBarController {
                         }
                     }
                 })
-                
+//                self.setUpControllers()
             }
         }
     }
@@ -89,7 +88,6 @@ class MainTabVC: UITabBarController {
     }
     
     fileprivate func toOnBoarding() {
-        
         let onBoardingController = OBWelcomeController()
         self.present(onBoardingController, animated: false, completion: nil)
     }
