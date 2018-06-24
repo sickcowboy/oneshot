@@ -62,6 +62,14 @@ class FireBaseUser {
         }
     }
     
+    fileprivate func setIsOnBoarded() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        dataBaseRef.child(uid).child(DatabaseReference.isOnBoarded.rawValue).setValue(true)
+    }
+    
     func uploadProfilePic(image: UIImage, completion: @escaping (Error?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
