@@ -125,6 +125,10 @@ class OBWelcomeController: UIViewController {
         let infoLabelinfo = "\n(This will only be dummy pictures, not other users profile images.)"
         
         infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
+        
+        self.okButton.removeTarget(self, action: #selector(self.goToChallenge), for: .touchUpInside)
+        
+        self.okButton.addTarget(self, action: #selector(self.goToRating), for: .touchUpInside)
     }
     
     @objc private func handleProfileComplete(notification: NSNotification) {
