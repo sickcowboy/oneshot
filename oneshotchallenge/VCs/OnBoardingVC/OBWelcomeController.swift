@@ -143,7 +143,9 @@ class OBWelcomeController: UIViewController {
     }
     
     @objc private func handleVoteComplete(notification: NSNotification) {
-        debugPrint("FÄRDIG SOM FAN")
+        self.presentedViewController?.dismiss(animated: false, completion: {
+            //Set up on boarding done
+        })
     }
     
     fileprivate func setAttributedText(title: String, titleSize: CGFloat, info: String, infoSize: CGFloat) -> NSMutableAttributedString {
