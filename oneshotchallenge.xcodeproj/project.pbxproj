@@ -237,7 +237,7 @@
 				2B2039E2208F2CA400C4CF43 /* CameraController */,
 				2B2039E5208F45A400C4CF43 /* EditPhotoController */,
 				2BB5CEE32090756900BE4050 /* PostController */,
-				2B0B7B16208F0F3900532815 /* RateController */,
+				2B0B7B16208F0F3900532815 /* RateController(depricated) */,
 				2BD16A1120D5385900CA0413 /* RateControllerDeux */,
 				2B0B7B1C208F118F00532815 /* TopListController */,
 				2B0B7B19208F0F9B00532815 /* UserController */,
@@ -258,7 +258,7 @@
 			path = ChallengeController;
 			sourceTree = "<group>";
 		};
-		2B0B7B16208F0F3900532815 /* RateController */ = {
+		2B0B7B16208F0F3900532815 /* RateController(depricated) */ = {
 			isa = PBXGroup;
 			children = (
 				2B0B7B17208F0F5900532815 /* RateController.swift */,
@@ -267,7 +267,7 @@
 				2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */,
 				A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */,
 			);
-			path = RateController;
+			path = "RateController(depricated)";
 			sourceTree = "<group>";
 		};
 		2B0B7B19208F0F9B00532815 /* UserController */ = {
@@ -925,14 +925,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = BRSUFVEUQY;
+				DEVELOPMENT_TEAM = 28YWBMR6P7;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = se.OlleEkberg.oneshotchallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -956,7 +956,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = se.OlleEkberg.oneshotchallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -77,7 +77,6 @@ class PostController: UIViewController, InfoViewDelegate {
     }
     
     fileprivate func setUpView() {
-        
         view.addSubview(backButton)
         backButton.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil,
                                     padding: .init(top: 8, left: 8, bottom: 0, right: 0))
@@ -124,11 +123,9 @@ class PostController: UIViewController, InfoViewDelegate {
             })
         } else {
             let fbUser = FireBaseUser()
-            
-            DispatchQueue.main.async {
-                self.activityIndication(loading: false)
-                
-                fbUser.uploadProfilePic(image: image) { (error) in
+            fbUser.uploadProfilePic(image: image) { (error) in
+                DispatchQueue.main.async {
+                    self.activityIndication(loading: false)
                     if let error = error {
                         self.showError(description: error.localizedDescription)
                         return
@@ -141,10 +138,10 @@ class PostController: UIViewController, InfoViewDelegate {
     }
     
     fileprivate func showError(description: String) {
-    self.alert(message: description)
-    self.cancelButton.isHidden = false
-    self.backButton.isHidden = false
-    self.postButton.isHidden = false
+        self.alert(message: description)
+        self.cancelButton.isHidden = false
+        self.backButton.isHidden = false
+        self.postButton.isHidden = false
     }
     
     fileprivate func showInfoWindow() {
