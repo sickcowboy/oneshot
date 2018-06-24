@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollViewDelegate {
+class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollViewDelegate, CountDownTimerDelegate {
     let context = CIContext(options: nil)
     var isOnBoarding = false
     
@@ -68,6 +68,8 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
     
     var countDownTimer = CountDownTimer()
     
+    var post: Post?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Colors.sharedInstance.primaryColor
@@ -89,11 +91,19 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        debugPrint("viewWillAppear")
         
-//        saveButton.isUserInteractionEnabled = true
-//        brightnessSlider.slider.isUserInteractionEnabled = true
-//        contrastSlider.slider.isUserInteractionEnabled = true
-//        saturationSlider.slider.isUserInteractionEnabled = true
+        if !isOnBoarding {
+            NotificationCenter.default.addObserver(self, selector: #selector(checkTimeAndStartCountDown),
+                                                   name: .UIApplicationWillEnterForeground, object: nil)
+           checkTimeAndStartCountDown()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        debugPrint("viewWillDissapear")
+        NotificationCenter.default.removeObserver(self)
     }
     
     var stackView = UIStackView()
@@ -114,6 +124,44 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
         view.addSubview(stackView)
         stackView.constraintLayout(top: scrollView.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: saveButton.topAnchor,
                                    padding: .init(top: 16, left: 16, bottom: 16, right: 16))
+    }
+    
+    @objc fileprivate func checkTimeAndStartCountDown() {
+        countDownTimer.stopCountDown()
+        
+        if post == nil {
+            startCountDown()
+            return
+        }
+        
+        let calendar = Calendar.current
+        
+        let startDate = Date(timeIntervalSince1970: post!.startDate)
+        guard let endDate = calendar.date(byAdding: .hour, value: 1, to: startDate) else { return }
+        let nowDate = Date()
+        
+        let components = calendar.dateComponents([.hour, .minute, .second], from: nowDate, to: endDate)
+        
+        guard let hour = components.hour else { return }
+        guard let minute = components.minute else { return }
+        guard let second = components.second else { return }
+        
+        if (hour <= 0 && minute <= 0 && second <= 0) {
+            timesUp()
+            return
+        }
+        
+        startCountDown(hour: hour, minute: minute, second: second)
+    }
+    
+    fileprivate func startCountDown(hour: Int? = nil, minute: Int? = nil, second: Int? = nil) {
+        countDownTimer.delegate = self
+        
+        let hour = hour ?? 1
+        let minute = minute ?? 0
+        let second = second ?? 0
+        
+        countDownTimer.startCountDown(hours: hour, minutes: minute, seconds: second)
     }
     
     func sliderChanged() {
@@ -138,11 +186,6 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
     @objc fileprivate func saveClick() {
         countDownTimer.stopCountDown()
         
-//        saveButton.isUserInteractionEnabled = false
-//        brightnessSlider.slider.isUserInteractionEnabled = false
-//        contrastSlider.slider.isUserInteractionEnabled = false
-//        saturationSlider.slider.isUserInteractionEnabled = false
-        
         let controller = PostController()
         controller.image = cropImage()
         controller.isOnBoarding = isOnBoarding
@@ -162,5 +205,9 @@ class EditPhototController: UIViewController, FilterSliderDelegate, UIScrollView
     
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
+    }
+    
+    func timesUp() {
+        navigationController?.popToRootViewController(animated: false)
     }
 }

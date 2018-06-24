@@ -149,7 +149,8 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
         let controller = EditPhototController()
         controller.photo = image
         controller.isOnBoarding = isOnBoarding
-        controller.countDownTimer = countDownTimer
+        debugPrint(post as Any)
+        controller.post = post
         
         navigationController?.pushViewController(controller, animated: true)
     }
