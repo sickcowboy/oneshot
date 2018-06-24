@@ -61,7 +61,7 @@ class DeleteUserView: UIView {
         button.alpha = 0.4
         button.layer.cornerRadius = 5
         button.isEnabled = false
-        button.addTarget(self, action: #selector(goToChallenge), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleOk), for: .touchUpInside)
         return button
     }()
     

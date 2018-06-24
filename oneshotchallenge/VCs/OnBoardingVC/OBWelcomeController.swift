@@ -64,6 +64,7 @@ class OBWelcomeController: UIViewController {
             
             DispatchQueue.main.async {
                 if imageExists {
+                    self.setUpView()
                     self.setUpGoToRating()
                     self.okButton.addTarget(self, action: #selector(self.goToRating), for: .touchUpInside)
                 } else {
@@ -101,7 +102,10 @@ class OBWelcomeController: UIViewController {
     }
     
     @objc private func goToRating() {
+        let rateController = RateControllerDeux()
+        rateController.isOnBoarding = true
         
+        self.present(rateController, animated: true, completion: nil)
     }
     
     fileprivate func setUpGoToRating() {
@@ -117,7 +121,6 @@ class OBWelcomeController: UIViewController {
     }
     
     @objc private func handleProfileComplete(notification: NSNotification) {
-        
         setUpGoToRating()
         
         let x = view.frame.width
