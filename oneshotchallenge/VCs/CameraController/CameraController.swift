@@ -13,6 +13,8 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
     let capturePreviewView = UIView()
     let output = AVCapturePhotoOutput()
     var previewLayer : AVCaptureVideoPreviewLayer?
+    var isOnBoarding = false
+    var captureDevice: AVCaptureDevice?
     
     let challengeLabel: UILabel = {
         let label = UILabel()
@@ -48,12 +50,15 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
         
         view.backgroundColor = Colors.sharedInstance.primaryColor
         
-        NotificationCenter.default.addObserver(self, selector: #selector(checkTimeAndStartCountDown),
-                                               name: .UIApplicationWillEnterForeground, object: nil)
-        
-        fetchChallenge()
-        
-        checkTimeAndStartCountDown()
+        if isOnBoarding {
+            challengeLabel.text = "Take a Selfie"
+            setUpOnBoarding()
+        } else {
+            NotificationCenter.default.addObserver(self, selector: #selector(checkTimeAndStartCountDown),
+                                                   name: .UIApplicationWillEnterForeground, object: nil)
+            fetchChallenge()
+            checkTimeAndStartCountDown()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,6 +148,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
     func goToEditPhotoController(image: UIImage) {
         let controller = EditPhototController()
         controller.photo = image
+        controller.isOnBoarding = isOnBoarding
         controller.countDownTimer = countDownTimer
         
         navigationController?.pushViewController(controller, animated: true)

@@ -10,6 +10,8 @@ import UIKit
 import FirebaseAuth
 
 class MainTabVC: UITabBarController {
+    
+    private let fbUser = FireBaseUser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +21,23 @@ class MainTabVC: UITabBarController {
         self.tabBar.tintColor = Colors.sharedInstance.primaryTextColor
         
         Auth.auth().addStateDidChangeListener { (_, user) in
+            
             if user == nil {
                 self.toLogin()
             } else {
-                self.setUpControllers()
+                self.fbUser.checkIfOnBoarding(completion: { (profileExists) in
+                    
+                    guard let profileExists = profileExists else { return }
+                    
+                    DispatchQueue.main.async {
+                        if profileExists {
+                            self.setUpControllers()
+                        } else {
+                            self.toOnBoarding()
+                        }
+                    }
+                })
+                
             }
         }
     }
@@ -71,6 +86,12 @@ class MainTabVC: UITabBarController {
         loginController.navigationBar.isHidden = true
         
         self.present(loginController, animated: true, completion: nil)
+    }
+    
+    fileprivate func toOnBoarding() {
+        
+        let onBoardingController = OBWelcomeController()
+        self.present(onBoardingController, animated: false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

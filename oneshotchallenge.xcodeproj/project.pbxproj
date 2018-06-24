@@ -75,10 +75,15 @@
 		A4040B8520C1BDDA004CB6C0 /* FireBaseDeleteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4040B8420C1BDDA004CB6C0 /* FireBaseDeleteUser.swift */; };
 		A40A999520930FEF00176D96 /* RateControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A999420930FEF00176D96 /* RateControllerCell.swift */; };
 		A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */; };
+		A413EBEA20DF8F1F003F865D /* PostControllerOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A413EBE920DF8F1F003F865D /* PostControllerOnBoarding.swift */; };
 		A4236AFD20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4236AFC20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift */; };
 		A43F2BC820BE97950010AB4C /* FireBaseRetrievePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */; };
+		A450DE8720DE5254007588A1 /* ChallengeControllerOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450DE8620DE5254007588A1 /* ChallengeControllerOnBoarding.swift */; };
+		A450DE8920DE5487007588A1 /* CameraControllerOnBoarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = A450DE8820DE5487007588A1 /* CameraControllerOnBoarding.swift */; };
 		A48E3C3020C1AA2000B1A31B /* DeleteUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */; };
 		A48F902F20D1940800BF15E7 /* RateControllerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */; };
+		A4A0891720D7FC1300034EB2 /* NotificationActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0891620D7FC1300034EB2 /* NotificationActivity.swift */; };
+		A4D4941420D8EE3900613803 /* OBWelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4D4941320D8EE3900613803 /* OBWelcomeController.swift */; };
 		E8B6831B795552F266FC3BEB /* Pods_oneshotchallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178B385A2D2656AEA7DCFBBB /* Pods_oneshotchallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -157,12 +162,17 @@
 		A4040B8420C1BDDA004CB6C0 /* FireBaseDeleteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseDeleteUser.swift; sourceTree = "<group>"; };
 		A40A999420930FEF00176D96 /* RateControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCell.swift; sourceTree = "<group>"; };
 		A40A99962093176600176D96 /* RateControllerCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerCollectionViewFunctions.swift; sourceTree = "<group>"; };
+		A413EBE920DF8F1F003F865D /* PostControllerOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostControllerOnBoarding.swift; sourceTree = "<group>"; };
 		A4236AFC20C6DFF4005EC7F8 /* FireBaseSMSRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseSMSRegister.swift; sourceTree = "<group>"; };
 		A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRetrievePassword.swift; sourceTree = "<group>"; };
+		A450DE8620DE5254007588A1 /* ChallengeControllerOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeControllerOnBoarding.swift; sourceTree = "<group>"; };
+		A450DE8820DE5487007588A1 /* CameraControllerOnBoarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControllerOnBoarding.swift; sourceTree = "<group>"; };
 		A4841ED920BFFB5E00430C24 /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
 		A48E3C2F20C1AA2000B1A31B /* DeleteUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserView.swift; sourceTree = "<group>"; };
 		A48F902E20D1940800BF15E7 /* RateControllerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerHeader.swift; sourceTree = "<group>"; };
 		A4A0081B20BFCD4C00E8C9DA /* RetrievePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePasswordView.swift; sourceTree = "<group>"; };
+		A4A0891620D7FC1300034EB2 /* NotificationActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationActivity.swift; sourceTree = "<group>"; };
+		A4D4941320D8EE3900613803 /* OBWelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OBWelcomeController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +222,7 @@
 				2B0B7B12208F0ED500532815 /* VCs */,
 				2B174C3C20BD7D29001F77C8 /* Firebase */,
 				2B73FDC320C00AE3007B865F /* Sharing */,
+				A4A0891520D7FBEA00034EB2 /* Notification */,
 			);
 			path = oneshotchallenge;
 			sourceTree = "<group>";
@@ -219,6 +230,7 @@
 		2B0B7B12208F0ED500532815 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				A4D4941220D8ECFC00613803 /* OnBoardingVC */,
 				2B0B7B02208F0D2900532815 /* MainTabVC.swift */,
 				2B8CE3C3209B0D6E0045C028 /* LoginRegisterVC's */,
 				2B0B7B15208F0F2900532815 /* ChallengeController */,
@@ -241,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				2B0B7B13208F0EF700532815 /* ChallengeController.swift */,
+				A450DE8620DE5254007588A1 /* ChallengeControllerOnBoarding.swift */,
 			);
 			path = ChallengeController;
 			sourceTree = "<group>";
@@ -320,6 +333,7 @@
 			children = (
 				2B2039E3208F2CBC00C4CF43 /* CameraController.swift */,
 				2BB5CEDF2090696900BE4050 /* CameraFunctions.swift */,
+				A450DE8820DE5487007588A1 /* CameraControllerOnBoarding.swift */,
 			);
 			path = CameraController;
 			sourceTree = "<group>";
@@ -473,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				2BB5CEE42090758F00BE4050 /* PostController.swift */,
+				A413EBE920DF8F1F003F865D /* PostControllerOnBoarding.swift */,
 			);
 			path = PostController;
 			sourceTree = "<group>";
@@ -532,6 +547,22 @@
 				A43F2BC720BE97950010AB4C /* FireBaseRetrievePassword.swift */,
 			);
 			path = FireBaseRetrievePassword;
+			sourceTree = "<group>";
+		};
+		A4A0891520D7FBEA00034EB2 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				A4A0891620D7FC1300034EB2 /* NotificationActivity.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		A4D4941220D8ECFC00613803 /* OnBoardingVC */ = {
+			isa = PBXGroup;
+			children = (
+				A4D4941320D8EE3900613803 /* OBWelcomeController.swift */,
+			);
+			path = OnBoardingVC;
 			sourceTree = "<group>";
 		};
 		C71B1655732AC7F8F1711454 /* Pods */ = {
@@ -698,9 +729,12 @@
 				2B0E1B86209B20FA00163C23 /* User.swift in Sources */,
 				2B8CE3CE209B165F0045C028 /* FireBaseRegister.swift in Sources */,
 				2BA7F91E209086650028E0AC /* CalendarCell.swift in Sources */,
+				A4A0891720D7FC1300034EB2 /* NotificationActivity.swift in Sources */,
 				2B73389A20A99D2A00AB59E0 /* TopListCollectionViewCell.swift in Sources */,
+				A450DE8920DE5487007588A1 /* CameraControllerOnBoarding.swift in Sources */,
 				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
+				A413EBEA20DF8F1F003F865D /* PostControllerOnBoarding.swift in Sources */,
 				2B52D237208F12ED00090285 /* Colors.swift in Sources */,
 				2B47D88920BE97470003095B /* RateControllerDatabaseFunctions.swift in Sources */,
 				2B8CE3C9209B0DEE0045C028 /* UITextFieldExtension.swift in Sources */,
@@ -736,6 +770,8 @@
 				2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */,
 				2B8CE53B20A19CC400C8EC3D /* Post.swift in Sources */,
 				2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */,
+				A4D4941420D8EE3900613803 /* OBWelcomeController.swift in Sources */,
+				A450DE8720DE5254007588A1 /* ChallengeControllerOnBoarding.swift in Sources */,
 				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,
 				2B0E1B83209B203500163C23 /* FireBaseUser.swift in Sources */,
 				2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */,
@@ -889,14 +925,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 28YWBMR6P7;
+				DEVELOPMENT_TEAM = BRSUFVEUQY;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = se.OlleEkberg.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -920,7 +956,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = se.OlleEkberg.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

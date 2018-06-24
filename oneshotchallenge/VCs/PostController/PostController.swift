@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class PostController: UIViewController, InfoViewDelegate {
+    
+    var isOnBoarding = false
+    
     lazy var postButton: UIButton = {
         let button = UIButton(type: .system)
         button.titleLabel?.numberOfLines = 0
@@ -48,7 +52,7 @@ class PostController: UIViewController, InfoViewDelegate {
         return button
     }()
     
-    fileprivate let infoView = InfoView()
+    let infoView = InfoView()
     
     var image: UIImage? {
         didSet{
@@ -62,6 +66,17 @@ class PostController: UIViewController, InfoViewDelegate {
         super.viewDidLoad()
         
         view.backgroundColor = Colors.sharedInstance.lightColor
+        
+        if isOnBoarding {
+            setUpOnBoarding()
+        } else {
+            setUpView()
+        }
+        
+        infoView.delegate = self
+    }
+    
+    fileprivate func setUpView() {
         
         view.addSubview(backButton)
         backButton.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil,
@@ -80,7 +95,12 @@ class PostController: UIViewController, InfoViewDelegate {
         cancelButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.safeAreaLayoutGuide.centerXAnchor,
                                       padding: .init(top: 16, left: 0, bottom: 4, right: 0))
         
-        infoView.delegate = self
+        if isOnBoarding {
+            backButton.isHidden = true
+            backButton.isEnabled = false
+            cancelButton.isHidden = true
+            cancelButton.isEnabled = false
+        }
     }
     
     @objc fileprivate func postClicked() {
@@ -88,22 +108,43 @@ class PostController: UIViewController, InfoViewDelegate {
 
         activityIndication(loading: true)
 
-        let fbPosts = FireBasePosts()
-        fbPosts.uploadPost(image: image, completion: { error in
+        if !isOnBoarding {
+            let fbPosts = FireBasePosts()
+            fbPosts.uploadPost(image: image, completion: { error in
+                DispatchQueue.main.async {
+                    self.activityIndication(loading: false)
+                    
+                    if let error = error {
+                        self.showError(description: error.localizedDescription)
+                        return
+                    }
+                    
+                    self.showInfoWindow()
+                }
+            })
+        } else {
+            let fbUser = FireBaseUser()
+            
             DispatchQueue.main.async {
                 self.activityIndication(loading: false)
-
-                if let error = error {
-                    self.alert(message: error.localizedDescription)
-                    self.cancelButton.isHidden = false
-                    self.backButton.isHidden = false
-                    self.postButton.isHidden = false
-                    return
-                }
                 
-                self.showInfoWindow()
+                fbUser.uploadProfilePic(image: image) { (error) in
+                    if let error = error {
+                        self.showError(description: error.localizedDescription)
+                        return
+                    }
+                    let postProfileImageComplete = Notification.Name(NotificationNames.postProfileComplete.rawValue)
+                    NotificationCenter.default.post(name: postProfileImageComplete, object: nil)
+                }
             }
-        })
+        }
+    }
+    
+    fileprivate func showError(description: String) {
+    self.alert(message: description)
+    self.cancelButton.isHidden = false
+    self.backButton.isHidden = false
+    self.postButton.isHidden = false
     }
     
     fileprivate func showInfoWindow() {
@@ -112,12 +153,12 @@ class PostController: UIViewController, InfoViewDelegate {
         view.addSubview(infoView)
         infoView.constraintLayout(top: postButton.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
-        infoView.setText(text: "Let's head over and vote on some posts.")
+        infoView.setText(text: "Please remember, to complete the challenge you also need to vote.")
         
         animateDone()
     }
     
-    fileprivate func animateDone() {
+    func animateDone() {
         infoView.transform = CGAffineTransform(translationX: 300, y: 0)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
@@ -161,6 +202,7 @@ class PostController: UIViewController, InfoViewDelegate {
         self.tabBarController?.selectedIndex = 1
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.popToRootViewController(animated: true)
+        
     }
     
     func shareClick() {

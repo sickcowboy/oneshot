@@ -10,6 +10,8 @@ import UIKit
 
 class ChallengeController: UIViewController {
     
+    var isOnBoarding = false
+    
     lazy var takeChallengeButton: UIButton = {
         let button = UIButton(type: .system)
         button.titleLabel?.numberOfLines = 0
@@ -89,16 +91,27 @@ class ChallengeController: UIViewController {
                                            centerX: view.safeAreaLayoutGuide.centerXAnchor,
                                            centerY: view.safeAreaLayoutGuide.centerYAnchor)
         activityIndicator.stopAnimating()
+        
+        if isOnBoarding {
+            self.setChallengeLabelText(text: ("Yourself"))
+            self.setUpOnBoarding()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        checkChallengeStatus()
+        super.viewWillAppear(animated)
+        
+        if !isOnBoarding {
+            checkChallengeStatus()
+        }
     }
        
     fileprivate func setUpChallenge() {
-        self.tabBarController?.tabBar.isHidden = false
         
+        self.tabBarController?.tabBar.isHidden = false
         guard let bottomAnchor = tabBarController?.tabBar.topAnchor else { return }
+        
+        
         view.addSubview(countDownTimer)
         countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: bottomAnchor,
                                         size: .init(width: 0, height: 80))
@@ -230,10 +243,14 @@ class ChallengeController: UIViewController {
                 self.challengeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
                 self.challengeLabel.alpha = 1
             }, completion: {_ in
-                let fbPosts = FireBasePosts()
-                fbPosts.startPost()
-
-                self.segueToCamera()
+                
+                if self.isOnBoarding {
+                    self.segueToCameraOnBoarding()
+                } else {
+                    let fbPosts = FireBasePosts()
+                    fbPosts.startPost()
+                    self.segueToCamera()
+                }
             })
         })
     }

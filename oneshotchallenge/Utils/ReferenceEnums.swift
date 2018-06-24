@@ -27,4 +27,11 @@ enum DatabaseReference: String {
     case votes = "votes"
     case userVotes = "userVotes"
     case profileDeleteDate = "profileDeleteDate"
+    case profilePicURL = "profilePicURL"
+    case profilePics = "profilePics"
+}
+
+enum NotificationNames: String {
+    case postProfileComplete = "postProfileComplete"
+    case postVoteComplete = "postVoteComplete"
 }

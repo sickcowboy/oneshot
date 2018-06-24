@@ -10,6 +10,7 @@ import UIKit
 import AVKit
 
 extension CameraController {
+    
     func setupCaptureSession() {
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
         let captureSession = AVCaptureSession()
