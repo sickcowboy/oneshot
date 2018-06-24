@@ -62,7 +62,7 @@ class FireBaseUser {
         }
     }
     
-    fileprivate func setIsOnBoarded() {
+    func setIsOnBoarded() {
         guard let uid = Auth.auth().currentUser?.uid else {
             return
         }

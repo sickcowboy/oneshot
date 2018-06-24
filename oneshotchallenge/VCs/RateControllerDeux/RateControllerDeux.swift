@@ -105,6 +105,7 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
             let onBoardingImagesStruct = OnBoardingImages()
             onBoardingImages = onBoardingImagesStruct.images
             voteCount = 0
+            titleLabel.text = "Selfies"
             setUpVoteView()
         }
     }

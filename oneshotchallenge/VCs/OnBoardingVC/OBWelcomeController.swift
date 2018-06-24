@@ -108,6 +108,13 @@ class OBWelcomeController: UIViewController {
         self.present(rateController, animated: false, completion: nil)
     }
     
+    @objc fileprivate func goToMainApp() {
+        let mainTabBarVC = presentingViewController as! MainTabVC
+        mainTabBarVC.setUpControllers()
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+
     fileprivate func setUpGoToRating() {
         let welcomeLabelTitle = "Great Work!"
         let welcomeLabelInfo = ""
@@ -123,17 +130,17 @@ class OBWelcomeController: UIViewController {
     @objc private func handleProfileComplete(notification: NSNotification) {
         setUpGoToRating()
         
-        let x = view.frame.width
-        welcomeLabel.transform = CGAffineTransform(translationX: x, y: 0)
-        infoLabel.transform = CGAffineTransform(translationX: x, y: 0)
-        okButton.transform = CGAffineTransform(translationX: x, y: 0)
-        
         self.presentedViewController?.dismiss(animated: false, completion: {
             self.animateUI()
         })
     }
     
     fileprivate func animateUI() {
+        let x = view.frame.width
+        welcomeLabel.transform = CGAffineTransform(translationX: x, y: 0)
+        infoLabel.transform = CGAffineTransform(translationX: x, y: 0)
+        okButton.transform = CGAffineTransform(translationX: x, y: 0)
+        
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5,
                        options: .curveEaseOut, animations: {
                 self.welcomeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
@@ -143,8 +150,23 @@ class OBWelcomeController: UIViewController {
     }
     
     @objc private func handleVoteComplete(notification: NSNotification) {
+        let fbUser = FireBaseUser()
+        fbUser.setIsOnBoarded()
+        
+        let welcomeLabelTitle = "Great Work!"
+        let welcomeLabelInfo = ""
+        welcomeLabel.attributedText = setAttributedText(title: welcomeLabelTitle, titleSize: 32, info: welcomeLabelInfo, infoSize: 32)
+        
+        let infoLabelTitle = "You are now ready to compete in the real challenges. Good luck!"
+        let infoLabelinfo = ""
+        infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
+        
+        okButton.removeTarget(self, action: #selector(goToRating), for: .touchUpInside)
+        
+        okButton.addTarget(self, action: #selector(goToMainApp), for: .touchUpInside)
+        
         self.presentedViewController?.dismiss(animated: false, completion: {
-            //Set up on boarding done
+            self.animateUI()
         })
     }
     
