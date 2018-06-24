@@ -43,7 +43,7 @@ class PostController: UIViewController, InfoViewDelegate {
         return button
     }()
     
-    fileprivate let infoView = InfoView()
+    let infoView = InfoView()
     
     var image: UIImage? {
         didSet{
@@ -57,6 +57,17 @@ class PostController: UIViewController, InfoViewDelegate {
         super.viewDidLoad()
         
         view.backgroundColor = Colors.sharedInstance.lightColor
+        
+        if isOnBoarding {
+            setUpOnBoarding()
+        } else {
+            setUpView()
+        }
+        
+        infoView.delegate = self
+    }
+    
+    fileprivate func setUpView() {
         
         view.addSubview(backButton)
         backButton.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: nil, bottom: nil,
@@ -75,7 +86,12 @@ class PostController: UIViewController, InfoViewDelegate {
         cancelButton.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, centerX: view.safeAreaLayoutGuide.centerXAnchor,
                                       padding: .init(top: 16, left: 0, bottom: 4, right: 0))
         
-        infoView.delegate = self
+        if isOnBoarding {
+            backButton.isHidden = true
+            backButton.isEnabled = false
+            cancelButton.isHidden = true
+            cancelButton.isEnabled = false
+        }
     }
     
     @objc fileprivate func postClicked() {
@@ -108,7 +124,8 @@ class PostController: UIViewController, InfoViewDelegate {
                         self.showError(description: error.localizedDescription)
                         return
                     }
-                    // TODO Show user that it worked
+                    let postProfileImageComplete = Notification.Name(NotificationNames.postProfileComplete.rawValue)
+                    NotificationCenter.default.post(name: postProfileImageComplete, object: nil)
                 }
             }
         }
@@ -132,7 +149,7 @@ class PostController: UIViewController, InfoViewDelegate {
         animateDone()
     }
     
-    fileprivate func animateDone() {
+    func animateDone() {
         infoView.transform = CGAffineTransform(translationX: 300, y: 0)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
@@ -176,6 +193,7 @@ class PostController: UIViewController, InfoViewDelegate {
         self.tabBarController?.selectedIndex = 1
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.popToRootViewController(animated: true)
+        
     }
     
     func shareClick() {

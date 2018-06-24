@@ -58,6 +58,12 @@ class OBWelcomeController: UIViewController {
         navigationItem.setHidesBackButton(true, animated: false)
         
         setUpView()
+        
+        let postProfileImageComplete = Notification.Name(NotificationNames.postProfileComplete.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleProfileComplete), name: postProfileImageComplete, object: nil)
+        
+        let postVoteComplete = Notification.Name(NotificationNames.postVoteComplete.rawValue)
+        NotificationCenter.default.addObserver(self, selector: #selector(handleVoteComplete), name: postVoteComplete, object: nil)
     }
     
     private func setUpView() {
@@ -78,5 +84,13 @@ class OBWelcomeController: UIViewController {
         let challengeNavController = UINavigationController(rootViewController: challengeController)
         
         present(challengeNavController, animated: true, completion: nil)
+    }
+    
+    @objc private func handleProfileComplete(notification: NSNotification) {
+        self.presentedViewController?.dismiss(animated: false, completion: nil)
+    }
+    
+    @objc private func handleVoteComplete(notification: NSNotification) {
+        
     }
 }
