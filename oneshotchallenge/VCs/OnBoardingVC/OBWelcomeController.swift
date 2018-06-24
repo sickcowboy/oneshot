@@ -88,10 +88,10 @@ class OBWelcomeController: UIViewController {
     
     @objc private func handleProfileComplete(notification: NSNotification) {
         
-        let welcomeLabelTitle = ""
-        let welcomeLabelInfo = "Great Work!"
+        let welcomeLabelTitle = "Great Work!"
+        let welcomeLabelInfo = ""
         
-        welcomeLabel.attributedText = setAttributedText(title: welcomeLabelTitle, titleSize: 20, info: welcomeLabelInfo, infoSize: 32)
+        welcomeLabel.attributedText = setAttributedText(title: welcomeLabelTitle, titleSize: 32, info: welcomeLabelInfo, infoSize: 32)
         
         let infoLabelTitle = "The last thing you need to do is vote on 10 pictures to complete the challenge."
         let infoLabelinfo = "\n(This will only be dummy pictures, not other users profile images.)"

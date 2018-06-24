@@ -230,8 +230,8 @@
 		2B0B7B12208F0ED500532815 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				A4D4941220D8ECFC00613803 /* OnBoardingVC */,
 				2B0B7B02208F0D2900532815 /* MainTabVC.swift */,
+				A4D4941220D8ECFC00613803 /* OnBoardingVC */,
 				2B8CE3C3209B0D6E0045C028 /* LoginRegisterVC's */,
 				2B0B7B15208F0F2900532815 /* ChallengeController */,
 				2B2039E2208F2CA400C4CF43 /* CameraController */,
