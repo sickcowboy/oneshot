@@ -87,10 +87,31 @@ class OBWelcomeController: UIViewController {
     }
     
     @objc private func handleProfileComplete(notification: NSNotification) {
+        
+        let welcomeLabelTitle = ""
+        let welcomeLabelInfo = "Great Work!"
+        
+        welcomeLabel.attributedText = setAttributedText(title: welcomeLabelTitle, titleSize: 20, info: welcomeLabelInfo, infoSize: 32)
+        
+        let infoLabelTitle = "The last thing you need to do is vote on 10 pictures to complete the challenge."
+        let infoLabelinfo = "\n(This will only be dummy pictures, not other users profile images.)"
+        
+        infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
+        
         self.presentedViewController?.dismiss(animated: false, completion: nil)
     }
     
     @objc private func handleVoteComplete(notification: NSNotification) {
         
+    }
+    
+    fileprivate func setAttributedText(title: String, titleSize: CGFloat, info: String, infoSize: CGFloat) -> NSMutableAttributedString {
+        
+        let attributedText = NSMutableAttributedString(string: title, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: titleSize),
+                                                                                   NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
+        attributedText.append(NSAttributedString(string: info,
+                                                 attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: infoSize),
+                                                              NSAttributedStringKey.foregroundColor: UIColor.lightGray]))
+        return attributedText
     }
 }
