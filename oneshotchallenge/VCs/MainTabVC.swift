@@ -36,7 +36,6 @@ class MainTabVC: UITabBarController {
                         }
                     }
                 })
-//                self.setUpControllers()
             }
         }
     }

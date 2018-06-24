@@ -27,6 +27,7 @@
 		2B2AE49E20B2F63300151091 /* FireBaseTopLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */; };
 		2B2AE4A020B2F6E200151091 /* TopListScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49F20B2F6E200151091 /* TopListScore.swift */; };
 		2B394D0220D69E6500AD2CA1 /* FireWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394D0120D69E6500AD2CA1 /* FireWork.swift */; };
+		2B4008DB20DFB7E600DB94F1 /* OnBoardingImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4008DA20DFB7E600DB94F1 /* OnBoardingImages.swift */; };
 		2B47D88920BE97470003095B /* RateControllerDatabaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */; };
 		2B47D88B20BE9B1C0003095B /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B47D88A20BE9B1C0003095B /* UIButtonExtension.swift */; };
 		2B52D237208F12ED00090285 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D236208F12ED00090285 /* Colors.swift */; };
@@ -111,6 +112,7 @@
 		2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseTopLists.swift; sourceTree = "<group>"; };
 		2B2AE49F20B2F6E200151091 /* TopListScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListScore.swift; sourceTree = "<group>"; };
 		2B394D0120D69E6500AD2CA1 /* FireWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWork.swift; sourceTree = "<group>"; };
+		2B4008DA20DFB7E600DB94F1 /* OnBoardingImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingImages.swift; sourceTree = "<group>"; };
 		2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerDatabaseFunctions.swift; sourceTree = "<group>"; };
 		2B47D88A20BE9B1C0003095B /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		2B52D236208F12ED00090285 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				2B8CE53A20A19CC400C8EC3D /* Post.swift */,
 				2B2AE49F20B2F6E200151091 /* TopListScore.swift */,
 				2B0462C320BD496800CC7C3E /* Challenge.swift */,
+				2B4008DA20DFB7E600DB94F1 /* OnBoardingImages.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				2BA3A8D120A0569400E37A33 /* SettingsController.swift in Sources */,
 				2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */,
 				2B2AE49B20B2F1AE00151091 /* MonthKey.swift in Sources */,
+				2B4008DB20DFB7E600DB94F1 /* OnBoardingImages.swift in Sources */,
 				2BC2C74820A2F75A007DF0A9 /* FireBaseRating.swift in Sources */,
 				2BB5CEE02090696900BE4050 /* CameraFunctions.swift in Sources */,
 				2B73389820A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift in Sources */,

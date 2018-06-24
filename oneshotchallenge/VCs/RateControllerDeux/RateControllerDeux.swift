@@ -10,6 +10,14 @@ import UIKit
 
 class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
     //MARK: - properties
+    var isOnBoarding = false
+    
+    var onBoardingImages: [UIImage]? {
+        didSet{
+            
+        }
+    }
+    
     let cetTime = CETTime()
     let fbRatings = FireBaseRating()
     
@@ -95,7 +103,12 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         imageStackView?.removeFromSuperview()
         labelStackView?.removeFromSuperview()
         
-        fetchKey()
+        if !isOnBoarding {
+            fetchKey()
+        } else {
+            let onBoardingImagesStruct = OnBoardingImages()
+            onBoardingImages = onBoardingImagesStruct.images
+        }
     }
     
     //MARK: - Setup views
