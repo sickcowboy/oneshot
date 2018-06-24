@@ -12,11 +12,7 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
     //MARK: - properties
     var isOnBoarding = false
     
-    var onBoardingImages: [UIImage]? {
-        didSet{
-            
-        }
-    }
+    var onBoardingImages: [UIImage]?
     
     let cetTime = CETTime()
     let fbRatings = FireBaseRating()
@@ -43,8 +39,9 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
             guard let voteCount = voteCount else { return }
             voteCountLabel.countTo(number: 10 - voteCount)
             if voteCount == 10 {
+                if isOnBoarding { return }
+                
                 addPartisipant()
-                return
             }
         }
     }
@@ -107,6 +104,8 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         } else {
             let onBoardingImagesStruct = OnBoardingImages()
             onBoardingImages = onBoardingImagesStruct.images
+            voteCount = 0
+            setUpVoteView()
         }
     }
     
@@ -122,6 +121,15 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         rateViewTop = RateFrameImageView()
         rateViewBottom = RateFrameImageView()
         
+        rateViewTop?.delegate = self
+        rateViewBottom?.delegate = self
+        
+        rateViewTop?.positionIndex = 0
+        rateViewBottom?.positionIndex = 1
+        
+        rateViewTop?.isOnBoarding = isOnBoarding
+        rateViewBottom?.isOnBoarding = isOnBoarding
+        
         if !isOnBoarding {
             rateViewTop?.post = posts?.first
             posts?.removeFirst()
@@ -133,12 +141,6 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
             rateViewBottom?.image = onBoardingImages?.first
             onBoardingImages?.removeFirst()
         }
-        
-        rateViewTop?.delegate = self
-        rateViewBottom?.delegate = self
-        
-        rateViewTop?.positionIndex = 0
-        rateViewBottom?.positionIndex = 1
         
         guard let rateViewTop = rateViewTop else { return }
         guard let rateViewBottom = rateViewBottom else { return }
@@ -244,7 +246,10 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
                 self.rateViewTop?.post = nil
             }
         } else {
+            voteCount! += 1
+            
             guard let onBoardingImages = onBoardingImages else { return }
+
             if onBoardingImages.count >= 2 {
                 self.rateViewTop?.image = self.onBoardingImages?.first
                 self.onBoardingImages?.removeFirst()
@@ -261,7 +266,7 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
     var done = [Int?]()
     func doneWithDownLoad(sender: RateFrameImageView) {
         done.append(sender.positionIndex)
-
+        
         if done.count == 2 {
             rateViewTop?.animateBack()
             rateViewBottom?.animateBack()
@@ -279,6 +284,12 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
                 labelStackView?.removeFromSuperview()
                 imageStackView?.removeFromSuperview()
                 setUpLockedLabel(done: true)
+                
+                if isOnBoarding {
+                    let notificationName = Notification.Name(NotificationNames.postVoteComplete.rawValue)
+                    NotificationCenter.default.post(name: notificationName, object: nil)
+                }
+                
                 return
             }
             
