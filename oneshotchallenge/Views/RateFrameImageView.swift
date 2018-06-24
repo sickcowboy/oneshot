@@ -15,6 +15,8 @@ protocol RateFrameImageViewDelegate: class {
 }
 
 class RateFrameImageView: UIView {
+    var isOnBoarding = false
+    
     weak var delegate : RateFrameImageViewDelegate?
     
     var imageUrl: String? {
@@ -75,7 +77,9 @@ class RateFrameImageView: UIView {
     //MARK: - actions
     let fbVote = FBVote()
     @objc func voteTap(sender: UITapGestureRecognizer) {
-        if post == nil { return }
+        if !isOnBoarding {
+            if post == nil { return }
+        }
         
         isUserInteractionEnabled = false
         
@@ -160,6 +164,12 @@ class RateFrameImageView: UIView {
     }
     
     fileprivate func animationDone() {
+        if isOnBoarding {
+            if self.image == nil {
+                delegate?.doneWithAnimationAndNothingToShow(sender: self)
+            }
+            return
+        }
         delegate?.doneWithAnimationAndNothingToShow(sender: self)
     }
         

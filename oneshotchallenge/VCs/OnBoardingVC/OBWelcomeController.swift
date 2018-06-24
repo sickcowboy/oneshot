@@ -105,7 +105,7 @@ class OBWelcomeController: UIViewController {
         let rateController = RateControllerDeux()
         rateController.isOnBoarding = true
         
-        self.present(rateController, animated: true, completion: nil)
+        self.present(rateController, animated: false, completion: nil)
     }
     
     fileprivate func setUpGoToRating() {
@@ -143,7 +143,7 @@ class OBWelcomeController: UIViewController {
     }
     
     @objc private func handleVoteComplete(notification: NSNotification) {
-        
+        debugPrint("FÄRDIG SOM FAN")
     }
     
     fileprivate func setAttributedText(title: String, titleSize: CGFloat, info: String, infoSize: CGFloat) -> NSMutableAttributedString {
