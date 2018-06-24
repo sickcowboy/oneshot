@@ -24,7 +24,6 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
     var partisipants: [String]? {
         didSet {
             guard let partispants = partisipants else { return }
-            debugPrint(partispants.count)
             fetchPosts(partisipants: partispants)
         }
     }
@@ -123,10 +122,17 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         rateViewTop = RateFrameImageView()
         rateViewBottom = RateFrameImageView()
         
-        rateViewTop?.post = posts?.first
-        posts?.removeFirst()
-        rateViewBottom?.post = posts?.first
-        posts?.removeFirst()
+        if !isOnBoarding {
+            rateViewTop?.post = posts?.first
+            posts?.removeFirst()
+            rateViewBottom?.post = posts?.first
+            posts?.removeFirst()
+        } else {
+            rateViewTop?.image = onBoardingImages?.first
+            onBoardingImages?.removeFirst()
+            rateViewBottom?.image = onBoardingImages?.first
+            onBoardingImages?.removeFirst()
+        }
         
         rateViewTop?.delegate = self
         rateViewBottom?.delegate = self
@@ -212,30 +218,42 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
     //MARK: - Rate view delegate functions
     func didVote(sender: RateFrameImageView) {
         guard let senderId = sender.positionIndex else { return }
-        guard let posts = posts else { return }
-        
-        //Vote block
-        let post = sender.post
-        let month = MonthKey.sharedInstance.monthKey(timeInterval: post?.challengeDate)
-        FBVote.sharedInstance.vote(uid: post?.userId, id: challenge?.key, month: month)
-        voteCount! += 1
-        debugPrint(voteCount as Any)
         
         if senderId == 0 {
             rateViewBottom?.animateDown()
-            
         } else {
             rateViewTop?.animateDown()
         }
         
-        if posts.count >= 2 && voteCount! <= 8 {
-            self.rateViewBottom?.post = self.posts?.first
-            self.posts?.removeFirst()
-            self.rateViewTop?.post = self.posts?.first
-            self.posts?.removeFirst()
+        if !isOnBoarding {
+            guard let posts = posts else { return }
+            
+            //Vote block
+            let post = sender.post
+            let month = MonthKey.sharedInstance.monthKey(timeInterval: post?.challengeDate)
+            FBVote.sharedInstance.vote(uid: post?.userId, id: challenge?.key, month: month)
+            voteCount! += 1
+            
+            if posts.count >= 2 && voteCount! <= 8 {
+                self.rateViewBottom?.post = self.posts?.first
+                self.posts?.removeFirst()
+                self.rateViewTop?.post = self.posts?.first
+                self.posts?.removeFirst()
+            } else {
+                self.rateViewBottom?.post = nil
+                self.rateViewTop?.post = nil
+            }
         } else {
-            self.rateViewBottom?.post = nil
-            self.rateViewTop?.post = nil
+            guard let onBoardingImages = onBoardingImages else { return }
+            if onBoardingImages.count >= 2 {
+                self.rateViewTop?.image = self.onBoardingImages?.first
+                self.onBoardingImages?.removeFirst()
+                self.rateViewBottom?.image = self.onBoardingImages?.first
+                self.onBoardingImages?.removeFirst()
+            } else {
+                self.rateViewTop?.image = nil
+                self.rateViewBottom?.image = nil
+            }
         }
     }
     

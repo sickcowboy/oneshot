@@ -142,7 +142,6 @@ class RateFrameImageView: UIView {
     
     var initialFetch = true
     fileprivate func doneFetching() {
-        debugPrint("\(positionIndex as Any): Done downloading")
         if initialFetch {
             self.imageView.image = self.image
             delegate?.doneWithDownLoad(sender: self)
