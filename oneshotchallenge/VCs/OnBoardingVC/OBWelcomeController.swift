@@ -10,6 +10,8 @@ import UIKit
 
 class OBWelcomeController: UIViewController {
     
+    let fbUser = FireBaseUser()
+    
     private let welcomeLabel: UILabel = {
         let label = UILabel()
         
@@ -45,7 +47,7 @@ class OBWelcomeController: UIViewController {
         let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Let's do it!", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
         button.setAttributedTitle(attributedTitle, for: .normal)
-        button.addTarget(self, action: #selector(handleOk), for: .touchUpInside)
+        
         return button
     }()
     
@@ -57,7 +59,19 @@ class OBWelcomeController: UIViewController {
         
         navigationItem.setHidesBackButton(true, animated: false)
         
-        setUpView()
+        fbUser.checkIfProfileImageExists { (imageExists) in
+            guard let imageExists = imageExists else { return }
+            
+            DispatchQueue.main.async {
+                if imageExists {
+                    self.setUpGoToRating()
+                    self.okButton.addTarget(self, action: #selector(self.goToRating), for: .touchUpInside)
+                } else {
+                    self.setUpView()
+                    self.okButton.addTarget(self, action: #selector(self.goToChallenge), for: .touchUpInside)
+                }
+            }
+        }
         
         let postProfileImageComplete = Notification.Name(NotificationNames.postProfileComplete.rawValue)
         NotificationCenter.default.addObserver(self, selector: #selector(handleProfileComplete), name: postProfileImageComplete, object: nil)
@@ -78,7 +92,7 @@ class OBWelcomeController: UIViewController {
         okButton.constraintLayout(top: infoLabel.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.bottomAnchor, padding: .init(top: 0, left: 4, bottom: 12, right: 4))
     }
     
-    @objc private func handleOk() {
+    @objc private func goToChallenge() {
         let challengeController = ChallengeController()
         challengeController.isOnBoarding = true
         let challengeNavController = UINavigationController(rootViewController: challengeController)
@@ -86,8 +100,11 @@ class OBWelcomeController: UIViewController {
         present(challengeNavController, animated: true, completion: nil)
     }
     
-    @objc private func handleProfileComplete(notification: NSNotification) {
+    @objc private func goToRating() {
         
+    }
+    
+    fileprivate func setUpGoToRating() {
         let welcomeLabelTitle = "Great Work!"
         let welcomeLabelInfo = ""
         
@@ -97,6 +114,11 @@ class OBWelcomeController: UIViewController {
         let infoLabelinfo = "\n(This will only be dummy pictures, not other users profile images.)"
         
         infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
+    }
+    
+    @objc private func handleProfileComplete(notification: NSNotification) {
+        
+        setUpGoToRating()
         
         let x = view.frame.width
         welcomeLabel.transform = CGAffineTransform(translationX: x, y: 0)

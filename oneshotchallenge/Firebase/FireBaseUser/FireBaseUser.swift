@@ -46,6 +46,17 @@ class FireBaseUser {
             return
         }
         
+        dataBaseRef.child(uid).child(DatabaseReference.isOnBoarded.rawValue).observeSingleEvent(of: .value) { (snapshot) in
+            completion(snapshot.exists())
+        }
+    }
+    
+    func checkIfProfileImageExists(completion: @escaping (Bool?) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+        
         dataBaseRef.child(uid).child(DatabaseReference.profilePicURL.rawValue).observeSingleEvent(of: .value) { (snapshot) in
             completion(snapshot.exists())
         }

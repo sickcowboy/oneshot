@@ -29,6 +29,7 @@ enum DatabaseReference: String {
     case profileDeleteDate = "profileDeleteDate"
     case profilePicURL = "profilePicURL"
     case profilePics = "profilePics"
+    case isOnBoarded = "isOnBoarded"
 }
 
 enum NotificationNames: String {
