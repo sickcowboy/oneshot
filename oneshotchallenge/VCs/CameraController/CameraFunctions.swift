@@ -12,7 +12,14 @@ import AVKit
 extension CameraController {
     
     func setupCaptureSession() {
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
+        if isOnBoarding {
+            captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
+        } else {
+            captureDevice = AVCaptureDevice.default(for: .video)
+        }
+        
+        guard let captureDevice = captureDevice else { return }
+        
         let captureSession = AVCaptureSession()
         
         do {
