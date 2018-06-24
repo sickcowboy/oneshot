@@ -98,7 +98,23 @@ class OBWelcomeController: UIViewController {
         
         infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
         
-        self.presentedViewController?.dismiss(animated: false, completion: nil)
+        let x = view.frame.width
+        welcomeLabel.transform = CGAffineTransform(translationX: x, y: 0)
+        infoLabel.transform = CGAffineTransform(translationX: x, y: 0)
+        okButton.transform = CGAffineTransform(translationX: x, y: 0)
+        
+        self.presentedViewController?.dismiss(animated: false, completion: {
+            self.animateUI()
+        })
+    }
+    
+    fileprivate func animateUI() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5,
+                       options: .curveEaseOut, animations: {
+                self.welcomeLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+                self.infoLabel.transform = CGAffineTransform(translationX: 0, y: 0)
+                self.okButton.transform = CGAffineTransform(translationX: 0, y: 0)
+        }, completion: nil)
     }
     
     @objc private func handleVoteComplete(notification: NSNotification) {
