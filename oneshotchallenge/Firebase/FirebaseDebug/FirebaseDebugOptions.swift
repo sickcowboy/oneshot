@@ -13,6 +13,7 @@ class FBDebug {
     static let sharedInstance = FBDebug()
     let userVotesRef = Database.database().reference(withPath: DatabaseReference.userVotes.rawValue)
     let userPosts = Database.database().reference(withPath: DatabaseReference.posts.rawValue)
+    let usersRef = Database.database().reference(withPath: DatabaseReference.users.rawValue)
     
     func deleteUserVotes() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -31,5 +32,12 @@ class FBDebug {
                 self.userPosts.child(uid).child(item.key).removeValue()
             }
         }
+    }
+    
+    func resetBoarding() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        usersRef.child(uid).child(DatabaseReference.isOnBoarded.rawValue).removeValue()
+        usersRef.child(uid).child(DatabaseReference.profilePicURL.rawValue).removeValue()
     }
 }

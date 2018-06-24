@@ -47,6 +47,15 @@ class SettingsController: UIViewController {
         return button
     }()
     
+    private let debugResetOnboarding: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Debug:  ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Reset on boarding - (requires log out)", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(deleteOnBoarding), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var buildLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
@@ -83,6 +92,9 @@ class SettingsController: UIViewController {
         
         view.addSubview(debugResetUserPost)
         debugResetUserPost.constraintLayout(top: debugDeleteVotes.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, padding: .init(top: 4, left: 4, bottom: 0, right: 4))
+        
+        view.addSubview(debugResetOnboarding)
+        debugResetOnboarding.constraintLayout(top: debugResetUserPost.bottomAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, padding: .init(top: 4, left: 4, bottom: 0, right: 4))
 
         view.addSubview(logOffButton)
         logOffButton.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, padding: .init(top: 0, left: 8, bottom: 4, right: 8))
@@ -153,5 +165,9 @@ class SettingsController: UIViewController {
     
     @objc fileprivate func deleteUserPost() {
         FBDebug.sharedInstance.deletePost()
+    }
+    
+    @objc fileprivate func deleteOnBoarding() {
+        FBDebug.sharedInstance.resetBoarding()
     }
 }
