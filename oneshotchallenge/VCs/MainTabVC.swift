@@ -25,11 +25,11 @@ class MainTabVC: UITabBarController {
             if user == nil {
                 self.toLogin()
             } else {
-                self.fbUser.checkIfOnBoarding(completion: { (profileExists) in
-                    guard let profileExists = profileExists else { return }
+                self.fbUser.checkIfOnBoarding(completion: { (isOnBoarded) in
+                    guard let isOnBoarded = isOnBoarded else { return }
 
                     DispatchQueue.main.async {
-                        if profileExists {
+                        if isOnBoarded {
                             self.setUpControllers()
                         } else {
                             self.toOnBoarding()
