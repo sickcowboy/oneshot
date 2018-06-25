@@ -37,11 +37,16 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
     var voteCount: Int? {
         didSet{
             guard let voteCount = voteCount else { return }
-            voteCountLabel.countTo(number: 10 - voteCount)
-            if voteCount == 10 {
-                if isOnBoarding { return }
-                
-                addPartisipant()
+            if !isOnBoarding {
+                voteCountLabel.countTo(number: 10 - voteCount)
+                if voteCount == 10 {
+                    addPartisipant()
+                }
+            } else {
+                voteCountLabel.countTo(number: 3 - voteCount)
+                if voteCount == 3 {
+                    return
+                }
             }
         }
     }
@@ -281,19 +286,27 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         
         if doneWithNothing.count == 2 {
             doneWithNothing.removeAll()
-            if voteCount! == 10 {
-                labelStackView?.removeFromSuperview()
-                imageStackView?.removeFromSuperview()
-                setUpLockedLabel(done: true)
-                
-                if isOnBoarding {
+            
+            if !isOnBoarding {
+                if voteCount! == 10 {
+                    labelStackView?.removeFromSuperview()
+                    imageStackView?.removeFromSuperview()
+                    setUpLockedLabel(done: true)
+                    
+                    return
+                }
+            } else {
+                if voteCount! == 3 {
+                    labelStackView?.removeFromSuperview()
+                    imageStackView?.removeFromSuperview()
+                    setUpLockedLabel(done: true)
+                    
                     let notificationName = Notification.Name(NotificationNames.postVoteComplete.rawValue)
                     NotificationCenter.default.post(name: notificationName, object: nil)
+                    
+                    return
                 }
-                
-                return
             }
-            
             setUpRefresh()
         }
     }
