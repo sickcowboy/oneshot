@@ -121,8 +121,8 @@ class OBWelcomeController: UIViewController {
         
         welcomeLabel.attributedText = setAttributedText(title: welcomeLabelTitle, titleSize: 32, info: welcomeLabelInfo, infoSize: 32)
         
-        let infoLabelTitle = "The last thing you need to do is vote on 10 pictures to complete the challenge."
-        let infoLabelinfo = "\n(This will only be dummy pictures, not other users profile images.)"
+        let infoLabelTitle = "Next thing you need to do is vote on 10 pictures to complete the challenge."
+        let infoLabelinfo = "\n(For this tutorial it will only be dummy pictures)"
         
         infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
         
@@ -161,7 +161,7 @@ class OBWelcomeController: UIViewController {
         let welcomeLabelInfo = ""
         welcomeLabel.attributedText = setAttributedText(title: welcomeLabelTitle, titleSize: 32, info: welcomeLabelInfo, infoSize: 32)
         
-        let infoLabelTitle = "You are now ready to compete in the real challenges. Good luck!"
+        let infoLabelTitle = "You are now ready to compete in real challenges. Good luck!"
         let infoLabelinfo = ""
         infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
         
