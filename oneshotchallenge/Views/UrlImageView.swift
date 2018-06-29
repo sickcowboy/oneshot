@@ -24,6 +24,12 @@ class UrlImageView: UIImageView {
             return
         }
         
+        if urlString.isEmpty {
+            self.image = #imageLiteral(resourceName: "NoImage")
+            stopLoading()
+            return
+        }
+        
         lastUrl = urlString
         
         if let cachedImage = imageCache[urlString] {
