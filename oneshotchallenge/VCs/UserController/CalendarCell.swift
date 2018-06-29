@@ -73,13 +73,11 @@ class CalendarCell: UICollectionViewCell {
     var post: Post? {
         didSet {
             if post == nil {
-                userImageView.image = #imageLiteral(resourceName: "NoImage")
-                frameView.image = userImageView.image
+                frameView.photoImageView.image = #imageLiteral(resourceName: "NoImage")
                 return
             }
             
-            userImageView.loadImage(urlString: post?.imageUrl)
-            frameView.image = userImageView.image
+            frameView.photoImageView.loadImage(urlString: post?.imageUrl)
         }
     }
     
