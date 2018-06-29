@@ -21,10 +21,10 @@ class MainTabVC: UITabBarController {
         self.tabBar.tintColor = Colors.sharedInstance.primaryTextColor
         
         Auth.auth().addStateDidChangeListener { (_, user) in
-            
             if user == nil {
                 self.toLogin()
             } else {
+                // TODO: Activity indication
                 self.fbUser.checkIfOnBoarding(completion: { (isOnBoarded) in
                     guard let isOnBoarded = isOnBoarded else { return }
 

@@ -110,7 +110,7 @@ class FBTopLists {
     
     fileprivate func fetchChallengeKey(completion: @escaping (String?) -> ()) {
         let cetTime = CETTime()
-        guard let challengeDate = cetTime.challengeTimeYesterday() else { return }
+        guard let challengeDate = cetTime.challengeTimeYesterday()?.timeIntervalSince1970 else { return }
         
         challengeRef.queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
