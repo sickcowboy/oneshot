@@ -4,6 +4,14 @@
       "idiom" : "universal",
       "filename" : "Smiling_Emoji_with_Eyes_Opened_large.png",
       "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

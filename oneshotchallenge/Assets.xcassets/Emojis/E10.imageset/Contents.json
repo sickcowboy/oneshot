@@ -4,6 +4,14 @@
       "idiom" : "universal",
       "filename" : "Kissing_Face_with_Smiling_Eyes_Emoji_large.png",
       "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

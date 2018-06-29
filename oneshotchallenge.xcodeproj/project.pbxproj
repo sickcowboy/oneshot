@@ -929,14 +929,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 28YWBMR6P7;
+				DEVELOPMENT_TEAM = BRSUFVEUQY;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = se.OlleEkberg.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -953,14 +953,14 @@
 				CODE_SIGN_ENTITLEMENTS = oneshotchallenge/oneshotchallenge.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 28YWBMR6P7;
+				DEVELOPMENT_TEAM = BRSUFVEUQY;
 				INFOPLIST_FILE = oneshotchallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = se.GalvenD.oneshotchallenge;
+				PRODUCT_BUNDLE_IDENTIFIER = se.OlleEkberg.oneshotchallenge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

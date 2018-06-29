@@ -63,9 +63,9 @@ class CalendarCell: UICollectionViewCell {
                 let silver = topThree[1]
                 let bronze = topThree[2]
                 
-                goldImage.loadImage(urlString: gold.imageUrl)
-                silverImage.loadImage(urlString: silver.imageUrl)
-                bronzeImage.loadImage(urlString: bronze.imageUrl)
+                goldImage.photoImageView.loadImage(urlString: gold.imageUrl)
+                silverImage.photoImageView.loadImage(urlString: silver.imageUrl)
+                bronzeImage.photoImageView.loadImage(urlString: bronze.imageUrl)
             }
         }
     }
@@ -95,9 +95,9 @@ class CalendarCell: UICollectionViewCell {
         return imageView
     }()
     
-    fileprivate lazy var goldImage: UrlImageView = {
-        let imageView = UrlImageView()
-        imageView.backgroundColor = Colors.sharedInstance.goldColor
+    fileprivate lazy var goldImage: FramedPhotoView = {
+        let imageView = FramedPhotoView()
+        imageView.photoImageView.backgroundColor = Colors.sharedInstance.goldColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.tag = 1
@@ -110,9 +110,9 @@ class CalendarCell: UICollectionViewCell {
         return imageView
     }()
     
-    fileprivate lazy var silverImage: UrlImageView = {
-        let imageView = UrlImageView()
-        imageView.backgroundColor = Colors.sharedInstance.silverColor
+    fileprivate lazy var silverImage: FramedPhotoView = {
+        let imageView = FramedPhotoView()
+        imageView.photoImageView.backgroundColor = Colors.sharedInstance.silverColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.tag = 2
@@ -125,9 +125,9 @@ class CalendarCell: UICollectionViewCell {
         return imageView
     }()
     
-    fileprivate lazy var bronzeImage: UrlImageView = {
-        let imageView = UrlImageView()
-        imageView.backgroundColor = Colors.sharedInstance.bronzeColor
+    fileprivate lazy var bronzeImage: FramedPhotoView = {
+        let imageView = FramedPhotoView()
+        imageView.photoImageView.backgroundColor = Colors.sharedInstance.bronzeColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.tag = 3
