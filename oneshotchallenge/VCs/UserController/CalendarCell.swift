@@ -39,6 +39,15 @@ class CalendarCell: UICollectionViewCell {
                 }
             }
             
+//            let cetTime = CETTime()
+//            guard let today = cetTime.challengeTimeToday()?.timeIntervalSince1970 else { return }
+//            if (challenge.challengeDate == today) {
+//                goldImage.photoImageView.image = #imageLiteral(resourceName: "TBD")
+//                silverImage.photoImageView.image = #imageLiteral(resourceName: "TBD")
+//                bronzeImage.photoImageView.image = #imageLiteral(resourceName: "TBD")
+//                return
+//            }
+            
             fbPosts.fetchTopThree(date: date) { (uids) in
                 if let uids = uids {
                     for uid in uids {
@@ -97,7 +106,7 @@ class CalendarCell: UICollectionViewCell {
     
     fileprivate lazy var goldImage: FramedPhotoView = {
         let imageView = FramedPhotoView()
-        imageView.photoImageView.backgroundColor = Colors.sharedInstance.goldColor
+//        imageView.photoImageView.backgroundColor = Colors.sharedInstance.goldColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.tag = 1
@@ -112,7 +121,7 @@ class CalendarCell: UICollectionViewCell {
     
     fileprivate lazy var silverImage: FramedPhotoView = {
         let imageView = FramedPhotoView()
-        imageView.photoImageView.backgroundColor = Colors.sharedInstance.silverColor
+//        imageView.photoImageView.backgroundColor = Colors.sharedInstance.silverColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.tag = 2
@@ -127,7 +136,7 @@ class CalendarCell: UICollectionViewCell {
     
     fileprivate lazy var bronzeImage: FramedPhotoView = {
         let imageView = FramedPhotoView()
-        imageView.photoImageView.backgroundColor = Colors.sharedInstance.bronzeColor
+//        imageView.photoImageView.backgroundColor = Colors.sharedInstance.bronzeColor
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.tag = 3

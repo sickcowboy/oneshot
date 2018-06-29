@@ -12,12 +12,17 @@ extension UserController {
     
     //header functions
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: collectionView.frame.width, height: 100)
+//        if todayChallenge != nil {
+//            let height = (collectionView.frame.width / 3) * 2
+//            return CGSize(width: collectionView.frame.width, height: height)
+//        }
+//        
+//        return .zero
 //    }
 //
 //    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! CalendarHeader
-//        header.delegate = self
+//        header.challenge = todayChallenge
 //        return header
 //    }
 //

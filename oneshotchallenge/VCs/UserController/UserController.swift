@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CalendarHeaderDelegate, CalendarCellDelegate {
+class UserController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CalendarCellDelegate {
     var user: LocalUser? {
         didSet {
             navigationController?.navigationBar.topItem?.title = user?.username
@@ -91,10 +91,6 @@ class UserController: UICollectionViewController, UICollectionViewDelegateFlowLa
         year = components.year
         
         daysInMonth = dayCount
-    }
-    
-    func didChangeMonth(to month: Int) {
-        setCalendar(monthToSet: month)
     }
     
     func didTapPicture(_ sender: Post) {

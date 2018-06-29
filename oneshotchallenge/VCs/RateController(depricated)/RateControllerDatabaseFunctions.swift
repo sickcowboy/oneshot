@@ -12,7 +12,7 @@ extension RateController {
     func fetchKey() {
         let fbChallenges = FireBaseChallenges()
         
-        fbChallenges.fetchChallenge(challengeDate: cetTime.debugTime()) { (challenge) in
+        fbChallenges.fetchChallenge(challengeDate: cetTime.challengeTimeYesterday()?.timeIntervalSince1970) { (challenge) in
             if let challenge = challenge {
                 self.challenge = challenge
             } else {
@@ -89,7 +89,7 @@ extension RateController {
         
         posts = [Post]()
         
-        guard let timeInterval = cetTime.debugTime() else { return }
+        guard let timeInterval = cetTime.challengeTimeYesterday()?.timeIntervalSince1970 else { return }
         let date = Date(timeIntervalSince1970: timeInterval)
         
         let fbPosts = FireBasePosts()

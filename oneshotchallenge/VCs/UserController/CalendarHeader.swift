@@ -8,59 +8,37 @@
 
 import UIKit
 
-protocol CalendarHeaderDelegate: class {
-    func didChangeMonth(to month: Int)
-}
-
 class CalendarHeader: UICollectionReusableView {
+    var challenge: Challenge? {
+        didSet{
+            guard let challenge = challenge else { return }
+            let date = Date(timeIntervalSince1970: challenge.challengeDate)
+            let fbPosts = FireBasePosts()
+            fbPosts.fetchPost(date: date) { (post) in
+                DispatchQueue.main.async {
+                    self.post = post
+                }
+            }
+        }
+    }
     
-    weak var delegate: CalendarHeaderDelegate?
+    var post: Post? {
+        didSet {
+            guard let post = post else { return }
+            framedPhotoView.photoImageView.loadImage(urlString: post.imageUrl)
+        }
+    }
     
-    lazy var minusButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "BackArrrow"), for: .normal)
-        button.imageView?.clipsToBounds = true
-        button.imageView?.contentMode = .scaleAspectFit
-        button.tintColor = Colors.sharedInstance.primaryTextColor
-        button.addTarget(self, action: #selector(minusPress), for: .touchUpInside)
-        return button
-    }()
-    
-    lazy var plusButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setImage(#imageLiteral(resourceName: "ForwardArrow"), for: .normal)
-        button.imageView?.clipsToBounds = true
-        button.imageView?.contentMode = .scaleAspectFit
-        button.tintColor = Colors.sharedInstance.primaryTextColor
-        button.addTarget(self, action: #selector(plusPress), for: .touchUpInside)
-        return button
-    }()
+    let framedPhotoView = FramedPhotoView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = Colors.sharedInstance.primaryColor
         
-        addSubview(minusButton)
-        minusButton.constraintLayout(top: nil, leading: leadingAnchor, trailing: nil, bottom: nil, centerY: centerYAnchor,
-                                     padding: .init(top: 0, left: 8, bottom: 0, right: 0))
-        
-        addSubview(plusButton)
-        plusButton.constraintLayout(top: nil, leading: nil, trailing: trailingAnchor, bottom: nil, centerY: centerYAnchor,
-                                    padding: .init(top: 0, left: 0, bottom: 0, right: 8))
-        
-        let lineView = UIView()
-        lineView.backgroundColor = Colors.sharedInstance.lightColor
-        addSubview(lineView)
-        lineView.constraintLayout(top: nil, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor,
-                                  padding: .init(top: 0, left: 16, bottom: 0, right: 16), size: .init(width: 0, height: 1))
-    }
-    
-    @objc fileprivate func minusPress() {
-        delegate?.didChangeMonth(to: -1)
-    }
-    
-    @objc fileprivate func plusPress() {
-        delegate?.didChangeMonth(to: 1)
+        addSubview(framedPhotoView)
+        framedPhotoView.constraintLayout(top: topAnchor, leading: nil, trailing: nil, bottom: bottomAnchor, centerX: centerXAnchor,
+                                         padding: .init(top: 8, left: 0, bottom: 8, right: 0))
+        framedPhotoView.squareByHeightAnchor()
     }
     
     required init?(coder aDecoder: NSCoder) {

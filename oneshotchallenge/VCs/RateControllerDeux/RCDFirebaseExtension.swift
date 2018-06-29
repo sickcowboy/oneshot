@@ -12,7 +12,7 @@ extension RateControllerDeux {
     func fetchKey() {
         let fbChallenges = FireBaseChallenges()
         
-        fbChallenges.fetchChallenge(challengeDate: cetTime.debugTime()) { (challenge) in
+        fbChallenges.fetchChallenge(challengeDate: cetTime.challengeTimeYesterday()?.timeIntervalSince1970) { (challenge) in
             if let challenge = challenge {
                 self.challenge = challenge
             } else {
@@ -27,7 +27,7 @@ extension RateControllerDeux {
     
     func checkIfUserHasPosted(key: String) {
         let fbPosts = FireBasePosts()
-        guard let challengeDate = cetTime.challengeTimeToday() else { return }
+        guard let challengeDate = cetTime.challengeTimeYesterday() else { return }
         
         activityIndication(loading: true)
         
@@ -83,13 +83,19 @@ extension RateControllerDeux {
     }
     
     func fetchPosts(partisipants: [String]) {
+        if partisipants.isEmpty {
+            activityIndication(loading: false)
+            setUpRefresh()
+            return
+        }
+        
         var partisipants = partisipants
         
         activityIndication(loading: true)
         
         posts = [Post]()
         
-        guard let timeInterval = cetTime.debugTime() else { return }
+        guard let timeInterval = cetTime.challengeTimeYesterday()?.timeIntervalSince1970 else { return }
         let date = Date(timeIntervalSince1970: timeInterval)
         
         let fbPosts = FireBasePosts()

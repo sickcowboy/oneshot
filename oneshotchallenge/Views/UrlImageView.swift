@@ -40,27 +40,27 @@ class UrlImageView: UIImageView {
         
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                self.stopLoading()
-                debugPrint(error.localizedDescription)
-                return
-            }
-            
-            if url.absoluteString != self.lastUrl {
-                self.stopLoading()
-                return
-            }
-            
-            guard let imageData = data else {
-                self.stopLoading()
-                return
-            }
-            
-            let image = UIImage(data: imageData)
-            
-            imageCache[url.absoluteString] = image
-            
             DispatchQueue.main.async {
+                if let error = error {
+                    self.stopLoading()
+                    debugPrint(error.localizedDescription)
+                    return
+                }
+                
+                if url.absoluteString != self.lastUrl {
+                    self.stopLoading()
+                    return
+                }
+                
+                guard let imageData = data else {
+                    self.stopLoading()
+                    return
+                }
+                
+                let image = UIImage(data: imageData)
+                
+                imageCache[url.absoluteString] = image
+                
                 self.stopLoading()
                 self.image = image
             }
