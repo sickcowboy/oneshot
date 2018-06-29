@@ -43,10 +43,13 @@ class FramedPhotoView: UIView {
         
 //        photoImageView.addGestureRecognizer(tapRecognizer)
         
-        let padding: CGFloat = 58
+        let size = frameView.frame.size.height * 0.8
+        
+        debugPrint("frameView size: \(frameView.frame.size.height) \n photoView size: \(size)")
+        
         addSubview(photoImageView)
-        photoImageView.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor,
-                                    padding: .init(top: padding, left: padding, bottom: padding, right: padding))
+        photoImageView.constraintLayout(top: nil, leading: nil, trailing: nil, bottom: nil, centerX: frameView.safeAreaLayoutGuide.centerXAnchor, centerY: frameView.safeAreaLayoutGuide.centerYAnchor,
+                                        size: .init(width: size, height: size))
     }
     
     fileprivate var bigImage = false
