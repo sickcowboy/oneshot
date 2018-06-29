@@ -74,10 +74,12 @@ class CalendarCell: UICollectionViewCell {
         didSet {
             if post == nil {
                 userImageView.image = #imageLiteral(resourceName: "NoImage")
+                frameView.image = userImageView.image
                 return
             }
             
             userImageView.loadImage(urlString: post?.imageUrl)
+            frameView.image = userImageView.image
         }
     }
     
@@ -94,6 +96,8 @@ class CalendarCell: UICollectionViewCell {
         
         return imageView
     }()
+    
+    fileprivate let frameView = FramedPhotoView()
     
     fileprivate lazy var goldImage: UrlImageView = {
         let imageView = UrlImageView()
@@ -185,8 +189,12 @@ class CalendarCell: UICollectionViewCell {
         challengeLabel.constraintLayout(top: bronzeImage.topAnchor, leading: leadingAnchor, trailing: stackView.leadingAnchor, bottom: bronzeImage.bottomAnchor,
                                         padding: .init(top: 0, left: 4, bottom: 0, right: 4))
         
-        addSubview(userImageView)
+       /* addSubview(userImageView)
         userImageView.constraintLayout(top: stackView.topAnchor, leading: dateLabel.leadingAnchor, trailing: stackView.leadingAnchor, bottom: silverImage.bottomAnchor,
+                                       padding: .init(top: 0, left: 0, bottom: 0, right: 4))
+ */
+        addSubview(frameView)
+        frameView.constraintLayout(top: stackView.topAnchor, leading: dateLabel.leadingAnchor, trailing: stackView.leadingAnchor, bottom: silverImage.bottomAnchor,
                                        padding: .init(top: 0, left: 0, bottom: 0, right: 4))
     }
     

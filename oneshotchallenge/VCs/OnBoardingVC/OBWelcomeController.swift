@@ -31,10 +31,12 @@ class OBWelcomeController: UIViewController {
     private let infoLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "We'll show you how this app works in a short tutorial where you will be taking a selfie for your profile picture.",
-                                                       attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18),
+        let appInfo = "1. Take a challenge, you have only one chance, one shot, to post a picture following the challenge theme of the day \n\n2. once a picture is taken, you need to vote on 10 pictures on yesterdays challenge to complete your entry into todays challenge \n\n3. When a challenge is completed and voted upon you will see the winning pictures and your result. "
+        
+        let attributedText = NSMutableAttributedString(string: "How to compete:",
+                                                       attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 24),
                                                                     NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
-        attributedText.append(NSAttributedString(string: "\n(Don't worry, no one will vote on your selfie)",
+        attributedText.append(NSAttributedString(string: "\n\n\(appInfo)",
                                                  attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18),
                                                               NSAttributedStringKey.foregroundColor: UIColor.lightGray]))
         label.attributedText = attributedText
@@ -45,7 +47,7 @@ class OBWelcomeController: UIViewController {
     
     private let okButton: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Let's do it!", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
+        let attributedTitle = NSMutableAttributedString(string: "Let's try it!", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
         button.setAttributedTitle(attributedTitle, for: .normal)
         
         return button
@@ -84,7 +86,7 @@ class OBWelcomeController: UIViewController {
     private func setUpView() {
         
         view.addSubview(welcomeLabel)
-        welcomeLabel.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, padding: .init(top: 100, left: 4, bottom: 0, right: 4))
+        welcomeLabel.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, padding: .init(top: 12, left: 4, bottom: 0, right: 4))
         
         view.addSubview(infoLabel)
         infoLabel.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, centerX: view.centerXAnchor, centerY: view.centerYAnchor , padding: .init(top: 0, left: 4, bottom: 0, right: 4))
@@ -126,6 +128,9 @@ class OBWelcomeController: UIViewController {
         
         infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
         
+        let attributedTitle = NSMutableAttributedString(string: "Let's do it!", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
+        self.okButton.setAttributedTitle(attributedTitle, for: .normal)
+        
         self.okButton.removeTarget(self, action: #selector(self.goToChallenge), for: .touchUpInside)
         
         self.okButton.addTarget(self, action: #selector(self.goToRating), for: .touchUpInside)
@@ -164,6 +169,9 @@ class OBWelcomeController: UIViewController {
         let infoLabelTitle = "You are now ready to compete in real challenges. Good luck!"
         let infoLabelinfo = ""
         infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
+        
+        let attributedTitle = NSMutableAttributedString(string: "I'm ready!", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 28), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor])
+        self.okButton.setAttributedTitle(attributedTitle, for: .normal)
         
         okButton.removeTarget(self, action: #selector(goToRating), for: .touchUpInside)
         
