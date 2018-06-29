@@ -73,29 +73,27 @@ class CalendarCell: UICollectionViewCell {
     var post: Post? {
         didSet {
             if post == nil {
-                frameView.photoImageView.image = #imageLiteral(resourceName: "NoImage")
+                userImageView.photoImageView.image = #imageLiteral(resourceName: "NoImage")
                 return
             }
             
-            frameView.photoImageView.loadImage(urlString: post?.imageUrl)
+            userImageView.photoImageView.loadImage(urlString: post?.imageUrl)
         }
     }
     
-    fileprivate lazy var userImageView: UrlImageView = {
-        let imageView = UrlImageView()
+    fileprivate lazy var userImageView: FramedPhotoView = {
+        let imageView = FramedPhotoView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.tag = 0
         imageView.isUserInteractionEnabled = true
-        
+
         let gesture = UITapGestureRecognizer(target: self, action: #selector(pictureTap(_:)))
         gesture.numberOfTapsRequired = 1
         imageView.addGestureRecognizer(gesture)
-        
+
         return imageView
     }()
-    
-    fileprivate let frameView = FramedPhotoView()
     
     fileprivate lazy var goldImage: UrlImageView = {
         let imageView = UrlImageView()
@@ -155,6 +153,7 @@ class CalendarCell: UICollectionViewCell {
         label.font = UIFont.boldSystemFont(ofSize: 18)
         label.text = "Challenge"
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         label.textColor = Colors.sharedInstance.primaryTextColor
         return label
     }()
@@ -181,19 +180,17 @@ class CalendarCell: UICollectionViewCell {
         
         addSubview(stackView)
         stackView.constraintLayout(top: dateLabel.bottomAnchor, leading: nil, trailing: trailingAnchor, bottom: bottomAnchor,
-                                   padding: .init(top: 4, left: 8, bottom: 4, right: 4), size: .init(width: (frame.size.width/3) - 8, height: 0))
+                                   padding: .init(top: 4, left: 8, bottom: 4, right: 4),
+                                   size: .init(width: (frame.size.width/3) - 8, height: 0))
         
         addSubview(challengeLabel)
-        challengeLabel.constraintLayout(top: bronzeImage.topAnchor, leading: leadingAnchor, trailing: stackView.leadingAnchor, bottom: bronzeImage.bottomAnchor,
-                                        padding: .init(top: 0, left: 4, bottom: 0, right: 4))
+        challengeLabel.constraintLayout(top: bronzeImage.topAnchor, leading: leadingAnchor, trailing: stackView.leadingAnchor,
+                                        bottom: bronzeImage.bottomAnchor, padding: .init(top: 0, left: 4, bottom: 0, right: 4))
         
-       /* addSubview(userImageView)
-        userImageView.constraintLayout(top: stackView.topAnchor, leading: dateLabel.leadingAnchor, trailing: stackView.leadingAnchor, bottom: silverImage.bottomAnchor,
-                                       padding: .init(top: 0, left: 0, bottom: 0, right: 4))
- */
-        addSubview(frameView)
-        frameView.constraintLayout(top: stackView.topAnchor, leading: dateLabel.leadingAnchor, trailing: stackView.leadingAnchor, bottom: silverImage.bottomAnchor,
-                                       padding: .init(top: 0, left: 0, bottom: 0, right: 4))
+        addSubview(userImageView)
+        userImageView.constraintLayout(top: stackView.topAnchor, leading: dateLabel.leadingAnchor, trailing: stackView.leadingAnchor,
+                                       bottom: silverImage.bottomAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 4))
+
     }
     
     fileprivate func reset() {
@@ -214,6 +211,7 @@ class CalendarCell: UICollectionViewCell {
         switch tag {
         case 0:
             guard let post = post else { return }
+            if post.imageUrl.isEmpty { return }
             delegate?.didTapPicture(post)
             return
         case 1:
