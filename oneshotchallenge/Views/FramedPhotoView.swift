@@ -10,8 +10,7 @@ import UIKit
 
 class FramedPhotoView: UIView {
     let frameView: UIImageView = {
-        let image = #imageLiteral(resourceName: "NoImage").withRenderingMode(.alwaysTemplate)
-        let iv = UIImageView(image: image)
+        let iv = UIImageView(image: #imageLiteral(resourceName: "frame"))
         iv.clipsToBounds = true
         iv.contentMode = .scaleAspectFit
         return iv

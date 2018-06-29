@@ -81,7 +81,7 @@ class FireBasePosts {
     }
     
     func fetchUserFeed(completion: @escaping ([Challenge]?) -> ()) {
-        guard let today = cetTime.challengeTimeYesterday() else {
+        guard let today = cetTime.challengeTimeToday() else {
             completion(nil)
             return
         }
