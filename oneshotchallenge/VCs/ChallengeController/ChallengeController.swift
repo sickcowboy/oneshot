@@ -107,7 +107,7 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
         
         if !isOnBoarding {
             checkChallengeStatus()
-            NotificationCenter.default.addObserver(self, selector: #selector(backFromBackgorund),
+            NotificationCenter.default.addObserver(self, selector: #selector(backFromBackground),
                                                    name: .UIApplicationWillEnterForeground, object: nil)
         }
     }
@@ -173,7 +173,7 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
         return attributedTitle
     }
     
-    @objc fileprivate func backFromBackgorund() {
+    @objc fileprivate func backFromBackground() {
         countDownTimer.stopCountDown()
         checkChallengeStatus()
     }
