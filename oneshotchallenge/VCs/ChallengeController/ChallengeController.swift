@@ -69,7 +69,11 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
         return label
     }()
     
-    let countDownTimer = CountDownTimer()
+    lazy var countDownTimer : CountDownTimer = {
+        let cT = CountDownTimer()
+        cT.delegate = self
+        return cT
+    }()
     
     fileprivate let fbChallenges = FireBaseChallenges()
     fileprivate let fbPosts = FireBasePosts()
@@ -116,7 +120,6 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
         
         self.tabBarController?.tabBar.isHidden = false
         guard let bottomAnchor = tabBarController?.tabBar.topAnchor else { return }
-        
         
         view.addSubview(countDownTimer)
         countDownTimer.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: bottomAnchor,
