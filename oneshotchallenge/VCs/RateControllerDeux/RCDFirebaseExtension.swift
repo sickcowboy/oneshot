@@ -27,7 +27,7 @@ extension RateControllerDeux {
     
     func checkIfUserHasPosted(key: String) {
         let fbPosts = FireBasePosts()
-        guard let challengeDate = cetTime.challengeTimeYesterday() else { return }
+        guard let challengeDate = cetTime.challengeTimeToday() else { return }
         
         activityIndication(loading: true)
         
