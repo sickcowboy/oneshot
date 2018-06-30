@@ -108,6 +108,9 @@ class PostController: UIViewController, InfoViewDelegate {
         activityIndication(loading: true)
 
         if !isOnBoarding {
+            //TODO: REMOVE THIS-------------------
+            FBDebug.sharedInstance.addParticipant()
+            
             let fbPosts = FireBasePosts()
             fbPosts.uploadPost(image: image, completion: { error in
                 DispatchQueue.main.async {

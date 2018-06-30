@@ -26,10 +26,12 @@ class FireBaseChallenges {
         }
     }
     
-    func addChallenge(challenge: String, date: TimeInterval) {
+    func addChallenge(challenge: String, date: TimeInterval, completion: @escaping(Error?) -> ()) {
         let value: [String: Any] = [DatabaseReference.challengeDate.rawValue: date, DatabaseReference.challengeDescription.rawValue: challenge]
         
-        challengeRef.childByAutoId().setValue(value)
+        challengeRef.childByAutoId().setValue(value) { (error, _) in
+            completion(error)
+        }
     }
     
     func fetchChallenge(challengeDate: TimeInterval? = nil, completion: @escaping (Challenge?) -> ()) {
@@ -49,15 +51,39 @@ class FireBaseChallenges {
                 return
             }
             
+            guard let item = data.first else {
+                completion(nil)
+                return
+            }
+            
+            guard let dictionary = item.value as? [String: Any] else {
+                completion(nil)
+                return
+            }
+            
+            let challenge = Challenge(dictionary: dictionary, key: item.key)
+            completion(challenge)
+        }
+    }
+    
+    func fetchAllChallenges(completion: @escaping ([Challenge]?) -> ()) {
+        challengeRef.observeSingleEvent(of: .value) { (snapshot) in
+            guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
+                completion(nil)
+                return
+            }
+            
+            var challenges = [Challenge]()
             for item in data {
                 guard let dictionary = item.value as? [String: Any] else {
                     completion(nil)
                     return
                 }
-                
                 let challenge = Challenge(dictionary: dictionary, key: item.key)
-                completion(challenge)
+                challenges.append(challenge)
             }
+            
+            completion(challenges)
         }
     }
 }

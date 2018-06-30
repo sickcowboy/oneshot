@@ -8,8 +8,7 @@
 
 import UIKit
 
-class ChallengeController: UIViewController {
-    
+class ChallengeController: UIViewController, CountDownTimerDelegate {
     var isOnBoarding = false
     
     lazy var takeChallengeButton: UIButton = {
@@ -75,6 +74,7 @@ class ChallengeController: UIViewController {
     fileprivate let fbChallenges = FireBaseChallenges()
     fileprivate let fbPosts = FireBasePosts()
     
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -105,7 +105,13 @@ class ChallengeController: UIViewController {
             checkChallengeStatus()
         }
     }
-       
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        countDownTimer.stopCountDown()
+    }
+    
+    //MARK: Challenge functions
     fileprivate func setUpChallenge() {
         
         self.tabBarController?.tabBar.isHidden = false
@@ -305,8 +311,7 @@ class ChallengeController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        countDownTimer.stopCountDown()
+    func timesUp() {
+        checkChallengeStatus()
     }
 }

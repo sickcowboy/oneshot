@@ -165,9 +165,12 @@ class FireBasePosts {
                     return
                 }
                 
-                for item in data {
-                    completion(item.key)
+                guard let item = data.first else {
+                    completion(nil)
+                    return
                 }
+                
+                completion(item.key)
         }
     }
     

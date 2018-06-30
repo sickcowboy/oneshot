@@ -18,4 +18,13 @@ struct Challenge {
         self.description = dictionary[DatabaseReference.challengeDescription.rawValue] as? String ?? ""
         self.key = key
     }
+    
+    func dateString() -> String {
+        let date = Date(timeIntervalSince1970: challengeDate)
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.dateStyle = .medium
+        
+        return formatter.string(from: date)
+    }
 }

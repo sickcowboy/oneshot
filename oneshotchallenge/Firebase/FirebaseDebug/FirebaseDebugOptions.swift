@@ -14,6 +14,7 @@ class FBDebug {
     let userVotesRef = Database.database().reference(withPath: DatabaseReference.userVotes.rawValue)
     let userPosts = Database.database().reference(withPath: DatabaseReference.posts.rawValue)
     let usersRef = Database.database().reference(withPath: DatabaseReference.users.rawValue)
+    let participantRef = Database.database().reference(withPath: DatabaseReference.participants.rawValue)
     
     func deleteUserVotes() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -39,5 +40,15 @@ class FBDebug {
         
         usersRef.child(uid).child(DatabaseReference.isOnBoarded.rawValue).removeValue()
         usersRef.child(uid).child(DatabaseReference.profilePicURL.rawValue).removeValue()
+    }
+    
+    func addParticipant() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let fbChallenge = FireBaseChallenges()
+        fbChallenge.fetchChallenge { (challenge) in
+            if let challenge = challenge {
+                self.participantRef.child(challenge.key).child(uid).setValue(1)
+            }
+        }
     }
 }

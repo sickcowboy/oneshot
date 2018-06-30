@@ -69,6 +69,7 @@
 		2BBD4C7720A1C2630034DD47 /* AddChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */; };
 		2BC2C74820A2F75A007DF0A9 /* FireBaseRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */; };
 		2BD16A1320D5387700CA0413 /* RateControllerDeux.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD16A1220D5387700CA0413 /* RateControllerDeux.swift */; };
+		2BD4A01020E780AC00CC57F0 /* AllChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD4A00F20E780AC00CC57F0 /* AllChallengesVC.swift */; };
 		2BDA0AD120A073E3007D1EF1 /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */; };
 		2BF0737C2091B8CF00489601 /* FlashToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */; };
 		2BFD162920D53D4500316DFC /* RateFrameImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BFD162820D53D4500316DFC /* RateFrameImageView.swift */; };
@@ -154,6 +155,7 @@
 		2BBD4C7620A1C2630034DD47 /* AddChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChallengeController.swift; sourceTree = "<group>"; };
 		2BC2C74720A2F75A007DF0A9 /* FireBaseRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseRating.swift; sourceTree = "<group>"; };
 		2BD16A1220D5387700CA0413 /* RateControllerDeux.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerDeux.swift; sourceTree = "<group>"; };
+		2BD4A00F20E780AC00CC57F0 /* AllChallengesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllChallengesVC.swift; sourceTree = "<group>"; };
 		2BDA0AD020A073E3007D1EF1 /* LoadingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		2BE4DF1C20C19B9100FB26D3 /* oneshotchallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = oneshotchallenge.entitlements; sourceTree = "<group>"; };
 		2BF0737B2091B8CF00489601 /* FlashToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashToggleButton.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				2B5B03A520D66FF00040A4CD /* CelebrationController */,
 				2BA3A8CF20A0567200E37A33 /* SettingsController */,
 				2BBD4C7820A1C26A0034DD47 /* AddChallengeVC */,
+				2BD4A00E20E7806800CC57F0 /* AllChallengesVC */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -528,6 +531,14 @@
 			path = RateControllerDeux;
 			sourceTree = "<group>";
 		};
+		2BD4A00E20E7806800CC57F0 /* AllChallengesVC */ = {
+			isa = PBXGroup;
+			children = (
+				2BD4A00F20E780AC00CC57F0 /* AllChallengesVC.swift */,
+			);
+			path = AllChallengesVC;
+			sourceTree = "<group>";
+		};
 		6E5AEB11235C2DD18D1E9497 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,6 +749,7 @@
 				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
 				A413EBEA20DF8F1F003F865D /* PostControllerOnBoarding.swift in Sources */,
+				2BD4A01020E780AC00CC57F0 /* AllChallengesVC.swift in Sources */,
 				2B52D237208F12ED00090285 /* Colors.swift in Sources */,
 				2B47D88920BE97470003095B /* RateControllerDatabaseFunctions.swift in Sources */,
 				2B8CE3C9209B0DEE0045C028 /* UITextFieldExtension.swift in Sources */,
