@@ -107,6 +107,8 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
         
         if !isOnBoarding {
             checkChallengeStatus()
+            NotificationCenter.default.addObserver(self, selector: #selector(backFromBackgorund),
+                                                   name: .UIApplicationWillEnterForeground, object: nil)
         }
     }
     
@@ -169,6 +171,11 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
                                                                NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
         
         return attributedTitle
+    }
+    
+    @objc fileprivate func backFromBackgorund() {
+        countDownTimer.stopCountDown()
+        checkChallengeStatus()
     }
     
     fileprivate func checkChallengeStatus() {
