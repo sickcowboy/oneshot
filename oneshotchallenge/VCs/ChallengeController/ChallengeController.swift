@@ -315,6 +315,7 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
     }
     
     func timesUp() {
+        countDownTimer.stopCountDown()
         checkChallengeStatus()
     }
 }
