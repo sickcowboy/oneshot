@@ -82,22 +82,25 @@ class FireBaseRating {
         }
     }
     
-    func addPartisipant(key: String?) {
+    func addPartisipant() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
-        guard let key = key else { return }
         
-        partisipantsRef.child(key).child(uid).setValue(1)
-        
-        nrOfPartisipanstRef.child(key).runTransactionBlock({ (currentData) -> TransactionResult in
-            var nrOfPart = currentData.value as? Int ?? 0
-            nrOfPart += 1
+        let fbChallenges = FireBaseChallenges()
+        fbChallenges.fetchChallenge { (challenge) in
+            guard let key = challenge?.key else { return }
+            self.partisipantsRef.child(key).child(uid).setValue(1)
             
-            currentData.value = nrOfPart
-            
-            return TransactionResult.success(withValue: currentData)
-        }) { (error, _, _) in
-            if let error = error {
-                debugPrint(error.localizedDescription)
+            self.nrOfPartisipanstRef.child(key).runTransactionBlock({ (currentData) -> TransactionResult in
+                var nrOfPart = currentData.value as? Int ?? 0
+                nrOfPart += 1
+                
+                currentData.value = nrOfPart
+                
+                return TransactionResult.success(withValue: currentData)
+            }) { (error, _, _) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                }
             }
         }
     }

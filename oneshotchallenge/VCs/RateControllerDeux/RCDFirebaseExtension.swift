@@ -132,6 +132,6 @@ extension RateControllerDeux {
     }
     
     func addPartisipant() {
-        fbRatings.addPartisipant(key: challenge?.key)
+        fbRatings.addPartisipant()
     }
 }
