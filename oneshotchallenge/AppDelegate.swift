@@ -23,11 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window?.rootViewController = CelebrationController()
         window?.makeKeyAndVisible()
         
-        
-        
         notificationActivity.requestNotificationAuth()
 
-        
         return true
     }
 

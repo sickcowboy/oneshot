@@ -69,6 +69,9 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         fetchTopLists()
     }
     
+    @objc fileprivate func backFromBackground() {
+        fetchTopLists()
+    }
     
     fileprivate func fetchTopLists() {
         let fbTopLists = FBTopLists()

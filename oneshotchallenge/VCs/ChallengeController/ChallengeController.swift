@@ -115,6 +115,7 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         countDownTimer.stopCountDown()
+        NotificationCenter.default.removeObserver(self)
     }
     
     //MARK: Challenge functions
