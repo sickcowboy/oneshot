@@ -174,7 +174,6 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
     }
     
     @objc fileprivate func backFromBackground() {
-        countDownTimer.stopCountDown()
         checkChallengeStatus()
     }
     
@@ -185,6 +184,8 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
         lockedLabel.removeFromSuperview()
         
         activityIndicator.startAnimating()
+        
+        countDownTimer.stopCountDown()
         
         fbPosts.fetchPost { (post) in
             if let post = post {
