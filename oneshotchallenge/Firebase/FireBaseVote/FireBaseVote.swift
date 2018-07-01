@@ -33,15 +33,12 @@ class FBVote {
     
     fileprivate func allTimeVote(uid: String) {
         allTimeRef.child(uid).runTransactionBlock({ (currentData) -> TransactionResult in
-            if var votes = currentData.value as? Int {
+            var votes = currentData.value as? Int ?? 0
                 votes += 1
                 
                 currentData.value = votes
                 
                 return TransactionResult.success(withValue: currentData)
-            }
-            currentData.value = 1
-            return TransactionResult.success(withValue: currentData)
         }) { (error, committed, snapshot) in
             if let error = error {
                 debugPrint("All time error: \(error.localizedDescription)")
@@ -51,15 +48,12 @@ class FBVote {
     
     fileprivate func postVote(uid: String, id: String) {
         voteRef.child(id).child(uid).runTransactionBlock({ (currentData) -> TransactionResult in
-            if var votes = currentData.value as? Int {
+            var votes = currentData.value as? Int ?? 0
                 votes += 1
                 
                 currentData.value = votes
                 
                 return TransactionResult.success(withValue: currentData)
-            }
-            currentData.value = 1
-            return TransactionResult.success(withValue: currentData)
         }) { (error, commited, snapshot) in
             if let error = error {
                 debugPrint("Vote error: \(error.localizedDescription)")
@@ -69,15 +63,12 @@ class FBVote {
     
     fileprivate func monthVote(uid: String, month: String) {
         monthRef.child(month).child(uid).runTransactionBlock({ (currentData) -> TransactionResult in
-            if var votes = currentData.value as? Int {
+                var votes = currentData.value as? Int ?? 0
                 votes += 1
                 
                 currentData.value = votes
                 
                 return TransactionResult.success(withValue: currentData)
-            }
-            currentData.value = 1
-            return TransactionResult.success(withValue: currentData)
         }) { (error, commited, snapshot) in
             if let error = error {
                 debugPrint("Month error: \(error.localizedDescription)")

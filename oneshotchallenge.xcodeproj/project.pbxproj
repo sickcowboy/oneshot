@@ -26,6 +26,7 @@
 		2B2AE49B20B2F1AE00151091 /* MonthKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49A20B2F1AE00151091 /* MonthKey.swift */; };
 		2B2AE49E20B2F63300151091 /* FireBaseTopLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */; };
 		2B2AE4A020B2F6E200151091 /* TopListScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2AE49F20B2F6E200151091 /* TopListScore.swift */; };
+		2B32324520E84A1E00B7C155 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B32324420E84A1E00B7C155 /* CollectionExtension.swift */; };
 		2B394D0220D69E6500AD2CA1 /* FireWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B394D0120D69E6500AD2CA1 /* FireWork.swift */; };
 		2B4008DB20DFB7E600DB94F1 /* OnBoardingImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4008DA20DFB7E600DB94F1 /* OnBoardingImages.swift */; };
 		2B47D88920BE97470003095B /* RateControllerDatabaseFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */; };
@@ -112,6 +113,7 @@
 		2B2AE49A20B2F1AE00151091 /* MonthKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthKey.swift; sourceTree = "<group>"; };
 		2B2AE49D20B2F63300151091 /* FireBaseTopLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseTopLists.swift; sourceTree = "<group>"; };
 		2B2AE49F20B2F6E200151091 /* TopListScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListScore.swift; sourceTree = "<group>"; };
+		2B32324420E84A1E00B7C155 /* CollectionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtension.swift; sourceTree = "<group>"; };
 		2B394D0120D69E6500AD2CA1 /* FireWork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireWork.swift; sourceTree = "<group>"; };
 		2B4008DA20DFB7E600DB94F1 /* OnBoardingImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingImages.swift; sourceTree = "<group>"; };
 		2B47D88820BE97470003095B /* RateControllerDatabaseFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateControllerDatabaseFunctions.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				2B73389D20A9A85800AB59E0 /* StatusBar.swift */,
 				2B2AE49A20B2F1AE00151091 /* MonthKey.swift */,
 				2B47D88A20BE9B1C0003095B /* UIButtonExtension.swift */,
+				2B32324420E84A1E00B7C155 /* CollectionExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -747,6 +750,7 @@
 				2B73389A20A99D2A00AB59E0 /* TopListCollectionViewCell.swift in Sources */,
 				A450DE8920DE5487007588A1 /* CameraControllerOnBoarding.swift in Sources */,
 				2B0B7B1E208F11B300532815 /* TopListController.swift in Sources */,
+				2B32324520E84A1E00B7C155 /* CollectionExtension.swift in Sources */,
 				2B0B7B14208F0EF700532815 /* ChallengeController.swift in Sources */,
 				A413EBEA20DF8F1F003F865D /* PostControllerOnBoarding.swift in Sources */,
 				2BD4A01020E780AC00CC57F0 /* AllChallengesVC.swift in Sources */,

@@ -14,16 +14,11 @@ import FirebaseAuth
 class FireBaseRating {
     fileprivate let challengeRef = Database.database().reference(withPath: DatabaseReference.challenges.rawValue)
     fileprivate let partisipantsRef = Database.database().reference(withPath: DatabaseReference.participants.rawValue)
+    fileprivate let nrOfPartisipanstRef = Database.database().reference(withPath: DatabaseReference.nrOfPartisipants.rawValue)
     fileprivate let ratingRef = Database.database().reference(withPath: DatabaseReference.ratings.rawValue)
     fileprivate let userVotesRef = Database.database().reference(withPath: DatabaseReference.userVotes.rawValue)
     
     fileprivate let fbPosts = FireBasePosts()
-    
-    var userVotes : [String]? {
-        didSet{
-            
-        }
-    }
     
     func fetchPartisipants(key: String?, completion: @escaping ([String]?) -> ()) {
         guard let key = key else {
@@ -31,38 +26,26 @@ class FireBaseRating {
             return
         }
         
-        self.fetchUserVotes(key: key, completion: { (userVotes) in
+        self.fetchUserVotes(key: key) { (userVotes) in
             self.fetchPartisipants(key: key, userVotes: userVotes, completion: { (partisipants) in
+                debugPrint(partisipants as Any)
                 completion(partisipants)
             })
-        })
-    }
-    
-    fileprivate func fetchUserVotes(key: String, completion: @escaping([String: Any]?) -> ()) {
-        guard let uid = Auth.auth().currentUser?.uid else {
-            completion(nil)
-            return
         }
         
+    }
+    
+    fileprivate func fetchUserVotes(key: String, completion: @escaping([String: Any]) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
         userVotesRef.child(uid).child(key).observeSingleEvent(of: .value) { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: Any] else {
-                completion(nil)
-                return
-            }
-            
+            var dictionary = snapshot.value as? [String: Any] ?? [String:Any]()
+            dictionary[uid] = 1
             completion(dictionary)
         }
     }
     
-    fileprivate func fetchPartisipants(key: String, userVotes: [String: Any]?, completion: @escaping ([String]?) -> ()) {
-        guard let uid = Auth.auth().currentUser?.uid else {
-            completion(nil)
-            return
-        }
-        
-        var userVotes = userVotes ?? [String: Any]()
-        userVotes[uid] = 1
-        
+    fileprivate func fetchPartisipants(key: String, userVotes: [String: Any], completion: @escaping ([String]?) -> ()) {
         partisipantsRef.child(key).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
                 completion(nil)
@@ -74,25 +57,12 @@ class FireBaseRating {
                 if userVotes[item.key] as? Int == nil {
                     partisipants.append(item.key)
                 }
-                
-//                debugPrint("Partisipants: \(partisipants.count)")
-//                debugPrint("user votes: \(userVotes.count)")
-//                
-//                if 20 - userVotes.count == partisipants.count {
-//                    if partisipants.count % 2 != 0 {
-//                        debugPrint("removing last")
-//                        partisipants.removeLast()
-//                    }
-//                    
-//                    completion(partisipants)
-//                    return
-//                }
             }
             
             if partisipants.count % 2 != 0 {
-                debugPrint("removing last")
                 partisipants.removeLast()
             }
+            partisipants = partisipants.shuffle()
             completion(partisipants)
         }
     }
@@ -117,5 +87,18 @@ class FireBaseRating {
         guard let key = key else { return }
         
         partisipantsRef.child(key).child(uid).setValue(1)
+        
+        nrOfPartisipanstRef.child(key).runTransactionBlock({ (currentData) -> TransactionResult in
+            var nrOfPart = currentData.value as? Int ?? 0
+            nrOfPart += 1
+            
+            currentData.value = nrOfPart
+            
+            return TransactionResult.success(withValue: currentData)
+        }) { (error, _, _) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+            }
+        }
     }
 }
