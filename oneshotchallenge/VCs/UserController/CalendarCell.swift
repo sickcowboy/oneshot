@@ -39,14 +39,14 @@ class CalendarCell: UICollectionViewCell {
                 }
             }
             
-//            let cetTime = CETTime()
-//            guard let today = cetTime.challengeTimeToday()?.timeIntervalSince1970 else { return }
-//            if (challenge.challengeDate == today) {
-//                goldImage.photoImageView.image = #imageLiteral(resourceName: "TBD")
-//                silverImage.photoImageView.image = #imageLiteral(resourceName: "TBD")
-//                bronzeImage.photoImageView.image = #imageLiteral(resourceName: "TBD")
-//                return
-//            }
+            let cetTime = CETTime()
+            guard let today = cetTime.challengeTimeToday()?.timeIntervalSince1970 else { return }
+            if (challenge.challengeDate == today) {
+                goldImage.photoImageView.image = #imageLiteral(resourceName: "TBD")
+                silverImage.photoImageView.image = #imageLiteral(resourceName: "TBD")
+                bronzeImage.photoImageView.image = #imageLiteral(resourceName: "TBD")
+                return
+            }
             
             fbPosts.fetchTopThree(date: date) { (uids) in
                 if let uids = uids {

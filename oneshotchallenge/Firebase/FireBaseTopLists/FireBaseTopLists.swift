@@ -30,7 +30,7 @@ class FBTopLists {
     
     func fetchMonth(completion: @escaping([TopListScore]?) -> ()) {
         let cetTime = CETTime()
-        guard let challengeDate = cetTime.challengeTimeToday()?.timeIntervalSince1970 else {
+        guard let challengeDate = cetTime.challengeTimeYesterday()?.timeIntervalSince1970 else {
             completion(nil)
             return
         }

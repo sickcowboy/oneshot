@@ -44,26 +44,40 @@ extension TopListController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TopListControllerCell
+
+        cell.placement = indexPath.item
         
         switch segmentedView.selectedSegmentIndex {
         case 0:
+            cell.today = true
             cell.topListScore = todayScore?[indexPath.item]
             break
         case 1:
+            cell.today = false
             cell.topListScore = monthScore?[indexPath.item]
             break
         case 2:
+            cell.today = false
             cell.topListScore = allTimeScore?[indexPath.item]
             break
         default:
             break
         }
         
-        cell.placement = indexPath.item
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 45)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+        guard let post = (collectionView.cellForItem(at: indexPath) as! TopListControllerCell).post else { return }
+        
+        let detailedController = DetailPostController()
+        detailedController.post = post
+        
+        navigationController?.pushViewController(detailedController, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {        
+        let height = collectionView.frame.width/3
+        return CGSize(width: collectionView.frame.width, height: height)
     }
 }
