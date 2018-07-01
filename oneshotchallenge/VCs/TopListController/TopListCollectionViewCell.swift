@@ -28,6 +28,16 @@ class TopListControllerCell: UICollectionViewCell {
             let fbUser = FireBaseUser()
             
             fbUser.fetchUser(uid: topListScore.uid) { (user) in
+                DispatchQueue.main.async {
+                    var votes = "votes"
+                    if topListScore.score == 1 {
+                        votes = "vote"
+                    }
+                    
+                    self.voteLabel.text = "\(topListScore.score) \(votes)"
+                    self.nameLabel.text = user?.username
+                }
+                
                 if !self.today {
                     self.post = nil
                     self.imageUrl = user?.profilePicUrl
@@ -37,15 +47,6 @@ class TopListControllerCell: UICollectionViewCell {
                     fbPosts.fetchPost(uid:topListScore.uid, date: cetTime.challengeTimeYesterday(), completion: { (post) in
                         self.post = post
                     })
-                }
-                DispatchQueue.main.async {
-                    var votes = "votes"
-                    if topListScore.score == 1 {
-                        votes = "vote"
-                    }
-                    
-                    self.voteLabel.text = "\(topListScore.score) \(votes)"
-                    self.nameLabel.text = user?.username
                 }
             }
         }

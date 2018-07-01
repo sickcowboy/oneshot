@@ -15,21 +15,18 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     
     var todayScore: [TopListScore]? {
         didSet {
-            debugPrint("today: \(todayScore?.count as Any)")
             stopRefresh()
         }
     }
     
     var monthScore: [TopListScore]? {
         didSet {
-            debugPrint("month: \(monthScore?.count as Any)")
             stopRefresh()
         }
     }
     
     var allTimeScore: [TopListScore]? {
         didSet{
-            debugPrint("allTime: \(allTimeScore?.count as Any)")
             stopRefresh()
         }
     }
