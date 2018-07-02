@@ -11,9 +11,11 @@ import Foundation
 struct TopListScore {
     var uid: String
     var score: Int
+    var imageUid: String
     
     init(uid: String, score:Int) {
         self.uid = uid
         self.score = score
+        self.imageUid = UUID().uuidString
     }
 }

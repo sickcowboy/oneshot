@@ -8,6 +8,9 @@
 
 import UIKit
 
+var topListImageCache = [String: String]()
+var topListNameCache = [String: String]()
+
 class TopListControllerCell: UICollectionViewCell {
     
     var placement: Int? {
@@ -20,22 +23,30 @@ class TopListControllerCell: UICollectionViewCell {
     
     var topListScore: TopListScore? {
         didSet{
-            nameLabel.text = ""
-            voteLabel.text = ""
+            guard let topListScore = topListScore else { return }
+            nameLabel.text = topListNameCache[topListScore.uid] ?? ""
             framePhotoView.photoImageView.image = nil
             
-            guard let topListScore = topListScore else { return }
+            if let tempImageUrl = topListImageCache[topListScore.imageUid] {
+                self.imageUrl = tempImageUrl
+            }
+            
+            var votes = "votes"
+            if topListScore.score == 1 {
+                votes = "vote"
+            }
+            voteLabel.text = "\(topListScore.score) \(votes)"
+            
+            if nameLabel.text != "" && self.imageUrl != nil { return }
+            
             let fbUser = FireBaseUser()
             
             fbUser.fetchUser(uid: topListScore.uid) { (user) in
                 DispatchQueue.main.async {
-                    var votes = "votes"
-                    if topListScore.score == 1 {
-                        votes = "vote"
-                    }
-                    
                     self.voteLabel.text = "\(topListScore.score) \(votes)"
                     self.nameLabel.text = user?.username
+                    
+                    topListNameCache[topListScore.uid] = user?.username
                 }
                 
                 if !self.today {
@@ -60,6 +71,8 @@ class TopListControllerCell: UICollectionViewCell {
     
     var imageUrl: String? {
         didSet {
+            guard let imageUid = topListScore?.imageUid else { return }
+            topListImageCache[imageUid] = imageUrl
             framePhotoView.photoImageView.loadImage(urlString: imageUrl)
         }
     }
