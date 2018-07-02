@@ -10,6 +10,7 @@ import UIKit
 
 var topListImageCache = [String: String]()
 var topListNameCache = [String: String]()
+var topListPostCache = [String: Post]()
 
 class TopListControllerCell: UICollectionViewCell {
     
@@ -29,6 +30,10 @@ class TopListControllerCell: UICollectionViewCell {
             nameLabel.text = topListNameCache[topListScore.uid] ?? ""
             framePhotoView.photoImageView.image = nil
             
+            if let tempPost = topListPostCache[topListScore.imageUid] {
+                self.post = tempPost
+            }
+            
             if let tempImageUrl = topListImageCache[topListScore.imageUid] {
                 self.imageUrl = tempImageUrl
             }
@@ -39,7 +44,11 @@ class TopListControllerCell: UICollectionViewCell {
             }
             voteLabel.text = "\(topListScore.score) \(votes)"
             
-            if nameLabel.text != "" && self.imageUrl != nil { return }
+            if today {
+                if nameLabel.text != "" && post != nil { return }
+            } else {
+                if nameLabel.text != "" && imageUrl != nil { return }
+            }
             
             let fbUser = FireBaseUser()
             
@@ -66,6 +75,8 @@ class TopListControllerCell: UICollectionViewCell {
     
     var post: Post? {
         didSet {
+            guard let postUid = topListScore?.imageUid else { return }
+            topListPostCache[postUid] = post
             imageUrl = post?.imageUrl
         }
     }

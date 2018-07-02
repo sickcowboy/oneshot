@@ -156,6 +156,7 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     
     fileprivate func resetCache() {
         topListImageCache.removeAll()
+        topListPostCache.removeAll()
         topListNameCache.removeAll()
     }
 }
