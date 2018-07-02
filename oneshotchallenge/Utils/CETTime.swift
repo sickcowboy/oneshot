@@ -50,9 +50,20 @@ class CETTime {
         
         guard let cetTime = timeNow() else { return nil }
         
-        guard let cetTomorrow = calendar.date(byAdding: .day, value: -1, to: cetTime) else { return nil }
+        guard let cetYesterday = calendar.date(byAdding: .day, value: -1, to: cetTime) else { return nil }
         
-        return calendar.startOfDay(for: cetTomorrow)
+        return calendar.startOfDay(for: cetYesterday)
+    }
+    
+    func challengeTimeDoubleYesterDay() -> Date? {
+        var calendar = Calendar.current
+        calendar.timeZone = getTimeZone()
+        
+        guard let cetTime = timeNow() else { return nil }
+        
+        guard let cetDoubleTomorrow = calendar.date(byAdding: .day, value: -2, to: cetTime) else { return nil }
+        
+        return calendar.startOfDay(for: cetDoubleTomorrow)
     }
     
     func debugTime() -> TimeInterval? {
@@ -80,7 +91,6 @@ class CETTime {
     }
     
     func getTimeZone() -> TimeZone {
-        
         let timeZone = TimeZone(abbreviation: "CET")
         
         return timeZone!

@@ -13,6 +13,16 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     let cellId = "cellId"
     let headerId = "headerId"
     
+    var winnerChallengeDescription: String?
+
+    var todayChallengeDescription: String?
+    
+    var winners: [TopListScore]? {
+        didSet{
+            stopRefresh()
+        }
+    }
+    
     var todayScore: [TopListScore]? {
         didSet {
             stopRefresh()
@@ -39,7 +49,7 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     }()
     
     lazy var segmentedView : UISegmentedControl = {
-        let sV = UISegmentedControl(items: ["Today", "Month", "All Time"])
+        let sV = UISegmentedControl(items: ["Winners", "Ongoing", "Month", "All Time"])
         sV.tintColor = Colors.sharedInstance.primaryTextColor
         sV.selectedSegmentIndex = 0
         sV.addTarget(self, action: #selector(segmentChanged(_:)), for: .valueChanged)
@@ -79,10 +89,25 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         monthScore = nil
         allTimeScore = nil
         
-        fbTopLists.fetchToday { (topList) in
+        fbTopLists.fetchWinner { (topList, description) in
+            DispatchQueue.main.async {
+                self.winners = topList
+                
+                if let description = description {
+                    self.winnerChallengeDescription = " - \(description)"
+                }
+                
+                self.collectionView?.reloadData()
+            }
+        }
+        
+        fbTopLists.fetchToday { (topList, description) in
             DispatchQueue.main.async {
                 self.todayScore = topList
-                self.collectionView?.reloadData()
+                
+                if let description = description {
+                    self.todayChallengeDescription = " - \(description)"
+                }
             }
         }
         
@@ -119,11 +144,12 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     fileprivate func stopRefresh() {
+        guard let winners = winners else { return }
         guard let todayScore = todayScore else { return }
         guard let monthScore = monthScore else { return }
         guard let allTimeScore = allTimeScore else { return }
         
-        if !todayScore.isEmpty && !monthScore.isEmpty && !allTimeScore.isEmpty {
+        if !winners.isEmpty && !todayScore.isEmpty && !monthScore.isEmpty && !allTimeScore.isEmpty {
             refreshControl.endRefreshing()
         }
     }

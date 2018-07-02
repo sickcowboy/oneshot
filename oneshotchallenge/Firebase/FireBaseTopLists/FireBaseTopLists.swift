@@ -16,11 +16,25 @@ class FBTopLists {
     
     fileprivate let challengeRef = Database.database().reference(withPath: DatabaseReference.challenges.rawValue)
     
-    func fetchToday(completion: @escaping([TopListScore]?) -> ()) {
-        fetchChallengeKey { (key) in
+    fileprivate let cetTime = CETTime()
+    
+    func fetchWinner(completion: @escaping([TopListScore]?, String?) -> ()) {
+        fetchChallengeKey(date: cetTime.challengeTimeDoubleYesterDay()) { (key, description) in
             if let key = key {
-                self.fetchTodayList(key: key, completion: { topList in
-                    completion(topList?.reversed())
+                self.fetchList(key: key, completion: { (topList) in
+                    completion(topList?.reversed(), description)
+                })
+            } else {
+                // TODO : something went wrong
+            }
+        }
+    }
+    
+    func fetchToday(completion: @escaping([TopListScore]?, String?) -> ()) {
+        fetchChallengeKey(date: cetTime.challengeTimeYesterday()) { (key, description) in
+            if let key = key {
+                self.fetchList(key: key, completion: { (topList) in
+                    completion(topList?.reversed(), description)
                 })
             } else {
                 // TODO : something went wrong
@@ -30,7 +44,7 @@ class FBTopLists {
     
     func fetchMonth(completion: @escaping([TopListScore]?) -> ()) {
         let cetTime = CETTime()
-        guard let challengeDate = cetTime.challengeTimeYesterday()?.timeIntervalSince1970 else {
+        guard let challengeDate = cetTime.challengeTimeToday()?.timeIntervalSince1970 else {
             completion(nil)
             return
         }
@@ -84,7 +98,7 @@ class FBTopLists {
         }
     }
     
-    fileprivate func fetchTodayList(key: String, completion: @escaping ([TopListScore]?) -> ()) {
+    fileprivate func fetchList(key: String, completion: @escaping ([TopListScore]?) -> ()) {
         voteRef.child(key).queryOrderedByValue().queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
                 completion(nil)
@@ -108,28 +122,30 @@ class FBTopLists {
         }
     }
     
-    fileprivate func fetchChallengeKey(completion: @escaping (String?) -> ()) {
-        let cetTime = CETTime()
-        guard let challengeDate = cetTime.challengeTimeYesterday()?.timeIntervalSince1970 else { return }
+    fileprivate func fetchChallengeKey(date: Date?, completion: @escaping (String?, String?) -> ()) {
+        guard let challengeDate = date?.timeIntervalSince1970 else { return }
         
         challengeRef.queryOrdered(byChild: DatabaseReference.challengeDate.rawValue).queryEqual(toValue: challengeDate).observeSingleEvent(of: .value) { (snapshot) in
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
-                completion(nil)
+                completion(nil, nil)
                 return
             }
             
             var key : String? = nil
+            var description: String? = nil
             
             for item in data {
+                let dictionary = item.value as? [String: Any]
                 key = item.key
+                description = dictionary?[DatabaseReference.challengeDescription.rawValue] as? String
             }
             
             guard let fetchedKey = key else {
-                completion(nil)
+                completion(nil, nil)
                 return
             }
             
-            completion(fetchedKey)
+            completion(fetchedKey, description)
         }
     }
 }

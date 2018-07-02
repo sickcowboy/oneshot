@@ -13,6 +13,8 @@ var topListNameCache = [String: String]()
 
 class TopListControllerCell: UICollectionViewCell {
     
+    var challengeTime: Date?
+    
     var placement: Int? {
         didSet{
             setStarColor()
@@ -54,8 +56,7 @@ class TopListControllerCell: UICollectionViewCell {
                     self.imageUrl = user?.profilePicUrl
                 } else {
                     let fbPosts = FireBasePosts()
-                    let cetTime = CETTime()
-                    fbPosts.fetchPost(uid:topListScore.uid, date: cetTime.challengeTimeYesterday(), completion: { (post) in
+                    fbPosts.fetchPost(uid:topListScore.uid, date: self.challengeTime, completion: { (post) in
                         self.post = post
                     })
                 }

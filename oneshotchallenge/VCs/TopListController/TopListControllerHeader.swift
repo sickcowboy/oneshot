@@ -22,7 +22,7 @@ class TopListControllerHeader: UICollectionReusableView {
         
         addSubview(titleLabel)
         titleLabel.constraintLayout(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor,
-                                    padding: .init(top: 0, left: 8, bottom: 0, right: 8))
+                                    padding: .init(top: 8, left: 8, bottom: 8, right: 8))
     }
     
     func setTitle(title: String) {
