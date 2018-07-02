@@ -15,6 +15,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
     var previewLayer : AVCaptureVideoPreviewLayer?
     var isOnBoarding = false
     var captureDevice: AVCaptureDevice?
+    let captureSession = AVCaptureSession()
     
     let challengeLabel: UILabel = {
         let label = UILabel()
@@ -64,6 +65,11 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         debugPrint("viewWillAppear")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        captureSession.stopRunning()
     }
     
     @objc fileprivate func checkTimeAndStartCountDown() {

@@ -20,8 +20,6 @@ extension CameraController {
         
         guard let captureDevice = captureDevice else { return }
         
-        let captureSession = AVCaptureSession()
-        
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice)
             if captureSession.canAddInput(input) {
