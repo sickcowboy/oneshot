@@ -96,8 +96,6 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
                 if let description = description {
                     self.winnerChallengeDescription = " - \(description)"
                 }
-                
-                self.collectionView?.reloadData()
             }
         }
         
@@ -148,6 +146,8 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         guard let todayScore = todayScore else { return }
         guard let monthScore = monthScore else { return }
         guard let allTimeScore = allTimeScore else { return }
+        
+        self.collectionView?.reloadData()
         
         if !winners.isEmpty && !todayScore.isEmpty && !monthScore.isEmpty && !allTimeScore.isEmpty {
             refreshControl.endRefreshing()
