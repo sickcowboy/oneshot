@@ -20,25 +20,29 @@ extension CameraController {
         
         guard let captureDevice = captureDevice else { return }
         
+        if captureSession == nil {
+            captureSession = AVCaptureSession()
+        }
+        
         do {
             let input = try AVCaptureDeviceInput(device: captureDevice)
-            if captureSession.canAddInput(input) {
-                captureSession.addInput(input)
+            if captureSession!.canAddInput(input) {
+                captureSession!.addInput(input)
             }
         } catch let error {
             debugPrint(error.localizedDescription)
         }
         
-        if captureSession.canAddOutput(output) {
-            captureSession.addOutput(output)
+        if captureSession!.canAddOutput(output) {
+            captureSession!.addOutput(output)
         }
         
-        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        previewLayer?.videoGravity = .resizeAspectFill
-        captureSession.startRunning()
+        previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+        previewLayer!.videoGravity = .resizeAspectFill
+        captureSession!.startRunning()
         
         DispatchQueue.main.async {
-            self.previewLayer?.frame = self.capturePreviewView.bounds
+            self.previewLayer!.frame = self.capturePreviewView.bounds
             guard let previewLayer = self.previewLayer else { return }
             self.capturePreviewView.layer.addSublayer(previewLayer)
         }

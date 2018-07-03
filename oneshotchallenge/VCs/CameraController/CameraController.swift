@@ -15,13 +15,14 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
     var previewLayer : AVCaptureVideoPreviewLayer?
     var isOnBoarding = false
     var captureDevice: AVCaptureDevice?
-    let captureSession = AVCaptureSession()
+    var captureSession: AVCaptureSession?
     
     let challengeLabel: UILabel = {
         let label = UILabel()
         label.textColor = Colors.sharedInstance.primaryTextColor
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -69,7 +70,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        captureSession.stopRunning()
+        captureSession?.stopRunning()
     }
     
     @objc fileprivate func checkTimeAndStartCountDown() {
@@ -109,7 +110,12 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CountDo
                     self.setUpViews()
                 }
             } else {
-                // TODO: Display error message
+                let alertController = UIAlertController(title: "Ops!", message: "Something went wrong. Try Againg.", preferredStyle: .actionSheet)
+                let alertAction = UIAlertAction(title: "OK", style: .default, handler: { (_) in
+                    self.fetchChallenge()
+                })
+                alertController.addAction(alertAction)
+                self.present(alertController, animated: true, completion: nil)
             }
         }
     }
