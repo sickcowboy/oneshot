@@ -119,6 +119,24 @@ class FireBasePosts {
         postRef.child(uid).childByAutoId().setValue(value)
     }
     
+    func dismissPost(completion: @escaping(Bool) -> ()) {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            completion(false)
+            return
+        }
+        fetchChallengeKey { (key) in
+            if let key = key {
+                self.postRef.child(uid).child(key).child(DatabaseReference.dismissed.rawValue)
+                    .setValue(true, withCompletionBlock: { (error, _) in
+                        debugPrint("completionBlock")
+                        completion(error == nil)
+                })
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
     func uploadPost(image: UIImage, completion: @escaping(Error?) -> ()) {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         

@@ -14,12 +14,14 @@ struct Post {
     var challengeDate: TimeInterval
     var imageUrl: String
     var userId: String
+    var dismissed: Bool
     
     init(dictionary: [String: Any], userId: String) {
         self.date = dictionary[DatabaseReference.date.rawValue] as? TimeInterval ?? Date().timeIntervalSince1970
         self.imageUrl = dictionary[DatabaseReference.imageUrl.rawValue] as? String ?? ""
         self.startDate = dictionary[DatabaseReference.startDate.rawValue] as? TimeInterval ?? Date().timeIntervalSince1970
         self.challengeDate = dictionary[DatabaseReference.challengeDate.rawValue] as? TimeInterval ?? Date().timeIntervalSince1970
+        self.dismissed = dictionary[DatabaseReference.dismissed.rawValue] as? Bool ?? false
         self.userId = userId
     }
 }

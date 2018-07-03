@@ -12,6 +12,7 @@ import FirebaseStorage
 class PostController: UIViewController, InfoViewDelegate {
     
     var isOnBoarding = false
+    fileprivate let fbPosts = FireBasePosts()
     
     lazy var postButton: UIButton = {
         let button = UIButton(type: .system)
@@ -38,6 +39,8 @@ class PostController: UIViewController, InfoViewDelegate {
         attributedTitle.append(NSAttributedString(string: "skip ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 17), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.darkColor]))
         attributedTitle.append(NSAttributedString(string: "this round", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.secondaryColor]))
         button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        button.addTarget(self, action: #selector(skipRound), for: .touchUpInside)
         
         return button
     }()
@@ -108,7 +111,6 @@ class PostController: UIViewController, InfoViewDelegate {
         activityIndication(loading: true)
 
         if !isOnBoarding {
-            let fbPosts = FireBasePosts()
             fbPosts.uploadPost(image: image, completion: { error in
                 DispatchQueue.main.async {
                     self.activityIndication(loading: false)
@@ -135,6 +137,28 @@ class PostController: UIViewController, InfoViewDelegate {
                 }
             }
         }
+    }
+    
+    @objc fileprivate func skipRound() {
+        let alertController = UIAlertController(title: "Are you sure?", message: "This will remove you from this challenge.", preferredStyle: .actionSheet)
+        let oneAction = UIAlertAction(title: "I'm sure", style: .destructive) { (_) in
+            self.activityIndication(loading: true)
+            self.fbPosts.dismissPost(completion: { (complete) in
+                debugPrint(complete)
+                if complete {
+                    DispatchQueue.main.async {
+                        self.activityIndication(loading: false)
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                }
+            })
+        }
+        let twoAction = UIAlertAction(title: "I'll think about it", style: .default, handler: nil)
+        
+        alertController.addAction(oneAction)
+        alertController.addAction(twoAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
     
     fileprivate func showError(description: String) {

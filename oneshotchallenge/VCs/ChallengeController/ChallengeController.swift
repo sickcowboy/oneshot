@@ -157,6 +157,7 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
         
         if timesUp {
             lockedLabel.attributedText = setLockedLabelText(text: "The train has left the station,", bigText: "another one will arrive in:")
+            timeLeft()
             return
         }
         
@@ -189,18 +190,25 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
         countDownTimer.stopCountDown()
         
         fbPosts.fetchPost { (post) in
-            if let post = post {
-                if post.imageUrl.isEmpty {
-                    self.activityIndicator.stopAnimating()
-                    self.segueToCamera(post: post)
+            DispatchQueue.main.async {
+                if let post = post {
+                    if post.dismissed {
+                        self.setUpChallengeDone(timesUp: true)
+                        return
+                    }
+                    
+                    if post.imageUrl.isEmpty {
+                        self.activityIndicator.stopAnimating()
+                        self.segueToCamera(post: post)
+                    } else {
+                        self.setUpChallengeDone()
+                    }
                 } else {
-                    self.setUpChallengeDone()
+                    self.fetchChallenge()
                 }
-            } else {
-                self.fetchChallenge()
+                
+                self.timeLeft()
             }
-            
-            self.timeLeft()
         }
     }
     
@@ -274,7 +282,6 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
     }
     
     fileprivate func segueToCamera(post: Post? = nil) {
-        debugPrint("seguetocamera")
         if post == nil {
             countDownTimer.stopCountDown()
             countDownTimer.startCountDown(hours: 0, minutes: 0, seconds: 3)
@@ -307,10 +314,6 @@ class ChallengeController: UIViewController, CountDownTimerDelegate {
         guard let hour = difference.hour else { return }
         guard let minute = difference.minute else { return }
         guard let second = difference.second else { return }
-        
-        debugPrint(hour)
-        debugPrint(minute)
-        debugPrint(second)
         
         if hour <= 0 && minute <= 0 && second <= 0 {
             setUpChallengeDone(timesUp: true)
