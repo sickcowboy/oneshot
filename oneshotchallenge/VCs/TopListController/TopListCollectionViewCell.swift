@@ -21,47 +21,11 @@ class TopListControllerCell: UICollectionViewCell {
     var today = false
     
     var topListScore: TopListScore? {
-        didSet{
-            guard let topListScore = topListScore else { return }
-            nameLabel.text = ""
-            framePhotoView.photoImageView.image = nil
-            
-            var votes = "votes"
-            if topListScore.score == 1 {
-                votes = "vote"
-            }
-            voteLabel.text = "\(topListScore.score) \(votes)"
-            
-            let fbUser = FireBaseUser()
-            
-            fbUser.fetchUser(uid: topListScore.uid) { (user) in
-                DispatchQueue.main.async {
-                    self.voteLabel.text = "\(topListScore.score) \(votes)"
-                    self.nameLabel.text = user?.username
-                }
-                
-                if !self.today {
-                    self.post = nil
-                    self.imageUrl = user?.profilePicUrl
-                } else {
-                    let fbPosts = FireBasePosts()
-                    fbPosts.fetchPost(uid:topListScore.uid, date: self.challengeTime, completion: { (post) in
-                        self.post = post
-                    })
-                }
-            }
-        }
-    }
-    
-    var post: Post? {
         didSet {
-            imageUrl = post?.imageUrl
-        }
-    }
-    
-    var imageUrl: String? {
-        didSet {
-            framePhotoView.photoImageView.loadImage(urlString: imageUrl)
+            framePhotoView.photoImageView.image = topListScore?.image
+            nameLabel.text = topListScore?.name
+            guard let score = topListScore?.score else { return }
+            voteLabel.text = "(\(score) votes"
         }
     }
     

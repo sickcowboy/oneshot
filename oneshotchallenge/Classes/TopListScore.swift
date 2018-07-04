@@ -6,16 +6,57 @@
 //  Copyright © 2018 GalvenD. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct TopListScore {
+protocol TopListDelegate:class {
+    func didFinishLoading()
+}
+
+class TopListScore {
+    weak var delegate: TopListDelegate?
+    
+    fileprivate let urlImageFetcher = UrlImageFetcher()
+    fileprivate var cetTime: CETTime?
+    fileprivate var fbUser: FireBaseUser?
+    
     var uid: String
     var score: Int
-    var imageUid: String
+    var name: String?
     
-    init(uid: String, score:Int) {
+    var image: UIImage? {
+        didSet{
+            delegate?.didFinishLoading()
+        }
+    }
+    
+    init(uid: String, score:Int, user: Bool) {
         self.uid = uid
         self.score = score
-        self.imageUid = UUID().uuidString
+        
+        if user {
+            fetchUserNameAndProfilePicUrl()
+            return
+        }
+    }
+    
+    fileprivate func fetchUserNameAndProfilePicUrl() {
+        fbUser?.fetchUser(uid: uid, completion: { (user) in
+            DispatchQueue.main.async {
+                self.name = user?.username
+            }
+            self.fetchImage(imageUrl: user?.profilePicUrl)
+        })
+    }
+    
+    fileprivate func fetchImage(imageUrl: String?) {
+        urlImageFetcher.loadImage(urlString: imageUrl, completion: { (image) in
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        })
+    }
+    
+    fileprivate func fetchPostAndImage() {
+        
     }
 }

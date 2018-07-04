@@ -65,8 +65,7 @@ class FBTopLists {
                     return
                 }
                 
-                let topListScore = TopListScore(uid: uid, score: score)
-                
+                let topListScore = TopListScore(uid: uid, score: score, user: true)
                 topList.append(topListScore)
             }
             
@@ -89,7 +88,7 @@ class FBTopLists {
                     return
                 }
                 
-                let topListScore = TopListScore(uid: uid, score: score)
+                let topListScore = TopListScore(uid: uid, score: score, user: true)
                 
                 topList.append(topListScore)
             }
@@ -113,7 +112,7 @@ class FBTopLists {
                     return
                 }
                 
-                let topListScore = TopListScore(uid: uid, score: score)
+                let topListScore = TopListScore(uid: uid, score: score, user: false)
                 
                 topList.append(topListScore)
             }

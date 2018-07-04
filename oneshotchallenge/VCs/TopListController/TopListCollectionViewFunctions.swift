@@ -67,22 +67,18 @@ extension TopListController {
         
         switch segmentedView.selectedSegmentIndex {
         case 0:
-            cell.today = true
             cell.challengeTime = cetTime.challengeTimeDoubleYesterDay()
             cell.topListScore = winners?[indexPath.item]
             break
         case 1:
-            cell.today = true
             cell.challengeTime = cetTime.challengeTimeYesterday()
             cell.topListScore = todayScore?[indexPath.item]
             break
         case 2:
-            cell.today = false
             cell.challengeTime = nil
             cell.topListScore = monthScore?[indexPath.item]
             break
         case 3:
-            cell.today = false
             cell.challengeTime = nil
             cell.topListScore = allTimeScore?[indexPath.item]
             break
@@ -94,12 +90,12 @@ extension TopListController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
-        guard let post = (collectionView.cellForItem(at: indexPath) as! TopListControllerCell).post else { return }
-        
-        let detailedController = DetailPostController()
-        detailedController.post = post
-        
-        navigationController?.pushViewController(detailedController, animated: true)
+//        guard let post = (collectionView.cellForItem(at: indexPath) as! TopListControllerCell).post else { return }
+//        
+//        let detailedController = DetailPostController()
+//        detailedController.post = post
+//        
+//        navigationController?.pushViewController(detailedController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {        
