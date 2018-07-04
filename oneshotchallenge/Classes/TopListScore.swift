@@ -9,42 +9,48 @@
 import UIKit
 
 protocol TopListDelegate:class {
-    func didFinishLoading()
+    func finishedFetch()
 }
 
 class TopListScore {
     weak var delegate: TopListDelegate?
     
     fileprivate let urlImageFetcher = UrlImageFetcher()
-    fileprivate var cetTime: CETTime?
     fileprivate var fbUser: FireBaseUser?
+    fileprivate var fbPosts: FireBasePosts?
     
     var uid: String
     var score: Int
-    var name: String?
+    var challengeDate: TimeInterval
+    var fetchProfilePic: Bool
     
+    var username: String?
     var image: UIImage? {
-        didSet{
-            delegate?.didFinishLoading()
+        didSet {
+            delegate?.finishedFetch()
         }
     }
     
-    init(uid: String, score:Int, user: Bool) {
+    init(uid: String, score:Int, user: Bool, challengeDate: TimeInterval = 0) {
         self.uid = uid
         self.score = score
-        
-        if user {
-            fetchUserNameAndProfilePicUrl()
-            return
-        }
+        self.challengeDate = challengeDate
+        self.fetchProfilePic = user
     }
     
-    fileprivate func fetchUserNameAndProfilePicUrl() {
+    func fetchData() {
+        if username != nil && image != nil { return }
+        
+        fbUser = FireBaseUser()
         fbUser?.fetchUser(uid: uid, completion: { (user) in
             DispatchQueue.main.async {
-                self.name = user?.username
+                self.username = user?.username
             }
-            self.fetchImage(imageUrl: user?.profilePicUrl)
+            if self.fetchProfilePic {
+                self.fetchImage(imageUrl: user?.profilePicUrl)
+                return
+            }
+            self.fetchPostImageUrl()
         })
     }
     
@@ -56,7 +62,11 @@ class TopListScore {
         })
     }
     
-    fileprivate func fetchPostAndImage() {
+    fileprivate func fetchPostImageUrl() {
+        fbPosts = FireBasePosts()
         
+        fbPosts?.fetchPost(uid: uid, date: Date(timeIntervalSince1970: challengeDate), completion: { (post) in
+            self.fetchImage(imageUrl: post?.imageUrl)
+        })
     }
 }
