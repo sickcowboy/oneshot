@@ -81,8 +81,6 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     fileprivate func fetchTopLists() {
-        resetCache()
-        
         let fbTopLists = FBTopLists()
         
         todayScore = nil
@@ -123,7 +121,6 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     @objc fileprivate func segmentChanged(_ sender: UISegmentedControl) {
-        resetCache()
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: {
             self.collectionView?.transform = CGAffineTransform(translationX: -self.view.frame.width, y: 0)
         }) { (_) in
@@ -152,11 +149,5 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         if !winners.isEmpty && !todayScore.isEmpty && !monthScore.isEmpty && !allTimeScore.isEmpty {
             refreshControl.endRefreshing()
         }
-    }
-    
-    fileprivate func resetCache() {
-        topListImageCache.removeAll()
-        topListPostCache.removeAll()
-        topListNameCache.removeAll()
     }
 }

@@ -8,10 +8,6 @@
 
 import UIKit
 
-var topListImageCache = [String: String]()
-var topListNameCache = [String: String]()
-var topListPostCache = [String: Post]()
-
 class TopListControllerCell: UICollectionViewCell {
     
     var challengeTime: Date?
@@ -27,16 +23,8 @@ class TopListControllerCell: UICollectionViewCell {
     var topListScore: TopListScore? {
         didSet{
             guard let topListScore = topListScore else { return }
-            nameLabel.text = topListNameCache[topListScore.uid] ?? ""
+            nameLabel.text = ""
             framePhotoView.photoImageView.image = nil
-            
-            if let tempPost = topListPostCache[topListScore.imageUid] {
-                self.post = tempPost
-            }
-            
-            if let tempImageUrl = topListImageCache[topListScore.imageUid] {
-                self.imageUrl = tempImageUrl
-            }
             
             var votes = "votes"
             if topListScore.score == 1 {
@@ -44,20 +32,12 @@ class TopListControllerCell: UICollectionViewCell {
             }
             voteLabel.text = "\(topListScore.score) \(votes)"
             
-            if today {
-                if nameLabel.text != "" && post != nil { return }
-            } else {
-                if nameLabel.text != "" && imageUrl != nil { return }
-            }
-            
             let fbUser = FireBaseUser()
             
             fbUser.fetchUser(uid: topListScore.uid) { (user) in
                 DispatchQueue.main.async {
                     self.voteLabel.text = "\(topListScore.score) \(votes)"
                     self.nameLabel.text = user?.username
-                    
-                    topListNameCache[topListScore.uid] = user?.username
                 }
                 
                 if !self.today {
@@ -75,16 +55,12 @@ class TopListControllerCell: UICollectionViewCell {
     
     var post: Post? {
         didSet {
-            guard let postUid = topListScore?.imageUid else { return }
-            topListPostCache[postUid] = post
             imageUrl = post?.imageUrl
         }
     }
     
     var imageUrl: String? {
         didSet {
-            guard let imageUid = topListScore?.imageUid else { return }
-            topListImageCache[imageUid] = imageUrl
             framePhotoView.photoImageView.loadImage(urlString: imageUrl)
         }
     }
