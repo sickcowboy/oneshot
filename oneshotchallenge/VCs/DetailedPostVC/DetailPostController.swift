@@ -32,6 +32,7 @@ class DetailPostController: UIViewController {
         label.textColor = Colors.sharedInstance.darkColor
         label.font = UIFont.boldSystemFont(ofSize: 25)
         label.textAlignment = .center
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
