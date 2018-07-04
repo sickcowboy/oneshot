@@ -54,6 +54,7 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
     //MARK: - views
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = Colors.sharedInstance.primaryTextColor
@@ -122,7 +123,8 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         
         guard let labelStackView = labelStackView else { return }
         view.addSubview(labelStackView)
-        labelStackView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: nil, size: .init(width: 0, height: 44))
+        labelStackView.constraintLayout(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor,
+                                        bottom: nil, padding: .init(top: 0, left: 8, bottom: 0, right: 8), size: .init(width: 0, height: 44))
         
         rateViewTop = RateFrameImageView()
         rateViewBottom = RateFrameImageView()

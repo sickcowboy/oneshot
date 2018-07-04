@@ -13,6 +13,7 @@ class TopListControllerHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .lightGray
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
