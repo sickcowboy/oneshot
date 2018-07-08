@@ -22,10 +22,10 @@ class FBTopLists {
         fetchChallengeKey(date: cetTime.challengeTimeDoubleYesterDay()) { (key, description, challengeDate) in
             if let key = key {
                 self.fetchList(key: key, date: challengeDate, completion: { (topList) in
-                    completion(topList?.reversed(), description)
+                    completion(topList, description)
                 })
             } else {
-                // TODO : something went wrong
+                completion(nil, nil)
             }
         }
     }
@@ -34,10 +34,10 @@ class FBTopLists {
         fetchChallengeKey(date: cetTime.challengeTimeYesterday()) { (key, description, challengeDate) in
             if let key = key {
                 self.fetchList(key: key, date: challengeDate, completion: { (topList) in
-                    completion(topList?.reversed(), description)
+                    completion(topList, description)
                 })
             } else {
-                // TODO : something went wrong
+                completion(nil, nil)
             }
         }
     }
@@ -66,10 +66,14 @@ class FBTopLists {
                 }
                 
                 let topListScore = TopListScore(uid: uid, score: score, user: true)
-                topList.append(topListScore)
+                
+                topListScore.fetchData {
+                    topList.append(topListScore)
+                    if topList.count == data.count {
+                        completion(topList)
+                    }
+                }
             }
-            
-            completion(topList.reversed())
         }
     }
     
@@ -90,15 +94,23 @@ class FBTopLists {
                 
                 let topListScore = TopListScore(uid: uid, score: score, user: true)
                 
-                topList.append(topListScore)
+                topListScore.fetchData {
+                    topList.append(topListScore)
+                    if topList.count == data.count {
+                        completion(topList)
+                    }
+                }
             }
-            
-            completion(topList.reversed())
         }
     }
     
     fileprivate func fetchList(key: String, date: TimeInterval, completion: @escaping ([TopListScore]?) -> ()) {
         voteRef.child(key).queryOrderedByValue().queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snapshot) in
+            if !snapshot.exists() {
+                completion(nil)
+                return
+            }
+            
             guard let data = snapshot.children.allObjects as? [DataSnapshot] else {
                 completion(nil)
                 return
@@ -114,10 +126,13 @@ class FBTopLists {
                 
                 let topListScore = TopListScore(uid: uid, score: score, user: false, challengeDate: date)
                 
-                topList.append(topListScore)
+                topListScore.fetchData {
+                    topList.append(topListScore)
+                    if topList.count == data.count {
+                        completion(topList)
+                    }
+                }
             }
-            
-            completion(topList)
         }
     }
     

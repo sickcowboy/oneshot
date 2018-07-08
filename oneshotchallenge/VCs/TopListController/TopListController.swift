@@ -41,10 +41,9 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         }
     }
     
-    lazy var refreshControl: UIRefreshControl = {
+    let refreshControl: UIRefreshControl = {
         let refresher = UIRefreshControl()
         refresher.tintColor = Colors.sharedInstance.primaryTextColor
-        refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return refresher
     }()
     
@@ -69,13 +68,14 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         collectionView?.register(TopListControllerHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
                                  withReuseIdentifier: headerId)
         
-        collectionView?.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        collectionView?.refreshControl = refreshControl
         
         (collectionViewLayout as! UICollectionViewFlowLayout).sectionHeadersPinToVisibleBounds = true
         
         fetchTopLists()
     }
-    
+        
     @objc fileprivate func backFromBackground() {
         fetchTopLists()
     }
@@ -89,7 +89,7 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         
         fbTopLists.fetchWinner { (topList, description) in
             DispatchQueue.main.async {
-                self.winners = topList
+                self.winners = topList?.sorted { $0.score > $1.score } ?? [TopListScore]()
                 
                 if let description = description {
                     self.winnerChallengeDescription = " - \(description)"
@@ -99,7 +99,7 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         
         fbTopLists.fetchToday { (topList, description) in
             DispatchQueue.main.async {
-                self.todayScore = topList
+                self.todayScore = topList?.sorted { $0.score > $1.score } ?? [TopListScore]()
                 
                 if let description = description {
                     self.todayChallengeDescription = " - \(description)"
@@ -109,13 +109,13 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
         
         fbTopLists.fetchMonth { (topList) in
             DispatchQueue.main.async {
-                self.monthScore = topList
+                self.monthScore = topList?.sorted { $0.score > $1.score } ?? [TopListScore]()
             }
         }
         
         fbTopLists.fetchAllTime { (topList) in
             DispatchQueue.main.async {
-                self.allTimeScore = topList
+                self.allTimeScore = topList?.sorted { $0.score > $1.score } ?? [TopListScore]()
             }
         }
     }
@@ -139,15 +139,13 @@ class TopListController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     fileprivate func stopRefresh() {
-        guard let winners = winners else { return }
-        guard let todayScore = todayScore else { return }
-        guard let monthScore = monthScore else { return }
-        guard let allTimeScore = allTimeScore else { return }
+        guard winners != nil else { return }
+        guard todayScore != nil else { return }
+        guard monthScore != nil else { return }
+        guard allTimeScore != nil else { return }
         
         self.collectionView?.reloadData()
-        
-        if !winners.isEmpty && !todayScore.isEmpty && !monthScore.isEmpty && !allTimeScore.isEmpty {
-            refreshControl.endRefreshing()
-        }
+
+        refreshControl.endRefreshing()
     }
 }

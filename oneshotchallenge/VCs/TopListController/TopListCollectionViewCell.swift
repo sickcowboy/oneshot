@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopListControllerCell: UICollectionViewCell, TopListDelegate {
+class TopListControllerCell: UICollectionViewCell {
     
     var challengeTime: Date?
     
@@ -22,8 +22,10 @@ class TopListControllerCell: UICollectionViewCell, TopListDelegate {
     
     var topListScore: TopListScore? {
         didSet {
-            topListScore?.delegate = self
-            topListScore?.fetchData()
+            framePhotoView.photoImageView.image = topListScore?.image
+            nameLabel.text = topListScore?.username
+            guard let votes = topListScore?.score else { return }
+            voteLabel.text = "\(votes) votes"
         }
     }
     
@@ -129,13 +131,6 @@ class TopListControllerCell: UICollectionViewCell, TopListDelegate {
             imageView.isHidden = true
             return
         }
-    }
-    
-    func finishedFetch() {
-        framePhotoView.photoImageView.image = topListScore?.image
-        nameLabel.text = topListScore?.username
-        guard let score = topListScore?.score else { return }
-        voteLabel.text = "\(score) votes"
     }
     
     required init?(coder aDecoder: NSCoder) {

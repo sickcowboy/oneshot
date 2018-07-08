@@ -8,13 +8,7 @@
 
 import UIKit
 
-protocol TopListDelegate:class {
-    func finishedFetch()
-}
-
 class TopListScore {
-    weak var delegate: TopListDelegate?
-    
     fileprivate let urlImageFetcher = UrlImageFetcher()
     fileprivate var fbUser: FireBaseUser?
     fileprivate var fbPosts: FireBasePosts?
@@ -25,11 +19,7 @@ class TopListScore {
     var fetchProfilePic: Bool
     
     var username: String?
-    var image: UIImage? {
-        didSet {
-            delegate?.finishedFetch()
-        }
-    }
+    var image: UIImage? 
     
     init(uid: String, score:Int, user: Bool, challengeDate: TimeInterval = 0) {
         self.uid = uid
@@ -38,35 +28,37 @@ class TopListScore {
         self.fetchProfilePic = user
     }
     
-    func fetchData() {
-        if username != nil && image != nil { return }
-        
+    func fetchData(completion: @escaping () -> ()) {
         fbUser = FireBaseUser()
         fbUser?.fetchUser(uid: uid, completion: { (user) in
-            DispatchQueue.main.async {
-                self.username = user?.username
-            }
+            self.username = user?.username
+            
             if self.fetchProfilePic {
-                self.fetchImage(imageUrl: user?.profilePicUrl)
+                self.fetchImage(imageUrl: user?.profilePicUrl, completion: {
+                    completion()
+                })
                 return
             }
-            self.fetchPostImageUrl()
+            self.fetchPostImageUrl(completion: {
+                completion()
+            })
         })
     }
     
-    fileprivate func fetchImage(imageUrl: String?) {
+    fileprivate func fetchImage(imageUrl: String?, completion: @escaping () -> ()) {
         urlImageFetcher.loadImage(urlString: imageUrl, completion: { (image) in
-            DispatchQueue.main.async {
-                self.image = image
-            }
+            self.image = image
+            completion()
         })
     }
     
-    fileprivate func fetchPostImageUrl() {
+    fileprivate func fetchPostImageUrl(completion: @escaping () -> ()) {
         fbPosts = FireBasePosts()
         
         fbPosts?.fetchPost(uid: uid, date: Date(timeIntervalSince1970: challengeDate), completion: { (post) in
-            self.fetchImage(imageUrl: post?.imageUrl)
+            self.fetchImage(imageUrl: post?.imageUrl, completion: {
+                completion()
+            })
         })
     }
 }
