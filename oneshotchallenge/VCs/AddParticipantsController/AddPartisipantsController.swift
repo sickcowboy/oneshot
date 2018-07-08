@@ -43,7 +43,7 @@ class AddPartisipantsController: UITableViewController {
         guard let post = posts?[indexPath.item] else { return cell }
         fbUser.fetchUser(uid: post.userId) { (user) in
             DispatchQueue.main.async {
-                cell.textLabel?.text = user?.username
+                cell.textLabel?.text = "\(indexPath.row+1): \(user?.username ?? "")"
             }
         }
         
@@ -52,6 +52,9 @@ class AddPartisipantsController: UITableViewController {
                 if userIds.contains(post.userId) {
                     DispatchQueue.main.async {
                         cell.detailTextLabel?.text = "Added"
+                        cell.backgroundColor = Colors.sharedInstance.primaryColor
+                        cell.textLabel?.textColor = Colors.sharedInstance.primaryTextColor
+                        cell.detailTextLabel?.textColor = Colors.sharedInstance.primaryTextColor
                     }
                 }
             }
