@@ -23,7 +23,7 @@ class AddPartisipantsController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Add partisipants"
+        title = "Add participants"
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
         
