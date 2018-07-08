@@ -36,6 +36,8 @@
 		2B52D23B208F13F800090285 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B52D23A208F13F800090285 /* UIStackViewExtension.swift */; };
 		2B5B03A720D670360040A4CD /* CelerationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B03A620D670360040A4CD /* CelerationController.swift */; };
 		2B5B03A920D67CF70040A4CD /* CelebrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5B03A820D67CF70040A4CD /* CelebrationView.swift */; };
+		2B5DCE3420F27883009A75D3 /* FBAdmin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DCE3320F27883009A75D3 /* FBAdmin.swift */; };
+		2B5DCE3720F27B18009A75D3 /* AddPartisipantsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5DCE3620F27B18009A75D3 /* AddPartisipantsController.swift */; };
 		2B668C5820D51A7100801296 /* FirebaseDebugOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B668C5720D51A7100801296 /* FirebaseDebugOptions.swift */; };
 		2B73389820A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389720A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift */; };
 		2B73389A20A99D2A00AB59E0 /* TopListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */; };
@@ -124,6 +126,8 @@
 		2B52D23A208F13F800090285 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		2B5B03A620D670360040A4CD /* CelerationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelerationController.swift; sourceTree = "<group>"; };
 		2B5B03A820D67CF70040A4CD /* CelebrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationView.swift; sourceTree = "<group>"; };
+		2B5DCE3320F27883009A75D3 /* FBAdmin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBAdmin.swift; sourceTree = "<group>"; };
+		2B5DCE3620F27B18009A75D3 /* AddPartisipantsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPartisipantsController.swift; sourceTree = "<group>"; };
 		2B668C5720D51A7100801296 /* FirebaseDebugOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDebugOptions.swift; sourceTree = "<group>"; };
 		2B73389720A99CEE00AB59E0 /* TopListCollectionViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListCollectionViewFunctions.swift; sourceTree = "<group>"; };
 		2B73389920A99D2A00AB59E0 /* TopListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopListCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -254,6 +258,7 @@
 				2BA3A8CF20A0567200E37A33 /* SettingsController */,
 				2BBD4C7820A1C26A0034DD47 /* AddChallengeVC */,
 				2BD4A00E20E7806800CC57F0 /* AllChallengesVC */,
+				2B5DCE3520F27AF8009A75D3 /* AddParticipantsController */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -324,6 +329,7 @@
 		2B174C3C20BD7D29001F77C8 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				2B5DCE3220F2786F009A75D3 /* FirebaseAdmin */,
 				2B668C5620D51A5900801296 /* FirebaseDebug */,
 				A4040B8320C1BDC6004CB6C0 /* FireBaseDeleteUser */,
 				A43F2BC620BE975F0010AB4C /* FireBaseRetrievePassword */,
@@ -418,6 +424,22 @@
 				2B394D0120D69E6500AD2CA1 /* FireWork.swift */,
 			);
 			path = CelebrationController;
+			sourceTree = "<group>";
+		};
+		2B5DCE3220F2786F009A75D3 /* FirebaseAdmin */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DCE3320F27883009A75D3 /* FBAdmin.swift */,
+			);
+			path = FirebaseAdmin;
+			sourceTree = "<group>";
+		};
+		2B5DCE3520F27AF8009A75D3 /* AddParticipantsController */ = {
+			isa = PBXGroup;
+			children = (
+				2B5DCE3620F27B18009A75D3 /* AddPartisipantsController.swift */,
+			);
+			path = AddParticipantsController;
 			sourceTree = "<group>";
 		};
 		2B668C5620D51A5900801296 /* FirebaseDebug */ = {
@@ -788,11 +810,13 @@
 				2B8E910F20BFD91B005ED148 /* InfoView.swift in Sources */,
 				2B7338A120A9AF8800AB59E0 /* Names.swift in Sources */,
 				A40A99972093176600176D96 /* RateControllerCollectionViewFunctions.swift in Sources */,
+				2B5DCE3720F27B18009A75D3 /* AddPartisipantsController.swift in Sources */,
 				2B2039E7208F45BC00C4CF43 /* EditPhotoController.swift in Sources */,
 				2B73389E20A9A85800AB59E0 /* StatusBar.swift in Sources */,
 				2B8CE3C7209B0DC20045C028 /* RegisterVC.swift in Sources */,
 				2B8CE53B20A19CC400C8EC3D /* Post.swift in Sources */,
 				2BBD4C7520A1BA4E0034DD47 /* DetailPostController.swift in Sources */,
+				2B5DCE3420F27883009A75D3 /* FBAdmin.swift in Sources */,
 				A4D4941420D8EE3900613803 /* OBWelcomeController.swift in Sources */,
 				A450DE8720DE5254007588A1 /* ChallengeControllerOnBoarding.swift in Sources */,
 				2B52D239208F13EE00090285 /* UIViewExtension.swift in Sources */,

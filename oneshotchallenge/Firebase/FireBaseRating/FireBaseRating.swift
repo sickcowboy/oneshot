@@ -82,8 +82,8 @@ class FireBaseRating {
         }
     }
     
-    func addPartisipant() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+    func addPartisipant(uid: String? = nil) {
+        guard let uid = uid ?? Auth.auth().currentUser?.uid else { return }
         
         let fbChallenges = FireBaseChallenges()
         fbChallenges.fetchChallenge { (challenge) in

@@ -29,6 +29,15 @@ class SettingsController: UIViewController {
         return button
     }()
     
+    private let addPartisipants: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Admin:  ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Add partisipants", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: Colors.sharedInstance.primaryTextColor]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(toAddPartisipants), for: .touchUpInside)
+        return button
+    }()
+    
 //    private let debugDeleteVotes: UIButton = {
 //        let button = UIButton(type: .system)
 //        let attributedTitle = NSMutableAttributedString(string: "Debug:  ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
@@ -109,7 +118,8 @@ class SettingsController: UIViewController {
                 if admin {
                     self.addAdminTools()
                 } else {
-                   self.addChallenge.removeFromSuperview()
+                    self.addChallenge.removeFromSuperview()
+                    self.addPartisipants.removeFromSuperview()
                 }
             }
         }
@@ -118,6 +128,9 @@ class SettingsController: UIViewController {
     fileprivate func addAdminTools() {
         view.addSubview(addChallenge)
         addChallenge.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: logOffButton.topAnchor, padding: .init(top: 0, left: 8, bottom: 4, right: 8))
+        
+        view.addSubview(addPartisipants)
+        addPartisipants.constraintLayout(top: nil, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: addChallenge.topAnchor, padding: .init(top: 0, left: 8, bottom: 4, right: 8))
     }
     
     @objc fileprivate func presentLogOut() {
@@ -155,6 +168,11 @@ class SettingsController: UIViewController {
     
     @objc fileprivate func toAddChallenge() {
         let controller = AddChallengeController()
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc fileprivate func toAddPartisipants() {
+        let controller = AddPartisipantsController()
         navigationController?.pushViewController(controller, animated: true)
     }
     
