@@ -31,7 +31,7 @@ class OBWelcomeController: UIViewController {
     private let infoLabel: UILabel = {
         let label = UILabel()
         
-        let appInfo = "1. Take a challenge, you have only one chance, one shot, to post a picture following the challenge theme of the day \n\n2. once a picture is taken, you need to vote on 10 pictures on yesterdays challenge to complete your entry into todays challenge \n\n3. When a challenge is completed and voted upon you will see the winning pictures and your result. "
+        let appInfo = "1. Take a challenge, you have only one chance, one shot, to post a picture following the challenge theme of the day \n\n2. once a picture is taken, you need to vote on 5 pictures on yesterdays challenge to complete your entry into todays challenge \n\n3. When a challenge is completed and voted upon you will see the winning pictures and your result. "
         
         let attributedText = NSMutableAttributedString(string: "How to compete:",
                                                        attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 24),
