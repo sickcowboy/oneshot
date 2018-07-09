@@ -38,8 +38,8 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
         didSet{
             guard let voteCount = voteCount else { return }
             if !isOnBoarding {
-                voteCountLabel.countTo(number: 10 - voteCount)
-                if voteCount == 10 {
+                voteCountLabel.countTo(number: 5 - voteCount)
+                if voteCount >= 5 {
                     addPartisipant()
                 }
             } else {
@@ -244,7 +244,7 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
             FBVote.sharedInstance.vote(uid: post?.userId, id: challenge?.key, month: month)
             voteCount! += 1
             
-            if posts.count >= 2 && voteCount! <= 8 {
+            if posts.count >= 2 && voteCount! <= 4 {
                 self.rateViewBottom?.post = self.posts?.first
                 self.posts?.removeFirst()
                 self.rateViewTop?.post = self.posts?.first
@@ -290,7 +290,7 @@ class RateControllerDeux: UIViewController, RateFrameImageViewDelegate {
             doneWithNothing.removeAll()
             
             if !isOnBoarding {
-                if voteCount! == 10 {
+                if voteCount! >= 5 {
                     labelStackView?.removeFromSuperview()
                     imageStackView?.removeFromSuperview()
                     setUpLockedLabel(done: true)

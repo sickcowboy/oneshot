@@ -47,7 +47,7 @@ extension RateControllerDeux {
     func checkIfDone(key: String) {
         fbRatings.checkIfVoteIsDone(key: key) { (count) in
             if let count = count {
-                if count == 10 {
+                if count >= 5 {
                     DispatchQueue.main.async {
                         self.activityIndication(loading: false)
                         self.setUpLockedLabel(done: true)

@@ -123,7 +123,7 @@ class OBWelcomeController: UIViewController {
         
         welcomeLabel.attributedText = setAttributedText(title: welcomeLabelTitle, titleSize: 32, info: welcomeLabelInfo, infoSize: 32)
         
-        let infoLabelTitle = "Next thing you need to do is vote on 10 pictures to complete the challenge."
+        let infoLabelTitle = "Next thing you need to do is vote on 5 pictures to complete the challenge."
         let infoLabelinfo = "\n(For this tutorial it will only be dummy pictures)"
         
         infoLabel.attributedText = setAttributedText(title: infoLabelTitle, titleSize: 18, info: infoLabelinfo, infoSize: 18)
